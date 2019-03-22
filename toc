@@ -6,9 +6,9 @@
 {: .toc subcollection="cis-cli-plugin" audience="service" href="/docs/cis-cli-plugin?topic=cis-cli-plugin-cis-cli-commands" path="cis-cli-plugin"}
 Cloud Internet Services (CIS)
 
-     {: .navgroup id="reference"}
-     {: .topicgroup}  
-	CLI plugin commands (IBM Cloud documentation)
-		cis-cli-plugin.md
-		
+    {: .navgroup id="reference"}
+    {: .topicgroup}  
+    CLI plugin commands (IBM Cloud documentation)
+        cis-cli-plugin.md
+
     {: .navgroup-end}
