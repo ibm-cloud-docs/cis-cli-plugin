@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018-2019
-lastupdated: "2019-02-18"
+lastupdated: "2019-03-22"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2019-02-18"
 
 # CIS CLI Commands
 
-### CIS commands index
+## CIS commands index
 {: #commands_index}
 
 The IBM® Cloud Internet Services has the following families of commands available from the command line interface (CLI).
@@ -2831,9 +2831,6 @@ The optional fields are `disabled`, `description`, and `bypass`:
 
 Manipulate CIS Service instances by using the following `instance` commands.
 
-* List CIS Service Instances
-* Set Context CIS Service Instance
-
 ### List CIS Service Instances
 {: #list-cis-service-instances}
 
@@ -2845,9 +2842,15 @@ Manipulate CIS Service instances by using the following `instance` commands.
 
    `ibmcloud cis instances`
 
+**Output**
+   * Name
+   * Location
+   * State
+   * Service Name
+
 
 ### Set Context CIS Service Instance
-{: #set-context-cis-service-instance}
+{: #set-cis-service-instance}
 
 **NAME**
 
@@ -2863,7 +2866,109 @@ Manipulate CIS Service instances by using the following `instance` commands.
 
 **OPTIONS**
 
-   `--unset`  Unset context instance.  
+   `--unset`  Unset context instance.
+
+
+### Create CIS Service Instance
+{: #create-cis-service-instance}
+
+**NAME**
+
+   `instance-create` - Create a CIS service instance.
+
+**USAGE**
+
+   `ibmcloud cis instance-create INSTANCE_NAME PLAN`
+
+**ARGUMENTS**
+
+   `INSTANCE_NAME` is the name of CIS service instance.
+
+   `PLAN` is the name or id of a service plan.
+
+**OPTIONS**
+
+   `--output`  Specify output format, only JSON is supported now.
+
+
+### Delete CIS Service Instance
+{: #delete-cis-service-instance}
+
+**NAME**
+
+   `instance-delete` - Delete a CIS service instance.
+
+**USAGE**
+
+   `ibmcloud cis instance-delete INSTANCE` 
+
+**ARGUMENTS**
+
+   `INSTANCE` is the name or ID of a CIS service instance.
+
+**OPTIONS**
+
+   `--force`  Delete instance without prompting for confirmation.
+
+
+### Update CIS Service Instance
+{: #update-cis-service-instance}
+
+**NAME**
+
+   `instance-update` - Update a CIS service instance.
+
+**USAGE**
+
+   `ibmcloud cis instance-update INSTANCE [--name NAME] [--plan PLAN]` 
+
+**ARGUMENTS**
+
+   `INSTANCE` is the name or ID of a CIS service instance.
+
+**OPTIONS**
+
+   `--name`    CIS service instance name.
+
+   `--plan`    The name or id of a service plan.
+
+   `--output`  Specify output format, only JSON is supported now.
+
+
+### Get CIS Service Instance
+{: #get-cis-service-instance}
+
+**NAME**
+
+   `instance` - Show details of a CIS service instance.
+
+**USAGE**
+
+   `ibmcloud cis instance INSTANCE` 
+
+**ARGUMENTS**
+
+   `INSTANCE` is the name or ID of a CIS service instance.
+
+**OPTIONS**
+
+   `--output`  Specify output format, only JSON is supported now.
+
+
+### List CIS Service Plans
+{: #list-cis-service-plans}
+
+**NAME**
+
+   `plans` - List all CIS service plans.
+
+**USAGE**
+
+   `ibmcloud cis plans [--refresh] [--output FORMAT]` 
+
+**OPTIONS**
+
+   `--refresh`  Force refresh from catalog.
    
    
 ## Routing
