@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018-2019
-lastupdated: "2019-03-22"
+lastupdated: "2019-03-28"
 
 ---
 
@@ -3086,8 +3086,8 @@ Manipulate TLS by using the following `tls` commands.
 
    `--mode value` Specify whether visitors can browse your website over a secure connection, and when they do, how CIS will connect to your origin server.
                 Valid values: `off`, `client-to-edge`, `end-to-end-flexible`, `end-to-end-ca-signed`, `https-only-origin-pull`.
-                See below documentation link for detailed TLS mode description.
-                    https://console.bluemix.net/docs/infrastructure/cis/ssl-options.html#tls-options
+                See the following documentation link for detailed [TLS mode description](/docs/infrastructure/cis/ssl-options.html#tls-options).
+                    
 
    `--universal value` Specify whether universal ssl is enabled for you domain. Valid values are `true` and
                                        `false`.
