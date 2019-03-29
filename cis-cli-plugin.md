@@ -3692,3 +3692,248 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
    `--output FORMAT`    Specify output format, only JSON is supported now.
+   
+## Edge
+{: #edge}
+
+Manipulate Edge Functions by using the following `edge` commands.
+
+### Create an edge script
+{: #create-edge-script}
+
+**NAME**
+
+  `edge-script-create` - Create an edge script for a given service instance. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-script-create SCRIPT_NAME (--script-str JAVASCRIPT_STR | --script-file JAVASCRIPT_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+  
+**ARGUMENTS**
+
+   `SCRIPT_NAME` is the name of an edge script.
+
+**OPTIONS**
+
+   `--script-str value`          Script string. Eg: "addEventListener('fetch', event => { event.respondWith(fetch(event.request))})"
+
+   `--script-file value`         Script file.
+
+   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+
+   `--output FORMAT`    Specify output format, only JSON is supported now.
+
+
+
+### Update an edge script
+{: #update-edge-script}
+
+**NAME**
+
+  `edge-script-update` - Update an edge script for a given service instance. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-script-update SCRIPT_NAME (--script-str JAVASCRIPT_STR | --script-file JAVASCRIPT_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+  
+**ARGUMENTS**
+
+   `SCRIPT_NAME` is the name of an edge script.
+
+**OPTIONS**
+
+   `--script-str value`          Script string. Eg: "addEventListener('fetch', event => { event.respondWith(fetch(event.request))})"
+
+   `--script-file value`         Script file.
+
+   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+
+   `--output FORMAT`    Specify output format, only JSON is supported now.
+
+### Delete an edge script
+{: #delete-edge-script}
+
+**NAME**
+
+  `edge-script-delete` - Delete an edge script for a given service instance. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-script-delete SCRIPT_NAME [-i, --instance INSTANCE_NAME]`
+  
+**ARGUMENTS**
+
+   `SCRIPT_NAME` is the name of an edge script.
+
+**OPTIONS**
+
+   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+
+**Output Message**
+
+   * N/A
+
+
+
+### List edge scripts
+{: #list-edge scripts}
+
+**NAME**
+
+  `edge-scripts` - List all edge scripts of a given service instance. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-scripts [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+  
+
+**OPTIONS**
+
+   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+
+   `--output value`    Specify output format, only JSON is supported now.
+
+
+### Show an edge script
+{: #show-edge-script}
+
+**NAME**
+
+  `edge-script` - Display an edge script of a given service instance. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-script SCRIPT_NAME [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+  
+**ARGUMENTS**
+
+   `SCRIPT_NAME` is the name of an edge script.
+
+**OPTIONS**
+
+   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+
+   `--output FORMAT`    Specify output format, only JSON is supported now.
+
+
+
+### Create an edge route
+{: #create-edge-route}
+
+**NAME**
+
+  `edge-route-create` - Create an edge route for a given domain. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-route-create DNS_DOMAIN_ID PATTERN_URL SCRIPT_NAME [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+  
+**ARGUMENTS**
+
+   `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   `PATTERN_URL` is the request URL which triggers the script.
+
+   `SCRIPT_NAME` is the name of an edge script.
+
+**OPTIONS**
+
+   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+
+   `--output FORMAT`    Specify output format, only JSON is supported now.
+
+
+### Update an edge route
+{: #update-edge-route}
+
+**NAME**
+
+  `edge-route-update` - Update an edge route for a given domain. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-route-update DNS_DOMAIN_ID ROUTE_ID PATTERN_URL SCRIPT_NAME [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+  
+**ARGUMENTS**
+
+   `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   `ROUTE_ID` is the ID of an edge route.
+
+   `PATTERN_URL` is the request URL which triggers the script.
+
+   `SCRIPT_NAME` is the name of an edge script.
+
+**OPTIONS**
+
+   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+
+   `--output FORMAT`    Specify output format, only JSON is supported now.
+
+
+### Delete an edge route
+{: #delete-edge-route}
+
+**NAME**
+
+  `edge-route-delete` - Delete an edge route for a given domain. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-route-delete DNS_DOMAIN_ID ROUTE_ID [-i, --instance INSTANCE_NAME]`
+  
+**ARGUMENTS**
+
+   `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   `ROUTE_ID` is the ID of an edge route.
+
+**OPTIONS**
+
+   `ibmcloud cis edge-route-update`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+
+
+### List edge routes
+{: #list-edge-routes}
+
+**NAME**
+
+  `edge-routes` - List all edge routes of a given domain. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-routes DNS_DOMAIN_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+  
+**ARGUMENTS**
+
+   `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   `ibmcloud cis edge-route-update`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+
+   `--output FORMAT`    Specify output format, only JSON is supported now.
+
+
+### Show an edge route
+{: #show-edge-route}
+
+**NAME**
+
+  `edge-route` - Display an edge route of a given domain. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-route DNS_DOMAIN_ID ROUTE_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+  
+**ARGUMENTS**
+
+   `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   `ROUTE_ID` is the ID of an edge route.
+
+**OPTIONS**
+
+   `ibmcloud cis edge-route-update`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+
+   `--output FORMAT`    Specify output format, only JSON is supported now.   
