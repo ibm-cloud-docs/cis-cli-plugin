@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018-2019
-lastupdated: "2019-03-28"
+lastupdated: "2019-04-01"
 
 ---
 
@@ -37,12 +37,16 @@ View the overview information for an instance.
 
   `ibmcloud cis overview DNS_DOMAIN_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID`  The ID of DNS domain.
+   
 **OPTIONS**
 
- `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
- `--output FORMAT`    Specify output format, only JSON is supported now.
+   * `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+   * `--output FORMAT`    Specify output format, only JSON is supported now.
               
-`Service Mode` is displayed only when the domain is paused or in defense mode.
+   * `Service Mode` is displayed only when the domain is paused or in defense mode.
 
 ## Cache
 {: #cache}
@@ -59,6 +63,10 @@ Manipulate how the cache performs using the following `cache` commands:
 
   `ibmcloud cis cache-purge DNS_DOMAIN_ID (--all | -f, --file file1,file2,...) [-i, --instance INSTANCE_NAME]`
 
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID`  The ID of DNS domain.
+
 **OPTIONS**
 
    * `-i, --instance INSTANCE_NAME` (Optional) Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
@@ -70,6 +78,7 @@ Manipulate how the cache performs using the following `cache` commands:
 
 ### Show cache settings
 {: #show-cache}
+
 **NAME**
 
   `cache-settings` - Get caching settings for a given DNS domain.
@@ -90,6 +99,7 @@ Manipulate how the cache performs using the following `cache` commands:
    
 ### Update cache settings
 {: #update-cache}
+
 **NAME**
 
   `cache-settings-update` - Update cache settings for a give DNS domain.
@@ -147,7 +157,7 @@ Manipulate how the DNS Record performs using the following `dns-record` commands
 
 **ARGUMENTS**
 
-   `DNS_DOMAIN_ID` is the ID of DNS domain.
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
 
 **OPTIONS**
 
@@ -3692,3 +3702,766 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
    `--output FORMAT`    Specify output format, only JSON is supported now.
+
+
+## Edge Functions
+{: #edge-functions}
+
+Manipulate how the Edge Functions performs using the following `edge-functions` commands:
+
+### Create Edge Functions Script
+{: #create-edge-functions-script}
+
+**NAME**
+
+  `edge-functions-script-create` - Create an edge functions script for a given service instance. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-functions-script-create SCRIPT_NAME (--script-str JAVASCRIPT_STR | --script-file JAVASCRIPT_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `SCRIPT_NAME`  is the name of an edge functions script.
+
+**OPTIONS**
+
+   * `--script-str value`          Script string. Eg: "addEventListener('fetch', event => { event.respondWith(fetch(event.request))})"
+
+   * `--script-file value`         Script file.
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+
+### Update Edge Functions Script
+{: #update-edge-functions-script}
+
+**NAME**
+
+  `edge-functions-script-update` - Update an edge functions script for a given service instance. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-functions-script-update SCRIPT_NAME (--script-str JAVASCRIPT_STR | --script-file JAVASCRIPT_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `SCRIPT_NAME`  is the name of an edge functions script.
+
+**OPTIONS**
+
+   * `--script-str value`          Script string. Eg: "addEventListener('fetch', event => { event.respondWith(fetch(event.request))})"
+
+   * `--script-file value`         Script file.
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+
+### Delete Edge Functions Script
+{: #delete-edge-functions-script}
+
+**NAME**
+
+  `edge-functions-script-delete` - Delete an edge functions script for a given service instance. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-functions-script-delete SCRIPT_NAME [-i, --instance INSTANCE_NAME]`
+
+**ARGUMENTS**
+
+   * `SCRIPT_NAME` is the name of an edge functions script.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+
+
+### Show Edge Functions Script
+{: #show-edge-functions-script}
+
+**NAME**
+
+  `edge-functions-script` - Display an edge functions script of a given service instance. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-functions-script SCRIPT_NAME [-i, --instance INSTANCE_NAME]`
+
+**ARGUMENTS**
+
+   * `SCRIPT_NAME` is the name of an edge functions script.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+
+
+### List Edge Functions Scripts
+{: #list-edge-functions-script}
+
+**NAME**
+
+  `edge-functions-scripts` - List all edge functions scripts of a given service instance. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-functions-scripts [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+
+### Create Edge Functions Route
+{: #create-edge-functions-route}
+
+**NAME**
+
+  `edge-functions-route-create` - Create an edge functions route for a given domain. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-functions-route-create DNS_DOMAIN_ID PATTERN_URL SCRIPT_NAME [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `PATTERN_URL` is the request URL which triggers the script.
+
+   * `SCRIPT_NAME` is the name of an edge functions script.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+
+### Update Edge Functions Route
+{: #update-edge-functions-route}
+
+**NAME**
+
+  `edge-functions-route-update` - Update an edge functions route for a given domain. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-functions-route-update DNS_DOMAIN_ID ROUTE_ID PATTERN_URL SCRIPT_NAME [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `ROUTE_ID` is the ID of an edge functions route.
+
+   * `PATTERN_URL` is the request URL which triggers the script.
+
+   * `SCRIPT_NAME` is the name of an edge functions script.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+
+### Delete Edge Functions Route
+{: #delete-edge-functions-route}
+
+**NAME**
+
+  `edge-functions-route-delete` - Delete an edge functions route for a given domain. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-functions-route-delete DNS_DOMAIN_ID ROUTE_ID [-i, --instance INSTANCE_NAME]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `ROUTE_ID` is the ID of an edge functions route.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+
+
+### Show Edge Functions Route
+{: #show-edge-functions-route}
+
+**NAME**
+
+  `edge-functions-route` - Display an edge functions route of a given domain. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-functions-route DNS_DOMAIN_ID ROUTE_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+   
+   * `ROUTE_ID` is the ID of an edge functions route.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+   * `--output value`              Specify output format, only JSON is supported now.
+
+
+### List Edge Functions Routes
+{: #list-edge-functions-route}
+
+**NAME**
+
+  `edge-functions-routes` - List all edge functions routes of a given domain. (enterprise plan only)
+
+**USAGE**
+
+  `ibmcloud cis edge-functions-routes DNS_DOMAIN_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+
+## Range App
+{: #range-app}
+
+Manipulate how the Range App performs using the following `range-app` commands:
+
+### Create Range App
+{: #create-range-app}
+
+**NAME**
+
+   `range-app-create` - Create a new range application. (enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis range-app-create DNS_DOMAIN_ID --name NAME --edge-port EDGE_PORT --origin-direct ORIGIN_DIRECT [--origin-direct ORIGIN_DIRECT] [--proxy-protocol on|off] [--ip-firewall on|off]`
+   
+   `ibmcloud cis range-app-create DNS_DOMAIN_ID --name NAME --edge-port EDGE_PORT --origin-lb-name ORIGIN_LB_NAME --origin-lb-port ORIGIN_LB_PORT [--proxy-protocol on|off] [--ip-firewall on|off]`
+   
+   `ibmcloud cis range-app-create DNS_DOMAIN_ID -s JSON_STR`
+   
+   `ibmcloud cis range-app-create DNS_DOMAIN_ID -j JSON_FILE`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `--name value`                 The name of DNS record for the range application.
+
+   * `--edge-port value`            Port configuration at CIS's edge. (default: 22)
+
+   * `--origin-direct value`        Destination addresses to the origin.
+
+   * `--origin-lb-name value`       The Load Balancer name associated with the range application.
+
+   * `--origin-lb-port value`       The Load Balancer port associated with the range application. (default: 22)
+
+   * `--proxy-protocol value`       Control whether or not enable Proxy Protocol v1 to the origin. Valid values: "on", "off". (default: "off")
+   
+   * `--ip-firewall value`          Control whether or not enables the IP Firewall for this application. Valid values: "on", "off". (default: "off")
+
+   * `-s value, --json-str value`   The JSON data describing a range application.
+                                
+      * The required fields in JSON data are "protocol", "dns".
+                                    
+         * "protocol": Port configuration at CIS's edge.
+         * "dns": The name and type of DNS record for the range application.
+            * "name": The name of DNS record for the range application.
+            * "type": The type of DNS record associated with the application. Valid values: "CNAME".
+                                
+      * The optional fields are "origin_direct", "origin_dns", "origin_port", "proxy_protocol", "ip_firewall".
+                                    
+         * "origin_direct": A list of destination addresses to the origin.
+         * "origin_dns": Method and parameters used to discover the origin server address via DNS.
+         * "name": DNS record name.
+         * "origin_port": The destination port at the origin.
+         * "proxy_protocol": Control whether or not enable Proxy Protocol v1 to the origin. Valid values: "on", "off".
+         * "ip_firewall": Control whether or not enables the IP Firewall for this application. Valid values: "on", "off".
+                                
+      Sample JSON data:
+                                
+          {
+              "protocol": "tcp/22",
+              "dns": {
+                  "type": "CNAME",
+                  "name": "ssh.example.com"
+              },
+              "origin_direct": [
+                  "tcp://1.2.3.4:22",
+                  "tcp://1.2.3.4:23",
+                  "tcp://1.2.3.4:24"
+              ],
+              "proxy_protocol": false,
+              "ip_firewall": false
+          }
+
+          {
+              "protocol": "tcp/22",
+              "dns": {
+                  "type": "CNAME",
+                  "name": "glb.example.com"
+              },
+              "origin_dns": {
+                  "name": "name-to-glb.example.com"
+              },
+              "origin_port": 22,
+              "proxy_protocol": false,
+              "ip_firewall": false
+          }
+
+   * `-j value, --json-file value`  A file contains input JSON data.
+
+   * `-i value, --instance value`   Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' is used.
+
+   * `--output value`               Specify output format, only JSON is supported now.
+
+
+### Update Range App
+{: #update-range-app}
+
+**NAME**
+
+   `range-app-update` - Update an previously existing application's configuration. (enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis range-app-update DNS_DOMAIN_ID APP_ID --origin-direct ORIGIN_DIRECT`
+
+   `ibmcloud cis range-app-update DNS_DOMAIN_ID APP_ID [--add-origin-direct ORIGIN_DIRECT] [--remove-origin-direct ORIGIN_DIRECT]`
+
+   `ibmcloud cis range-app-update DNS_DOMAIN_ID APP_ID [--origin-lb-name ORIGIN_LB_NAME] [--origin-lb-port ORIGIN_LB_PORT]`
+
+   `ibmcloud cis range-app-update DNS_DOMAIN_ID APP_ID -s JSON_STR`
+
+   `ibmcloud cis range-app-update DNS_DOMAIN_ID APP_ID -j JSON_FILE`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+   * `APP_ID` is the ID of range application.
+
+**OPTIONS**
+
+   * `--name value`                 The name of DNS record for the range application.
+
+   * `--edge-port value`            Port configuration at CIS's edge. (default: 22)
+
+   * `--origin-direct value`        Destination addresses to the origin.
+
+   * `--origin-lb-name value`       The Load Balancer name associated with the range application.
+
+   * `--origin-lb-port value`       The Load Balancer port associated with the range application. (default: 22)
+
+   * `--proxy-protocol value`       Control whether or not enable Proxy Protocol v1 to the origin. Valid values: "on", "off". (default: "off")
+   
+   * `--ip-firewall value`          Control whether or not enables the IP Firewall for this application. Valid values: "on", "off". (default: "off")
+
+   * `-s value, --json-str value`   The JSON data describing a range application.
+                                
+      * The required fields in JSON data are "protocol", "dns".
+                                    
+         * "protocol": Port configuration at CIS's edge.
+         * "dns": The name and type of DNS record for the range application.
+            * "name": The name of DNS record for the range application.
+            * "type": The type of DNS record associated with the application. Valid values: "CNAME".
+                                
+      * The optional fields are "origin_direct", "origin_dns", "origin_port", "proxy_protocol", "ip_firewall".
+                                    
+         * "origin_direct": A list of destination addresses to the origin.
+         * "origin_dns": Method and parameters used to discover the origin server address via DNS.
+         * "name": DNS record name.
+         * "origin_port": The destination port at the origin.
+         * "proxy_protocol": Control whether or not enable Proxy Protocol v1 to the origin. Valid values: "on", "off".
+         * "ip_firewall": Control whether or not enables the IP Firewall for this application. Valid values: "on", "off".
+                                
+      Sample JSON data:
+                                
+          {
+              "protocol": "tcp/22",
+              "dns": {
+                  "type": "CNAME",
+                  "name": "ssh.example.com"
+              },
+              "origin_direct": [
+                  "tcp://1.2.3.4:22",
+                  "tcp://1.2.3.4:23",
+                  "tcp://1.2.3.4:24"
+              ],
+              "proxy_protocol": false,
+              "ip_firewall": false
+          }
+
+          {
+              "protocol": "tcp/22",
+              "dns": {
+                  "type": "CNAME",
+                  "name": "glb.example.com"
+              },
+              "origin_dns": {
+                  "name": "name-to-glb.example.com"
+              },
+              "origin_port": 22,
+              "proxy_protocol": false,
+              "ip_firewall": false
+          }
+
+   * `-j value, --json-file value`  A file contains input JSON data.
+
+   * `-i value, --instance value`   Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' is used.
+
+   * `--output value`               Specify output format, only JSON is supported now.
+
+
+### Delete Range App
+{: #delete-range-app}
+
+**NAME**
+
+   `range-app-delete` - Delete a previously existing application. (enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis range-app-delete DNS_DOMAIN_ID APP_ID [--instance INSTANCE]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `APP_ID` is the ID of range application.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' will be used.
+
+
+### Show Range App
+{: #show-range-app}
+
+**NAME**
+
+   `range-app` - Get the application configuration of a specific application. (enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis range-app DNS_DOMAIN_ID APP_ID [--instance INSTANCE] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `APP_ID` is the ID of range application.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' will be used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+
+### List Range Apps
+{: #list-range-app}
+
+**NAME**
+
+   `range-apps` - Retrieve a list of currently existing range applications for a given DNS domain. (enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis range-apps DNS_DOMAIN_ID [--instance INSTANCE] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+
+### Analytics Range App
+{: #analytics-range-app}
+
+**NAME**
+
+   `range-analytics` - Analytics data for range applications. (enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis range-analytics DNS_DOMAIN_ID [--metrics METRICS] [--dimensions DIMENSION] [--filters FILTERS] [--sort SORT] [--since SINCE] [--until UNTIL]`
+
+   `ibmcloud cis range-analytics DNS_DOMAIN_ID --bytime [--time_delta DELTA] [--metrics METRICS] [--dimensions DIMENSION] [--filters FILTERS] [--sort SORT] [--since SINCE] [--until UNTIL]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `--metrics value`             One or more metrics to compute.
+                               To get all metrics, set metrics to 'count,bytesIngress,bytesEgress,durationAvg,durationMedian,duration90th,duration99th'.
+
+   * `--dimensions value`          Can be used to break down the data by given attributes.
+                               To get all dimensions, set dimensions to 'event,appID,coloName,ipVersion'.
+
+   * `--filters value`             Used to filter rows by one or more dimensions.
+                               Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions.
+                               The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace.
+                               The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace.
+                               Comparison options are: ==, !=, >, <, >=, <=.
+                               An example value for filters is: 'event==connect AND coloName!=SFO'.
+
+   * `--sort value`                The sort order for the result set. Sort fields must be included in metrics or dimensions.
+                               An example value for sort is: '+count,-bytesIngress'.
+
+   * `--since value`               Start of time interval to query, defaults to until - 6 hours.
+                               This should be an absolute timestamp that conforms to RFC 3339.
+
+   * `--until value`               End of time interval to query, defaults to current time.
+                               This should be an absolute timestamp that conforms to RFC 3339.
+
+   * `--bytime`                    Analytics data for range applications grouped by time interval.
+
+   * `--time-delta value`          Used to select time series resolution. Valid values: "year", "quarter", "month", "week", "day", "hour", "dekaminute", "minute".
+                               Only valid when '--bytime' is given.
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' will be used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+   
+
+## Firewall Rule
+{: #firewall-rule}
+
+Manipulate how the Firewall Rule performs using the following `firewall-rule` commands:
+
+### Create Firewall Rule
+{: #create-firewall-rule}
+
+**NAME**
+
+   `firewall-rule-create` - Create a firewall-rule for a given DNS domain.
+
+**USAGE**
+
+   `ibmcloud cis firewall-rule-create DNS_DOMAIN_ID --expression EXPRESSION --action ACTION [--priority PRIORITY] [--paused on|off] [--description DESCRIPTION] [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+   `ibmcloud cis firewall-rule-create DNS_DOMAIN_ID (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `--expression value`           A filter expression. E.g. "ip.src eq 93.184.216.0"
+   * `--action value`               The rule action to perform. Valid values: "log", "allow", "challenge", "js_challenge", "block".
+   * `--priority value`             The rule's priority. Valid values: 0 ~ 2147483647. Value "0" means to set to the default value.
+   * `--description value`          To briefly describe the rule.
+   * `--paused value`               Indicates if the rule is active. Valid values: "on", "off".Default value is "off".
+   * `-s value, --json-str value`   The JSON data describing a firewall-rule.
+                                
+      * The required fields in JSON data are "expression", "action".
+                                    
+         * "expression": A filter expression. E.g. "ip.src eq 93.184.216.0"
+         * "action": The rule action to perform. Valid values: "log", "allow", "challenge", "js_challenge", "block".
+                                
+      * The optional fields are "description", "priority", "paused".
+                                    
+         * "description": To briefly describe the rule.
+         * "priority": The rule's priority. Valid values: 0 ~ 2147483647. Value "0" means to set to the default value.
+         * "paused": Indicates if the rule is active. Valid values: "on", "off".Default value is "off".
+                                
+      Sample JSON data:
+                                
+          {
+              "expression": "ip.src eq 93.184.216.1 and http.request.uri.path ~ \"^.*/wp-login.php$\"",
+              "action": "allow",
+              "priority": 100,
+              "paused": false,
+              "description": "do not challenge login from office"
+          }
+            
+   * `-j value, --json-file value`  A file contains input JSON data.
+
+   * `-i value, --instance value`   Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' is used.
+
+   * `--output value`               Specify output format, only JSON is supported now.
+
+
+### Update Firewall Rule
+{: #update-firewall-rule}
+
+**NAME**
+
+   `firewall-rule-update` - Update a specific firewall-rule for a given DNS domain.
+
+**USAGE**
+
+   `ibmcloud cis firewall-rule-update DNS_DOMAIN_ID FIREWALL_RULE_ID [--expression EXPRESSION] [--action ACTION] [--priority PRIORITY] [--paused on|off] [--description DESCRIPTION] [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+   `ibmcloud cis firewall-rule-update DNS_DOMAIN_ID FIREWALL_RULE_ID (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `FIREWALL_RULE_ID` is the ID of firewall-rule.
+
+**OPTIONS**
+
+   * `--expression value`           A filter expression. E.g. "ip.src eq 93.184.216.0"
+   
+   * `--action value`               The rule action to perform. Valid values: "log", "allow", "challenge", "js_challenge", "block".
+
+   * `--priority value`             The rule's priority. Valid values: 0 ~ 2147483647. Value "0" means to set to the default value.
+
+   * `--description value`          To briefly describe the rule.
+
+   * `--paused value`               Indicates if the rule is active. Valid values: "on", "off".Default value is "off".
+
+   * `-s value, --json-str value`   The JSON data describing a firewall-rule.
+                                Note: Fields "description", "priority", "paused" which aren't explicitly set in JSON data will be overwrited by the default value.
+                                
+      * The required fields in JSON data are "action".
+                                    
+         * "action": The rule action to perform. Valid values: "log", "allow", "challenge", "js_challenge", "block".
+                                
+      * The optional fields are "expression", "description", "priority", "paused".
+                                    
+         * "expression": A filter expression. E.g. "ip.src eq 93.184.216.0"
+         * "description": To briefly describe the rule.
+         * "priority": The rule's priority. Valid values: 0 ~ 2147483647. Value "0" means to set to the default value.
+         * "paused": Indicates if the rule is active. Valid values: "on", "off".Default value is "off".
+                                
+      Sample JSON data:
+                                
+          {
+              "expression": "ip.src eq 93.184.216.1 and http.request.uri.path ~ \"^.*/wp-login.php$\"",
+              "action": "allow",
+              "priority": 100,
+              "paused": false,
+              "description": "do not challenge login from office"
+          }
+
+   * `-j value, --json-file value`  A file contains input JSON data.
+
+   * `-i value, --instance value`   Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' is used.
+
+   * `--output value`               Specify output format, only JSON is supported now.
+
+
+### Delete Firewall Rule
+{: #delete-firewall-rule}
+
+**NAME**
+
+   `firewall-rule-delete` - Delete a specific firewall-rule for a given DNS domain.
+
+**USAGE**
+
+   `ibmcloud cis firewall-rule-delete DNS_DOMAIN_ID FIREWALL_RULE_ID [--instance INSTANCE]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `FIREWALL_RULE_ID` is the ID of firewall-rule.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' is used.
+
+
+### Show Firewall Rule
+{: #show-firewall-rule}
+
+**NAME**
+
+   `firewall-rule` - Retrieve a specific firewall-rule for a given DNS domain.
+
+**USAGE**
+
+   `ibmcloud cis firewall-rule DNS_DOMAIN_ID FIREWALL_RULE_ID [--instance INSTANCE] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `FIREWALL_RULE_ID` is the ID of firewall-rule.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' will be used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+
+### List Firewall Rules
+{: #list-firewall-rule}
+
+**NAME**
+
+   `firewall-rules` - Retrieve a list of currently existing firewall-rules for a given DNS domain.
+
+**USAGE**
+
+   `ibmcloud cis firewall-rules DNS_DOMAIN_ID [--instance INSTANCE] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+
+### Validate Firewall Rule
+{: #validate-firewall-rule}
+
+**NAME**
+
+   `firewall-rule-validate` - Validate a firewall-rule expression.
+
+**USAGE**
+
+   `ibmcloud cis firewall-rule-validate DNS_DOMAIN_ID EXPRESSION [--instance INSTANCE] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `EXPRESSION` A filter expression. For example, "ip.src eq 93.184.216.0"
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
