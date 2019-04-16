@@ -4465,3 +4465,77 @@ Manipulate how the Firewall Rule performs using the following `firewall-rule` co
 
    * `--output value`              Specify output format, only JSON is supported now.
 
+
+## Custom Page
+{: #custom-page}
+
+Manipulate how the Custom Page performs using the following `custom-page` commands:
+
+### Update Custom Page
+{: #update-custom-page}
+
+**NAME**
+
+   `custom-page-update` - Update a specific custom page.
+
+**USAGE**
+
+   `ibmcloud cis custom-page-update PAGE_ID PAGE_URL [-d, --domain DNS_DOMAIN_ID] [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `PAGE_ID` The name of the Custom Page type. Valid values: "basic_challenge", "country_challenge", "ip_block", "ratelimit_block", "serve_stale_content", "under_attack", "waf_block", "waf_challenge", "1000_errors", "500_errors".
+
+   * `PAGE_URL` A URL that is associated with the Custom Page. E.g. "http://www.example.com/example.html". Value "default" means to use the default page.
+
+**OPTIONS**
+
+   * `-d value, --domain value`    DNS Domain ID.
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+
+### Show Custom Page
+{: #show-custom-page}
+
+**NAME**
+
+   `custom-page` - Retrieve a specific custom page.
+
+**USAGE**
+
+   `ibmcloud cis custom-page PAGE_ID [-d, --domain DNS_DOMAIN_ID] [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `PAGE_ID` The name of the Custom Page type. Valid values: "basic_challenge", "country_challenge", "ip_block", "ratelimit_block", "serve_stale_content", "under_attack", "waf_block", "waf_challenge", "1000_errors", "500_errors".
+
+**OPTIONS**
+
+   * `-d value, --domain value`    DNS Domain ID.
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+
+### List Custom Pages
+{: #list-custom-page}
+
+**NAME**
+
+   `custom-pages` - Retrieve a list of currently existing custom pages.
+
+**USAGE**
+
+   `ibmcloud cis custom-pages [-d, --domain DNS_DOMAIN_ID] [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**OPTIONS**
+
+   * `-d value, --domain value`    DNS Domain ID.
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set INSTANCE' is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
