@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018-2019
-lastupdated: "2019-05-07"
+lastupdated: "2019-06-17"
 
 
 ---
@@ -14,6 +14,7 @@ lastupdated: "2019-05-07"
 {:screen: .screen}
 {:tip: .tip}
 {:note: .note}
+{:important: .important}
 
 # CIS CLI Commands
 
@@ -4232,7 +4233,7 @@ The `security-events` command is replacing the `firewall-events` command. It can
 
    * `--ip-class value`            IP class is a map of client IP to visitor classification. Valid values: "unknown", "clean", "badHost", "searchEngine", "whitelist", "greylist", "monitoringService", "securityScanner", "noRecord", "scan", "backupService", "mobilePlatform", "tor".
 
-   * `--method value`              The HTTP method of the request. Valid values: "GET", "POST", "DELETE", "PUT", "HEAD", "PURGE", "OPTIONS", "PROPFIND", "MKCOL", "PATCH", "ACL", "BCOPY", "BDELETE", "BMOVE", "BPROPFIND", "BPROPPATCH", "CHECKIN", "CHECKOUT", "CONNECT", "COPY", "LABEL", "LOCK", "MERGE", "MKACTIVITY", "MKWORKSPACE", "MOVE", "NOTIFY", "ORDERPATCH", "POLL", "PROPPATCH", "REPORT", "SEARCH", "SUBSCRIBE", "TRACE", "UNCHECKOUT", "UNLOCK", "UNSUBSCRIBE", "UPDATE", "VERSION_CONTROL", "BASELINE_CONTROL", "X_MS_ENUMATTS", "RPC_OUT_DATA", "RPC_IN_DATA", "JSON", "COOK", "TRACK".
+   * `--method value`              The HTTP method of the request. Valid values: "GET", "POST", "DELETE", "PUT", "HEAD", "PURGE", "OPTIONS", "PROPFIND", "MKCOL", "PATCH", "ACL", "BCOPY", "BDELETE", "BMOVE", "BPROPFIND", "BPROPPATCH", "CHECKIN", "CHECKOUT", "CONNECT", "COPY", "LABEL", "LOCK", "MERGE", "MKACTIVITY", "MKWORKSPACE", "MOVE", "NOTIFY", "ORDERPATCH", "POLL", "PROPPATCH", "REPORT", "SEARCH", "SUBSCRIBE", "TRACE", "UNCHECKOUT", "UNLOCK", "UNSUBSCRIBE", "UPDATE", "VERSION-CONTROL", "BASELINE-CONTROL", "X-MS-ENUMATTS", "RPC_OUT_DATA", "RPC_IN_DATA", "JSON", "COOK", "TRACK".
    
    * `--scheme value`              The scheme of the uri. Valid values: "unknown", "http", "https".
    
@@ -4271,3 +4272,224 @@ The `security-events` command is replacing the `firewall-events` command. It can
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
    
    * `--output value`              Specify output format, only JSON is supported now.
+
+## Edge Functions
+{: #edge-functions}
+
+Manipulate how Edge Functions perform using the following `edge-functions` commands:
+
+### List Edge Functions Actions
+{: #list-edge-functions-actions}
+
+**NAME**
+
+   `edge-functions-actions` - List all Edge Functions actions of a service instance.
+
+**USAGE**
+
+   `ibmcloud cis edge-functions-actions [-i, --instance INSTANCE_NAME] [--output OUTPUT_FILE]`
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+   
+   * `--output value`              Specify output format, only JSON is supported now.
+  
+### Show an Edge Functions Action
+{: #show-an-edge-functions-action}
+
+**NAME**
+
+   `edge-functions-action` - Show an Edge Functions action of a service instance.
+
+**USAGE**
+
+   `ibmcloud cis edge-functions-action [--action-name ACTION_NAME] [-i, --instance INSTANCE_NAME] [--output OUTPUT_FILE]`
+
+**OPTIONS**
+
+   * `--action-name`               Action name. (Enterprise plan only.)
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+   
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Create an Edge Functions Action
+{: #create-an-edge-functions-action}
+
+**NAME**
+
+   `edge-functions-action-create` - Create Edge Functions action for a service instance.
+
+**USAGE**
+
+   `ibmcloud cis edge-action-create (--javascript-str JAVASCRIPT_STR | --javascript-file JAVASCRIPT_FILE) [--action-name ACTION_NAME] [-i, --instance INSTANCE_NAME] [--output OUTPUT_FILE]`
+
+**OPTIONS**
+
+   * `--action-name`               Action name. (Enterprise plan only.)
+
+   * `--javascript-str`            Javascript string. For example: "addEventListener('fetch', event => { event.respondWith(fetch(event.request))})""
+
+   * `--javascript-file`           Javascript file.
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+   
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Update an Edge Functions Action
+{: #update-an-edge-functions-action}
+
+**NAME**
+
+   `edge-functions-action-update` - Update an Edge Functions action of a service instance.
+
+**USAGE**
+
+   `ibmcloud cis edge-functions-action-update (--javascript-str JAVASCRIPT_STR | --javascript-file JAVASCRIPT_FILE) [--action-name ACTION_NAME] [-i, --instance INSTANCE_NAME] [--output OUTPUT_FILE]`
+
+**OPTIONS**
+
+   * `--action-name`               Action name. (Enterprise plan only.)
+
+   * `--javascript-str`            Javascript string. For example: "addEventListener('fetch', event => { event.respondWith(fetch(event.request))})""
+
+   * `--javascript-file`           Javascript file.
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+   
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Delete an Edge Functions Action
+{: #delete-an-edge-functions-action}
+
+**NAME**
+
+   `edge-functions-action-delete` - Delete an Edge Functions action of a service instance.
+
+**USAGE**
+
+   `ibmcloud cis edge-functions-action-delete [--action-name ACTION_NAME] [-i, --instance INSTANCE_NAME]`
+
+**OPTIONS**
+   * `--action-name`               Action name. (Enterprise plan only.)
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+### List Edge Functions Triggers
+{: #list-edge-functions-triggers}
+
+**NAME**
+
+   `edge-functions-triggers` - List all Edge Functions triggers for a given domain of a service instance.
+
+**USAGE**
+
+   `ibmcloud cis edge-functions-triggers DNS_DOMAIN_ID [-i, --instance INSTANCE_NAME] [--output OUTPUT_FILE]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID`    is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+   
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Show an Edge Functions Trigger
+{: #show-an-edge-functions-trigger}
+
+**NAME**
+   
+    `edge-functions-trigger` - Show an Edge Functions trigger for a given domain of a service instance.
+
+**USAGE**
+
+   `ibmcloud cis edge-functions-trigger DNS_DOMAIN_ID TRIGGER_ID [-i, --instance INSTANCE_NAME] [--output OUTPUT_FILE]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID`    is the ID of DNS domain.
+
+   * `TRIGGER_ID `      is the ID of the trigger.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+   
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Create an Edge Functions Trigger
+{: #create-an-edge-functions-trigger}
+
+**NAME**
+
+   `edge-functions-trigger-create` - Create an Edge Functions trigger for a given domain of a service instance.
+
+**USAGE**
+
+   `ibmcloud cis edge-functions-trigger-create DNS_DOMAIN_ID PATTERN_URL [--action-name ACTION_NAME] [-i, --instance INSTANCE_NAME] [--output OUTPUT_FILE]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID`    is the ID of DNS domain.
+
+   * `PATTERN_URL`      is the request URL which triggers the action.
+
+**OPTIONS**
+
+   * `--action-name`               Action name which the created trigger is attached to. (Enterprise plan only.)
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+   
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Update an Edge Functions Trigger
+{: #update-an-edge-functions-trigger}
+
+**NAME**
+
+   `edge-functions-trigger-update` - Update an Edge Functions trigger for a given domain of a service instance.
+
+**USAGE**
+
+   `ibmcloud cis edge-functions-trigger-update DNS_DOMAIN_ID TRIGGER_ID PATTERN_URL [--action-name ACTION_NAME] [-i, --instance INSTANCE_NAME] [--output OUTPUT_FILE]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID`    is the ID of DNS domain.
+
+   * `TRIGGER_ID`       is the ID of the trigger.
+
+   * `PATTERN_URL`      the request URL which triggers the action.
+
+**OPTIONS**
+
+   * `--action-name`               Action name which the created trigger is attached to. (Enterprise plan only.)
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+   
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Delete an Edge Functions Trigger
+{: #delete-an-edge-functions-trigger}
+
+**NAME**
+
+   `edge-functions-trigger-delete` - Delete an Edge Functions trigger for a given domain of a service instance.
+
+**USAGE**
+
+   `ibmcloud cis edge-functions-trigger-delete DNS_DOMAIN_ID TRIGGER_ID [-i, --instance INSTANCE_NAME]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID`    is the ID of DNS domain.
+
+   * `TRIGGER_ID`       is the ID of the trigger.
+
+**OPTIONS**
+
+    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+ 
