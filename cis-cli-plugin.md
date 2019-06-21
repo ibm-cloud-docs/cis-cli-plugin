@@ -727,8 +727,6 @@ Manipulate domain settings using the following `domain-settings` commands:
                                    Enforce web security policy for your website.
                                "server_side_exclude": 
                                    Automatically hide specific content from suspicious visitors.
-                               "sha1_support": 
-                                   Enable support for legacy user agents that do not support certificates signed with modern SHA-2 signatures.
                                "tls_client_auth": 
                                    TLS client certificate presented for authentication on origin pull. (Enterprise plan only)
                                "true_client_ip_header": 
@@ -809,8 +807,6 @@ Manipulate domain settings using the following `domain-settings` commands:
                                    Enforce web security policy for your website.
                                "server_side_exclude": 
                                    Automatically hide specific content from suspicious visitors.
-                               "sha1_support": 
-                                   Enable support for legacy user agents that do not support certificates signed with modern SHA-2 signatures.
                                "tls_client_auth": 
                                    TLS client certificate presented for authentication on origin pull. (Enterprise plan only)
                                "true_client_ip_header": 
@@ -868,7 +864,6 @@ Manipulate domain settings using the following `domain-settings` commands:
                                   "preload": Whether or not to permit browsers to preload security_header config.Valid values for "enabled" are "true", "false".
                                   Eg: -v enabled=true,max_age=100,include_subdomains=true,preload=true,nosniff=true
                               Valid values for "server_side_exclude" are "on", "off".
-                              Valid values for "sha1_support" are "on", "off".
                               Valid values for "tls_client_auth" are "on", "off".
                               Valid values for "true_client_ip_header" are "on", "off".
                               Valid values for "waf" are "on", "off".
