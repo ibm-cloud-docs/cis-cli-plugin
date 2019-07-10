@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018-2019
-lastupdated: "2019-06-17"
+lastupdated: "2019-06-21"
 
 
 ---
@@ -21,9 +21,9 @@ lastupdated: "2019-06-17"
 ## CIS commands index
 {: #commands_index}
 
-The IBM® Cloud Internet Services has the following families of commands available from the command line interface (CLI).
+The {{site.data.keyword.cis_full}} has the following families of commands available from the command line interface (CLI).
 
-Find the full set of commands for Cloud Internet Services (CIS) within each set, including `Create`, `Delete`, `Update`, and so forth.
+Find the full set of commands for {{site.data.keyword.cis_full_notm}} (CIS) within each set, including `Create`, `Delete`, `Update`, and so forth.
 {: shortdesc}
 
 ## Overview
@@ -1585,6 +1585,11 @@ Manipulate Global Load Balancers by using the following `glb` commands.
                        "region_pools":a mapping of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region.
                        "proxied":Control whether or not traffic should flow through the security and performance functions on CIS.
                        "session_affinity":valid values are "cookie", "none".
+                       "steering_policy": Valid values for "steering_policy" are "off", "geo", "random", "dynamic_latency".
+                            "off": Use default_pools.
+                            "geo": Use region_pools/pop_pools.
+                            "random": Select a pool randomly.
+                            "dynamic_latency": Use round trip time to select the closest pool in default_pools (requires pool health checks).
 
                    Sample JSON data:
 
@@ -1641,6 +1646,11 @@ Manipulate Global Load Balancers by using the following `glb` commands.
                        "region_pools":a mapping of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region.
                        "proxied":Control whether or not traffic should flow through the security and performance functions on CIS.
                        "session_affinity":valid values are "cookie", "none".
+                       "steering_policy": Valid values for "steering_policy" are "off", "geo", "random", "dynamic_latency".
+                            "off": Use default_pools.
+                            "geo": Use region_pools/pop_pools.
+                            "random": Select a pool randomly.
+                            "dynamic_latency": Use round trip time to select the closest pool in default_pools (requires pool health checks).
 
                    Sample JSON data:
 
