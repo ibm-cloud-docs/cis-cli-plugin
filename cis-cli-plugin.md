@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018-2019
-lastupdated: "2019-06-21"
+lastupdated: "2019-07-15"
 
 
 ---
@@ -2221,11 +2221,11 @@ Manipulate Logpull services by using the following `logpull` commands.
 
 **USAGE**
 
-   `ibmcloud cis logpull DNS_DOMAIN_ID --available-fields`
+   `ibmcloud cis logpull DNS_DOMAIN_ID --available-fields [--timestamps format]`
 
-   `ibmcloud cis logpull DNS_DOMAIN_ID --ray-id  RAY_ID [--fields FIELD1,FIELD2,FIELD3...]`
+   `ibmcloud cis logpull DNS_DOMAIN_ID --ray-id  RAY_ID [--fields FIELD1,FIELD2,FIELD3...] [--timestamps format]`
 
-   `ibmcloud cis logpull DNS_DOMAIN_ID [--start START] [--end END] [--fields FIELD1,FIELD2,FIELD3...] [--count COUNT] [--sample SAMPLE]`
+   `ibmcloud cis logpull DNS_DOMAIN_ID [--start START] [--end END] [--fields FIELD1,FIELD2,FIELD3...] [--count COUNT] [--sample SAMPLE] [--timestamps format]`
 
 
 **ARGUMENTS**
@@ -2262,6 +2262,8 @@ Manipulate Logpull services by using the following `logpull` commands.
                                When count is also specified, count is applied to the number of returned records, not the sampled records.
                                So, with sample=0.05 and count=7, when there is a total of 100 records available, approximately 5 will be returned.
                                When there are 1000 records, 7 will be returned. When there are 10,000 records, 7 will be returned. (default: 1)
+
+   ` --timestamps value`       Set the format in which response timestamps are returned. Valid values: "unix", "unixnano", "rfc3339".
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
    
@@ -4120,7 +4122,7 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
 
 **USAGE**
 
-   `ibmcloud cis logpush-job-create DNS_DOMAIN_ID --destination BUCKET_PATH --name NAME [--enable true|false] [--fields FIELDS | all] [-i, --instance INSTANCE_NAME]`
+   `ibmcloud cis logpush-job-create DNS_DOMAIN_ID --destination BUCKET_PATH --name NAME [--enable true|false] [--fields FIELDS | all] [--timestamps format] [-i, --instance INSTANCE_NAME]`
 
 **ARGUMENTS**
 
@@ -4138,7 +4140,9 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
    * `--enable value`        Enable the job or not. The job is disabled by default.
 
    * `--fields value`     Define the list of log fields to be included in log files. Multiple fields can be separated by commas and use command [`ibmcloud cis logpull DNS_DOMAIN_ID --available-fields`](https://cloud.ibm.com/docs/cis-cli-plugin?topic=cis-cli-plugin-cis-cli-commands#log) to get the comprehensive list of available log fields, or use `all` to include all available fields in log files.   
-   Note that fields are expected to be case sensitive.                              
+   Note that fields are expected to be case sensitive.
+
+   * `--timestamps value`    Set the format in which response timestamps are returned. Valid values: "unix", "unixnano", "rfc3339".
 
    * `-i , --instance value` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
@@ -4152,7 +4156,7 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
 
 **USAGE**
 
-   `ibmcloud cis logpush-job-update DNS_DOMAIN_ID [--destination BUCKET_URL] [--enable true|false] [--fields FIELDS | all] [-i, --instance INSTANCE_NAME]`
+   `ibmcloud cis logpush-job-update DNS_DOMAIN_ID [--destination BUCKET_URL] [--enable true|false] [--fields FIELDS | all] [--timestamps format] [-i, --instance INSTANCE_NAME]`
 
 **ARGUMENTS**
 
@@ -4169,7 +4173,9 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
    * `--enable value`        Enable the job or not.
 
    * `--fields value`     Define the list of log fields to be included in log files. Multiple fields can be separated by commas and use command [`ibmcloud cis logpull DNS_DOMAIN_ID --available-fields`](docs/cis-cli-plugin?topic=cis-cli-plugin-cis-cli-commands#log) to get the comprehensive list of available log fields, or use `all` to include all available fields in log files.   
-   Note that fields are expected to be case sensitive.                 
+   Note that fields are expected to be case sensitive.
+
+   * `--timestamps value`    Set the format in which response timestamps are returned. Valid values: "unix", "unixnano", "rfc3339".                 
 
    * `-i , --instance value` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
