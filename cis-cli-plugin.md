@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018-2019
-lastupdated: "2019-07-15"
+lastupdated: "2019-08-09"
 
 
 ---
@@ -3111,7 +3111,7 @@ Manipulate TLS by using the following `tls` commands.
 
    `--mode value` Specify whether visitors can browse your website over a secure connection, and when they do, how CIS will connect to your origin server.
                 Valid values: `off`, `client-to-edge`, `end-to-end-flexible`, `end-to-end-ca-signed`, `https-only-origin-pull`.
-                See the following documentation link for detailed [TLS mode description](/docs/infrastructure/cis/ssl-options.html#tls-options).
+                See the following documentation link for detailed [TLS mode description](/docs/infrastructure/cis?topic=cis-cis-tls-options).
                     
 
    `--universal value` Specify whether universal ssl is enabled for you domain. Valid values are `true` and
@@ -4139,7 +4139,7 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
 
    * `--enable value`        Enable the job or not. The job is disabled by default.
 
-   * `--fields value`     Define the list of log fields to be included in log files. Multiple fields can be separated by commas and use command [`ibmcloud cis logpull DNS_DOMAIN_ID --available-fields`](https://cloud.ibm.com/docs/cis-cli-plugin?topic=cis-cli-plugin-cis-cli-commands#log) to get the comprehensive list of available log fields, or use `all` to include all available fields in log files.   
+   * `--fields value`     Define the list of log fields to be included in log files. Multiple fields can be separated by commas and use command [`ibmcloud cis logpull DNS_DOMAIN_ID --available-fields`](/docs/cis-cli-plugin?topic=cis-cli-plugin-cis-cli-commands#log) to get the comprehensive list of available log fields, or use `all` to include all available fields in log files.   
    Note that fields are expected to be case sensitive.
 
    * `--timestamps value`    Set the format in which response timestamps are returned. Valid values: "unix", "unixnano", "rfc3339".
@@ -4172,7 +4172,7 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
 
    * `--enable value`        Enable the job or not.
 
-   * `--fields value`     Define the list of log fields to be included in log files. Multiple fields can be separated by commas and use command [`ibmcloud cis logpull DNS_DOMAIN_ID --available-fields`](docs/cis-cli-plugin?topic=cis-cli-plugin-cis-cli-commands#log) to get the comprehensive list of available log fields, or use `all` to include all available fields in log files.   
+   * `--fields value`     Define the list of log fields to be included in log files. Multiple fields can be separated by commas and use command [`ibmcloud cis logpull DNS_DOMAIN_ID --available-fields`](/docs/cis-cli-plugin?topic=cis-cli-plugin-cis-cli-commands#log) to get the comprehensive list of available log fields, or use `all` to include all available fields in log files.   
    Note that fields are expected to be case sensitive.
 
    * `--timestamps value`    Set the format in which response timestamps are returned. Valid values: "unix", "unixnano", "rfc3339".                 
