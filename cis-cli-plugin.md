@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018-2019
-lastupdated: "2019-08-09"
+lastupdated: "2019-09-10"
 
 
 ---
@@ -683,6 +683,8 @@ Manipulate domain settings using the following `domain-settings` commands:
                                    Redirect all requests with scheme "http" to "https". This applies to all http requests to the domain.
                                "automatic_https_rewrites": 
                                    Help fix mixed content by changing "http" to "https" for all resources or links on your web site that can be served with HTTPS.
+                                "brotli":
+                                   When the client requesting an asset supports the brotli compression algorithm, CIS will serve a brotli compressed version of the asset.
                                "browser_check": 
                                    Evaluate HTTP headers from your visitors browser for threats. If a threat is found a block page will be delivered.
                                "challenge_ttl": 
@@ -763,6 +765,8 @@ Manipulate domain settings using the following `domain-settings` commands:
                                    Redirect all requests with scheme "http" to "https". This applies to all http requests to the domain.
                                "automatic_https_rewrites": 
                                    Help fix mixed content by changing "http" to "https" for all resources or links on your web site that can be served with HTTPS.
+                                "brotli":
+                                   When the client requesting an asset supports the brotli compression algorithm, CIS will serve a brotli compressed version of the asset.
                                "browser_check": 
                                    Evaluate HTTP headers from your visitors browser for threats. If a threat is found a block page will be delivered.
                                "challenge_ttl": 
@@ -849,6 +853,7 @@ Manipulate domain settings using the following `domain-settings` commands:
                                   Eg: -v status=on,mobile_subdomain=m,strip_uri=true
                               Valid values for "opportunistic_encryption" are "on", "off".
                               Valid values for "origin_error_page_pass_thru" are "on", "off".
+                              Valid values for "brotli" are "on", "off".
                               Valid values for "prefetch_preload" are "on", "off".
                               Valid values for "pseudo_ipv4" are "overwrite_header", "off", "add_header".
                                   "overwrite_header": Overwrite the existing Cf-Connecting-IP and X-Forwarded-For headers with a pseudo IPv4 address.
@@ -4503,4 +4508,362 @@ Manipulate how Edge Functions perform using the following `edge-functions` comma
 **OPTIONS**
 
     * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
- 
+
+## Access Application
+{: #access-application}
+
+Manipulate how Access Application performs using the following `access-app` commands:
+
+### Create an Access Application
+{: #create-access-app}
+
+**NAME**
+
+   `access-app-create` - Create an access application for a given DNS domain. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-app-create DNS_DOMAIN_ID --name NAME --domain DOMAIN [--session-duration SESSION_DURATION] [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `--name value`                The name of the Application.
+
+   * `--domain value`              The domain and path that Access will block.
+
+   * `--session-duration value`    Defines the amount of time that the tokens issued for this application are valid. Valid values: 30m, 6h, 12h, 24h, 168h, 730h.
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### List Access Applications
+{: #list-access-apps}
+
+**NAME**
+
+   `access-apps` - List of access applications for a given DNS domain. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-apps DNS_DOMAIN_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Show an Access Application
+{: #show-access-app}
+
+**NAME**
+
+   `access-app` - Show details of an access application. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-app DNS_DOMAIN_ID ACCESS_APPLICATION_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `ACCESS_APPLICATION_ID` is the ID of access application.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Update an Access Application
+{: #update-access-app}
+
+**NAME**
+
+   `access-app-update` - Update an access application. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-app-update DNS_DOMAIN_ID ACCESS_APPLICATION_ID --name NAME --domain DOMAIN [--session-duration SESSION_DURATION] [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `ACCESS_APPLICATION_ID` is the ID of access application.
+
+**OPTIONS**
+
+   * `--name value`                The name of the Application.
+
+   * `--domain value`              The domain and path that Access will block.
+
+   * `--session-duration value`    Defines the amount of time that the tokens issued for this application are valid. Valid values: 30m, 6h, 12h, 24h, 168h, 730h.
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Delete an Access Application
+{: #delete-access-app}
+
+**NAME**
+
+   `access-app-delete` - Delete an access application. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-app-delete DNS_DOMAIN_ID ACCESS_APPLICATION_ID [-i, --instance INSTANCE_NAME]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `ACCESS_APPLICATION_ID` is the ID of access application.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+## Access Certificate
+{: #access-certificate}
+
+Manipulate how Access Certificate performs using the following `access-certificate` commands:
+
+### Create an Access Certificate
+{: #create-access-certificate}
+
+**NAME**
+
+   `access-certificate-create` - Create an access certificate for a given DNS domain. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-certificate-create DNS_DOMAIN_ID --name NAME --ca-cert-file CERT_FILE [--associated-hostnames ASSOCIATED_HOSTNAMES] [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `--name value`                  The name of the Certificate.
+
+   * `--ca-cert-file value`          The Root CA file for your certificates.
+
+   * `--associated-hostnames value`  The hostnames that are prompted for this certificate.
+
+   * `-i value, --instance value`    Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+   * `--output value`                Specify output format, only JSON is supported now.
+
+### List Access Certificates
+{: #list-access-certificate}
+
+**NAME**
+
+   `access-certificates` - List of access certificates for a given DNS domain. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-certificates DNS_DOMAIN_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Show an Access Certificates
+{: #show-access-certificate}
+
+**NAME**
+
+   `access-certificate` - Show details of an access certificate. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-certificate DNS_DOMAIN_ID ACCESS_CERTIFICATE_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `ACCESS_CERTIFICATE_ID` is the ID of access certificate.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Update an Access Certificates
+{: #update-access-certificate}
+
+**NAME**
+
+   `access-certificate-update` - Update an access certificate. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-certificate-update DNS_DOMAIN_ID ACCESS_CERTIFICATE_ID --name NAME --associated-hostnames ASSOCIATED_HOSTNAMES [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `ACCESS_CERTIFICATE_ID` is the ID of access certificate.
+
+**OPTIONS**
+
+   * `--name value`                  The name of the Certificate.
+
+   * `--associated-hostnames value`  The hostnames that are prompted for this certificate.
+     The associated hostnames are reset if not specified by `associated-hostnames`.
+     {:note}
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Delete an Access Certificates
+{: #delete-access-certificate}
+
+**NAME**
+
+   `access-certificate-delete` - Delete an access certificate. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-certificate-delete DNS_DOMAIN_ID ACCESS_CERTIFICATE_ID [-i, --instance INSTANCE_NAME]`
+   Must clear the associated hostnames before deleting the certificate.
+   {:note}
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `ACCESS_CERTIFICATE_ID` is the ID of access certificate.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+## Access Policy
+{: #access-policy}
+
+Manipulate how Access Policy performs using the following `access-policy` commands:
+
+### Create an Access Policy
+{: #create-access-policy}
+
+**NAME**
+
+   `access-policy-create` - Create access policy for a given access application. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-policy-create DNS_DOMAIN_ID ACCESS_APPLICATION_ID --name NAME --decision DECISION --include INCLUDE [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `ACCESS_APPLICATION_ID` is the ID of access application.
+
+**OPTIONS**
+
+   * `--name value`                The name of the policy.
+
+   * `--decision value`            Defines the action Access will take if the policy matches the user. Valid values: "non_identity".
+
+   * `--include value`             The included rule of the policy. Valid values: "certificate".
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### List Access Policies
+{: #list-access-policies}
+
+**NAME**
+
+   `access-policies` - List of access policies for a given access application. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-policies DNS_DOMAIN_ID ACCESS_APPLICATION_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `ACCESS_APPLICATION_ID` is the ID of access application.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Show an Access Policy
+{: #show-access-policy}
+
+**NAME**
+
+   `access-policy` - Show details of an access policy. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-policy DNS_DOMAIN_ID ACCESS_APPLICATION_ID ACCESS_POLICY_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `ACCESS_APPLICATION_ID` is the ID of access application.
+
+   * `ACCESS_POLICY_ID` is the ID of access policy.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Delete an Access Policy
+{: #delete-access-policy}
+
+**NAME**
+
+   `access-policy-delete` - Delete an access policy. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-policy-delete DNS_DOMAIN_ID ACCESS_APPLICATION_ID ACCESS_POLICY_ID [-i, --instance INSTANCE_NAME]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `ACCESS_APPLICATION_ID` is the ID of access application.
+
+   * `ACCESS_POLICY_ID` is the ID of access policy.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
