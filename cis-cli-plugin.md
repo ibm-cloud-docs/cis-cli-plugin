@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018-2019
-lastupdated: "2019-09-10"
+lastupdated: "2019-08-09"
 
 
 ---
@@ -4127,7 +4127,7 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
 
 **USAGE**
 
-   `ibmcloud cis logpush-job-create DNS_DOMAIN_ID --destination BUCKET_PATH --name NAME [--enable true|false] [--fields FIELDS | all] [--timestamps format] [-i, --instance INSTANCE_NAME]`
+   `ibmcloud cis logpush-job-create DNS_DOMAIN_ID --destination BUCKET_PATH --name NAME [--enable true|false] [--fields FIELDS | all] [--timestamps format][--dataset DATASET][-i, --instance INSTANCE_NAME]`
 
 **ARGUMENTS**
 
@@ -4144,10 +4144,12 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
 
    * `--enable value`        Enable the job or not. The job is disabled by default.
 
-   * `--fields value`     Define the list of log fields to be included in log files. Multiple fields can be separated by commas and use command [`ibmcloud cis logpull DNS_DOMAIN_ID --available-fields`](/docs/cis-cli-plugin?topic=cis-cli-plugin-cis-cli-commands#log) to get the comprehensive list of available log fields, or use `all` to include all available fields in log files.   
-   Note that fields are expected to be case sensitive.
+   * `--fields value`        Define the list of log fields to be included in log files. Multiple fields can be separated by commas and use command [`ibmcloud cis logpush-available-fields DNS_DOMAIN_ID`] to get the comprehensive list of available log fields, or use `all` to include all available fields in log files. Note that fields are expected to be case sensitive.
 
    * `--timestamps value`    Set the format in which response timestamps are returned. Valid values: "unix", "unixnano", "rfc3339".
+   
+   * `--dataset value`       The category of logs you want to receive, the value can't be changed after the job is created.
+                             Valid values: "http_requests", "range_events". (default: "http_requests")                              
 
    * `-i , --instance value` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
@@ -4161,7 +4163,7 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
 
 **USAGE**
 
-   `ibmcloud cis logpush-job-update DNS_DOMAIN_ID [--destination BUCKET_URL] [--enable true|false] [--fields FIELDS | all] [--timestamps format] [-i, --instance INSTANCE_NAME]`
+   `ibmcloud cis logpush-job-update DNS_DOMAIN_ID [--destination BUCKET_URL] [--enable true|false] [--fields FIELDS | all] [--timestamps format] [--dataset DATASET] [-i, --instance INSTANCE_NAME]`
 
 **ARGUMENTS**
 
@@ -4177,10 +4179,30 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
 
    * `--enable value`        Enable the job or not.
 
-   * `--fields value`     Define the list of log fields to be included in log files. Multiple fields can be separated by commas and use command [`ibmcloud cis logpull DNS_DOMAIN_ID --available-fields`](/docs/cis-cli-plugin?topic=cis-cli-plugin-cis-cli-commands#log) to get the comprehensive list of available log fields, or use `all` to include all available fields in log files.   
-   Note that fields are expected to be case sensitive.
+   * `--fields value`        Define the list of log fields to be included in log files. Multiple fields can be separated by commas and use command [`ibmcloud cis logpush-available-fields DNS_DOMAIN_ID`] to get the comprehensive list of available log fields, or use `all` to include all available fields in log files. Note that fields are expected to be case sensitive.                 
 
-   * `--timestamps value`    Set the format in which response timestamps are returned. Valid values: "unix", "unixnano", "rfc3339".                 
+   * `--timestamps value`    Set the format in which response timestamps are returned. Valid values: "unix", "unixnano", "rfc3339".
+
+   * `--dataset value`       The category of job you want to update. Valid values: "http_requests", "range_events". (default: "http_requests")
+   
+   * `-i , --instance value` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+
+### List Log Push Jobs
+{: #list-log-push-jobs}
+
+**NAME**
+
+   `logpush-jobs` - Get all log push jobs for a given domain. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis logpush-jobs DNS_DOMAIN_ID  [-i, --instance INSTANCE_NAME]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
 
    * `-i , --instance value` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
@@ -4193,13 +4215,15 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
 
 **USAGE**
 
-   `ibmcloud cis logpush-job DNS_DOMAIN_ID  [-i, --instance INSTANCE_NAME]`
+   `ibmcloud cis logpush-job DNS_DOMAIN_ID [--dataset DATASET] [-i, --instance INSTANCE_NAME]`
 
 **ARGUMENTS**
 
    * `DNS_DOMAIN_ID` is the ID of DNS domain.
 
 **OPTIONS**
+
+   * `--dataset value`       The category of job you want to get. Valid values: "http_requests", "range_events". (default: "http_requests")
 
    * `-i , --instance value` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
@@ -4208,17 +4232,42 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
 
 **NAME**
 
-   `logpush-job-delete` - Delete given domain's log push job. (Enterprise plan only).
+   `logpush-job-delete` - Delete a log push job for a given domain. (Enterprise plan only).
 
 **USAGE**
 
-   `ibmcloud cis logpush-job-delete DNS_DOMAIN_ID  [-i, --instance INSTANCE_NAME]`
+   `ibmcloud cis logpush-job-delete DNS_DOMAIN_ID [--dataset DATASET] [-i, --instance INSTANCE_NAME]`
 
 **ARGUMENTS**
 
    * `DNS_DOMAIN_ID` is the ID of DNS domain.
 
 **OPTIONS**
+
+   * `--dataset value`       The category of job you want to delete. Valid values: "http_requests", "range_events". (default: "http_requests")
+
+   * `--force`               Delete log push job without prompting for confirmation.
+   
+   * `-i , --instance value` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+
+### Get Log Push Available Fields
+{: #get-log-push-available-fields}
+
+**NAME**
+
+   `logpush-available-fields` - Get all available fields for a data set. (Enterprise plan only).
+
+**USAGE**
+
+   `ibmcloud cis logpush-available-fields DNS_DOMAIN_ID [--dataset DATASET] [-i, --instance INSTANCE_NAME]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `--dataset value`       The category of available fields you want to retrieve. Valid values: "http_requests", "range_events". (default: "http_requests")
 
    * `-i , --instance value` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
@@ -4508,6 +4557,26 @@ Manipulate how Edge Functions perform using the following `edge-functions` comma
 **OPTIONS**
 
     * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+## MTLS Enable
+{: #mtls-enable}
+
+Manipulate how Access Enable performs using the following `access-enable` commands:
+
+### Enable/Show Mutual TLS
+{: #enable-mtls}
+
+**NAME**
+
+   `access-enable` - Enable Mutual TLS for a given service instance.. (Enterprise plan only)
+
+**USAGE**
+
+   `ibmcloud cis access-enable [-i, --instance INSTANCE_NAME]`
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 ## Access Application
 {: #access-application}
@@ -4867,3 +4936,4 @@ Manipulate how Access Policy performs using the following `access-policy` comman
 **OPTIONS**
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
