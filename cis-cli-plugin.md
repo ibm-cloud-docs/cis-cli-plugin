@@ -23,13 +23,13 @@ lastupdated: "2020-02-17"
 {: shortdesc}
 
 ## Overview
-{: #cis-overview}
+{: #overview}
 
 View the overview information for a domain.
 
 **NAME**
 
-  `cloud-internet-services overview` - Show the overview information for a domain. 
+  `cloud-internet-services overview` - Show the overview information for a domain.
 
 **USAGE**
 
@@ -38,7 +38,7 @@ View the overview information for a domain.
 **ARGUMENTS**
 
    * `DNS_DOMAIN_ID`  The ID of DNS domain.
-   
+
 **OPTIONS**
 
    * `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
@@ -96,7 +96,7 @@ Manipulate how the cache performs using the following `cache` commands:
 **OPTIONS**
 
    * `-i, --instance INSTANCE_NAME` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-  
+
    * `--output FORMAT`   Specify output format, only JSON is supported now.
 
 
@@ -118,7 +118,7 @@ Manipulate how the cache performs using the following `cache` commands:
 **OPTIONS**
 
    * `--caching-level _value_`  Specify under what URL conditions you want to deliver cached assets to the user.  Valid _value_ tokens are: `no-query-string`,  `query-string-independent`,  `query-string-dependent`.
-   
+
      * `no-query-string` Only delivers resources from cache when there is no query string.                    
      * `query-string-independent` Delivers the same resource to everyone independent of the query string.
      * `query-string-dependent` Delivers a different resource each time the query string changes.
@@ -498,7 +498,7 @@ Manipulate how the DNS Record performs using the following `dns-record` commands
                             "value": "letsencrypt.org"
                        }
                    }
-                   
+
     `-j, --json-file`   A file contains input JSON data.
 
    `-i, --instance INSTANCE_NAME`   Instance name. If the name is not set, the context instance specified by `ibmcloud cis instance-set` is used.
@@ -550,8 +550,8 @@ Manipulate how the DNS Record performs using the following `dns-record` commands
 **OPTIONS**
 
    `-i, --instance INSTANCE_NAME`  Instance name. If the name is not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
-   
+
+
 
 ### List DNS Records
 {: #list-dns-record}
@@ -590,7 +590,7 @@ The optional fields are `type`, `name`, `content`, `page`, `per_page`, `order`, 
                        "page": 1,
                        "per_page": 20
                    }
-                   
+
    `-j, --json-file`  A file contains input JSON data.
 
    `-i, --instance INSTANCE_NAME`   Instance name. If name is not set, the context instance specified by `ibmcloud cis instance-set` is used.
@@ -673,67 +673,67 @@ Manipulate domain settings using the following `domain-settings` commands:
 
    `-g, --group value`    Display features in a same group.Valid values for "group" are "all", "domain", "reliability", "performance", "security".
 
-   `-f, --feature value`  Feature of domain settings to check. Valid values are as follow: 
-   
-                               "always_use_https": 
+   `-f, --feature value`  Feature of domain settings to check. Valid values are as follow:
+
+                               "always_use_https":
                                    Redirect all requests with scheme "http" to "https". This applies to all http requests to the domain.
-                               "automatic_https_rewrites": 
+                               "automatic_https_rewrites":
                                    Help fix mixed content by changing "http" to "https" for all resources or links on your web site that can be served with HTTPS.
                                 "brotli":
                                    When the client requesting an asset supports the brotli compression algorithm, CIS will serve a brotli compressed version of the asset.
-                               "browser_check": 
+                               "browser_check":
                                    Evaluate HTTP headers from your visitors browser for threats. If a threat is found a block page will be delivered.
-                               "challenge_ttl": 
+                               "challenge_ttl":
                                    Specify how long a visitor with a bad IP reputation is allowed access to your website after completing a challenge.
-                               "cname_flattening": 
+                               "cname_flattening":
                                    Follow a CNAME to where it points and return that IP address instead of the CNAME record.
                                    By default, only flatten the CNAME at the root of your domain.
-                               "hotlink_protection": 
+                               "hotlink_protection":
                                    Protect your images from off-site linking.
-                               "http2": 
+                               "http2":
                                    Accelerate your website with HTTP/2.
-                               "image_load_optimization": 
+                               "image_load_optimization":
                                    Improve load time for pages that include images on mobile devices with slow network connections. (Enterprise plan only)
-                               "image_size_optimization": 
+                               "image_size_optimization":
                                    Improve image load time by optimizing images hosted on your domain. (Enterprise plan only)
-                               "ip_geolocation": 
+                               "ip_geolocation":
                                    Include the country code of the visitor location with all requests to your website.
-                               "ipv6": 
+                               "ipv6":
                                    Enable IPv6 support and gateway.
-                               "max_upload": 
+                               "max_upload":
                                    The amount of data visitors can upload to your website in a single request.
-                               "min_tls_version": 
+                               "min_tls_version":
                                    Only allow HTTPS connections from visitors that support the selected TLS protocol version or newer.
-                               "minify": 
+                               "minify":
                                    Reduce the file size of source code on your website.
-                               "mobile_redirect": 
+                               "mobile_redirect":
                                    Redirect visitors that are using mobile devices to a mobile-optimized website.
-                               "opportunistic_encryption": 
-                                   Opportunistic Encryption allows browsers to benefit from the improved performance of HTTP/2 
+                               "opportunistic_encryption":
+                                   Opportunistic Encryption allows browsers to benefit from the improved performance of HTTP/2
                                    by letting them know that your site is available over an encrypted connection.
-                               "origin_error_page_pass_thru": 
+                               "origin_error_page_pass_thru":
                                    When Origin Error Page is set to "On", CIS will proxy the 502 and 504 error pages directly from the origin. (Enterprise plan only)
-                               "prefetch_preload": 
+                               "prefetch_preload":
                                    CIS will prefetch any URLs included in the prefetch HTTP header. (Enterprise plan only)
-                               "pseudo_ipv4": 
+                               "pseudo_ipv4":
                                    Adds an IPv4 header to requests when a client is using IPv6, but the server only supports IPv4.
-                               "response_buffering": 
+                               "response_buffering":
                                    Enable or disable buffering of responses from the origin server. (Enterprise plan only)
-                               "script_load_optimization": 
+                               "script_load_optimization":
                                    Improve the paint time for pages that include JavaScript. (Enterprise plan only)
-                               "security_header": 
+                               "security_header":
                                    Enforce web security policy for your website.
-                               "server_side_exclude": 
+                               "server_side_exclude":
                                    Automatically hide specific content from suspicious visitors.
-                               "tls_client_auth": 
+                               "tls_client_auth":
                                    TLS client certificate presented for authentication on origin pull. (Enterprise plan only)
-                               "true_client_ip_header": 
+                               "true_client_ip_header":
                                    CIS will send the end user’s IP address in the True-Client-IP header. (Enterprise plan only)
-                               "waf": 
+                               "waf":
                                    A Web Application Firewall (WAF) blocks requests that contain malicious content.
-                               "websockets": 
+                               "websockets":
                                    Allow WebSockets connections to your origin server.
-                                   
+
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
    `--output FORMAT`    Specify output format, only JSON is supported now.
@@ -755,69 +755,69 @@ Manipulate domain settings using the following `domain-settings` commands:
 
 **OPTIONS**
 
-   `-f, --feature value`      The Domain feature to get Valid values are as follow: 
-   
-                               "always_use_https": 
+   `-f, --feature value`      The Domain feature to get Valid values are as follow:
+
+                               "always_use_https":
                                    Redirect all requests with scheme "http" to "https". This applies to all http requests to the domain.
-                               "automatic_https_rewrites": 
+                               "automatic_https_rewrites":
                                    Help fix mixed content by changing "http" to "https" for all resources or links on your web site that can be served with HTTPS.
                                 "brotli":
                                    When the client requesting an asset supports the brotli compression algorithm, CIS will serve a brotli compressed version of the asset.
-                               "browser_check": 
+                               "browser_check":
                                    Evaluate HTTP headers from your visitors browser for threats. If a threat is found a block page will be delivered.
-                               "challenge_ttl": 
+                               "challenge_ttl":
                                    Specify how long a visitor with a bad IP reputation is allowed access to your website after completing a challenge.
-                               "cname_flattening": 
+                               "cname_flattening":
                                    Follow a CNAME to where it points and return that IP address instead of the CNAME record.
                                    By default, only flatten the CNAME at the root of your domain.
-                               "hotlink_protection": 
+                               "hotlink_protection":
                                    Protect your images from off-site linking.
-                               "http2": 
+                               "http2":
                                    Accelerate your website with HTTP/2.
-                               "image_load_optimization": 
+                               "image_load_optimization":
                                    Improve load time for pages that include images on mobile devices with slow network connections. (Enterprise plan only)
-                               "image_size_optimization": 
+                               "image_size_optimization":
                                    Improve image load time by optimizing images hosted on your domain. (Enterprise plan only)
-                               "ip_geolocation": 
+                               "ip_geolocation":
                                    Include the country code of the visitor location with all requests to your website.
-                               "ipv6": 
+                               "ipv6":
                                    Enable IPv6 support and gateway.
-                               "max_upload": 
+                               "max_upload":
                                    The amount of data visitors can upload to your website in a single request.
-                               "min_tls_version": 
+                               "min_tls_version":
                                    Only allow HTTPS connections from visitors that support the selected TLS protocol version or newer.
-                               "minify": 
+                               "minify":
                                    Reduce the file size of source code on your website.
-                               "mobile_redirect": 
+                               "mobile_redirect":
                                    Redirect visitors that are using mobile devices to a mobile-optimized website.
-                               "opportunistic_encryption": 
-                                   Opportunistic Encryption allows browsers to benefit from the improved performance of HTTP/2 
+                               "opportunistic_encryption":
+                                   Opportunistic Encryption allows browsers to benefit from the improved performance of HTTP/2
                                    by letting them know that your site is available over an encrypted connection.
-                               "origin_error_page_pass_thru": 
+                               "origin_error_page_pass_thru":
                                    When Origin Error Page is set to "On", CIS will proxy the 502 and 504 error pages directly from the origin. (Enterprise plan only)
-                               "prefetch_preload": 
+                               "prefetch_preload":
                                    CIS will prefetch any URLs included in the prefetch HTTP header. (Enterprise plan only)
-                               "pseudo_ipv4": 
+                               "pseudo_ipv4":
                                    Adds an IPv4 header to requests when a client is using IPv6, but the server only supports IPv4.
-                               "response_buffering": 
+                               "response_buffering":
                                    Enable or disable buffering of responses from the origin server. (Enterprise plan only)
-                               "script_load_optimization": 
+                               "script_load_optimization":
                                    Improve the paint time for pages that include JavaScript. (Enterprise plan only)
-                               "security_header": 
+                               "security_header":
                                    Enforce web security policy for your website.
-                               "server_side_exclude": 
+                               "server_side_exclude":
                                    Automatically hide specific content from suspicious visitors.
-                               "tls_client_auth": 
+                               "tls_client_auth":
                                    TLS client certificate presented for authentication on origin pull. (Enterprise plan only)
-                               "true_client_ip_header": 
+                               "true_client_ip_header":
                                    CIS will send the end user’s IP address in the True-Client-IP header. (Enterprise plan only)
-                               "waf": 
+                               "waf":
                                    A Web Application Firewall (WAF) blocks requests that contain malicious content.
-                               "websockets": 
+                               "websockets":
                                    Allow WebSockets connections to your origin server.
 
    `-v, --value value`      The value set to the feature for domain.
- 
+
                               Valid values for "always_use_https" are "on", "off".
                               Valid values for "automatic_https_rewrites" are "on", "off".
                               Valid values for "browser_check" are "on", "off".
@@ -869,11 +869,11 @@ Manipulate domain settings using the following `domain-settings` commands:
                               Valid values for "true_client_ip_header" are "on", "off".
                               Valid values for "waf" are "on", "off".
                               Valid values for "websockets" are "on", "off".
-   
+
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
    `--output FORMAT`    Specify output format, only JSON is supported now.
-  
+
 ## Domain
 {: #domain}
 
@@ -946,7 +946,7 @@ Manipulate domains by using the following `domain` commands.
   * Paused                 
   * Original Name Server
   * Name Servers  
-  
+
 ### Pause domain
 {: #pause-domain}
 
@@ -1011,9 +1011,9 @@ Manipulate domains by using the following `domain` commands.
   * Status                
   * Paused                 
   * Original Name Server
-  * Name Servers 
-  
-  
+  * Name Servers
+
+
 ### Remove domain
 {: #remove-domain}
 
@@ -1078,7 +1078,7 @@ Manipulate domains by using the following `domain` commands.
 **OPTIONS**
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
 ## Firewall
 {: #firewall}
 
@@ -1099,19 +1099,19 @@ Manipulate firewalls by using the following `firewall` commands.
 **OPTIONS**
 
 `-t value, --type value`  Type of firewall rule to create. Valid values: `access-rules`, `ua-rules`, `lockdowns`.
-  
+
   * `access-rules`: Access Rules are a way to allow, challenge, or block requests to your website. You can apply access rules to one domain only or all domains in the same service instance.
   * `ua-rules`: Perform access control when matching the exact UserAgent reported by the client. The access control mechanisms can be defined within a rule to help manage traffic from particular clients. This enables you to customize the access to your site.
   * `lockdowns`: Lock access to URLs in this domain to only permitted addresses or address ranges.
-    
+
 `-d value, --domain value`    DNS Domain ID.
-   
+
 `-s value, --json-str value`  The JSON data describing a firewall rule. Enter `ibmcloud cis help firewall-create -t [type]` for details JSON data format.
-   
+
 `-j value, --json-file value`  A file contains input JSON data.
-   
+
 `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
 `--output FORMAT`     Specify output format, only JSON is supported now.
 
 #### Create Firewall with access rules
@@ -1126,9 +1126,9 @@ Manipulate firewalls by using the following `firewall` commands.
    `ibmcloud cis firewall-create -t access-rules [-d --domain DNS_DOMAIN_ID] (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
 **OPTIONS**
-   
+
   `-d value, --domain value`    DNS Domain ID. If not set, this is an instance level firewall access rule.
-  
+
   `-s value, --json-str value`  The JSON data describing a firewall access rule.
 
 The required fields in JSON data are `mode`, `notes`.
@@ -1158,11 +1158,11 @@ The optional field is `configuration`.
                        }
                    }
  ```  
-   
+
    `-j value, --json-file value`  A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
 
@@ -1180,7 +1180,7 @@ The optional field is `configuration`.
 **OPTIONS**
 
    `-d value, --domain value`    DNS Domain ID.
-   
+
    `-s value, --json-str value`  The JSON data describing a user-agent rule.
 
 The required field in JSON data is `mode`.
@@ -1205,11 +1205,11 @@ The optional fields are `paused`, `description`, `configuration`.
                        }
                    }
   ```                 
-                   
+
    `-j value, --json-file value`  A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' will be used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
 
@@ -1227,7 +1227,7 @@ The optional fields are `paused`, `description`, `configuration`.
 **OPTIONS**
 
    `-d value, --domain value`   DNS Domain ID.
-   
+
    `-s value, --json-str value`  The JSON data describing a user-agent rule.
 
 The optional fields are `paused`, `description`, `urls`, `configurations`.
@@ -1258,9 +1258,9 @@ The optional fields are `paused`, `description`, `urls`, `configurations`.
                    }
 ```                   
    `-j value, --json-file value`  A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
 
@@ -1282,19 +1282,19 @@ The optional fields are `paused`, `description`, `urls`, `configurations`.
 **OPTIONS**
 
 `-t value, --type value`  Type of firewall rule to update. Valid values: `access-rules`, `ua-rules`, `lockdowns`.
-   
+
   * `access-rules`: Access Rules are a way to allow, challenge, or block requests to your website. You can apply access rules to one domain only or all domains in the same service instance.
   * `ua-rules`: Perform access control when matching the exact UserAgent reported by the client. The access control mechanisms can be defined within a rule to help manage traffic from particular clients. This enables you to customize the access to your site.
   * `lockdowns`: Lock access to URLs in this domain to only permitted addresses or address ranges.
-   
+
 `-d value, --domain value`    DNS Domain ID.
-   
+
 `-s value, --json-str value`  The JSON data describing a firewall rule. Enter `ibmcloud cis help firewall-update -t [type]` for details JSON data format.
-   
+
 `-j value, --json-file value`  A file contains input JSON data.
-   
+
 `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
 `--output FORMAT`     Specify output format, only JSON is supported now.
 
 #### Update Firewalls with access rules
@@ -1311,7 +1311,7 @@ The optional fields are `paused`, `description`, `urls`, `configurations`.
 **OPTIONS**
 
    `-d value, --domain value`    DNS Domain ID. If not set, this is an instance level firewall access rule.
-   
+
    `-s value, --json-str value`  The JSON data describing a firewall access rule.
 
 The required fields in JSON data are `mode`, `notes`.
@@ -1338,9 +1338,9 @@ The optional field is `configuration`.
                    }
 ```   
    `-j value, --json-file value`  A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
 #### Update Firewalls with user agent rules
@@ -1357,7 +1357,7 @@ The optional field is `configuration`.
 **OPTIONS**
 
    `-d value, --domain value`    DNS Domain ID.
-   
+
    `-s value, --json-str value`  The JSON data describing a user-agent rule.
 
 The required field in JSON data is `mode`.
@@ -1371,7 +1371,7 @@ The optional fields are `paused`, `description`, `configuration`.
   * `configuration`: Target/Value pair to use for this rule.
     * `target`: The request property to target. Valid values: `ua`.
     * `value`: The exact UserAgent string to match with this rule.
-    
+
 **Sample JSON data:**
 
 ```
@@ -1385,9 +1385,9 @@ The optional fields are `paused`, `description`, `configuration`.
 ```
 
    `-j value, --json-file value`  A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
 
@@ -1405,7 +1405,7 @@ The optional fields are `paused`, `description`, `configuration`.
 **OPTIONS**
 
    `-d value, --domain value`    DNS Domain ID.
-   
+
    `-s value, --json-str value`  The JSON data describing a lockdown rule.
 
 The optional fields are `paused`, `description`, `urls`, `configurations`.
@@ -1437,9 +1437,9 @@ The optional fields are `paused`, `description`, `urls`, `configurations`.
 ```
 
    `-j value, --json-file value`  A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
 ### List Firewall rules
@@ -1456,19 +1456,19 @@ The optional fields are `paused`, `description`, `urls`, `configurations`.
 **OPTIONS**
 
 `-t value, --type value`  Type of firewall rule to list. Valid values: `access-rules`, `ua-rules`, `lockdowns`.
-  
+
   * `access-rules`: Access Rules are a way to allow, challenge, or block requests to your website. You can apply access rules to one domain only or all domains in the same service instance.
   * `ua-rules`: Perform access control when matching the exact UserAgent reported by the client. The access control mechanisms can be defined within a rule to help manage traffic from particular clients. This will enable you to customize the access to your site.
   * `lockdowns`: Lock access to URLs in this domain to only permitted addresses or address ranges.
-    
+
 `-d value, --domain value`    DNS Domain ID.
-   
+
 `--page value`                Page number of paginated results. (default: 0)
-   
+
 `--per-page value`            Maximum number of access rules per page. The minimum value is 5. (default: 20)
-   
+
 `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
 `--output FORMAT`    Specify output format, only JSON is supported now.
 
 
@@ -1490,15 +1490,15 @@ The optional fields are `paused`, `description`, `urls`, `configurations`.
 **OPTIONS**
 
 `-t value, --type value`  Type of firewall settings to check. Valid values: `access-rules`, `ua-rules`, `lockdowns`.
-      
+
   * `access-rules`: Access Rules are a way to allow, challenge, or block requests to your website. You can apply access rules to one domain only or all domains in the same service instance.
   * `ua-rules`: Perform access control when matching the exact UserAgent reported by the client. The access control mechanisms can be defined within a rule to help manage traffic from particular clients. This will enable you to customize the access to your site.
   * `lockdowns`: Lock access to URLs in this domain to only permitted addresses or address ranges.
-   
+
 `-d value, --domain value`    DNS Domain ID.
-   
+
 `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
 `--output FORMAT`    Specify output format, only JSON is supported now.
 
 ### Delete Firewall
@@ -1523,10 +1523,10 @@ The optional fields are `paused`, `description`, `urls`, `configurations`.
   * `access-rules`: Access Rules are a way to allow, challenge, or block requests to your website. You can apply access rules to one domain only or all domains in the same service instance.
   * `ua-rules`: Perform access control when matching the exact UserAgent reported by the client. The access control mechanisms can be defined within a rule to help manage traffic from particular clients. This will enable you to customize the access to your site.
   * `lockdowns`: Lock access to URLs in this domain to only permitted addresses or address ranges.
-  
-   
+
+
 `-d value, --domain value`    DNS Domain ID.
-   
+
 `--output FORMAT`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
 ### Get Firewall events
@@ -1546,10 +1546,10 @@ This command will be deprecated. Use `secuirty-events` instead.
    `DNS_DOMAIN_ID` is the ID of DNS domain.
 
 **OPTIONS**
-   
+
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
    `--output FORMAT`                Specify output format, only JSON is supported now.
-   
+
 ## Global Load Balancer (GLB)
 {: #glb}
 
@@ -1613,11 +1613,11 @@ Sample JSON data:
                            ]
                        }
                   }
-                  
+
    `-j, --json-file`  A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
 
@@ -1675,11 +1675,11 @@ Sample JSON data:
                            ]
                        }
                   }
-                  
+
    `-j, --json-file`  A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud  cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
 
@@ -1702,7 +1702,7 @@ Sample JSON data:
 **OPTIONS**
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
 
@@ -1720,7 +1720,7 @@ Sample JSON data:
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
+
    `GLB_ID` is the ID of global load balancer.
 
 **OPTIONS**
@@ -1745,7 +1745,7 @@ Sample JSON data:
 **OPTIONS**
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
 
@@ -1763,11 +1763,11 @@ Sample JSON data:
 **OPTIONS**
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
 
-   
+
 ### Create GLB pool
 {: #create-glb-pool}
 
@@ -1816,12 +1816,12 @@ Sample JSON data:
                        "notification_email": "someone@example.com"
                    }
    `-j, --json-file`  A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
-   
-   
+
+
 ### Show GLB pool
 {: #show-glb-pool}
 
@@ -1840,10 +1840,10 @@ Sample JSON data:
 **OPTIONS**
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
-   
+
 ### Delete GLB pool
 {: #delete-glb-pool}
 
@@ -1862,7 +1862,7 @@ Sample JSON data:
 **OPTIONS**
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
 ### Update GLB pool
 {: #update-glb-pool}
 
@@ -1915,24 +1915,24 @@ Sample JSON data:
                        "enabled": true,
                        "notification_email": "someone@example.com"
                    }
-                   
+
    `-j, --json-file`  A file contains input JSON data.
-   
+
    `--enable-origin value`        Enable the origin within the Pool. The value can be ORIGIN_NAME or ORIGIN_ADDRESS.
-   
+
    `--disable-origin value`       Disable the origin within the Pool. The value can be ORIGIN_NAME or ORIGIN_ADDRESS.
-   
+
    `--add-origin value`           Add an origin into the Pool. ORIGIN_NAME and ORIGIN_ADDRESS are required.
                                 For example: --add-origin name=us-app-dal01,address=1.1.1.1,enabled=true,weight=0.5
-                                
+
    `--remove-origin value`       Remove an origin from the Pool. The value can be ORIGIN_NAME or ORIGIN_ADDRESS.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
-   
-### List GLB monitors 
+
+### List GLB monitors
 {: #list-glb-monitors}
 
 **NAME**
@@ -1946,10 +1946,10 @@ Sample JSON data:
 **OPTIONS**
 
    `-i, --instance`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
-   
+
 ### Create GLB monitor
 {: #create-glb-monitor}
 
@@ -2034,13 +2034,13 @@ Sample JSON data:
                            }
 
    `-j, --json-file`  A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
-   
-### Show GLB monitor 
+
+### Show GLB monitor
 {: #show-glb-monitor}
 
 **NAME**
@@ -2057,11 +2057,11 @@ Sample JSON data:
 
 **OPTIONS**
 
-   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used. 
-   
+   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
-   
+
 ### Delete GLB Monitor
 {: #delete-glb-monitor}
 **NAME**
@@ -2168,9 +2168,9 @@ Sample JSON data:
                                "interval": 90
                            }
    `-j, --json-file`  A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
 
@@ -2183,7 +2183,7 @@ Sample JSON data:
 
 **USAGE**
 
-   `ibmcloud cis glb-events [-s, --since START_DATE] [-u, --until END_DATE] [--origin-name ORIGIN_NAME] [--pool-name POOL_NAME] 
+   `ibmcloud cis glb-events [-s, --since START_DATE] [-u, --until END_DATE] [--origin-name ORIGIN_NAME] [--pool-name POOL_NAME]
                            [--origin-healthy (true | false)] [--pool-healthy (true | false)]
                            [-i, --instance INSTANCE_NAME]  [--output FORMAT]`
 
@@ -2199,10 +2199,10 @@ Sample JSON data:
 
    `--pool-name`       The name for the pool to filter for.
 
-   `--origin-healthy`  If true, filter events where the origin status is healthy, if false, filter events where the origin status is unhealthy. 
+   `--origin-healthy`  If true, filter events where the origin status is healthy, if false, filter events where the origin status is unhealthy.
                      Default value is `true`,  valid values are `true` and `false`.
 
-   `--pool-healthy`    If true, filter events where the pool status is healthy, if false, filter events where the pool status is unhealthy. 
+   `--pool-healthy`    If true, filter events where the pool status is healthy, if false, filter events where the pool status is unhealthy.
                      Default value is `true`,  valid values are `true` and `false`.
 
    `-i, --instance INSTANCE_NAME`    Instance name. If not set, the context instance specified by `ibmcloudcis instance-set` is used.
@@ -2213,7 +2213,7 @@ Sample JSON data:
 ## Logpull
 {: #log}
 
-Manipulate Logpull services by using the following `logpull` commands. 
+Manipulate Logpull services by using the following `logpull` commands.
 
 
 ### Retrieve edge http logs
@@ -2259,7 +2259,7 @@ Manipulate Logpull services by using the following `logpull` commands.
                                Default is 5 minutes earlier.
 
   `--count value`               Number of logs to retrieve. (default: -1)
-  
+
    `--sample value`              Percentage of sampling. When sample is provided, a sample of matching records is returned.
                                If sample=0.1 then 10% of records will be returned.
                                Sampling is random: repeated calls will not only return different records, but likely will also vary slightly in number of returned records.
@@ -2270,7 +2270,7 @@ Manipulate Logpull services by using the following `logpull` commands.
    ` --timestamps value`       Set the format in which response timestamps are returned. Valid values: "unix", "unixnano", "rfc3339".
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
 ## Metrics
 {: #metrics}
 
@@ -2442,11 +2442,11 @@ Sample JSON data:
                            }
                        ]
                    }
-                   
+
    -j, --json-file  A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
 
@@ -2464,7 +2464,7 @@ Sample JSON data:
 **ARGUMENTS**
 
    DNS_DOMAIN_ID is the ID of DNS domain.
-   
+
    PAGE_RULE_ID is the ID of page rule.
 
 **OPTIONS**
@@ -2536,11 +2536,11 @@ Sample JSON data:
                            }
                        ]
                    }
-                   
+
    -j, --json-file  A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
 
@@ -2558,7 +2558,7 @@ Sample JSON data:
 **ARGUMENTS**
 
    DNS_DOMAIN_ID is the ID of DNS domain.
-   
+
    PAGE_RULE_ID is the ID of page rule.
 
 **OPTIONS**
@@ -2584,7 +2584,7 @@ Sample JSON data:
 **OPTIONS**
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
-   
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
 
@@ -2602,15 +2602,15 @@ Sample JSON data:
 **ARGUMENTS**
 
    DNS_DOMAIN_ID is the ID of DNS domain.
-   
+
    PAGE_RULE_ID is the ID of page rule.
 
 **OPTIONS**
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
-   
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
-   
+
 ## Rate Limiting
 {: #ratelimit}
 
@@ -2662,7 +2662,7 @@ The required fields in JSON data are `match`, `threshold`, `period`, `action`:
        * `body`: The body to return. The content here must conform to the `content_type`. Max length is 10240.
 
 The optional fields are `id`, `disabled`, `description`, `correlate` and `bypass`:
-      
+
    * `id`: Identifier of the rate limiting rule.
    * `disabled`: Whether this rate limiting rule is currently disabled.
    * `description`: A note that you can use to describe the reason for a rate limiting rule.
@@ -2727,9 +2727,9 @@ The optional fields are `id`, `disabled`, `description`, `correlate` and `bypass
 ```
 
    `-j, --json-file` A file contains input JSON data.
-   
+
    `-i, --instance INSTANCE_NAME` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT` Specify output format, only JSON is supported now.
 
 ### Update Rate Limit rule
@@ -2748,8 +2748,8 @@ The optional fields are `id`, `disabled`, `description`, `correlate` and `bypass
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
-   `RATELIMIT_RULE_ID` is the ID of rate limiting rule. 
+
+   `RATELIMIT_RULE_ID` is the ID of rate limiting rule.
 
 **OPTIONS**
 
@@ -2779,7 +2779,7 @@ The required fields in JSON data are `id`, `match`, `threshold`, `period`, `acti
       * `body`: The body to return. The content here must conform to the content_type. Max length is 10240.
 
 The optional fields are `disabled`, `description`, `correlate` and `bypass`:      
-                    
+
  * `disabled`: Whether this rate limiting rule is currently disabled.
  * `description`: A note that you can use to describe the reason for a rate limit.
  * `correlate`: Whether to enable NAT based rate limiting.
@@ -2789,9 +2789,9 @@ The optional fields are `disabled`, `description`, `correlate` and `bypass`:
     * `value`: The url to bypass.
 
   `-j, --json-file` A file contains input JSON data.
-  
+
   `-i, --instance INSTANCE_NAME` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-  
+
   `--output FORMAT` Specify output format, only JSON is supported now.
 
 
@@ -2813,7 +2813,7 @@ The optional fields are `disabled`, `description`, `correlate` and `bypass`:
 **OPTIONS**
 
   `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-  
+
   `--output FORMAT`     Specify output format, only JSON is supported now.
 
 
@@ -2832,13 +2832,13 @@ The optional fields are `disabled`, `description`, `correlate` and `bypass`:
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
-   `RATELIMIT_RULE_ID` is the ID of rate limit rule. 
+
+   `RATELIMIT_RULE_ID` is the ID of rate limit rule.
 
 **OPTIONS**
 
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
 
@@ -2856,15 +2856,15 @@ The optional fields are `disabled`, `description`, `correlate` and `bypass`:
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
-   `RATELIMIT_RULE_ID` is the ID of rate limit rule. 
+
+   `RATELIMIT_RULE_ID` is the ID of rate limit rule.
 
 **OPTIONS**
 
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`     Specify output format, only JSON is supported now.
-   
+
 ## Resource Instance
 {: #resource-instance}
 
@@ -2939,7 +2939,7 @@ Manipulate CIS Service instances by using the following `instance` commands.
 
 **USAGE**
 
-   `ibmcloud cis instance-delete INSTANCE` 
+   `ibmcloud cis instance-delete INSTANCE`
 
 **ARGUMENTS**
 
@@ -2959,7 +2959,7 @@ Manipulate CIS Service instances by using the following `instance` commands.
 
 **USAGE**
 
-   `ibmcloud cis instance-update INSTANCE [--name NAME] [--plan PLAN]` 
+   `ibmcloud cis instance-update INSTANCE [--name NAME] [--plan PLAN]`
 
 **ARGUMENTS**
 
@@ -2983,7 +2983,7 @@ Manipulate CIS Service instances by using the following `instance` commands.
 
 **USAGE**
 
-   `ibmcloud cis instance INSTANCE` 
+   `ibmcloud cis instance INSTANCE`
 
 **ARGUMENTS**
 
@@ -3003,13 +3003,13 @@ Manipulate CIS Service instances by using the following `instance` commands.
 
 **USAGE**
 
-   `ibmcloud cis plans [--refresh] [--output FORMAT]` 
+   `ibmcloud cis plans [--refresh] [--output FORMAT]`
 
 **OPTIONS**
 
    `--refresh`  Force refresh from catalog.
-   
-   
+
+
 ## Routing
 {: #routing}
 
@@ -3029,7 +3029,7 @@ Manipulate routing by using the following `routing` commands.
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
+
 **OPTIONS**
 
    `--smart-routing`  One of Routing features.
@@ -3053,13 +3053,13 @@ Manipulate routing by using the following `routing` commands.
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
+
 **OPTIONS**
 
    `--smart-routing value`       One of Routing features. Valid values: "on", "off".
 
    `--tiered-caching value`      One of Routing features. Valid values: "on", "off".
-   
+
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
 
@@ -3081,7 +3081,7 @@ Manipulate routing by using the following `routing` commands.
 **OPTIONS**
 
    `--colos`                      Analytics of smart-routing latency colos.
-   
+
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
    `--output FORMAT`     Specify output format, only JSON is supported now.
@@ -3090,7 +3090,7 @@ Manipulate routing by using the following `routing` commands.
 ## TLS
 {: #tls}
 
-Manipulate TLS by using the following `tls` commands. 
+Manipulate TLS by using the following `tls` commands.
 
 ### Show TLS setting
 {: #show-tls-setting}
@@ -3126,7 +3126,7 @@ Manipulate TLS by using the following `tls` commands.
    `--mode value` Specify whether visitors can browse your website over a secure connection, and when they do, how CIS will connect to your origin server.
                 Valid values: `off`, `client-to-edge`, `end-to-end-flexible`, `end-to-end-ca-signed`, `https-only-origin-pull`.
                 See the following documentation link for detailed [TLS mode description](/docs/infrastructure/cis?topic=cis-cis-tls-options).
-                    
+
 
    `--universal value` Specify whether universal ssl is enabled for you domain. Valid values are `true` and
                                        `false`.
@@ -3225,13 +3225,13 @@ affect price.
      * `bundle_method` Bundle method, default value is `compatible`, valid values are: `compatible`, `modern` and `user-defined`.
 
    Sample JSON data:
-   
+
                       {
                         "certificate": "xxx",
                         "private_key": "xxx",
                         "bundle_method": "compatible"
                       }
-                      
+
    `-j, --json-file JSON_FILE`  (Optional) A file contains input JSON data.
 
    `--output FORMAT`  (Optional) Specify output format, only JSON is supported now.
@@ -3342,7 +3342,7 @@ affect price.
 
 **OPTIONS**
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
-   
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
 
@@ -3365,25 +3365,25 @@ affect price.
    `--request-type REQUEST_TYPE`        Signature type desired on certificate. Valid values: "origin-rsa", "origin-ecc".
 
    `--hostnames HOSTNAME`           hostname or wildcard name bound to the certificate.
-   
+
    `--requested-validity DAYS`  The number of days for which the certificate should be valid. (default: 5475)
-   
+
    `--csr CSR`                 The Certificate Signing Request (CSR). If not set, CIS will generate one.
-   
+
    `-s, --json-str JSON_STR`  The JSON data describing an origin certificate.
 
                    The required fields in JSON data are "request_type", "hostnames".
-                       
+
                        "request_type": Signature type desired on certificate. Valid values: "origin-rsa", "origin-ecc".
                        "hostnames": Array of hostnames or wildcard names bound to the certificate.
 
                    The optional fields are "requested_validity", "csr".
-                       
+
                        "requested_validity": The number of days for which the certificate should be valid. Valid values: "0", "7", "30", "90", "365", "730", "1095", "5475".
                        "csr": The Certificate Signing Request (CSR). If not set, CIS will generate one.
 
                    Sample JSON data:
-                   
+
                    {
                        "request_type": "origin-rsa",
                        "hostnames": [
@@ -3397,7 +3397,7 @@ affect price.
 
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
 
@@ -3421,7 +3421,7 @@ affect price.
 
 **OPTIONS**
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
 ###  Delete origin certificate
@@ -3448,7 +3448,7 @@ affect price.
 ## Web Application Firewall (WAF)
 {: #waf}
 
-Manipulate Web Application Firewalls by using the following `waf` commands. 
+Manipulate Web Application Firewalls by using the following `waf` commands.
 
 ### Show WAF setting
 {: #show-waf-setting}
@@ -3460,7 +3460,7 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
 **USAGE**
 
   `ibmcloud cis waf-setting DNS_DOMAIN_ID`
-  
+
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
@@ -3485,7 +3485,7 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
+
    `WAF_MODE` is the mode of WAF setting. Valid values are:  `waf-enable` , `waf-disable`.
 
 **OPTIONS**
@@ -3510,7 +3510,7 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
 **OPTIONS**
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
 
@@ -3529,7 +3529,7 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
+
    `WAF_PACKAGE_ID` is the ID of WAF package.
 
 **OPTIONS**
@@ -3554,13 +3554,13 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
+
    `OWASP_PACKAGE_ID` is the package ID of OWASP.
 
 **OPTIONS**
 
    `--sensitivity SENSITIVITY`   The sensitivity of the firewall package. Valid values: `high`, `medium`, `low`, `off`.
-   
+
    `--action-mode MODE`   The default action that will be taken for rules under the firewall package. Valid values: `simulate`, `block`, `challenge`.
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
@@ -3582,7 +3582,7 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
+
    `WAF_PACKAGE_ID` is the ID of WAF package.
 
 **OPTIONS**
@@ -3610,11 +3610,11 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
+
    `WAF_PACKAGE_ID` is the ID of WAF package.
-   
+
    `WAF_GROUP_ID` is the ID of WAF group.
-   
+
 **OPTIONS**
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
@@ -3636,11 +3636,11 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
+
    `WAF_PACKAGE_ID` is the ID of WAF package.
-   
+
    `WAF_GROUP_ID` is the ID of WAF group.
-   
+
    `WAF_GROUP_MODE` is the mode of WAF group. Valid values are: `on`, `off`.
 
 **OPTIONS**
@@ -3664,7 +3664,7 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
+
    `WAF_PACKAGE_ID` is the ID of WAF package.
 
 **OPTIONS**
@@ -3674,7 +3674,7 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
    `--per-page NUM`         Number of rules per page. (default: 50)
 
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
-   
+
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
 
@@ -3693,9 +3693,9 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
+
    `WAF_PACKAGE_ID` is the ID of WAF package.
-   
+
    `WAF_RULE_ID` is the ID of WAF rule.
 
 **OPTIONS**
@@ -3719,11 +3719,11 @@ Manipulate Web Application Firewalls by using the following `waf` commands.
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
-   
+
    `WAF_PACKAGE_ID` is the ID of WAF package.
-   
+
    `WAF_RULE_ID` is the ID of WAF rule.
-   
+
    `WAF_RULE_MODE` is the mode of WAF rule. Valid values are: `on`, `off`, `default`, `disable`, `simulate`, `block`,  `challenge`.
 
 **OPTIONS**
@@ -3748,11 +3748,11 @@ Manipulate how the Range App performs using the following `range-app` commands:
 **USAGE**
 
    `ibmcloud cis range-app-create DNS_DOMAIN_ID --name NAME --edge-port EDGE_PORT --origin-direct ORIGIN_DIRECT [--origin-direct ORIGIN_DIRECT] [--proxy-protocol on|off] [--ip-firewall on|off] [--edge-connectivity all|ipv4|ipv6] [--edge-tls off|flexible|full|strict] [--traffic-type direct/http/https]`
-   
+
    `ibmcloud cis range-app-create DNS_DOMAIN_ID --name NAME --edge-port EDGE_PORT --origin-lb-name ORIGIN_LB_NAME --origin-lb-port ORIGIN_LB_PORT [--proxy-protocol on|off] [--ip-firewall on|off] [--edge-connectivity all|ipv4|ipv6] [--edge-tls off|flexible|full|strict] [--traffic-type direct/http/https]`
-   
+
    `ibmcloud cis range-app-create DNS_DOMAIN_ID -s JSON_STR`
-   
+
    `ibmcloud cis range-app-create DNS_DOMAIN_ID -j JSON_FILE`
 
 **ARGUMENTS**
@@ -3775,7 +3775,7 @@ Manipulate how the Range App performs using the following `range-app` commands:
 
    * `--proxy-protocol value`       Enable Proxy Protocol to the origin. Valid values: "on", "off", "v1", "v2", "simple". (default: "off")
                                     [Deprecated] The value 'on' is equivalent to 'v1'.
-   
+
    * `--ip-firewall value`          Control whether or not enables the IP Firewall for this application. Valid values: "on", "off". (default: "off")
 
    * `--edge-connectivity value`      The IP versions supported for inbound connections on range anycast IPs. Valid values: "all", "ipv4", "ipv6". (default: "all")
@@ -3785,16 +3785,16 @@ Manipulate how the Range App performs using the following `range-app` commands:
    * `--traffic-type value`           Determines how data travels from the edge to your origin. Valid values: "direct", "http", "https". (default: "direct")
 
    * `-s value, --json-str value`   The JSON data describing a range application.
-                                
+
       * The required fields in JSON data are "protocol", "dns".
-                                    
+
          * "protocol": Port configuration at CIS's edge.
          * "dns": The name and type of DNS record for the range application.
             * "name": The name of DNS record for the range application.
             * "type": The type of DNS record associated with the application. Valid values: "CNAME".
-                                
+
       * The optional fields are "origin_direct", "origin_dns", "origin_port", "proxy_protocol", "ip_firewall", "edge_ips", "tls", "traffic_type".
-                                    
+
          * "origin_direct": A list of destination addresses to the origin.
          * "origin_dns": Method and parameters used to discover the origin server address via DNS.
          * "name": DNS record name.
@@ -3808,7 +3808,7 @@ Manipulate how the Range App performs using the following `range-app` commands:
          * "tls": The type of TLS termination associated with the application. Valid values: "off", "flexible", "full", "strict".
          * "traffic_type": Determines how data travels from the edge to your origin. When set to 'direct', range will send traffic directly to your origin, and the application's type is derived from the protocol. When set to 'http' or 'https', range will apply CIS's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. Valid values: "direct", "http", "https". (default: "direct")            
       Sample JSON data:
-                                
+
          {
             "protocol": "tcp/22",
             "dns": {
@@ -3895,7 +3895,7 @@ Manipulate how the Range App performs using the following `range-app` commands:
 
    * `--proxy-protocol value`       Enable Proxy Protocol to the origin. Valid values: "on", "off", "v1", "v2", "simple". (default: "off")
                                     [Deprecated] The value 'on' is equivalent to 'v1'.
-   
+
    * `--ip-firewall value`          Control whether or not enables the IP Firewall for this application. Valid values: "on", "off". (default: "off")
 
    * `--edge-connectivity value`      The IP versions supported for inbound connections on range anycast IPs. Valid values: "all", "ipv4", "ipv6". (default: "all")
@@ -3905,16 +3905,16 @@ Manipulate how the Range App performs using the following `range-app` commands:
    * `--traffic-type value`           Determines how data travels from the edge to your origin. Valid values: "direct", "http", "https". (default: "direct")
 
    * `-s value, --json-str value`   The JSON data describing a range application.
-                                
+
       * The required fields in JSON data are "protocol", "dns".
-                                    
+
          * "protocol": Port configuration at CIS's edge.
          * "dns": The name and type of DNS record for the range application.
             * "name": The name of DNS record for the range application.
             * "type": The type of DNS record associated with the application. Valid values: "CNAME".
-                                
+
       * The optional fields are "origin_direct", "origin_dns", "origin_port", "proxy_protocol", "ip_firewall".
-                                    
+
          * "origin_direct": A list of destination addresses to the origin.
          * "origin_dns": Method and parameters used to discover the origin server address via DNS.
          * "name": DNS record name.
@@ -3927,9 +3927,9 @@ Manipulate how the Range App performs using the following `range-app` commands:
                * "connectivity": The IP versions supported for inbound connections on range anycast IPs. Valid values: "all", "ipv4", "ipv6".
          * "tls": The type of TLS termination associated with the application. Valid values: "off", "flexible", "full", "strict".
          * "traffic_type": Determines how data travels from the edge to your origin. When set to 'direct', range will send traffic directly to your origin, and the application's type is derived from the protocol. When set to 'http' or 'https', range will apply CIS's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. Valid values: "direct", "http", "https". (default: "direct")
-                                
+
       Sample JSON data:
-                                
+
          {
             "protocol": "tcp/22",
             "dns": {
@@ -4095,7 +4095,7 @@ Manipulate how the Range App performs using the following `range-app` commands:
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` will be used.
 
    * `--output value`              Specify output format, only JSON is supported now.
-   
+
 
 
 
@@ -4195,7 +4195,7 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
 
 **OPTIONS**
 
-   * `--destination value`   Uniquely identifies a IBM Cloud Object Storage bucket path where data will be pushed. 
+   * `--destination value`   Uniquely identifies a IBM Cloud Object Storage bucket path where data will be pushed.
                              Syntax: `cos://<BUCKET_OBJECT_PATH>?region=<REGION>&instance-id=<IBM_ClOUD_OBJECT_STORAGE_INSTANCE_ID>`
                              Example: `cos://cis-test-bucket/logs?region=us&instance-id=f75e6d90-4212-4026-851c-d572071146cd`   
                              To separate logs into daily subfolders, use the special string `{DATE}` in the bucket path. It will be substituted with the date in `YYYYMMDD` format, for example `20190423`. Subfolders will be created as appropriate, for example: `cos://cis-test-bucket/logs/{DATE}?region=us&instance-id=f75e6d90-4212-4026-851c-d572071146cd`
@@ -4207,7 +4207,7 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
    * `--fields value`        Define the list of log fields to be included in log files. Multiple fields can be separated by commas and use command [`ibmcloud cis logpush-available-fields DNS_DOMAIN_ID`] to get the comprehensive list of available log fields, or use `all` to include all available fields in log files. Note that fields are expected to be case sensitive.
 
    * `--timestamps value`    Set the format in which response timestamps are returned. Valid values: "unix", "unixnano", "rfc3339".
-   
+
    * `--dataset value`       The category of logs you want to receive. This value cannot be changed after the job is created.
                              Valid values: "http_requests", "range_events". (default: "http_requests")                              
 
@@ -4244,7 +4244,7 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
    * `--timestamps value`    Set the format in which response timestamps are returned. Valid values: "unix", "unixnano", "rfc3339".
 
    * `--dataset value`       The category of job you want to update. Valid values: "http_requests", "range_events". (default: "http_requests")
-   
+
    * `-i , --instance value` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
 ### List Log Push Jobs
@@ -4307,7 +4307,7 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
    * `--dataset value`       The category of job you want to delete. Valid values: "http_requests", "range_events". (default: "http_requests")
 
    * `--force`               Delete log push job without prompting for confirmation.
-   
+
    * `-i , --instance value` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
 ### Get Log Push Available Fields
@@ -4359,43 +4359,43 @@ The `security-events` command is replacing the `firewall-events` command. It can
    * `--ip-class value`            IP class is a map of client IP to visitor classification. Valid values: "unknown", "clean", "badHost", "searchEngine", "whitelist", "greylist", "monitoringService", "securityScanner", "noRecord", "scan", "backupService", "mobilePlatform", "tor".
 
    * `--method value`              The HTTP method of the request. Valid values: "GET", "POST", "DELETE", "PUT", "HEAD", "PURGE", "OPTIONS", "PROPFIND", "MKCOL", "PATCH", "ACL", "BCOPY", "BDELETE", "BMOVE", "BPROPFIND", "BPROPPATCH", "CHECKIN", "CHECKOUT", "CONNECT", "COPY", "LABEL", "LOCK", "MERGE", "MKACTIVITY", "MKWORKSPACE", "MOVE", "NOTIFY", "ORDERPATCH", "POLL", "PROPPATCH", "REPORT", "SEARCH", "SUBSCRIBE", "TRACE", "UNCHECKOUT", "UNLOCK", "UNSUBSCRIBE", "UPDATE", "VERSION-CONTROL", "BASELINE-CONTROL", "X-MS-ENUMATTS", "RPC_OUT_DATA", "RPC_IN_DATA", "JSON", "COOK", "TRACK".
-   
+
    * `--scheme value`              The scheme of the uri. Valid values: "unknown", "http", "https".
-   
+
    * `--ip value`                  The IPv4 or IPv6 address from which the request originated.
-   
+
    * `--host value`                The hostname the request attempted to access.
-   
+
    * `--protocol value`            The protocol of the request. Valid values: "UNK", "HTTP/1.0", "HTTP/1.1", "HTTP/1.2", "HTTP/2", "SPDY/3.1".
-   
+
    * `--uri value`                 The URI requested from the hostname.
-   
+
    * `--ua value`                  The client user agent that initiated the request.
-   
+
    * `--colo value`                The 3-letter airport code of the Cloudflare data-center that handled the request. For example, "SJC"
-   
+
    * `--ray-id value`              Ray ID of the request.
-   
+
    * `--kind value`                Event kind. Valid values: "firewall".
-   
+
    * `--action value`              What type of action was taken. Valid values: "unknown", "allow", "drop", "challenge", "jschallenge", "simulate", "connectionClose", "log".
-   
+
    * `--cursor value`              Cursor position and direction for requesting next set of records when amount of results was limited by the limit parameter. A valid value for the cursor can be obtained from the cursors object in the result_info structure.
-   
+
    * `--country value`             The 2-digit country code in which the request originated. For example, "US".
-   
+
    * `--since value`               Start date and time of requesting data period in the ISO8601 format. Can't go back more than a year. For example, "2016-11-11T12:00:00Z".
-   
+
    * `--until value`               End date and time of requesting data period in the ISO8601 format. For example,  "2016-11-11T12:00:00Z".
-   
+
    * `--source value`              Source of the event. Valid values: "unknown", "asn", "country", "ip", "ipRange", "securityLevel", "zoneLockdown", "waf", "uaBlock", "rateLimit", "firewallRules", "bic", "hot", "l7ddos".
-   
+
    * `--limit value`               The number of events to return. The cursor attribute may be used to iterate over the next batch of events, if there are more events in the queried time range. Note that the scanned_range parameter in the `result_info` structure gives an indication of when events were considered in the current resultset if a limit was applied. Valid values are from 10 to 1000. Default value: 50.
-   
+
    * `--rule-id value`             The ID of the rule that triggered the event, should be considered in the context of source.
-   
+
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-   
+
    * `--output value`              Specify output format, only JSON is supported now.
 
 ## Edge Functions
@@ -4417,9 +4417,9 @@ Manipulate how Edge Functions perform using the following `edge-functions` comma
 **OPTIONS**
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-   
+
    * `--output value`              Specify output format, only JSON is supported now.
-  
+
 ### Show an Edge Functions Action
 {: #show-an-edge-functions-action}
 
@@ -4436,7 +4436,7 @@ Manipulate how Edge Functions perform using the following `edge-functions` comma
    * `--action-name`               Action name. (Enterprise plan only.)
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-   
+
    * `--output value`              Specify output format, only JSON is supported now.
 
 ### Create an Edge Functions Action
@@ -4459,7 +4459,7 @@ Manipulate how Edge Functions perform using the following `edge-functions` comma
    * `--javascript-file`           Javascript file.
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-   
+
    * `--output value`              Specify output format, only JSON is supported now.
 
 ### Update an Edge Functions Action
@@ -4482,7 +4482,7 @@ Manipulate how Edge Functions perform using the following `edge-functions` comma
    * `--javascript-file`           Javascript file.
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-   
+
    * `--output value`              Specify output format, only JSON is supported now.
 
 ### Delete an Edge Functions Action
@@ -4519,14 +4519,14 @@ Manipulate how Edge Functions perform using the following `edge-functions` comma
 **OPTIONS**
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-   
+
    * `--output value`              Specify output format, only JSON is supported now.
 
 ### Show an Edge Functions Trigger
 {: #show-an-edge-functions-trigger}
 
 **NAME**
-   
+
     `edge-functions-trigger` - Show an Edge Functions trigger for a given domain of a service instance.
 
 **USAGE**
@@ -4542,7 +4542,7 @@ Manipulate how Edge Functions perform using the following `edge-functions` comma
 **OPTIONS**
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-   
+
    * `--output value`              Specify output format, only JSON is supported now.
 
 ### Create an Edge Functions Trigger
@@ -4567,7 +4567,7 @@ Manipulate how Edge Functions perform using the following `edge-functions` comma
    * `--action-name`               Action name which the created trigger is attached to. (Enterprise plan only.)
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-   
+
    * `--output value`              Specify output format, only JSON is supported now.
 
 ### Update an Edge Functions Trigger
@@ -4594,7 +4594,7 @@ Manipulate how Edge Functions perform using the following `edge-functions` comma
    * `--action-name`               Action name which the created trigger is attached to. (Enterprise plan only.)
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-   
+
    * `--output value`              Specify output format, only JSON is supported now.
 
 ### Delete an Edge Functions Trigger
@@ -5020,13 +5020,13 @@ Manipulate how firewall rules perform using the following `firewall-rules` comma
 **OPTIONS**
 
    * `--page value`                Page number of paginated results. (default: 1)
-   
+
    * `--per-page value`            Number of firewall rules per page. Min: 5. Max: 100. (default: 25)
-   
+
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-   
+
    * `--output value`              Specify output format, only JSON is supported now.
-  
+
 ### Show a Firewall Rule
 {: #show-a-firewall-rule}
 
@@ -5047,7 +5047,7 @@ Manipulate how firewall rules perform using the following `firewall-rules` comma
 **OPTIONS**
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-   
+
    * `--output value`              Specify output format, only JSON is supported now.
 
 ### Create a Firewall Rule
@@ -5104,7 +5104,7 @@ Manipulate how firewall rules perform using the following `firewall-rules` comma
    * `-j value, --json-file value`  A file contains input JSON data.
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-   
+
    * `--output value`              Specify output format, only JSON is supported now.
 
 ### Update a Firewall Rule
@@ -5165,7 +5165,7 @@ Manipulate how firewall rules perform using the following `firewall-rules` comma
    * `-j value, --json-file value` A file contains input JSON data.
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-   
+
    * `--output value`              Specify output format, only JSON is supported now.
 
 ### Delete a Firewall Rule
@@ -5209,5 +5209,3 @@ Manipulate how firewall rules perform using the following `firewall-rules` comma
 **OPTIONS**
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-
-
