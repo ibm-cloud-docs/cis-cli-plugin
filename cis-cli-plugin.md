@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018-2019
-lastupdated: "2019-08-09"
+  years: 2018, 2020
+lastupdated: "2020-02-17"
 
 
 ---
@@ -16,18 +16,14 @@ lastupdated: "2019-08-09"
 {:note: .note}
 {:important: .important}
 
-# CIS CLI Commands
+# {{site.data.keyword.cis_short}} CLI
+{: #cis-cli}
 
-## CIS commands index
-{: #commands_index}
-
-The {{site.data.keyword.cis_full}} has the following families of commands available from the command line interface (CLI).
-
-Find the full set of commands for {{site.data.keyword.cis_full_notm}} (CIS) within each set, including `Create`, `Delete`, `Update`, and so forth.
+{{site.data.keyword.cis_full}} has several families of commands that are available from the command line interface (CLI). Find the full set of commands for {{site.data.keyword.cis_full_notm}} (CIS) within each set, including `Create`, `Delete`, `Update`, and so on.
 {: shortdesc}
 
 ## Overview
-{: #overview}
+{: #cis-overview}
 
 View the overview information for a domain.
 
@@ -671,7 +667,7 @@ Manipulate domain settings using the following `domain-settings` commands:
 
 **ARGUMENTS**
 
-   `DNS_DOMAIN_ID` is the id of DNS domain.
+   `DNS_DOMAIN_ID` is the ID of DNS domain.
 
 **OPTIONS**
 
@@ -1564,39 +1560,39 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glb-create - Create a global load balancer under a given DNS domain.
+   `glb-create` - Create a global load balancer under a given DNS domain.
 
 **USAGE**
 
-   ibmcloud cis glb-create DNS_DOMAIN_ID (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]
+   `ibmcloud cis glb-create DNS_DOMAIN_ID (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
 **ARGUMENTS**
 
-   DNS_DOMAIN_ID is the ID of DNS domain.
+   `DNS_DOMAIN_ID` is the ID of DNS domain.
 
 **OPTIONS**
 
-   -s, --json-str  The JSON data describing a global load balancer.
+   `-s, --json-str`  The JSON data describing a global load balancer.
 
-                   The required fields in JSON data are name, fallback_pool, default_pools:
+ The required fields in JSON data are "name", "fallback_pool", "default_pools":
 
-                       "name":the DNS hostname to associate with your Load Balancer.
-                       "fallback_pool":the pool ID to use when all other pools are detected as unhealthy.
-                       "default_pools":a list of pool IDs ordered by their failover priority.
+   "name":the DNS hostname to associate with your Load Balancer.
+   "fallback_pool":the pool ID to use when all other pools are detected as unhealthy.
+   "default_pools":a list of pool IDs ordered by their failover priority.
 
-                   The optional fields are description, ttl, region_pools, proxied, enabled, session_affinity:
+ The optional fields are "description", "ttl", "region_pools", "proxied", "enabled", "session_affinity":
 
-                       "ttl":time to live (TTL) of the DNS entry for the IP address returned by this load balancer.
-                       "region_pools":a mapping of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region.
-                       "proxied":Control whether or not traffic should flow through the security and performance functions on CIS.
-                       "session_affinity":valid values are "cookie", "none".
-                       "steering_policy": Valid values for "steering_policy" are "off", "geo", "random", "dynamic_latency".
-                            "off": Use default_pools.
-                            "geo": Use region_pools/pop_pools.
-                            "random": Select a pool randomly.
-                            "dynamic_latency": Use round trip time to select the closest pool in default_pools (requires pool health checks).
+   "ttl":time to live (TTL) of the DNS entry for the IP address returned by this load balancer.
+   "region_pools":a mapping of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region.
+   "proxied":Control whether or not traffic should flow through the security and performance functions on CIS.
+   "session_affinity":valid values are "cookie", "none".
+   "steering_policy": Valid values for "steering_policy" are "off", "geo", "random", "dynamic_latency".
+        "off": Use default_pools.
+        "geo": Use region_pools/pop_pools.
+        "random": Select a pool randomly.
+        "dynamic_latency": Use round trip time to select the closest pool in default_pools (requires pool health checks).
 
-                   Sample JSON data:
+Sample JSON data:
 
                   {
                        "name": "www.example.com",
@@ -1617,7 +1613,8 @@ Manipulate Global Load Balancers by using the following `glb` commands.
                            ]
                        }
                   }
-   -j, --json-file  A file contains input JSON data.
+                  
+   `-j, --json-file`  A file contains input JSON data.
    
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
    
@@ -1629,35 +1626,35 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glb-update - Update a global load balancer under a given DNS domain.
+   `glb-update` - Update a global load balancer under a given DNS domain.
 
 **USAGE**
 
-   ibmcloud cis glb-update DNS_DOMAIN_ID GLB_ID (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]
+   `ibmcloud cis glb-update DNS_DOMAIN_ID GLB_ID (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
 **OPTIONS**
 
-   -s, --json-str  The JSON data describing a global load balancer.
+   `-s, --json-str`  The JSON data describing a global load balancer.
 
-                   The required fields in JSON data are name, fallback_pool, default_pools:
+ The required fields in JSON data are "name", "fallback_pool", "default_pools":
 
-                       "name":the DNS hostname to associate with your Load Balancer.
-                       "fallback_pool":the pool ID to use when all other pools are detected as unhealthy.
-                       "default_pools":a list of pool IDs ordered by their failover priority.
+   "name":the DNS hostname to associate with your Load Balancer.
+   "fallback_pool":the pool ID to use when all other pools are detected as unhealthy.
+   "default_pools":a list of pool IDs ordered by their failover priority.
 
-                   The optional fields are description, ttl, region_pools, proxied, enabled, session_affinity:
+ The optional fields are "description", "ttl", "region_pools", "proxied", "enabled", "session_affinity":
 
-                       "ttl":time to live (TTL) of the DNS entry for the IP address returned by this load balancer.
-                       "region_pools":a mapping of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region.
-                       "proxied":Control whether or not traffic should flow through the security and performance functions on CIS.
-                       "session_affinity":valid values are "cookie", "none".
-                       "steering_policy": Valid values for "steering_policy" are "off", "geo", "random", "dynamic_latency".
-                            "off": Use default_pools.
-                            "geo": Use region_pools/pop_pools.
-                            "random": Select a pool randomly.
-                            "dynamic_latency": Use round trip time to select the closest pool in default_pools (requires pool health checks).
+   "ttl":time to live (TTL) of the DNS entry for the IP address returned by this load balancer.
+   "region_pools":a mapping of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region.
+   "proxied":Control whether or not traffic should flow through the security and performance functions on CIS.
+   "session_affinity":valid values are "cookie", "none".
+   "steering_policy": Valid values for "steering_policy" are "off", "geo", "random", "dynamic_latency".
+        "off": Use default_pools.
+        "geo": Use region_pools/pop_pools.
+        "random": Select a pool randomly.
+        "dynamic_latency": Use round trip time to select the closest pool in default_pools (requires pool health checks).
 
-                   Sample JSON data:
+Sample JSON data:
 
                   {
                        "name": "www.example.com",
@@ -1678,7 +1675,8 @@ Manipulate Global Load Balancers by using the following `glb` commands.
                            ]
                        }
                   }
-   -j, --json-file  A file contains input JSON data.
+                  
+   `-j, --json-file`  A file contains input JSON data.
    
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud  cis instance-set` is used.
    
@@ -1690,16 +1688,16 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glb - Show a global load balancer under a given DNS domain.
+   `glb` - Show a global load balancer under a given DNS domain.
 
 **USAGE**
 
-   ibmcloud cis glb DNS_DOMAIN_ID GLB_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]
+   `ibmcloud cis glb DNS_DOMAIN_ID GLB_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
 **ARGUMENTS**
 
-   DNS_DOMAIN_ID is the ID of DNS domain.
-   GLB_ID is the ID of global load balancer.
+   `DNS_DOMAIN_ID` is the ID of DNS domain.
+   `GLB_ID` is the ID of global load balancer.
 
 **OPTIONS**
 
@@ -1713,17 +1711,17 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glb-delete - Delete a global load balancer under a given DNS domain.
+   `glb-delete` - Delete a global load balancer under a given DNS domain.
 
 **USAGE**
 
-   ibmcloud cis glb-delete DNS_DOMAIN_ID GLB_ID [-i, --instance INSTANCE_NAME]
+   `ibmcloud cis glb-delete DNS_DOMAIN_ID GLB_ID [-i, --instance INSTANCE_NAME]`
 
 **ARGUMENTS**
 
-   DNS_DOMAIN_ID is the ID of DNS domain.
+   `DNS_DOMAIN_ID` is the ID of DNS domain.
    
-   GLB_ID is the ID of global load balancer.
+   `GLB_ID` is the ID of global load balancer.
 
 **OPTIONS**
 
@@ -1734,15 +1732,15 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glbs - List all load balancers for the given domain.
+   `glbs` - List all load balancers for the given domain.
 
 **USAGE**
 
-   ibmcloud cis glbs DNS_DOMAIN_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]
+   `ibmcloud cis glbs DNS_DOMAIN_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
 **ARGUMENTS**
 
-   DNS_DOMAIN_ID is the ID of DNS domain.
+   `DNS_DOMAIN_ID` is the ID of DNS domain.
 
 **OPTIONS**
 
@@ -1756,11 +1754,11 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glb-pools - List all GLB pools for a given service instance.
+   `glb-pools` - List all GLB pools for a given service instance.
 
 **USAGE**
 
-   ibmcloud cis glb-pools [-i, --instance INSTANCE_NAME] [--output FORMAT]
+   `ibmcloud cis glb-pools [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
 **OPTIONS**
 
@@ -1775,26 +1773,26 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glb-pool-create - Create a GLB pool for a given service instance.
+   `glb-pool-create` - Create a GLB pool for a given service instance.
 
 **USAGE**
 
-   ibmcloud cis glb-pool-create (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]
+   `ibmcloud cis glb-pool-create (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
 **OPTIONS**
 
-   -s, --json-str  The JSON data used to describe a GLB pool.
+   `-s, --json-str`  The JSON data used to describe a GLB pool.
 
-                   The required fields in JSON data are name, origins, check_regions:
+ The required fields in JSON data are "name", "origins", "check_regions":
 
-                       "name":a short name (tag) for the pool.
-                       "origins":a list of origins within this pool.
-                       "check_regions":a list of geographic region code.
+   "name":a short name (tag) for the pool.
+   "origins":a list of origins within this pool.
+   "check_regions":a list of geographic region code.
 
-                   The optional fields are description, minimum_origins, enabled, monitor, notification_email:
+ The optional fields are "description", "minimum_origins", "enabled", "monitor", "notification_email":
 
 
-                   Sample JSON data:
+Sample JSON data:
 
                    {
                        "name": "us-pool",
@@ -1817,7 +1815,7 @@ Manipulate Global Load Balancers by using the following `glb` commands.
                        "enabled": true,
                        "notification_email": "someone@example.com"
                    }
-   -j, --json-file  A file contains input JSON data.
+   `-j, --json-file`  A file contains input JSON data.
    
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
    
@@ -1829,15 +1827,15 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glb-pool - Show the details of a given GLB pool.
+   `glb-pool` - Show the details of a given GLB pool.
 
 **USAGE**
 
-   ibmcloud cis glb-pool GLB_POOL_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]
+   `ibmcloud cis glb-pool GLB_POOL_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
 **ARGUMENTS**
 
-   GLB_POOL_ID is the ID of global load balancer pool.
+   `GLB_POOL_ID` is the ID of global load balancer pool.
 
 **OPTIONS**
 
@@ -1851,15 +1849,15 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glb-pool-delete - Delete a given GLB pool.
+   `glb-pool-delete` - Delete a given GLB pool.
 
 **USAGE**
 
-   ibmcloud cis glb-pool-delete GLB_POOL_ID [-i, --instance INSTANCE_NAME]
+   `ibmcloud cis glb-pool-delete GLB_POOL_ID [-i, --instance INSTANCE_NAME]`
 
 **ARGUMENTS**
 
-   GLB_POOL_ID is the ID of global load balancer pool.
+   `GLB_POOL_ID` is the ID of global load balancer pool.
 
 **OPTIONS**
 
@@ -1870,11 +1868,11 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glb-pool-update - Update the details of a given GLB pool.
+   `glb-pool-update` - Update the details of a given GLB pool.
 
 **USAGE**
 
-   ibmcloud cis glb-pool-update GLB_POOL_ID [-s, --json-str JSON_STR | -j, --json-file JSON_FILE] [--enable-origin ORIGIN_NAME --enable-origin ORIGIN_NAME ...] [--disable-origin ORIGIN_NAME --disable-origin ORIGIN_NAME ...] [--add-origin ORIGIN_PARAMETER --add-origin ORIGIN_PARAMETER ...] [--remove-origin ORIGIN_NAME --remove-origin ORIGIN_NAME ...] [-i, --instance INSTANCE_NAME] [--output FORMAT]
+   `ibmcloud cis glb-pool-update GLB_POOL_ID [-s, --json-str JSON_STR | -j, --json-file JSON_FILE] [--enable-origin ORIGIN_NAME --enable-origin ORIGIN_NAME ...] [--disable-origin ORIGIN_NAME --disable-origin ORIGIN_NAME ...] [--add-origin ORIGIN_PARAMETER --add-origin ORIGIN_PARAMETER ...] [--remove-origin ORIGIN_NAME --remove-origin ORIGIN_NAME ...] [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
 
 **ARGUMENTS**
@@ -1883,18 +1881,18 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **OPTIONS**
 
-   -s, --json-str  The JSON data used to describe a GLB pool.
+   `-s, --json-str`  The JSON data used to describe a GLB pool.
 
-                   The required fields in JSON data are name, origins, check_regions:
+ The required fields in JSON data are "name", "origins", "check_regions":
 
-                       "name":a short name (tag) for the pool.
-                       "origins":a list of origins within this pool.
-                       "check_regions":a list of geographic region code.
+   "name":a short name (tag) for the pool.
+   "origins":a list of origins within this pool.
+   "check_regions":a list of geographic region code.
 
-                   The optional fields are description, minimum_origins, enabled, monitor, notification_email:
+ The optional fields are "description", "minimum_origins", "enabled", "monitor", "notification_email":
 
 
-                   Sample JSON data:
+ Sample JSON data:
 
                    {
                        "name": "us-pool",
@@ -1917,16 +1915,17 @@ Manipulate Global Load Balancers by using the following `glb` commands.
                        "enabled": true,
                        "notification_email": "someone@example.com"
                    }
-   -j, --json-file  A file contains input JSON data.
+                   
+   `-j, --json-file`  A file contains input JSON data.
    
-   --enable-origin value        Enable the origin within the Pool. The value can be ORIGIN_NAME or ORIGIN_ADDRESS.
+   `--enable-origin value`        Enable the origin within the Pool. The value can be ORIGIN_NAME or ORIGIN_ADDRESS.
    
-   --disable-origin value       Disable the origin within the Pool. The value can be ORIGIN_NAME or ORIGIN_ADDRESS.
+   `--disable-origin value`       Disable the origin within the Pool. The value can be ORIGIN_NAME or ORIGIN_ADDRESS.
    
-   --add-origin value           Add an origin into the Pool. ORIGIN_NAME and ORIGIN_ADDRESS are required.
-                                Eg: --add-origin name=us-app-dal01,address=1.1.1.1,enabled=true,weight=0.5
+   `--add-origin value`           Add an origin into the Pool. ORIGIN_NAME and ORIGIN_ADDRESS are required.
+                                For example: --add-origin name=us-app-dal01,address=1.1.1.1,enabled=true,weight=0.5
                                 
-   --remove-origin value       Remove an origin from the Pool. The value can be ORIGIN_NAME or ORIGIN_ADDRESS.
+   `--remove-origin value`       Remove an origin from the Pool. The value can be ORIGIN_NAME or ORIGIN_ADDRESS.
    
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
    
@@ -1938,15 +1937,15 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glb-monitors - List GLB monitors for a given service instance.
+   `glb-monitors` - List GLB monitors for a given service instance.
 
 **USAGE**
 
-   ibmcloud cis glb-monitors [-i, --instance INSTANCE_NAME] [--output FORMAT]
+   `ibmcloud cis glb-monitors [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
 **OPTIONS**
 
-   -i, --instance  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+   `-i, --instance`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
    
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
@@ -1964,42 +1963,42 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **OPTIONS**
 
-   -s, --json-str  The JSON data used to describe a GLB monitor.
+   `-s, --json-str`  The JSON data used to describe a GLB monitor.
 
-                   The required fields in JSON data are "type".
+ The required fields in JSON data are "type".
 
-                       "type": The protocol to use for the healthcheck. Valid values: "HTTP", "HTTPS", "TCP".
+   "type": The protocol to use for the healthcheck. Valid values: "HTTP", "HTTPS", "TCP".
 
-                   The optional fields are "description", "timeout", "retries", "interval".
+ The optional fields are "description", "timeout", "retries", "interval".
 
-                       "description": Description.
-                       "timeout": The timeout (in seconds) before marking the health check as failed.
-                       "retries": The number of retries to attempt in case of a timeout before marking the origin as unhealthy.
-                       "interval": The interval between each health check.
+   "description": Description.
+   "timeout": The timeout (in seconds) before marking the health check as failed.
+   "retries": The number of retries to attempt in case of a timeout before marking the origin as unhealthy.
+   "interval": The interval between each health check.
 
-                   For "TCP" type health check:
+ For "TCP" type health check:
 
-                       Extra required fields are "port".
+  Extra required fields are "port".
 
-                           "port": The TCP port to use for the health check.
+   "port": The TCP port to use for the health check.
 
-                   For "HTTP/HTTPS" type health check:
+ For "HTTP/HTTPS" type health check:
 
-                       Extra option fields are "port", "expected_body", "expected_codes", "method", "path", "header", "follow_redirects", "allow_insecure".
+  Extra option fields are "port", "expected_body", "expected_codes", "method", "path", "header", "follow_redirects", "allow_insecure".
 
-                           "port": The TCP port to use for the health check.
-                           "expected_body": A case-insensitive sub-string to look for in the response body.
-                           "expected_codes": The expected HTTP response code or code range of the health check.
-                           "method": The HTTP method to use for the health check.
-                           "path": The endpoint path to health check against.
-                           "header": The HTTP request headers to send in the health check.
-                           "follow_redirects": Follow redirects if returned by the origin.
-                           "allow_insecure": Do not validate the certificate when monitor use HTTPS.
+   "port": The TCP port to use for the health check.
+   "expected_body": A case-insensitive sub-string to look for in the response body.
+   "expected_codes": The expected HTTP response code or code range of the health check.
+   "method": The HTTP method to use for the health check.
+   "path": The endpoint path to health check against.
+   "header": The HTTP request headers to send in the health check.
+   "follow_redirects": Follow redirects if returned by the origin.
+   "allow_insecure": Do not validate the certificate when monitor use HTTPS.
 
 
-                   Sample JSON data:
+Sample JSON data:
 
-                       For HTTP/HTTPS:
+  For HTTP/HTTPS:
 
                            {
                                "description": "Health monitor of web service",
@@ -2023,7 +2022,7 @@ Manipulate Global Load Balancers by using the following `glb` commands.
                                "expected_body": "alive"
                            }
 
-                       For TCP:
+  For TCP:
 
                            {
                                "description": "Health monitor of TCP",
@@ -2034,7 +2033,7 @@ Manipulate Global Load Balancers by using the following `glb` commands.
                                "interval": 90
                            }
 
-   -j, --json-file  A file contains input JSON data.
+   `-j, --json-file`  A file contains input JSON data.
    
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
    
@@ -2046,15 +2045,15 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glb-monitor - Show the GLB monitor for a given service instance.
+   `glb-monitor` - Show the GLB monitor for a given service instance.
 
 **USAGE**
 
-   ibmcloud cis glb-monitor GLB_MON_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]
+   `ibmcloud cis glb-monitor GLB_MON_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
 **ARGUMENTS**
 
-   GLB_MON_ID is the ID of global load balancer monitor.
+   `GLB_MON_ID` is the ID of global load balancer monitor.
 
 **OPTIONS**
 
@@ -2067,15 +2066,15 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 {: #delete-glb-monitor}
 **NAME**
 
-   glb-monitor-delete - Delete the GLB monitor for a given service instance.
+   `glb-monitor-delete` - Delete the GLB monitor for a given service instance.
 
 **USAGE**
 
-   ibmcloud cis glb-monitor-delete GLB_MON_ID [-i, --instance INSTANCE_NAME]
+   `ibmcloud cis glb-monitor-delete GLB_MON_ID [-i, --instance INSTANCE_NAME]`
 
 **ARGUMENTS**
 
-   GLB_MON_ID is the ID of global load balancer monitor.
+   `GLB_MON_ID` is the ID of global load balancer monitor.
 
 **OPTIONS**
 
@@ -2087,54 +2086,54 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glb-monitor-update - Update the GLB monitor for a given service instance.
+   `glb-monitor-update` - Update the GLB monitor for a given service instance.
 
 **USAGE**
 
-   ibmcloud cis glb-monitor-update GLB_MON_ID (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]
+   `ibmcloud cis glb-monitor-update GLB_MON_ID (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
 **ARGUMENTS**
 
-   GLB_MON_ID is the ID of global load balancer monitor.
+   `GLB_MON_ID` is the ID of global load balancer monitor.
 
 **OPTIONS**
 
-   -s, --json-str  The JSON data used to describe a GLB monitor.
+   `-s, --json-str`  The JSON data used to describe a GLB monitor.
 
-                   The required fields in JSON data are "type".
+ The required fields in JSON data are "type".
 
-                       "type": The protocol to use for the healthcheck. Valid values: "HTTP", "HTTPS", "TCP".
+   "type": The protocol to use for the healthcheck. Valid values: "HTTP", "HTTPS", "TCP".
 
-                   The optional fields are "description", "timeout", "retries", "interval".
+ The optional fields are "description", "timeout", "retries", "interval".
 
-                       "description": Description.
-                       "timeout": The timeout (in seconds) before marking the health check as failed.
-                       "retries": The number of retries to attempt in case of a timeout before marking the origin as unhealthy.
-                       "interval": The interval between each health check.
+   "description": Description.
+   "timeout": The timeout (in seconds) before marking the health check as failed.
+   "retries": The number of retries to attempt in case of a timeout before marking the origin as unhealthy.
+   "interval": The interval between each health check.
 
-                   For "TCP" type health check:
+For "TCP" type health check:
 
-                       Extra required fields are "port".
+ Extra required fields are "port".
 
-                           "port": The TCP port to use for the health check.
+   "port": The TCP port to use for the health check.
 
-                   For "HTTP/HTTPS" type health check:
+For "HTTP/HTTPS" type health check:
 
-                       Extra option fields are "port", "expected_body", "expected_codes", "method", "path", "header", "follow_redirects", "allow_insecure".
+ Extra option fields are "port", "expected_body", "expected_codes", "method", "path", "header", "follow_redirects", "allow_insecure".
 
-                           "port": The TCP port to use for the health check.
-                           "expected_body": A case-insensitive sub-string to look for in the response body.
-                           "expected_codes": The expected HTTP response code or code range of the health check.
-                           "method": The HTTP method to use for the health check.
-                           "path": The endpoint path to health check against.
-                           "header": The HTTP request headers to send in the health check.
-                           "follow_redirects": Follow redirects if returned by the origin.
-                           "allow_insecure": Do not validate the certificate when monitor use HTTPS.
+   "port": The TCP port to use for the health check.
+   "expected_body": A case-insensitive sub-string to look for in the response body.
+   "expected_codes": The expected HTTP response code or code range of the health check.
+   "method": The HTTP method to use for the health check.
+   "path": The endpoint path to health check against.
+   "header": The HTTP request headers to send in the health check.
+   "follow_redirects": Follow redirects if returned by the origin.
+   "allow_insecure": Do not validate the certificate when monitor use HTTPS.
 
 
-                   Sample JSON data:
+Sample JSON data:
 
-                       For HTTP/HTTPS:
+   For HTTP/HTTPS:
 
                            {
                                "description": "Health monitor of web service",
@@ -2158,7 +2157,7 @@ Manipulate Global Load Balancers by using the following `glb` commands.
                                "expected_body": "alive"
                            }
 
-                       For TCP:
+   For TCP:
 
                            {
                                "description": "Health monitor of TCP",
@@ -2168,7 +2167,7 @@ Manipulate Global Load Balancers by using the following `glb` commands.
                                "retries": 2,
                                "interval": 90
                            }
-   -j, --json-file  A file contains input JSON data.
+   `-j, --json-file`  A file contains input JSON data.
    
    `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
    
@@ -2180,30 +2179,30 @@ Manipulate Global Load Balancers by using the following `glb` commands.
 
 **NAME**
 
-   glb-events - List status changes from origins connected to a GLB monitor.
+   `glb-events` - List status changes from origins connected to a GLB monitor.
 
 **USAGE**
 
-   ibmcloud cis glb-events [-s, --since START_DATE] [-u, --until END_DATE] [--origin-name ORIGIN_NAME] [--pool-name POOL_NAME] 
+   `ibmcloud cis glb-events [-s, --since START_DATE] [-u, --until END_DATE] [--origin-name ORIGIN_NAME] [--pool-name POOL_NAME] 
                            [--origin-healthy (true | false)] [--pool-healthy (true | false)]
-                           [-i, --instance INSTANCE_NAME]  [--output FORMAT]
+                           [-i, --instance INSTANCE_NAME]  [--output FORMAT]`
 
 **ARGUMENTS**
   
 **OPTIONS**
 
-   -s, --since       Start date requesting data period in the ISO8601 format. For example `2018-11-26`.
+   `-s, --since`       Start date requesting data period in the ISO8601 format. For example `2018-11-26`.
 
-   -u, --until       End date requesting data period in the ISO8601 format. For example `2018-11-28`.
+   `-u, --until`       End date requesting data period in the ISO8601 format. For example `2018-11-28`.
 
-   --origin-name     The name for the origin to filter for.
+   `--origin-name`     The name for the origin to filter for.
 
-   --pool-name       The name for the pool to filter for.
+   `--pool-name`       The name for the pool to filter for.
 
-   --origin-healthy  If true, filter events where the origin status is healthy, if false, filter events where the origin status is unhealthy. 
+   `--origin-healthy`  If true, filter events where the origin status is healthy, if false, filter events where the origin status is unhealthy. 
                      Default value is `true`,  valid values are `true` and `false`.
 
-   --pool-healthy    If true, filter events where the pool status is healthy, if false, filter events where the pool status is unhealthy. 
+   `--pool-healthy`    If true, filter events where the pool status is healthy, if false, filter events where the pool status is unhealthy. 
                      Default value is `true`,  valid values are `true` and `false`.
 
    `-i, --instance INSTANCE_NAME`    Instance name. If not set, the context instance specified by `ibmcloudcis instance-set` is used.
@@ -2235,7 +2234,7 @@ Manipulate Logpull services by using the following `logpull` commands.
 
 **ARGUMENTS**
 
-   `DNS_DOMAIN_ID` is the id of DNS domain.
+   `DNS_DOMAIN_ID` is the ID of DNS domain.
 
 **OPTIONS**
 
@@ -2318,7 +2317,7 @@ Manipulate metrics by using the following `metrics` commands.
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
 
-   `DIMENSION` is queried dimension. The valid value is either `queries-by-response-code` or `queries-by-type`.
+   `DIMENSION` is queried dimension. Valid values: "queries-by-response-code", "queries-by-type", "queries-by-name".
 
 **OPTIONS**
 
@@ -2377,30 +2376,30 @@ Manipulate page rules by using the following `pagerule` commmands.
 
    -s, --json-str  The JSON data describing a page rule.
 
-                   The required fields in JSON data are targets, actions:
+The required fields in JSON data are targets, actions:
 
-                       "targets":The target URL pattern to evaluate on a request.
-                       "actions":An array of actions to perform if the targets of this rule match the request. Available actions are:
-                           disable_security, always_use_https, ssl, browser_cache_ttl,
-                           security_level, cache_level, edge_cache_ttl, bypass_cache_on_cookie,
-                           browser_check, server_side_exclude, serve_stale_content, email_obfuscation,
-                           automatic_https_rewrites, opportunistic_encryption, ip_geolocation,
-                           explicit_cache_control, cache_deception_armor, waf, forwarding_url,
-                           host_header_override, resolve_override.
+   "targets":The target URL pattern to evaluate on a request.
+   "actions":An array of actions to perform if the targets of this rule match the request. Available actions are:
+       disable_security, always_use_https, ssl, browser_cache_ttl,
+       security_level, cache_level, edge_cache_ttl, bypass_cache_on_cookie,
+       browser_check, server_side_exclude, serve_stale_content, email_obfuscation,
+       automatic_https_rewrites, opportunistic_encryption, ip_geolocation,
+       explicit_cache_control, cache_deception_armor, waf, forwarding_url,
+       host_header_override, resolve_override.
 
 
-                           And some actions are limited to Enterprise plan:
-                               cache_on_cookie, disable_apps, disable_performance, minify,
-                               image_load_optimization, origin_error_page_pass_thru, response_buffering,
-                               image_size_optimization, script_load_optimization, true_client_ip_header,
-                               sort_query_string_for_cache.
+   And some actions are limited to Enterprise plan:
+       cache_on_cookie, disable_apps, disable_performance, minify,
+       image_load_optimization, origin_error_page_pass_thru, response_buffering,
+       image_size_optimization, script_load_optimization, true_client_ip_header,
+       sort_query_string_for_cache.
 
-                   The optional fields are priority, status:
+The optional fields are priority, status:
 
-                       "priority":A number that indicates the preference for a page rule over another. Default is 1.
-                       "status":Status of the page rule. The valid values are 'active' and 'disabled', default is 'disabled'.
+   "priority":A number that indicates the preference for a page rule over another. Default is 1.
+   "status":Status of the page rule. The valid values are 'active' and 'disabled', default is 'disabled'.
 
-                   Sample JSON data:
+Sample JSON data:
 
                    {
                        "targets": [
@@ -2446,7 +2445,7 @@ Manipulate page rules by using the following `pagerule` commmands.
                    
    -j, --json-file  A file contains input JSON data.
    
-   `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+   `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
    
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
@@ -2472,29 +2471,29 @@ Manipulate page rules by using the following `pagerule` commmands.
 
    -s, --json-str  The JSON data describing a page rule.
 
-                   The required fields in JSON data are targets, actions:
+The required fields in JSON data are targets, actions:
 
-                       "targets":The target URL pattern to evaluate on a request.
-                       "actions":An array of actions to perform if the targets of this rule match the request. Available actions are:
-                           disable_security, always_use_https, ssl, browser_cache_ttl,
-                           security_level, cache_level, edge_cache_ttl, bypass_cache_on_cookie,
-                           browser_check, server_side_exclude, serve_stale_content, email_obfuscation,
-                           automatic_https_rewrites, opportunistic_encryption, ip_geolocation,
-                           explicit_cache_control, cache_deception_armor, waf, forwarding_url,
-                           host_header_override, resolve_override.
+   "targets":The target URL pattern to evaluate on a request.
+   "actions":An array of actions to perform if the targets of this rule match the request. Available actions are:
+       disable_security, always_use_https, ssl, browser_cache_ttl,
+       security_level, cache_level, edge_cache_ttl, bypass_cache_on_cookie,
+       browser_check, server_side_exclude, serve_stale_content, email_obfuscation,
+       automatic_https_rewrites, opportunistic_encryption, ip_geolocation,
+       explicit_cache_control, cache_deception_armor, waf, forwarding_url,
+       host_header_override, resolve_override.
 
-                           And some actions are limited to Enterprise plan:
-                               cache_on_cookie, disable_apps, disable_performance, minify,
-                               image_load_optimization, origin_error_page_pass_thru, response_buffering,
-                               image_size_optimization, script_load_optimization, true_client_ip_header,
-                               sort_query_string_for_cache.
+   And some actions are limited to Enterprise plan:
+       cache_on_cookie, disable_apps, disable_performance, minify,
+       image_load_optimization, origin_error_page_pass_thru, response_buffering,
+       image_size_optimization, script_load_optimization, true_client_ip_header,
+       sort_query_string_for_cache.
 
-                   The optional fields are priority, status:
+The optional fields are priority, status:
 
-                       "priority":A number that indicates the preference for a page rule over another. Default is 1.
-                       "status":Status of the page rule. The valid values are 'active' and 'disabled', default is 'disabled'.
+   "priority":A number that indicates the preference for a page rule over another. Default is 1.
+   "status":Status of the page rule. The valid values are 'active' and 'disabled', default is 'disabled'.
 
-                   Sample JSON data:
+Sample JSON data:
 
                    {
                        "targets": [
@@ -2540,7 +2539,7 @@ Manipulate page rules by using the following `pagerule` commmands.
                    
    -j, --json-file  A file contains input JSON data.
    
-   `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+   `-i, --instance INSTANCE_NAME`   Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
    
    `--output FORMAT`     Specify output format, only JSON is supported now.
 
@@ -2629,6 +2628,8 @@ Manipulate rate limits by using the following `ratelimit` commands.
 
    `ibmcloud cis ratelimit-rule-create  DNS_DOMAIN_ID (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
+   `ibmcloud cis ratelimit-rule-create DNS_DOMAIN_ID --url URL [--description DESCRIPTION] [--threshold NUM] [--period SECONDS] [...]`
+
 **ARGUMENTS**
 
    `DNS_DOMAIN_ID` is the ID of DNS domain.
@@ -2660,11 +2661,13 @@ The required fields in JSON data are `match`, `threshold`, `period`, `action`:
        * `content_type`: The content-type of the body, which must be one of the following: `text/plain`, `text/xml`, `application/json`.
        * `body`: The body to return. The content here must conform to the `content_type`. Max length is 10240.
 
-The optional fields are `id`, `disabled`, `description`, and `bypass`:
+The optional fields are `id`, `disabled`, `description`, `correlate` and `bypass`:
       
    * `id`: Identifier of the rate limiting rule.
    * `disabled`: Whether this rate limiting rule is currently disabled.
    * `description`: A note that you can use to describe the reason for a rate limiting rule.
+   * `correlate`: Whether to enable NAT based rate limiting.
+     * `by`: Valid values: `nat`.
    * `bypass`: Criteria that allows the rate limit to be bypassed. For example, to express that you shouldn’t apply a rate limit to a given set of URLs.
      * `name`: Valid values is `url`.
      * `value`: The url to bypass.
@@ -2683,6 +2686,9 @@ The optional fields are `id`, `disabled`, `description`, and `bypass`:
                                     ],
                                     "threshold": 60,
                                     "period": 900,
+                                    "correlate": {
+                                             "by": "nat"
+                                    },
                                     "action": [
                                             {
                                                    "mode": "simulate",
@@ -2737,6 +2743,7 @@ The optional fields are `id`, `disabled`, `description`, and `bypass`:
 
    `ibmcloud cis ratelimit-rule-update DNS_DOMAIN_ID RATELIMIT_RULE_ID  (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
 
+   `ibmcloud cis ratelimit-rule-update DNS_DOMAIN_ID RATELIMIT_RULE_ID [--url URL] [--description DESCRIPTION] [--threshold NUM] [--period SECONDS] [...]`
 
 **ARGUMENTS**
 
@@ -2771,10 +2778,12 @@ The required fields in JSON data are `id`, `match`, `threshold`, `period`, `acti
       * `content_type`: The content-type of the body. Must be one of the following: `text/plain`, `text/xml`, `application/json`.
       * `body`: The body to return. The content here must conform to the content_type. Max length is 10240.
 
-The optional fields are `disabled`, `description`, and `bypass`:      
+The optional fields are `disabled`, `description`, `correlate` and `bypass`:      
                     
  * `disabled`: Whether this rate limiting rule is currently disabled.
  * `description`: A note that you can use to describe the reason for a rate limit.
+ * `correlate`: Whether to enable NAT based rate limiting.
+     * `by`: Valid values: `nat`.
  * `bypass`: Criteria that allows the rate limit to be bypassed. For example, to express that you shouldn’t apply a rate limit to a given set of URLs.
     * `name`: Valid values is `url`.
     * `value`: The url to bypass.
@@ -2914,7 +2923,7 @@ Manipulate CIS Service instances by using the following `instance` commands.
 
    `INSTANCE_NAME` is the name of CIS service instance.
 
-   `PLAN` is the name or id of a service plan.
+   `PLAN` is the name or ID of a service plan.
 
 **OPTIONS**
 
@@ -2960,7 +2969,7 @@ Manipulate CIS Service instances by using the following `instance` commands.
 
    `--name`    CIS service instance name.
 
-   `--plan`    The name or id of a service plan.
+   `--plan`    The name or ID of a service plan.
 
    `--output`  Specify output format, only JSON is supported now.
 
@@ -3067,7 +3076,7 @@ Manipulate routing by using the following `routing` commands.
 
 **ARGUMENTS**
 
-   `DNS_DOMAIN_ID` is the id of DNS domain.
+   `DNS_DOMAIN_ID` is the ID of DNS domain.
 
 **OPTIONS**
 
@@ -3329,7 +3338,7 @@ affect price.
 
 **ARGUMENTS**
 
-  `DNS_DOMAIN_ID`  The id of DNS domain.
+  `DNS_DOMAIN_ID`  The ID of DNS domain.
 
 **OPTIONS**
    `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
@@ -3350,7 +3359,7 @@ affect price.
 
 **ARGUMENTS**
 
-  `DNS_DOMAIN_ID`  The id of DNS domain.
+  `DNS_DOMAIN_ID`  The ID of DNS domain.
 
 **OPTIONS**
    `--request-type REQUEST_TYPE`        Signature type desired on certificate. Valid values: "origin-rsa", "origin-ecc".
@@ -3387,7 +3396,7 @@ affect price.
    `-j, --json-file JSON_FILE`  A file contains input JSON data.
 
 
-   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
    
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
@@ -3405,13 +3414,13 @@ affect price.
 
 **ARGUMENTS**
 
-  `DNS_DOMAIN_ID`  The id of DNS domain.
+  `DNS_DOMAIN_ID`  The ID of DNS domain.
 
-  `CERT_ID` The id of Origin Certificate.
+  `CERT_ID` The ID of Origin Certificate.
 
 
 **OPTIONS**
-   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
    
    `--output FORMAT`    Specify output format, only JSON is supported now.
 
@@ -3428,13 +3437,13 @@ affect price.
 
 **ARGUMENTS**
 
-  `DNS_DOMAIN_ID`  The id of DNS domain.
+  `DNS_DOMAIN_ID`  The ID of DNS domain.
 
-  `CERT_ID` The id of Origin Certificate.
+  `CERT_ID` The ID of Origin Certificate.
 
 
 **OPTIONS**
-   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by 'ibmcloud cis instance-set' is used.
+   `-i, --instance INSTANCE_NAME`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 
 ## Web Application Firewall (WAF)
 {: #waf}
@@ -3738,9 +3747,9 @@ Manipulate how the Range App performs using the following `range-app` commands:
 
 **USAGE**
 
-   `ibmcloud cis range-app-create DNS_DOMAIN_ID --name NAME --edge-port EDGE_PORT --origin-direct ORIGIN_DIRECT [--origin-direct ORIGIN_DIRECT] [--proxy-protocol on|off] [--ip-firewall on|off]`
+   `ibmcloud cis range-app-create DNS_DOMAIN_ID --name NAME --edge-port EDGE_PORT --origin-direct ORIGIN_DIRECT [--origin-direct ORIGIN_DIRECT] [--proxy-protocol on|off] [--ip-firewall on|off] [--edge-connectivity all|ipv4|ipv6] [--edge-tls off|flexible|full|strict] [--traffic-type direct/http/https]`
    
-   `ibmcloud cis range-app-create DNS_DOMAIN_ID --name NAME --edge-port EDGE_PORT --origin-lb-name ORIGIN_LB_NAME --origin-lb-port ORIGIN_LB_PORT [--proxy-protocol on|off] [--ip-firewall on|off]`
+   `ibmcloud cis range-app-create DNS_DOMAIN_ID --name NAME --edge-port EDGE_PORT --origin-lb-name ORIGIN_LB_NAME --origin-lb-port ORIGIN_LB_PORT [--proxy-protocol on|off] [--ip-firewall on|off] [--edge-connectivity all|ipv4|ipv6] [--edge-tls off|flexible|full|strict] [--traffic-type direct/http/https]`
    
    `ibmcloud cis range-app-create DNS_DOMAIN_ID -s JSON_STR`
    
@@ -3762,9 +3771,18 @@ Manipulate how the Range App performs using the following `range-app` commands:
 
    * `--origin-lb-port value`       The Load Balancer port associated with the range application. (default: 22)
 
-   * `--proxy-protocol value`       Control whether or not enable Proxy Protocol v1 to the origin. Valid values: "on", "off". (default: "off")
+   * `--protocol value`             Protocol type. Valid values: "tcp", "udp". UDP protocol support is in early access, request custom UDP from CIS dashboard before creating range UDP app. (default: "tcp")
+
+   * `--proxy-protocol value`       Enable Proxy Protocol to the origin. Valid values: "on", "off", "v1", "v2", "simple". (default: "off")
+                                    [Deprecated] The value 'on' is equivalent to 'v1'.
    
    * `--ip-firewall value`          Control whether or not enables the IP Firewall for this application. Valid values: "on", "off". (default: "off")
+
+   * `--edge-connectivity value`      The IP versions supported for inbound connections on range anycast IPs. Valid values: "all", "ipv4", "ipv6". (default: "all")
+
+   * `--edge-tls value`               The type of TLS termination associated with the application. Valid values: "off", "flexible", "full", "strict". (default: "off")
+
+   * `--traffic-type value`           Determines how data travels from the edge to your origin. Valid values: "direct", "http", "https". (default: "direct")
 
    * `-s value, --json-str value`   The JSON data describing a range application.
                                 
@@ -3775,45 +3793,62 @@ Manipulate how the Range App performs using the following `range-app` commands:
             * "name": The name of DNS record for the range application.
             * "type": The type of DNS record associated with the application. Valid values: "CNAME".
                                 
-      * The optional fields are "origin_direct", "origin_dns", "origin_port", "proxy_protocol", "ip_firewall".
+      * The optional fields are "origin_direct", "origin_dns", "origin_port", "proxy_protocol", "ip_firewall", "edge_ips", "tls", "traffic_type".
                                     
          * "origin_direct": A list of destination addresses to the origin.
          * "origin_dns": Method and parameters used to discover the origin server address via DNS.
          * "name": DNS record name.
          * "origin_port": The destination port at the origin.
-         * "proxy_protocol": Control whether or not enable Proxy Protocol v1 to the origin. Valid values: "on", "off".
+         * "proxy_protocol": Enable Proxy Protocol to the origin. Valid values: "on", "off", "v1", "v2", "simple". (default: "off").
+                             [Deprecated] The value 'on' is equivalent to 'v1'.
          * "ip_firewall": Control whether or not enables the IP Firewall for this application. Valid values: "on", "off".
-                                
+         * "edge_ips": The anycast edge IP configuration for the hostname of this application.
+               * "type": The type of edge IP configuration specified. Dynamically allocated edge IPs use range anycast IPs in accordance with the connectivity you specify. Valid values: "dynamic".
+               * "connectivity": The IP versions supported for inbound connections on range anycast IPs. Valid values: "all", "ipv4", "ipv6".
+         * "tls": The type of TLS termination associated with the application. Valid values: "off", "flexible", "full", "strict".
+         * "traffic_type": Determines how data travels from the edge to your origin. When set to 'direct', range will send traffic directly to your origin, and the application's type is derived from the protocol. When set to 'http' or 'https', range will apply CIS's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. Valid values: "direct", "http", "https". (default: "direct")            
       Sample JSON data:
                                 
-          {
-              "protocol": "tcp/22",
-              "dns": {
-                  "type": "CNAME",
-                  "name": "ssh.example.com"
-              },
-              "origin_direct": [
-                  "tcp://1.2.3.4:22",
-                  "tcp://1.2.3.4:23",
-                  "tcp://1.2.3.4:24"
-              ],
-              "proxy_protocol": false,
-              "ip_firewall": false
-          }
+         {
+            "protocol": "tcp/22",
+            "dns": {
+               "type": "CNAME",
+               "name": "ssh.example.com"
+            },
+            "origin_direct": [
+               "tcp://1.2.3.4:22",
+               "tcp://1.2.3.4:23",
+               "tcp://1.2.3.4:24"
+            ],
+            "proxy_protocol": false,
+            "ip_firewall": false,
+            "edge_ips": {
+               "type": "dynamic",
+               "connectivity": "all"
+            },
+            "tls": "full",
+            "traffic_type": "direct"
+         }
 
-          {
-              "protocol": "tcp/22",
-              "dns": {
-                  "type": "CNAME",
-                  "name": "glb.example.com"
-              },
-              "origin_dns": {
-                  "name": "name-to-glb.example.com"
-              },
-              "origin_port": 22,
-              "proxy_protocol": false,
-              "ip_firewall": false
-          }
+         {
+            "protocol": "tcp/22",
+            "dns": {
+               "type": "CNAME",
+               "name": "glb.example.com"
+            },
+            "origin_dns": {
+               "name": "name-to-glb.example.com"
+            },
+            "origin_port": 22,
+            "proxy_protocol": false,
+            "ip_firewall": false,
+            "edge_ips": {
+               "type": "dynamic",
+               "connectivity": "all"
+            },
+            "tls": "full",
+            "traffic_type": "direct"
+         }
 
    * `-j value, --json-file value`  A file contains input JSON data.
 
@@ -3858,9 +3893,16 @@ Manipulate how the Range App performs using the following `range-app` commands:
 
    * `--origin-lb-port value`       The Load Balancer port associated with the range application. (default: 22)
 
-   * `--proxy-protocol value`       Control whether or not enable Proxy Protocol v1 to the origin. Valid values: "on", "off". (default: "off")
+   * `--proxy-protocol value`       Enable Proxy Protocol to the origin. Valid values: "on", "off", "v1", "v2", "simple". (default: "off")
+                                    [Deprecated] The value 'on' is equivalent to 'v1'.
    
    * `--ip-firewall value`          Control whether or not enables the IP Firewall for this application. Valid values: "on", "off". (default: "off")
+
+   * `--edge-connectivity value`      The IP versions supported for inbound connections on range anycast IPs. Valid values: "all", "ipv4", "ipv6". (default: "all")
+
+   * `--edge-tls value`               The type of TLS termination associated with the application. Valid values: "off", "flexible", "full", "strict". (default: "off")
+
+   * `--traffic-type value`           Determines how data travels from the edge to your origin. Valid values: "direct", "http", "https". (default: "direct")
 
    * `-s value, --json-str value`   The JSON data describing a range application.
                                 
@@ -3877,39 +3919,57 @@ Manipulate how the Range App performs using the following `range-app` commands:
          * "origin_dns": Method and parameters used to discover the origin server address via DNS.
          * "name": DNS record name.
          * "origin_port": The destination port at the origin.
-         * "proxy_protocol": Control whether or not enable Proxy Protocol v1 to the origin. Valid values: "on", "off".
+         * "proxy_protocol": Enable Proxy Protocol to the origin. Valid values: "on", "off", "v1", "v2", "simple". (default: "off")
+                             [Deprecated] The value 'on' is equivalent to 'v1'.
          * "ip_firewall": Control whether or not enables the IP Firewall for this application. Valid values: "on", "off".
+         * "edge_ips": The anycast edge IP configuration for the hostname of this application.
+               * "type": The type of edge IP configuration specified. Dynamically allocated edge IPs use range anycast IPs in accordance with the connectivity you specify. Valid values: "dynamic".
+               * "connectivity": The IP versions supported for inbound connections on range anycast IPs. Valid values: "all", "ipv4", "ipv6".
+         * "tls": The type of TLS termination associated with the application. Valid values: "off", "flexible", "full", "strict".
+         * "traffic_type": Determines how data travels from the edge to your origin. When set to 'direct', range will send traffic directly to your origin, and the application's type is derived from the protocol. When set to 'http' or 'https', range will apply CIS's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. Valid values: "direct", "http", "https". (default: "direct")
                                 
       Sample JSON data:
                                 
-          {
-              "protocol": "tcp/22",
-              "dns": {
-                  "type": "CNAME",
-                  "name": "ssh.example.com"
-              },
-              "origin_direct": [
-                  "tcp://1.2.3.4:22",
-                  "tcp://1.2.3.4:23",
-                  "tcp://1.2.3.4:24"
-              ],
-              "proxy_protocol": false,
-              "ip_firewall": false
-          }
+         {
+            "protocol": "tcp/22",
+            "dns": {
+               "type": "CNAME",
+               "name": "ssh.example.com"
+            },
+            "origin_direct": [
+               "tcp://1.2.3.4:22",
+               "tcp://1.2.3.4:23",
+               "tcp://1.2.3.4:24"
+            ],
+            "proxy_protocol": false,
+            "ip_firewall": false,
+            "edge_ips": {
+               "type": "dynamic",
+               "connectivity": "all"
+            },
+            "tls": "full",
+            "traffic_type": "direct"
+         }
 
-          {
-              "protocol": "tcp/22",
-              "dns": {
-                  "type": "CNAME",
-                  "name": "glb.example.com"
-              },
-              "origin_dns": {
-                  "name": "name-to-glb.example.com"
-              },
-              "origin_port": 22,
-              "proxy_protocol": false,
-              "ip_firewall": false
-          }
+         {
+            "protocol": "tcp/22",
+            "dns": {
+               "type": "CNAME",
+               "name": "glb.example.com"
+            },
+            "origin_dns": {
+               "name": "name-to-glb.example.com"
+            },
+            "origin_port": 22,
+            "proxy_protocol": false,
+            "ip_firewall": false,
+            "edge_ips": {
+               "type": "dynamic",
+               "connectivity": "all"
+            },
+            "tls": "full",
+            "traffic_type": "direct"
+         }
 
    * `-j value, --json-file value`  A file contains input JSON data.
 
@@ -4148,7 +4208,7 @@ Manipulate how the Log Push performs using the following `logpush-job` commands:
 
    * `--timestamps value`    Set the format in which response timestamps are returned. Valid values: "unix", "unixnano", "rfc3339".
    
-   * `--dataset value`       The category of logs you want to receive, the value can't be changed after the job is created.
+   * `--dataset value`       The category of logs you want to receive. This value cannot be changed after the job is created.
                              Valid values: "http_requests", "range_events". (default: "http_requests")                              
 
    * `-i , --instance value` Instance name. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
@@ -4280,7 +4340,7 @@ Manipulate how the Security Events performs using the following `security-events
 ### List Security Events
 {: #list-security-event}
 
-The `security-events` command is replacing the `firewall-events` command. It can pull up to 100 days of security events which may be triggered from a wider variety of sources (other than firewall) such as rate-limiting, L7 DDoS, and brower-integrity-check. With the new `security-events` command, you able to list only firewall events by specifying the `--source` options.
+The `security-events` command is replacing the `firewall-events` command. It can pull up to 100 days of security events which may be triggered from a wider variety of sources (other than firewall) such as rate-limiting, L7 DDoS, and browser-integrity-check. With the new `security-events` command, you able to list only firewall events by specifying the `--source` options.
 
 **NAME**
 
@@ -4936,4 +4996,218 @@ Manipulate how Access Policy performs using the following `access-policy` comman
 **OPTIONS**
 
    * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+## Firewall Rules
+{: #firewall-rules}
+
+Manipulate how firewall rules perform using the following `firewall-rules` commands:
+
+### List Firewall Rules
+{: #list-firewall-rules}
+
+**NAME**
+
+   `firewall-rules` - Retrieve a list of currently existing firewall-rules for a given DNS domain.
+
+**USAGE**
+
+   `ibmcloud cis firewall-rules DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `--page value`                Page number of paginated results. (default: 1)
+   
+   * `--per-page value`            Number of firewall rules per page. Min: 5. Max: 100. (default: 25)
+   
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+   
+   * `--output value`              Specify output format, only JSON is supported now.
+  
+### Show a Firewall Rule
+{: #show-a-firewall-rule}
+
+**NAME**
+
+   `firewall-rule` - Retrieve a specific firewall-rule for a given DNS domain.
+
+**USAGE**
+
+   `ibmcloud cis firewall-rule DNS_DOMAIN_ID FIREWALL_RULE_ID [-i, --instance INSTANCE] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `FIREWALL_RULE_ID` is the ID of firewall-rule.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+   
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Create a Firewall Rule
+{: #create-a-firewall-rule}
+
+**NAME**
+
+   `firewall-rule-create` - Create a firewall-rule for a given DNS domain.
+
+**USAGE**
+
+   `ibmcloud cis firewall-rule-create DNS_DOMAIN_ID --expression EXPRESSION --action ACTION [--priority PRIORITY] [--paused on|off] [--description DESCRIPTION] [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+   `ibmcloud cis firewall-rule-create DNS_DOMAIN_ID (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+**OPTIONS**
+
+   * `--expression value`           A filter expression. For example, "ip.src eq 93.184.216.0".
+
+   * `--action value`               The rule action to perform. Valid values: "log", "allow", "challenge", "js_challenge", "block".
+
+   * `--priority value`             The rule's priority. Valid values: 0 ~ 2147483647. Value "0" means to set to the default value.
+
+   * `--description value`          To briefly describe the rule.
+
+   * `--paused value`               Indicates if the rule is active. Valid values: "on", "off". Default value is "off".
+
+   * `-s value, --json-str value`   The JSON data describing a firewall-rule.
+
+      * The required fields in JSON data are "expression", "action".
+
+         * "expression": A filter expression. For example, "ip.src eq 93.184.216.0"
+         * "action": The rule action to perform. Valid values: "log", "allow", "challenge", "js_challenge", "block".
+
+      * The optional fields are "description", "priority", "paused".
+
+         * "description": To briefly describe the rule.
+         * "priority": The rule's priority. Valid values: 0 ~ 2147483647. Value "0" means to set to the default value.
+         * "paused": Indicates if the rule is active. Valid values: "on", "off".Default value is "off".
+
+      Sample JSON data:
+
+      {
+         "expression": "ip.src eq 93.184.216.1 and http.request.uri.path ~ \"^.*/wp-login.php$\"",
+         "action": "allow",
+         "priority": 100,
+         "paused": false,
+         "description": "do not challenge login from office"
+      }
+
+   * `-j value, --json-file value`  A file contains input JSON data.
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+   
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Update a Firewall Rule
+{: #update-a-firewall-rule}
+
+**NAME**
+
+   `firewall-rule-update` - Update a specific firewall-rule for a given DNS domain.
+
+**USAGE**
+
+   `ibmcloud cis firewall-rule-update DNS_DOMAIN_ID FIREWALL_RULE_ID [--expression EXPRESSION] [--action ACTION] [--priority PRIORITY] [--paused on|off] [--description DESCRIPTION] [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+   `ibmcloud cis firewall-rule-update DNS_DOMAIN_ID FIREWALL_RULE_ID (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `FIREWALL_RULE_ID` is the ID of firewall-rule.
+
+**OPTIONS**
+
+   * `--expression value`           A filter expression. For example, "ip.src eq 93.184.216.0".
+
+   * `--action value`               The rule action to perform. Valid values: "log", "allow", "challenge", "js_challenge", "block".
+
+   * `--priority value`             The rule's priority. Valid values: 0 ~ 2147483647. Value "0" means to set to the default value.
+
+   * `--description value`          To briefly describe the rule.
+
+   * `--paused value `              Indicates if the rule is active. Valid values: "on", "off".Default value is "off".
+
+   * `-s value, --json-str value`   The JSON data describing a firewall-rule.
+
+        Note: Fields "description", "priority", "paused" which aren't explicitly set in JSON data will be overwrited by the default value.
+
+        * The required fields in JSON data are "action".
+
+           * "action": The rule action to perform. Valid values: "log", "allow", "challenge", "js_challenge", "block".
+
+        * The optional fields are "expression", "description", "priority", "paused".
+
+           * "expression": A filter expression. For example, "ip.src eq 93.184.216.0".
+           * "description": To briefly describe the rule.
+           * "priority": The rule's priority. Valid values: 0 ~ 2147483647. Value "0" means to set to the default value.
+           * "paused": Indicates if the rule is active. Valid values: "on", "off".Default value is "off".
+
+         Sample JSON data:
+
+         {
+            "expression": "ip.src eq 93.184.216.1 and http.request.uri.path ~ \"^.*/wp-login.php$\"",
+            "action": "allow",
+            "priority": 100,
+            "paused": false,
+            "description": "do not challenge login from office"
+         }
+
+   * `-j value, --json-file value` A file contains input JSON data.
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+   
+   * `--output value`              Specify output format, only JSON is supported now.
+
+### Delete a Firewall Rule
+{: #delete-a-Firewwall-rule}
+
+**NAME**
+
+   `firewall-rule-delete` - Delete a specific firewall-rule for a given DNS domain.
+
+**USAGE**
+
+   `ibmcloud cis firewall-rule-delete DNS_DOMAIN_ID FIREWALL_RULE_ID [-i, --instance INSTANCE]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `FIREWALL_RULE_ID` is the ID of firewall-rule.
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+### Validate a Firewall Rule Expression
+{: #validate-a-firewall-rule-expression}
+
+**NAME**
+
+   `firewall-rule-validate` - Validate a firewall-rule expression.
+
+**USAGE**
+
+   `ibmcloud cis firewall-rule-validate DNS_DOMAIN_ID EXPRESSION [-i, --instance INSTANCE]`
+
+**ARGUMENTS**
+
+   * `DNS_DOMAIN_ID` is the ID of DNS domain.
+
+   * `EXPRESSION` is a filter expression. For example, "ip.src eq 93.184.216.0".
+
+**OPTIONS**
+
+   * `-i value, --instance value`  Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
 

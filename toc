@@ -7,8 +7,6 @@
 Cloud Internet Services (CIS)
 
     {: .navgroup id="reference"}
-    {: .topicgroup}  
-    CLI plugin commands (IBM Cloud documentation)
-        cis-cli-plugin.md
+    cis-cli-plugin.md
 
     {: .navgroup-end}
