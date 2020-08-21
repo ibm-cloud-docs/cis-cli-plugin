@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-08-12"
+lastupdated: "2020-08-21"
 
 ---
 
@@ -4325,212 +4325,6 @@ ibmcloud cis page-rule 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890ca
 ```
 {: pre}
 
-### `ibmcloud cis cis waf-override-create`
-{: #create-waf-override}
-
-Create a URL based Web Application Firewall (WAF) rules.
-
-```
-ibmcloud cis waf-override-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE_NAME] [--output FORMAT]
-```
-{: pre}
-
-#### Command options
-{: #create-waf-override-options}
-git
-- **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
-- **--json**: The JSON file or JSON string used to describe a override waf rule. Required.
-   - The required fields in JSON data are `urls` and `rules`.
-      - `urls`: URLs to be included in this rule definition. Wildcards are permitted.
-      - `rules`: Change the action assigned to a WAF rule. The keys of this object are WAF rule IDs and the values must be a valid WAF action. Unless disabling the rule, ensure that you also enable the rule group that this WAF rule belongs to. Max length: 1024.
-   - The optional fields are `paused`, `description`, `priority`, `groups` and `rewrite_action`.
-     - `paused`: Whether this package is currently paused. Valid values: `true` and `false`.
-     - `description`: A note that you can use to describe the purpose of this rule.
-     - `priority`: Relative priority of this configuration when multiple configurations match a single URL. Higher priority configurations may overwrite values set by lower priority configurations. Min value is `-1000000000`, max value is `1000000000`.
-     - `groups` Enable or disable WAF rule groups. The keys of this object are WAF rule group IDs and the values must be a valid WAF action (usually `default` or `disable`).
-     - `rewrite_action`: When a WAF rule matches, substitute its configured action for a different action specified by this object.
-
-   Sample JSON data:
-
-   ```
-      {
-         "description": "Enable IBM Magento ruleset for www.example.com",
-         "urls": [
-            "www.example.com/*"
-         ],
-         "priority": 1,
-         "groups": {
-            "ea8687e59929c1fd05ba97574ad43f77": "default"
-         },
-         "rules": {
-            "100015": "disable"
-         },
-         "rewrite_action": {
-            "default": "block",
-            "challenge": "block",
-            "simulate": "disable"
-         }
-      }
-   ```
-- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-- **--output**: Specify output format, only JSON is supported now.
-
-#### Examples
-{: #create-waf-override-examples}
-
-Create a waf overide rule under instance `cis-demo`.
-
-```
-ibmcloud cis waf-override-create 31984fea73a15b45779fa0df4ef62f9b --json '{"description":"Enable IBM Magento ruleset for www.example.com","urls":["www.example.com/*"],"priority":1,"groups":{"ea8687e59929c1fd05ba97574ad43f77":"default"},"rules":{"100015":"disable"},"rewrite_action":{"default":"block","challenge":"block","simulate":"disable"}}' -i "cis-demo"
-```
-{: pre}
-
-### `ibmcloud cis cis waf-override-update`
-{: #update-waf-override}
-
-Update a URL based Web Application Firewall (WAF) rules.
-
-```
-ibmcloud cis waf-override-update DNS_DOMAIN_ID OVERRIDE_WAF_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE_NAME] [--output FORMAT]
-```
-{: pre}
-
-#### Command options
-{: #update-waf-override-options}
-
-- **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
-- **OVERRIDE_WAF_ID**: The ID of override waf rule. Required.
-- **--json**: The JSON file or JSON string used to describe a override waf rule. Required.
-   - The required fields in JSON data are `urls` and `rules`.
-      - `urls`: URLs to be included in this rule definition. Wildcards are permitted.
-      - `rules`: Change the action assigned to a WAF rule. The keys of this object are WAF rule IDs and the values must be a valid WAF action. Unless disabling the rule, ensure that you also enable the rule group that this WAF rule belongs to. Max length: 1024.
-   - The optional fields are `paused`, `description`, `priority`, `groups` and `rewrite_action`.
-     - `paused`: Whether this package is currently paused. Valid values: `true` and `false`.
-     - `description`: A note that you can use to describe the purpose of this rule.
-     - `priority`: Relative priority of this configuration when multiple configurations match a single URL. Higher priority configurations may overwrite values set by lower priority configurations. Min value is`-1000000000`, max value is `1000000000`.
-     - `groups` Enable or disable WAF rule groups. The keys of this object are WAF rule group IDs and the values must be a valid WAF action (usually `default` or `disable`).
-     - `rewrite_action`: When a WAF rule matches, substitute its configured action for a different action specified by this object.
-
-   Sample JSON data:
-
-   ```
-   {
-      "description": "Enable IBM Magento ruleset for www.example.com",
-      "urls": [
-         "www.example.com/*"
-      ],
-      "priority": 1,
-      "groups": {
-         "ea8687e59929c1fd05ba97574ad43f77": "default"
-      },
-      "rules": {
-         "100015": "disable"
-      },
-      "rewrite_action": {
-         "default": "block",
-         "challenge": "block",
-         "simulate": "disable"
-      }
-   }
-   ```
-- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-- **--output**: Specify output format, only JSON is supported now.
-
-#### Examples
-{: #update-waf-override-examples}
-
-Update a waf overide rule under instance `cis-demo`.
-
-```
-ibmcloud cis waf-override-update 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890caea70ae32 --json '{"description":"Enable IBM Magento ruleset for www.example.com","urls":["www.example.com/*"],"priority":1,"groups":{"ea8687e59929c1fd05ba97574ad43f77":"default"},"rules":{"100015":"disable"},"rewrite_action":{"default":"block","challenge":"block","simulate":"disable"}}' -i "cis-demo"
-```
-{: pre}
-
-### `ibmcloud cis cis waf-overrides`
-{: #list-waf-overrides}
-
-List all URL based Web Application Firewall (WAF) rules.
-
-```
-ibmcloud cis waf-overrides DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE_NAME] [--output FORMAT]
-```
-{: pre}
-
-#### Command options
-{: #list-waf-overrides-options}
-
-- **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
-- **--page value**: Page number of paginated results. The default value is `1`.
-- **--per-page value**: Number of rules per page. The default value is `50`.
-- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-- **--output**: Specify output format, only JSON is supported now.
-
-#### Examples
-{: #list-waf-override-examples}
-
-List waf overide rules under instance `cis-demo`.
-
-```
-ibmcloud cis  waf-overrides 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
-```
-{: pre}
-
-### `ibmcloud cis cis waf-override`
-{: #get-waf-override}
-
-Get a URL based Web Application Firewall (WAF) rule.
-
-```
-ibmcloud cis waf-override DNS_DOMAIN_ID OVERRIDE_WAF_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]
-```
-{: pre}
-
-#### Command options
-{: #get-waf-overrides-options}
-
-- **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
-- **OVERRIDE_WAF_ID**: The ID of override waf rule.  Required.
-- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-- **--output**: Specify output format, only JSON is supported now.
-
-#### Examples
-{: #get-waf-override-examples}
-
-Get a waf overide rule under instance `cis-demo`.
-
-```
-ibmcloud cis waf-override 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890caea70ae32 -i "cis-demo"
-```
-{: pre}
-
-### `ibmcloud cis cis waf-override-delete`
-{: #delete-waf-override}
-
-Delete a URL based Web Application Firewall (WAF) rule.
-
-```
-ibmcloud cis waf-override-delete DNS_DOMAIN_ID OVERRIDE_WAF_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]
-```
-{: pre}
-
-#### Command options
-{: #delete-waf-overrides-options}
-
-- **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
-- **OVERRIDE_WAF_ID**: The ID of override waf rule.  Required.
-- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-- **-f, --force**: Attempt to delete URL based WAF rule without prompting for confirmation.
-
-#### Examples
-{: #delete-waf-override-examples}
-
-Delete a waf overide rule under instance `cis-demo`.
-
-```
-ibmcloud cis waf-override-delete 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890caea70ae32 -i "cis-demo"
-```
-{: pre}
-
 ## Range app
 {: #range-app}
 
@@ -6194,5 +5988,211 @@ Disable waf rule `f939de3be84e66e757adcdcb87908023` in waf package `a25a9a7e9c00
 
 ```
 ibmcloud cis waf-rule-mode-set 31984fea73a15b45779fa0df4ef62f9b a25a9a7e9c00afc1fb2e0245519d725b f939de3be84e66e757adcdcb87908023 disable -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis cis waf-override-create`
+{: #create-waf-override}
+
+Create a URL based Web Application Firewall (WAF) rules.
+
+```
+ibmcloud cis waf-override-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE_NAME] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #create-waf-override-options}
+git
+- **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
+- **--json**: The JSON file or JSON string used to describe a override waf rule. Required.
+   - The required fields in JSON data are `urls` and `rules`.
+      - `urls`: URLs to be included in this rule definition. Wildcards are permitted.
+      - `rules`: Change the action assigned to a WAF rule. The keys of this object are WAF rule IDs and the values must be a valid WAF action. Unless disabling the rule, ensure that you also enable the rule group that this WAF rule belongs to. Max length: 1024.
+   - The optional fields are `paused`, `description`, `priority`, `groups` and `rewrite_action`.
+     - `paused`: Whether this package is currently paused. Valid values: `true` and `false`.
+     - `description`: A note that you can use to describe the purpose of this rule.
+     - `priority`: Relative priority of this configuration when multiple configurations match a single URL. Higher priority configurations may overwrite values set by lower priority configurations. Min value is `-1000000000`, max value is `1000000000`.
+     - `groups` Enable or disable WAF rule groups. The keys of this object are WAF rule group IDs and the values must be a valid WAF action (usually `default` or `disable`).
+     - `rewrite_action`: When a WAF rule matches, substitute its configured action for a different action specified by this object.
+
+   Sample JSON data:
+
+   ```
+      {
+         "description": "Enable IBM Magento ruleset for www.example.com",
+         "urls": [
+            "www.example.com/*"
+         ],
+         "priority": 1,
+         "groups": {
+            "ea8687e59929c1fd05ba97574ad43f77": "default"
+         },
+         "rules": {
+            "100015": "disable"
+         },
+         "rewrite_action": {
+            "default": "block",
+            "challenge": "block",
+            "simulate": "disable"
+         }
+      }
+   ```
+- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+- **--output**: Specify output format, only JSON is supported now.
+
+#### Examples
+{: #create-waf-override-examples}
+
+Create a waf overide rule under instance `cis-demo`.
+
+```
+ibmcloud cis waf-override-create 31984fea73a15b45779fa0df4ef62f9b --json '{"description":"Enable IBM Magento ruleset for www.example.com","urls":["www.example.com/*"],"priority":1,"groups":{"ea8687e59929c1fd05ba97574ad43f77":"default"},"rules":{"100015":"disable"},"rewrite_action":{"default":"block","challenge":"block","simulate":"disable"}}' -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis cis waf-override-update`
+{: #update-waf-override}
+
+Update a URL based Web Application Firewall (WAF) rules.
+
+```
+ibmcloud cis waf-override-update DNS_DOMAIN_ID OVERRIDE_WAF_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE_NAME] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #update-waf-override-options}
+
+- **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
+- **OVERRIDE_WAF_ID**: The ID of override waf rule. Required.
+- **--json**: The JSON file or JSON string used to describe a override waf rule. Required.
+   - The required fields in JSON data are `urls` and `rules`.
+      - `urls`: URLs to be included in this rule definition. Wildcards are permitted.
+      - `rules`: Change the action assigned to a WAF rule. The keys of this object are WAF rule IDs and the values must be a valid WAF action. Unless disabling the rule, ensure that you also enable the rule group that this WAF rule belongs to. Max length: 1024.
+   - The optional fields are `paused`, `description`, `priority`, `groups` and `rewrite_action`.
+     - `paused`: Whether this package is currently paused. Valid values: `true` and `false`.
+     - `description`: A note that you can use to describe the purpose of this rule.
+     - `priority`: Relative priority of this configuration when multiple configurations match a single URL. Higher priority configurations may overwrite values set by lower priority configurations. Min value is`-1000000000`, max value is `1000000000`.
+     - `groups` Enable or disable WAF rule groups. The keys of this object are WAF rule group IDs and the values must be a valid WAF action (usually `default` or `disable`).
+     - `rewrite_action`: When a WAF rule matches, substitute its configured action for a different action specified by this object.
+
+   Sample JSON data:
+
+   ```
+   {
+      "description": "Enable IBM Magento ruleset for www.example.com",
+      "urls": [
+         "www.example.com/*"
+      ],
+      "priority": 1,
+      "groups": {
+         "ea8687e59929c1fd05ba97574ad43f77": "default"
+      },
+      "rules": {
+         "100015": "disable"
+      },
+      "rewrite_action": {
+         "default": "block",
+         "challenge": "block",
+         "simulate": "disable"
+      }
+   }
+   ```
+- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+- **--output**: Specify output format, only JSON is supported now.
+
+#### Examples
+{: #update-waf-override-examples}
+
+Update a waf overide rule under instance `cis-demo`.
+
+```
+ibmcloud cis waf-override-update 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890caea70ae32 --json '{"description":"Enable IBM Magento ruleset for www.example.com","urls":["www.example.com/*"],"priority":1,"groups":{"ea8687e59929c1fd05ba97574ad43f77":"default"},"rules":{"100015":"disable"},"rewrite_action":{"default":"block","challenge":"block","simulate":"disable"}}' -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis cis waf-overrides`
+{: #list-waf-overrides}
+
+List all URL based Web Application Firewall (WAF) rules.
+
+```
+ibmcloud cis waf-overrides DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE_NAME] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #list-waf-overrides-options}
+
+- **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
+- **--page value**: Page number of paginated results. The default value is `1`.
+- **--per-page value**: Number of rules per page. The default value is `50`.
+- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+- **--output**: Specify output format, only JSON is supported now.
+
+#### Examples
+{: #list-waf-override-examples}
+
+List waf overide rules under instance `cis-demo`.
+
+```
+ibmcloud cis  waf-overrides 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis cis waf-override`
+{: #get-waf-override}
+
+Get a URL based Web Application Firewall (WAF) rule.
+
+```
+ibmcloud cis waf-override DNS_DOMAIN_ID OVERRIDE_WAF_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #get-waf-overrides-options}
+
+- **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
+- **OVERRIDE_WAF_ID**: The ID of override waf rule.  Required.
+- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+- **--output**: Specify output format, only JSON is supported now.
+
+#### Examples
+{: #get-waf-override-examples}
+
+Get a waf overide rule under instance `cis-demo`.
+
+```
+ibmcloud cis waf-override 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890caea70ae32 -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis cis waf-override-delete`
+{: #delete-waf-override}
+
+Delete a URL based Web Application Firewall (WAF) rule.
+
+```
+ibmcloud cis waf-override-delete DNS_DOMAIN_ID OVERRIDE_WAF_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #delete-waf-overrides-options}
+
+- **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
+- **OVERRIDE_WAF_ID**: The ID of override waf rule.  Required.
+- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+- **-f, --force**: Attempt to delete URL based WAF rule without prompting for confirmation.
+
+#### Examples
+{: #delete-waf-override-examples}
+
+Delete a waf overide rule under instance `cis-demo`.
+
+```
+ibmcloud cis waf-override-delete 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890caea70ae32 -i "cis-demo"
 ```
 {: pre}
