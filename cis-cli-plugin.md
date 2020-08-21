@@ -1602,7 +1602,7 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
    -  Valid values for `true_client_ip_header` are `on`, `off`.
    -  Valid values for `waf` are `on`, `off`.
    -  Valid values for `websockets` are `on`, `off`.
-   -  Valid values for `ciphers` are `ECDHE-ECDSA-AES128-GCM-SHA256`, `ECDHE-ECDSA-CHACHA20-POLY1305`, `ECDHE-RSA-AES128-GCM-SHA256`, `ECDHE-RSA-CHACHA20-POLY1305`, `ECDHE-ECDSA-AES128-SHA256`, `ECDHE-ECDSA-AES128-SHA`, `ECDHE-RSA-AES128-SHA256`, `ECDHE-RSA-AES128-SHA`, `AES128-GCM-SHA256`, `AES128-SHA256`, `AES128-SHA`, `ECDHE-ECDSA-AES256-GCM-SHA384`, `ECDHE-ECDSA-AES256-SHA384`, `ECDHE-RSA-AES256-GCM-SHA384`, `ECDHE-RSA-AES256-SHA384`, `ECDHE-RSA-AES256-SHA`, `AES256-GCM-SHA384`, `AES256-SHA256`, `AES256-SHA`, `DES-CBC3-SHA`. For example: -v AES256-SHA256,AES256-SHA
+   -  Valid values for `ciphers` are `ECDHE-ECDSA-AES128-GCM-SHA256`, `ECDHE-ECDSA-CHACHA20-POLY1305`, `ECDHE-RSA-AES128-GCM-SHA256`, `ECDHE-RSA-CHACHA20-POLY1305`, `ECDHE-ECDSA-AES128-SHA256`, `ECDHE-ECDSA-AES128-SHA`, `ECDHE-RSA-AES128-SHA256`, `ECDHE-RSA-AES128-SHA`, `AES128-GCM-SHA256`, `AES128-SHA256`, `AES128-SHA`, `ECDHE-ECDSA-AES256-GCM-SHA384`, `ECDHE-ECDSA-AES256-SHA384`, `ECDHE-RSA-AES256-GCM-SHA384`, `ECDHE-RSA-AES256-SHA384`, `ECDHE-RSA-AES256-SHA`, `AES256-GCM-SHA384`, `AES256-SHA256`, `AES256-SHA`, `DES-CBC3-SHA`, `default`. For example: `-v AES256-SHA256,AES256-SHA`, using `-v default` to reset configured cipher suites to default value.
 - **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported now.
 
@@ -5500,7 +5500,7 @@ Manipulate how the Security Events performs using the following `security-events
 ### `ibmcloud cis security-events`
 {: #list-security-event}
 
-The `security-events` command is replacing the `firewall-events` command. It can pull up to 100 days of security events which may be triggered from a wider variety of sources (other than firewall) such as rate-limiting, L7 DDoS, and browser-integrity-check. With the new `security-events` command, you able to list only firewall events by specifying the `--source` options.
+The `security-events` command is replacing the `firewall-events` command. It can pull up to 30 days of security events which may be triggered from a wider variety of sources (other than firewall) such as rate-limiting, L7 DDoS, and browser-integrity-check. With the new `security-events` command, you are able to list only firewall events by specifying the `--source` options.
 
 Retrieve a full log of security events include Firewall Rules, Rate Limiting, Security Level, Access Rules, WAF, User Agent Blocking, Zone Lockdown and Advanced DDoS Protection.
 
