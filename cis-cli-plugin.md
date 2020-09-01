@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-08-21"
+lastupdated: "2020-08-28"
 
 ---
 
@@ -2695,8 +2695,7 @@ ibmcloud cis http-request-analytics DNS_DOMAIN_ID [--dataset DATA_SET] [--filter
 
          |  Dataset                     |  Trial / Standard  |  Enterprise / Security / GLB  |   
          |  --------------------------- | ------------------ |  ---------------------------  |   
-         |  httpRequests1dGroups        |  365 days          |  365 days                     |   
-         |  httpRequests1mByColoGroups  |  N/A               |  7 days                       |   
+         |  httpRequests1dGroups        |  365 days          |  365 days                     |    
          |  httpRequests1hGroups        |  30 days           |  90 days                      |   
          |  httpRequests1mGroups        |  3 days            |  7 days                       |   
 
@@ -2713,16 +2712,6 @@ The following operators are supported for all filter options:
 
    `httpRequests1dGroups` and `httpRequests1hGroups` filter options.
     -  `date`
-
-   `httpRequests1mByColoGroups` filter options.
-    -  `date`
-    -  `coloCode`
-    -  `coloCode_like`
-    -  `coloCode_notlike`
-    -  `datetime`
-    -  `datetimeFifteenMinutes`
-    -  `datetimeHour`
-    -  `datetimeHalfOfHour`
 
    `httpRequests1mGroups` filter options.
     -  `datetime`
@@ -2749,18 +2738,6 @@ Following list is usable order options for corresponding dataset and all of orde
     - `sum_pageViews`
     - `sum_threats`
     - `uniq_uniques`
-
-   `httpRequests1mByColoGroups` order options. 
-    -  `orderByParams`
-    -  `coloCode`
-    -  `datetime`
-    -  `datetimeFifteenMinutes`
-    -  `datetimeHour`
-    -  `datetimeHalfOfHour`
-
-   `httpRequests1dByColoGroups` order options. 
-    -  `orderByParams`
-    -  `coloCode`
 
    `httpRequests1hGroups` order options. 
     -  `avg_bytes`
@@ -5994,7 +5971,7 @@ ibmcloud cis waf-rule-mode-set 31984fea73a15b45779fa0df4ef62f9b a25a9a7e9c00afc1
 ### `ibmcloud cis cis waf-override-create`
 {: #create-waf-override}
 
-Create a URL based Web Application Firewall (WAF) rules.
+Create a URL based Web Application Firewall (WAF) rule.
 
 ```
 ibmcloud cis waf-override-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE_NAME] [--output FORMAT]
@@ -6003,7 +5980,7 @@ ibmcloud cis waf-override-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING)
 
 #### Command options
 {: #create-waf-override-options}
-git
+
 - **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
 - **--json**: The JSON file or JSON string used to describe a override waf rule. Required.
    - The required fields in JSON data are `urls` and `rules`.
