@@ -1818,7 +1818,7 @@ ibmcloud cis edge-functions-trigger 31984fea73a15b45779fa0df4ef62f9b 9a7806061c8
 Create an Edge Functions trigger for a given domain of a service instance.
 
 ```
-ibmcloud cis edge-functions-trigger-create DNS_DOMAIN_ID PATTERN_URL [--action-name ACTION_NAME] [-i, --instance INSTANCE_NAME] [--output FORMAT]
+ibmcloud cis edge-functions-trigger-create DNS_DOMAIN_ID PATTERN_URL [--action-name ACTION_NAME] [--disable] [-i, --instance INSTANCE_NAME] [--output FORMAT]
 ```
 {: pre}
 
@@ -1828,6 +1828,7 @@ ibmcloud cis edge-functions-trigger-create DNS_DOMAIN_ID PATTERN_URL [--action-n
 - **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
 - **PATTERN_URL**: The request URL which triggers the action. Required.
 - **action-name**: Action name which the created trigger is attached to. (Enterprise plan only.)
+- **disable**: Disable an Edge Functions trigger.
 - **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported now.
 
@@ -1847,7 +1848,7 @@ ibmcloud cis edge-functions-trigger 31984fea73a15b45779fa0df4ef62f9b "example.ne
 Update an Edge Functions trigger for a given domain of a service instance.
 
 ```
-ibmcloud cis edge-functions-trigger-update DNS_DOMAIN_ID TRIGGER_ID PATTERN_URL [--action-name ACTION_NAME] [-i, --instance INSTANCE_NAME] [--output FORMAT]
+ibmcloud cis edge-functions-trigger-update DNS_DOMAIN_ID TRIGGER_ID PATTERN_URL [--action-name ACTION_NAME] [--disable] [-i, --instance INSTANCE_NAME] [--output FORMAT]
 ```
 {: pre}
 
@@ -1858,6 +1859,7 @@ ibmcloud cis edge-functions-trigger-update DNS_DOMAIN_ID TRIGGER_ID PATTERN_URL 
 - **TRIGGER_ID**: The ID of the trigger. Required.
 - **PATTERN_URL**: The request URL which triggers the action. Required.
 - **action-name**: Action name which the created trigger is attached to. (Enterprise plan only.)
+- **disable**: Disable an Edge Functions trigger.
 - **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported now.
 
@@ -4059,7 +4061,7 @@ ibmcloud cis page-rule-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-
        cache_on_cookie, disable_apps, disable_performance, minify,
        image_load_optimization, origin_error_page_pass_thru, response_buffering,
        image_size_optimization, script_load_optimization, true_client_ip_header,
-       sort_query_string_for_cache.
+       sort_query_string_for_cache, respect_strong_etag.
   - The optional fields are priority, status:
     - `priority`:A number that indicates the preference for a page rule over another. Default is 1.
     - `status`:Status of the page rule. The valid values are `active` and `disabled`, default is `disabled`.
@@ -4154,7 +4156,7 @@ ibmcloud cis page-rule-update DNS_DOMAIN_ID PAGE_RULE_ID (--json @JSON_FILE | JS
        cache_on_cookie, disable_apps, disable_performance, minify,
        image_load_optimization, origin_error_page_pass_thru, response_buffering,
        image_size_optimization, script_load_optimization, true_client_ip_header,
-       sort_query_string_for_cache.
+       sort_query_string_for_cache, respect_strong_etag.
   - The optional fields are priority, status:
     - `priority`:A number that indicates the preference for a page rule over another. Default is 1.
     - `status`:Status of the page rule. The valid values are `active` and `disabled`, default is `disabled`.
