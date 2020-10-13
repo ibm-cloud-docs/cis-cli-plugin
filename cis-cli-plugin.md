@@ -722,16 +722,6 @@ ibmcloud cis custom-pages -d 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 ```
 {: pre}
 
-## Deprecated Commands
-{: #deprecated-commands}
-
-The following commands are deprecated by {{site.data.keyword.cis_short_notm}}.
-
-### `ibmcloud cis firewall-events`
-{: #deprecated-get-firewall-events}
-
-This command is deprecated and is no longer supported by {{site.data.keyword.cis_short_notm}} in CLI plugin version 1.9.9. Use the `ibmcloud cis secuirty-events` command instead.
-
 ## DNS record
 {: #dns-record}
 
@@ -2557,228 +2547,6 @@ ibmcloud cis glb-create 31984fea73a15b45779fa0df4ef62f9b --json '{"description":
 ```
 {: pre}
 
-### `ibmcloud cis firewall-event-analytics`
-{: #firewall-event-analytics  }
-
-Retrieve a full log of firewall events.
-
-```
-ibmcloud cis firewall-event-analytics DNS_DOMAIN_ID [--dataset DATA_SET] [--filter FILTER] [--order FILTER_ORDER] [--limit LIMIT_NUMBER] [-i, --instance INSTANCE_NAME] [--output FORMAT]
-```
-{: pre}
-
-#### Command options
-{: #firewall-event-analytics-options}
-
-- **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
-- **--dataset**:  Requested dataset. The default value is `firewallEventsAdaptiveGroups`.   
- Use the following table to identify which datasets are included in your plan and the range of historical data you can query.
-
-         |  Dataset                        |  Trial / Standard  |  Enterprise / Security / GLB  |   
-         |  ------------------------------ | ------------------ |  ---------------------------  |   
-         |  firewallEventsAdaptiveGroups   |      30 days       |          30 days              | 
-
-- **--filter**: Filter events. The default value is the last 6 hours of data.  
-The following operators are supported for all filter options:
-
-         |  Operator  |  Comparison           |
-         |  gt        |  greater than         |
-         |  lt        |  less than            |
-         |  geq       |  greater or equal to  |
-         |  leq       |  less or equal to     |
-         |  neq       |  not equal            |
-         |  in        |  in                   |
-
-   `firewallEventsAdaptiveGroups` filter options.
-    -  `datetime`
-    -  `datetimeFifteenMinutes`
-    -  `datetimeHour`
-    -  `datetimeFiveMinutes`
-    -  `datetimeMinute`  
-    -  `matchIndex`
-    -  `sampleInterval`   
-    The following filter options support `like` and `notlike` operators. 
-    -  `action`
-    -  `clientASNDescription`
-    -  `clientAsn`
-    -  `clientCountryName`
-    -  `clientIP`
-    -  `clientRefererHost`
-    -  `clientRefererPath` 
-    -  `clientRefererQuery`
-    -  `clientRefererScheme`
-    -  `clientRequestHTTPHost`
-    -  `clientRequestHTTPMethodName`
-    -  `clientRequestHTTPProtocol`
-    -  `clientRequestPath`
-    -  `clientRequestQuery`
-    -  `clientRequestScheme`
-    -  `edgeColoName`
-    -  `edgeResponseStatus`
-    -  `kind`
-    -  `originResponseStatus`
-    -  `originatorRayName`
-    -  `rayName`
-    -  `ref`
-    -  `ruleId`
-    -  `source`
-    -  `userAgent`
-- **--order**: Output order. (default: "datetime_ASC")
-The following list is usable order options for corresponding dataset and all of order options support ASC and DESC action. Combine these filter options and action with `_`.  
-     For example `datetime_ASC` is order by datetime ascending.   
-
-    `firewallEventsAdaptiveGroups` order options. 
-     - `datetime`
-     - `datetimeFifteenMinutes` 
-     - `datetimeHour`
-     - `datetimeFiveMinutes`
-     - `datetimeMinute`
-     - `action`  
-     - `avg_sampleInterval`  
-     - `clientASNDescription`  
-     - `clientAsn`  
-     - `clientCountryName`  
-     - `clientIPClass`  
-     - `clientIP`  
-     - `clientRefererHost`  
-     - `clientRefererPath`  
-     - `clientRefererQuery`  
-     - `clientRefererScheme`  
-     - `clientRequestHTTPHost`  
-     - `clientRequestHTTPMethodName`  
-     - `clientRequestHTTPProtocol`  
-     - `clientRequestPath`  
-     - `clientRequestQuery`  
-     - `clientRequestScheme`  
-     - `count`  
-     - `edgeColoName`  
-     - `edgeResponseStatus`  
-     - `kind`  
-     - `matchIndex`  
-     - `originResponseStatus`  
-     - `originatorRayName`  
-     - `rayName`  
-     - `ref`  
-     - `ruleId`  
-     - `sampleInterval`  
-     - `source`  
-     - `userAgent`  
-     - `visibility` 
-- **--limit**: The number of events to return. (minimum: `1`, maximum: `10000`, default: `10000`)
-- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-- **--output**: Specify output format, only JSON is supported now.
-#### Examples
-{: #firewall-event-analytics-examples}
-
-Get firewall event analytics for domain `31984fea73a15b45779fa0df4ef62f9b`.
-
-```
-ibmcloud cis firewall-event-analytics 31984fea73a15b45779fa0df4ef62f9b --order datetime_ASC \
-     --filter "datetime_geq:2020-06-28T00:00:00Z"  --filter "datetime_leq:2020-06-29T00:00:00Z" --output json
-```
-{: pre}
-
-### `ibmcloud cis http-request-analytics`
-{: #http-request-analytics}
-
-Retrieve a full log of http request events.
-
-```
-ibmcloud cis http-request-analytics DNS_DOMAIN_ID [--dataset DATA_SET] [--filter FILTER] [--order FILTER_ORDER] [--limit LIMIT_NUMBER] [-i, --instance INSTANCE_NAME] [--output FORMAT]
-```
-{: pre}
-
-#### Command options
-{: #http-request-analytics-options}
-
-- **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
-- **--dataset**:  Requested dataset. The default value is `httpRequests1dGroups`.   
- Use the following table to identify which datasets are included in your plan and the range of historical data you can query.
-
-         |  Dataset                     |  Trial / Standard  |  Enterprise / Security / GLB  |   
-         |  --------------------------- | ------------------ |  ---------------------------  |   
-         |  httpRequests1dGroups        |  365 days          |  365 days                     |    
-         |  httpRequests1hGroups        |  30 days           |  90 days                      |   
-         |  httpRequests1mGroups        |  3 days            |  7 days                       |   
-
-- **--filter**: Filter events. The default value is the last 7 days data.  
-The following operators are supported for all filter options:
-
-         |  Operator  |  Comparison           |
-         |  gt        |  greater than         |
-         |  lt        |  less than            |
-         |  geq       |  greater or equal to  |
-         |  leq       |  less or equal to     |
-         |  neq       |  not equal            |
-         |  in        |  in                   |
-
-   `httpRequests1dGroups` and `httpRequests1hGroups` filter options.
-    -  `date`
-
-   `httpRequests1mGroups` filter options.
-    -  `datetime`
-    -  `datetimeFifteenMinutes`
-    -  `datetimeHour`
-    -  `datetimeDay`
-
-- **--order**: Output order. (default: "datetime_ASC")  
-Following list is usable order options for corresponding dataset and all of order options support ASC and DESC action. Combine these order options and action with `_`.  
-     For example `date_ASC` is order by date ascending.   
-
-    Common order options for every http dataset.
-     - `orderByParams`
-     - `date` 
-     - `sum_bytes`
-     - `sum_cachedBytes`
-     - `sum_cachedRequests`
-     - `sum_requests`  
-
-   `httpRequests1dGroups` order options. 
-    - `avg_bytes`
-    - `sum_encryptedBytes`
-    - `sum_encryptedRequests`
-    - `sum_pageViews`
-    - `sum_threats`
-    - `uniq_uniques`
-
-   `httpRequests1hGroups` order options. 
-    -  `avg_bytes`
-    -  `sum_encryptedBytes`
-    -  `sum_encryptedRequests`
-    -  `sum_pageViews`
-    -  `sum_threats`
-    -  `uniq_uniques`
-    -  `datetime`
-
-   `httpRequests1mGroups` order options. 
-    -  `avg_bytes` 
-    -  `sum_encryptedBytes`
-    -  `sum_encryptedRequests`
-    -  `sum_pageViews`
-    -  `sum_threats`
-    -  `uniq_uniques`
-    -  `datetime`
-    -  `datetimeFifteenMinutes`
-    -  `datetimeHour`
-    -  `datetimeFifteenMinutes`
-    -  `datetimeHour`
-    -  `datetimeDay`
-- **--limit**: The number of events to return. (minimum: `1`, maximum: `10000`, default: `10000`)
-- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
-- **--output**: Specify output format, only JSON is supported now.
-
-#### Examples
-{: #http-request-analytics-examples}
-
-Get http request analytics for domain `31984fea73a15b45779fa0df4ef62f9b`.
-
-```
-ibmcloud cis http-request-analytics 31984fea73a15b45779fa0df4ef62f9b --order date_ASC \
-     --dataset httpRequests1dGroups --limit 500 \
-     --filter "date_geq:2020-06-28"  --filter "date_leq:2020-06-29" --output json
-```
-{: pre}
-
 ### `ibmcloud cis glb-update`
 {: #update-glb}
 
@@ -3734,10 +3502,232 @@ ibmcloud cis log-retention-update 31984fea73a15b45779fa0df4ef62f9b --flag on -i 
 
 Manipulate metrics by using the following `metrics` commands.
 
-### `ibmcloud cis web-analytics`
+### `ibmcloud cis firewall-event-analytics`
+{: #firewall-event-analytics  }
+
+Retrieve a full log of firewall events.
+
+```
+ibmcloud cis firewall-event-analytics DNS_DOMAIN_ID [--dataset DATA_SET] [--filter FILTER] [--order FILTER_ORDER] [--limit LIMIT_NUMBER] [-i, --instance INSTANCE_NAME] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #firewall-event-analytics-options}
+
+- **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
+- **--dataset**:  Requested dataset. The default value is `firewallEventsAdaptiveGroups`.   
+ Use the following table to identify which datasets are included in your plan and the range of historical data you can query.
+
+         |  Dataset                        |  Trial / Standard  |  Enterprise / Security / GLB  |   
+         |  ------------------------------ | ------------------ |  ---------------------------  |   
+         |  firewallEventsAdaptiveGroups   |      30 days       |          30 days              | 
+
+- **--filter**: Filter events. The default value is the last 6 hours of data.  
+The following operators are supported for all filter options:
+
+         |  Operator  |  Comparison           |
+         |  gt        |  greater than         |
+         |  lt        |  less than            |
+         |  geq       |  greater or equal to  |
+         |  leq       |  less or equal to     |
+         |  neq       |  not equal            |
+         |  in        |  in                   |
+
+   `firewallEventsAdaptiveGroups` filter options.
+    -  `datetime`
+    -  `datetimeFifteenMinutes`
+    -  `datetimeHour`
+    -  `datetimeFiveMinutes`
+    -  `datetimeMinute`  
+    -  `matchIndex`
+    -  `sampleInterval`   
+    The following filter options support `like` and `notlike` operators. 
+    -  `action`
+    -  `clientASNDescription`
+    -  `clientAsn`
+    -  `clientCountryName`
+    -  `clientIP`
+    -  `clientRefererHost`
+    -  `clientRefererPath` 
+    -  `clientRefererQuery`
+    -  `clientRefererScheme`
+    -  `clientRequestHTTPHost`
+    -  `clientRequestHTTPMethodName`
+    -  `clientRequestHTTPProtocol`
+    -  `clientRequestPath`
+    -  `clientRequestQuery`
+    -  `clientRequestScheme`
+    -  `edgeColoName`
+    -  `edgeResponseStatus`
+    -  `kind`
+    -  `originResponseStatus`
+    -  `originatorRayName`
+    -  `rayName`
+    -  `ref`
+    -  `ruleId`
+    -  `source`
+    -  `userAgent`
+- **--order**: Output order. (default: "datetime_ASC")
+The following list is usable order options for corresponding dataset and all of order options support ASC and DESC action. Combine these filter options and action with `_`.  
+     For example `datetime_ASC` is order by datetime ascending.   
+
+    `firewallEventsAdaptiveGroups` order options. 
+     - `datetime`
+     - `datetimeFifteenMinutes` 
+     - `datetimeHour`
+     - `datetimeFiveMinutes`
+     - `datetimeMinute`
+     - `action`  
+     - `avg_sampleInterval`  
+     - `clientASNDescription`  
+     - `clientAsn`  
+     - `clientCountryName`  
+     - `clientIPClass`  
+     - `clientIP`  
+     - `clientRefererHost`  
+     - `clientRefererPath`  
+     - `clientRefererQuery`  
+     - `clientRefererScheme`  
+     - `clientRequestHTTPHost`  
+     - `clientRequestHTTPMethodName`  
+     - `clientRequestHTTPProtocol`  
+     - `clientRequestPath`  
+     - `clientRequestQuery`  
+     - `clientRequestScheme`  
+     - `count`  
+     - `edgeColoName`  
+     - `edgeResponseStatus`  
+     - `kind`  
+     - `matchIndex`  
+     - `originResponseStatus`  
+     - `originatorRayName`  
+     - `rayName`  
+     - `ref`  
+     - `ruleId`  
+     - `sampleInterval`  
+     - `source`  
+     - `userAgent`  
+     - `visibility` 
+- **--limit**: The number of events to return. (minimum: `1`, maximum: `10000`, default: `10000`)
+- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+- **--output**: Specify output format, only JSON is supported now.
+#### Examples
+{: #firewall-event-analytics-examples}
+
+Get firewall event analytics for domain `31984fea73a15b45779fa0df4ef62f9b`.
+
+```
+ibmcloud cis firewall-event-analytics 31984fea73a15b45779fa0df4ef62f9b --order datetime_ASC \
+     --filter "datetime_geq:2020-06-28T00:00:00Z"  --filter "datetime_leq:2020-06-29T00:00:00Z" --output json
+```
+{: pre}
+
+### `ibmcloud cis http-request-analytics`
+{: #http-request-analytics}
+
+Retrieve a full log of http request events.
+
+```
+ibmcloud cis http-request-analytics DNS_DOMAIN_ID [--dataset DATA_SET] [--filter FILTER] [--order FILTER_ORDER] [--limit LIMIT_NUMBER] [-i, --instance INSTANCE_NAME] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #http-request-analytics-options}
+
+- **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
+- **--dataset**:  Requested dataset. The default value is `httpRequests1dGroups`.   
+ Use the following table to identify which datasets are included in your plan and the range of historical data you can query.
+
+         |  Dataset                     |  Trial / Standard  |  Enterprise / Security / GLB  |   
+         |  --------------------------- | ------------------ |  ---------------------------  |   
+         |  httpRequests1dGroups        |  365 days          |  365 days                     |    
+         |  httpRequests1hGroups        |  30 days           |  90 days                      |   
+         |  httpRequests1mGroups        |  3 days            |  7 days                       |   
+
+- **--filter**: Filter events. The default value is the last 7 days data.  
+The following operators are supported for all filter options:
+
+         |  Operator  |  Comparison           |
+         |  gt        |  greater than         |
+         |  lt        |  less than            |
+         |  geq       |  greater or equal to  |
+         |  leq       |  less or equal to     |
+         |  neq       |  not equal            |
+         |  in        |  in                   |
+
+   `httpRequests1dGroups` and `httpRequests1hGroups` filter options.
+    -  `date`
+
+   `httpRequests1mGroups` filter options.
+    -  `datetime`
+    -  `datetimeFifteenMinutes`
+    -  `datetimeHour`
+    -  `datetimeDay`
+
+- **--order**: Output order. (default: "datetime_ASC")  
+Following list is usable order options for corresponding dataset and all of order options support ASC and DESC action. Combine these order options and action with `_`.  
+     For example `date_ASC` is order by date ascending.   
+
+    Common order options for every http dataset.
+     - `orderByParams`
+     - `date` 
+     - `sum_bytes`
+     - `sum_cachedBytes`
+     - `sum_cachedRequests`
+     - `sum_requests`  
+
+   `httpRequests1dGroups` order options. 
+    - `avg_bytes`
+    - `sum_encryptedBytes`
+    - `sum_encryptedRequests`
+    - `sum_pageViews`
+    - `sum_threats`
+    - `uniq_uniques`
+
+   `httpRequests1hGroups` order options. 
+    -  `avg_bytes`
+    -  `sum_encryptedBytes`
+    -  `sum_encryptedRequests`
+    -  `sum_pageViews`
+    -  `sum_threats`
+    -  `uniq_uniques`
+    -  `datetime`
+
+   `httpRequests1mGroups` order options. 
+    -  `avg_bytes` 
+    -  `sum_encryptedBytes`
+    -  `sum_encryptedRequests`
+    -  `sum_pageViews`
+    -  `sum_threats`
+    -  `uniq_uniques`
+    -  `datetime`
+    -  `datetimeFifteenMinutes`
+    -  `datetimeHour`
+    -  `datetimeFifteenMinutes`
+    -  `datetimeHour`
+    -  `datetimeDay`
+- **--limit**: The number of events to return. (minimum: `1`, maximum: `10000`, default: `10000`)
+- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+- **--output**: Specify output format, only JSON is supported now.
+
+#### Examples
+{: #http-request-analytics-examples}
+
+Get http request analytics for domain `31984fea73a15b45779fa0df4ef62f9b`.
+
+```
+ibmcloud cis http-request-analytics 31984fea73a15b45779fa0df4ef62f9b --order date_ASC \
+     --dataset httpRequests1dGroups --limit 500 \
+     --filter "date_geq:2020-06-28"  --filter "date_leq:2020-06-29" --output json
+```
+{: pre}
+
+### `ibmcloud cis web-analytics` (Deprecated)
 {: #web-analytics}
 
-Get analytics of the DNS domain.
+Web analytics will be deprecated on November 2, 2020. Use [`ibmcloud cis http-request-analytics`](#http-request-analytics) instead. Get analytics of the DNS domain.
 
 ```
 ibmcloud cis web-analytics DNS_DOMAIN_ID [--recent DURATION] [-t, --table requests | bandwidth | uniques | threats | status_code] [-i, --instance INSTANCE_NAME] [--output FORMAT]
@@ -5265,10 +5255,10 @@ ibmcloud cis routing-analytics 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 ```
 {: pre}
 
-## Security events
+## Security events (Deprecated)
 {: #security-events}
 
-Manipulate how the Security Events performs using the following `security-events` command:
+Security events will be deprecated on October 26, 2020. Use [`ibmcloud cis firewall-event-analytics`](#firewall-event-analytics) instead. Manage how the Security Events performs using the following `security-events` command:
 
 ### `ibmcloud cis security-events`
 {: #list-security-event}
