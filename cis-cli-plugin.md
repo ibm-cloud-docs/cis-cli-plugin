@@ -1808,7 +1808,7 @@ ibmcloud cis edge-functions-trigger 31984fea73a15b45779fa0df4ef62f9b 9a7806061c8
 Create an Edge Functions trigger for a given domain of a service instance.
 
 ```
-ibmcloud cis edge-functions-trigger-create DNS_DOMAIN_ID PATTERN_URL [--action-name ACTION_NAME] [--disable] [-i, --instance INSTANCE_NAME] [--output FORMAT]
+ibmcloud cis edge-functions-trigger-create DNS_DOMAIN_ID PATTERN_URL [--name ACTION_NAME] [--disable] [-i, --instance INSTANCE_NAME] [--output FORMAT]
 ```
 {: pre}
 
@@ -1817,7 +1817,7 @@ ibmcloud cis edge-functions-trigger-create DNS_DOMAIN_ID PATTERN_URL [--action-n
 
 - **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
 - **PATTERN_URL**: The request URL which triggers the action. Required.
-- **action-name**: Action name which the created trigger is attached to. (Enterprise plan only.)
+- **name**: Action name to which the created trigger is attached. (Enterprise plan only.)
 - **disable**: Disable an Edge Functions trigger.
 - **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported now.
