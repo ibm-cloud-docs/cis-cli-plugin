@@ -747,12 +747,13 @@ ibmcloud cis dns-record-create DNS_DOMAIN_ID --type TYPE --name NAME --content C
 - **--type**: DNS record type.
 - **--content**: DNS record content.
 - **--ttl**: Time to live for DNS record. Value of 1 is `automatic`. The default value is `1`.
+- **--proxied**: Control whether or not traffic should flow through the security and performance functions on CIS. CIS only proxies traffic for `A`, `AAAA`, and `CNAME` records. Valid values: `true`, `false`.
 - **--json**: The JSON file or JSON string used to describe a DNS Record.
-  Supported DNS Record types are: `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `SPF`, `MX`, `LOC`, `SRV`, `CAA`.
+  Supported DNS Record types are: `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `SPF`, `MX`, `LOC`, `SRV`, `CAA`, `PTR`.
   - For type `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `SPF`:
     - The required fields in JSON data are `name`, `type`, `content`.
     - The optional fields are `ttl`, `proxied`:
-      - `proxied` Control whether traffic should flow through the security and performance functions on CIS. Can be used for update only.
+      - `proxied` Control whether traffic should flow through the security and performance functions on CIS. CIS only proxies traffic for `A,` `AAAA`, and `CNAME` records.
 
 Sample JSON data:
 
@@ -760,13 +761,15 @@ Sample JSON data:
 {
    "name": "testA",
    "type": "A",
-   "content": "127.0.0.1"
+   "content": "127.0.0.1",
+   "proxied": true
 }
 
 {
    "name": "testAAAA",
    "type": "AAAA",
-   "content": "2001:0db8:0012:0001:3c5e:7354:0000:5db1"
+   "content": "2001:0db8:0012:0001:3c5e:7354:0000:5db1",
+   "proxied": false
 }
 
 {
@@ -793,6 +796,20 @@ Sample JSON data:
    "content": "v=spf1 a ip:1.2.3.4"
 }
 ```
+
+   - For type `PTR`:
+     - The required fields in JSON data are `name`, `type`, `content`.
+     - The optional fields are `ttl`.
+
+Sample JSON data:
+
+```
+{
+ "name": "1.2.3.4",
+ "type":"PTR",
+ "content": "abc.test.com"
+}
+```  
 
    - For type `MX`:
      - The required fields in JSON data are `name`, `type`, `content`.
@@ -931,13 +948,14 @@ ibmcloud cis dns-record-update DNS_DOMAIN_ID DNS_RECORD_ID [--type TYPE] [--name
 - **--type**: DNS record type.
 - **--content**: DNS record content.
 - **--ttl**: Time to live for DNS record. Value of 1 is `automatic`. The default value is `1`.
+- **--proxied**: Control whether or not traffic should flow through the security and performance functions on CIS. CIS only proxies traffic for `A`, `AAAA`, and `CNAME` records. Valid values: `true`, `false`.
 - **--json** The JSON file or JSON string used to describe a DNS Record.
-   Supported DNS Record types are: `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `SPF`, `MX`, `LOC`, `SRV`, `CAA`.
+   Supported DNS Record types are: `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `SPF`, `MX`, `LOC`, `SRV`, `CAA`,`PTR`.
 
    - For type `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `SPF`:
      - The required fields in JSON data are `name`, `type`, `content`.
      - The optional fields are `ttl`, `proxied`:
-       - `proxied` Controls whether traffic should flow through the security and performance functions on CIS. Can be used for update only.
+       - `proxied` Control whether or not traffic should flow through the security and performance functions on CIS. CIS only proxies traffic for `A`, `AAAA`, and `CNAME` records.
 
   Sample JSON data:
 
@@ -945,13 +963,15 @@ ibmcloud cis dns-record-update DNS_DOMAIN_ID DNS_RECORD_ID [--type TYPE] [--name
 {
    "name": "testA",
    "type": "A",
-   "content": "127.0.0.1"
+   "content": "127.0.0.1",
+   "proxied": true
 }
 
 {
    "name": "testAAAA",
    "type": "AAAA",
-   "content": "2001:0db8:0012:0001:3c5e:7354:0000:5db1"
+   "content": "2001:0db8:0012:0001:3c5e:7354:0000:5db1",
+   "proxied": false
 }
 
 {
@@ -978,6 +998,20 @@ ibmcloud cis dns-record-update DNS_DOMAIN_ID DNS_RECORD_ID [--type TYPE] [--name
    "content": "v=spf1 a ip:1.2.3.4"
 }
 ```
+
+   - For type `PTR`:
+     - The required fields in JSON data are `name`, `type`, `content`.
+     - The optional fields are `ttl`.
+
+Sample JSON data:
+
+```
+{
+ "name": "1.2.3.4",
+ "type":"PTR",
+ "content": "abc.test.com"
+}
+``` 
 
 - For type `MX`:
   - The required fields in JSON data are `name`, `type`, `content`.
@@ -1663,13 +1697,13 @@ ibmcloud cis edge-functions-action --name "action-demo" -i "cis-demo"
 ```
 {: pre}
 
-### `ibmcloud cis edge-action-create`
+### `ibmcloud cis edge-functions-action-create`
 {: #create-an-edge-functions-action}
 
-Create Edge Functions action for a service instance.
+Create an Edge Functions action for a service instance.
 
 ```
-ibmcloud cis edge-action-create (--javascript-str JAVASCRIPT_STR | --javascript-file JAVASCRIPT_FILE) [--name ACTION_NAME] [-i, --instance INSTANCE_NAME] [--output FORMAT]
+ibmcloud cis edge-functions-action-create [--name ACTION_NAME] (--javascript-str JAVASCRIPT_STR | --javascript-file JAVASCRIPT_FILE) [-i, --instance INSTANCE_NAME] [--output FORMAT]
 ```
 {: pre}
 
@@ -1688,7 +1722,7 @@ ibmcloud cis edge-action-create (--javascript-str JAVASCRIPT_STR | --javascript-
 Create an Edge Functions action for instance `action-demo`.
 
 ```
-ibmcloud cis edge-action-create --javascript-str "addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })" --name "action-demo" -i "cis-demo"
+ibmcloud cis edge-functions-action-create --javascript-str "addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })" --name "action-demo" -i "cis-demo"
 ```
 {: pre}
 
@@ -5640,7 +5674,7 @@ ibmcloud cis certificate-delete 31984fea73a15b45779fa0df4ef62f9b 5a7805061c76ada
 ## Web application firewall (WAF)
 {: #waf}
 
-Manipulate Web Application Firewalls by using the following `waf` commands.
+Manage Web Application Firewalls by using the following `waf` commands.
 
 ### `ibmcloud cis waf-setting`
 {: #show-waf-setting}
@@ -5727,7 +5761,7 @@ ibmcloud cis waf-packages 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 ### `ibmcloud cis waf-package`
 {: #show-waf-package}
 
-Get detail of a waf package.
+Get detail of a WAF package.
 
 ```
 ibmcloud cis waf-package DNS_DOMAIN_ID WAF_PACKAGE_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]
@@ -5745,7 +5779,7 @@ ibmcloud cis waf-package DNS_DOMAIN_ID WAF_PACKAGE_ID [-i, --instance INSTANCE_N
 #### Examples
 {: #show-waf-package-examples}
 
-Get detail of waf package `a25a9a7e9c00afc1fb2e0245519d725b`.
+Get detail of WAF package `a25a9a7e9c00afc1fb2e0245519d725b`.
 
 ```
 ibmcloud cis waf-package 31984fea73a15b45779fa0df4ef62f9b a25a9a7e9c00afc1fb2e0245519d725b -i "cis-demo"
@@ -5805,7 +5839,7 @@ ibmcloud cis waf-groups DNS_DOMAIN_ID WAF_PACKAGE_ID [--page PAGE] [--per-page N
 #### Examples
 {: #list-waf-groups-examples}
 
-List WAF groups in waf package `a25a9a7e9c00afc1fb2e0245519d725b`.
+List WAF groups in WAF package `a25a9a7e9c00afc1fb2e0245519d725b`.
 
 ```
 ibmcloud cis waf-groups 31984fea73a15b45779fa0df4ef62f9b a25a9a7e9c00afc1fb2e0245519d725b --page 1 --per-page 100 -i "cis-demo"
@@ -5834,7 +5868,7 @@ ibmcloud cis waf-group DNS_DOMAIN_ID WAF_PACKAGE_ID WAF_GROUP_ID [-i, --instance
 #### Examples
 {: #show-waf-group-examples}
 
-Get details of waf group `de677e5818985db1285d0e80225f06e5` in waf package `a25a9a7e9c00afc1fb2e0245519d725b`.
+Get details of WAF group `de677e5818985db1285d0e80225f06e5` in WAF package `a25a9a7e9c00afc1fb2e0245519d725b`.
 
 ```
 ibmcloud cis waf-group 31984fea73a15b45779fa0df4ef62f9b a25a9a7e9c00afc1fb2e0245519d725b de677e5818985db1285d0e80225f06e5 -i "cis-demo"
@@ -5864,7 +5898,7 @@ ibmcloud cis waf-group-mode-set DNS_DOMAIN_ID WAF_PACKAGE_ID WAF_GROUP_ID WAF_GR
 #### Examples
 {: #update-waf-group-examples}
 
-Enable waf group `de677e5818985db1285d0e80225f06e5` in waf package `a25a9a7e9c00afc1fb2e0245519d725b`.
+Enable WAF group `de677e5818985db1285d0e80225f06e5` in WAF package `a25a9a7e9c00afc1fb2e0245519d725b`.
 
 ```
 ibmcloud cis waf-group-mode-set 31984fea73a15b45779fa0df4ef62f9b a25a9a7e9c00afc1fb2e0245519d725b de677e5818985db1285d0e80225f06e5 on -i "cis-demo"
@@ -5874,7 +5908,7 @@ ibmcloud cis waf-group-mode-set 31984fea73a15b45779fa0df4ef62f9b a25a9a7e9c00afc
 ### `ibmcloud cis waf-rules`
 {: #list-waf-rules}
 
-List all WAF rules of a given WAF package.
+List all WAF rules of a WAF package.
 
 ```
 ibmcloud cis waf-rules DNS_DOMAIN_ID WAF_PACKAGE_ID [--page PAGE] [--per-page NUM] [-i, --instance INSTANCE_NAME] [--output FORMAT]
@@ -5894,7 +5928,7 @@ ibmcloud cis waf-rules DNS_DOMAIN_ID WAF_PACKAGE_ID [--page PAGE] [--per-page NU
 #### Examples
 {: #list-waf-rules-examples}
 
-List all WAF rules in waf package `a25a9a7e9c00afc1fb2e0245519d725b`.
+List all WAF rules in WAF package `a25a9a7e9c00afc1fb2e0245519d725b`.
 
 ```
 ibmcloud cis waf-rules 31984fea73a15b45779fa0df4ef62f9b a25a9a7e9c00afc1fb2e0245519d725b --page 1 --per-page 100 -i "cis-demo"
@@ -5923,7 +5957,7 @@ ibmcloud cis waf-rule DNS_DOMAIN_ID WAF_PACKAGE_ID WAF_RULE_ID [-i, --instance I
 #### Examples
 {: #show-waf-rule-examples}
 
-Get details of waf rule `f939de3be84e66e757adcdcb87908023` in waf package `a25a9a7e9c00afc1fb2e0245519d725b`.
+Get details of WAF rule `f939de3be84e66e757adcdcb87908023` in WAF package `a25a9a7e9c00afc1fb2e0245519d725b`.
 
 ```
 ibmcloud cis waf-rule 31984fea73a15b45779fa0df4ef62f9b a25a9a7e9c00afc1fb2e0245519d725b f939de3be84e66e757adcdcb87908023 -i "cis-demo"
@@ -5953,7 +5987,7 @@ ibmcloud cis waf-rule-mode-set DNS_DOMAIN_ID WAF_PACKAGE_ID WAF_RULE_ID WAF_RULE
 #### Examples
 {: #update-waf-rule-examples}
 
-Disable waf rule `f939de3be84e66e757adcdcb87908023` in waf package `a25a9a7e9c00afc1fb2e0245519d725b`.
+Disable WAF rule `f939de3be84e66e757adcdcb87908023` in WAF package `a25a9a7e9c00afc1fb2e0245519d725b`.
 
 ```
 ibmcloud cis waf-rule-mode-set 31984fea73a15b45779fa0df4ef62f9b a25a9a7e9c00afc1fb2e0245519d725b f939de3be84e66e757adcdcb87908023 disable -i "cis-demo"
@@ -5974,7 +6008,7 @@ ibmcloud cis waf-override-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING)
 {: #create-waf-override-options}
 
 - **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
-- **--json**: The JSON file or JSON string used to describe a override waf rule. Required.
+- **--json**: The JSON file or JSON string used to describe a override WAF rule. Required.
    - The required fields in JSON data are `urls` and `rules`.
       - `urls`: URLs to be included in this rule definition. Wildcards are permitted.
       - `rules`: Change the action assigned to a WAF rule. The keys of this object are WAF rule IDs and the values must be a valid WAF action. Unless disabling the rule, ensure that you also enable the rule group that this WAF rule belongs to. Max length: 1024.
@@ -6013,7 +6047,7 @@ ibmcloud cis waf-override-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING)
 #### Examples
 {: #create-waf-override-examples}
 
-Create a waf overide rule under instance `cis-demo`.
+Create a WAF overide rule under instance `cis-demo`.
 
 ```
 ibmcloud cis waf-override-create 31984fea73a15b45779fa0df4ef62f9b --json '{"description":"Enable IBM Magento ruleset for www.example.com","urls":["www.example.com/*"],"priority":1,"groups":{"ea8687e59929c1fd05ba97574ad43f77":"default"},"rules":{"100015":"disable"},"rewrite_action":{"default":"block","challenge":"block","simulate":"disable"}}' -i "cis-demo"
@@ -6034,8 +6068,8 @@ ibmcloud cis waf-override-update DNS_DOMAIN_ID OVERRIDE_WAF_ID (--json @JSON_FIL
 {: #update-waf-override-options}
 
 - **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
-- **OVERRIDE_WAF_ID**: The ID of override waf rule. Required.
-- **--json**: The JSON file or JSON string used to describe a override waf rule. Required.
+- **OVERRIDE_WAF_ID**: The ID of override WAF rule. Required.
+- **--json**: The JSON file or JSON string used to describe a override WAF rule. Required.
    - The required fields in JSON data are `urls` and `rules`.
       - `urls`: URLs to be included in this rule definition. Wildcards are permitted.
       - `rules`: Change the action assigned to a WAF rule. The keys of this object are WAF rule IDs and the values must be a valid WAF action. Unless disabling the rule, ensure that you also enable the rule group that this WAF rule belongs to. Max length: 1024.
@@ -6074,7 +6108,7 @@ ibmcloud cis waf-override-update DNS_DOMAIN_ID OVERRIDE_WAF_ID (--json @JSON_FIL
 #### Examples
 {: #update-waf-override-examples}
 
-Update a waf overide rule under instance `cis-demo`.
+Update a WAF overide rule under instance `cis-demo`.
 
 ```
 ibmcloud cis waf-override-update 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890caea70ae32 --json '{"description":"Enable IBM Magento ruleset for www.example.com","urls":["www.example.com/*"],"priority":1,"groups":{"ea8687e59929c1fd05ba97574ad43f77":"default"},"rules":{"100015":"disable"},"rewrite_action":{"default":"block","challenge":"block","simulate":"disable"}}' -i "cis-demo"
@@ -6103,7 +6137,7 @@ ibmcloud cis waf-overrides DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, 
 #### Examples
 {: #list-waf-override-examples}
 
-List waf overide rules under instance `cis-demo`.
+List WAF overide rules under instance `cis-demo`.
 
 ```
 ibmcloud cis  waf-overrides 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
@@ -6124,14 +6158,14 @@ ibmcloud cis waf-override DNS_DOMAIN_ID OVERRIDE_WAF_ID [-i, --instance INSTANCE
 {: #get-waf-overrides-options}
 
 - **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
-- **OVERRIDE_WAF_ID**: The ID of override waf rule.  Required.
+- **OVERRIDE_WAF_ID**: The ID of override WAF rule.  Required.
 - **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported now.
 
 #### Examples
 {: #get-waf-override-examples}
 
-Get a waf overide rule under instance `cis-demo`.
+Get a WAF overide rule under instance `cis-demo`.
 
 ```
 ibmcloud cis waf-override 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890caea70ae32 -i "cis-demo"
@@ -6152,16 +6186,207 @@ ibmcloud cis waf-override-delete DNS_DOMAIN_ID OVERRIDE_WAF_ID [-i, --instance I
 {: #delete-waf-overrides-options}
 
 - **DNS_DOMAIN_ID**:  The ID of DNS domain. Required.
-- **OVERRIDE_WAF_ID**: The ID of override waf rule.  Required.
+- **OVERRIDE_WAF_ID**: The ID of override WAF rule.  Required.
 - **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **-f, --force**: Attempt to delete URL based WAF rule without prompting for confirmation.
 
 #### Examples
 {: #delete-waf-override-examples}
 
-Delete a waf overide rule under instance `cis-demo`.
+Delete a WAF overide rule under instance `cis-demo`.
 
 ```
 ibmcloud cis waf-override-delete 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890caea70ae32 -i "cis-demo"
+```
+{: pre}
+
+## Authenticated Origin Pull (authenticated-origin-pull)
+{: #authenticated-origin-pull}
+
+Manage Authenticated Origin Pull by using the following `authenticated-origin-pull` commands.
+
+### `ibmcloud cis authenticated-origin-pull-settings`
+{: #show-authenticated-origin-pull-settings}
+
+Get authenticated origin pull settings for a domain.
+
+```
+ibmcloud cis authenticated-origin-pull-settings DNS_DOMAIN_ID [--level zone|hostname] [--hostname HOSTNAME] [-i, --instance INSTANCE_NAME] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #show-authenticated-origin-pull-settings-options}
+
+- **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
+- **----level**: Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
+- **--hostnames**: The authenticated origin pull settings on a hostname. (hostname level only)
+- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+- **--output**: Specify output format, only JSON is supported now.
+
+#### Examples
+{: #show-authenticated-origin-pull-settings-examples}
+
+List authenticated origin pull settings on zone level for domain `31984fea73a15b45779fa0df4ef62f9b`.
+
+```
+ibmcloud cis authenticated-origin-pull-settings 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis authenticated-origin-pull-setting-update`
+{: #update-authenticated-origin-pull-setting}
+
+Update authenticated origin pull settings for a domain.
+
+```
+ibmcloud cis authenticated-origin-pull-settings-update DNS_DOMAIN_ID [--level zone|hostname] [--hostname HOSTNAME] [--cert_id CERT_ID] (--enabled on|off) [-i, --instance INSTANCE_NAME] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #update-authenticated-origin-pull-settings-option}
+
+- **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
+- **----level**: Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
+- **--hostnames**: The authenticated origin pull settings on a hostname. (hostname level only)
+- **----cert_id**: The certificate id which the hostname is bundled to. (hostname level only)
+- **----enabled**: Enable authenticated origin pull or not. Valid values: "on", "off".
+- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+- **--output**: Specify output format, only JSON is supported now.
+
+#### Examples
+{: #update-authenticated-origin-pull-setting-examples}
+
+Update authenticated origin pull setting on zone level for domain `31984fea73a15b45779fa0df4ef62f9b`.
+
+```
+ibmcloud cis authenticated-origin-pull-settings-update 31984fea73a15b45779fa0df4ef62f9b --enabled on -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis authenticated-origin-pull-certificates`
+{: #show-authenticated-origin-pull-certificates}
+
+List zone level authenticated origin pull certificates for a domain.
+
+```
+ibmcloud cis authenticated-origin-pull-certificates DNS_DOMAIN_ID [-i, --instance INSTANCE_NAME] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #show-authenticated-origin-pull-certificates-option}
+
+- **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
+- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+- **--output**: Specify output format, only JSON is supported now.
+
+#### Examples
+{: #show-authenticated-origin-pull-certificates-examples}
+
+Show authenticated origin pull certificates on zone level for domain `31984fea73a15b45779fa0df4ef62f9b`.
+
+```
+ibmcloud cis authenticated-origin-pull-certificates 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis authenticated-origin-pull-certificate`
+{: #show-authenticated-origin-pull-certificate}
+
+Get authenticated origin pull certificate for a domain.
+
+```
+ibmcloud cis authenticated-origin-pull-certificate DNS_DOMAIN_ID CERT_ID [--level zone|hostname] [-i, --instance INSTANCE_NAME] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #show-authenticated-origin-pull-certificate-option}
+
+- **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
+- **CERT_ID**: The ID of certificate. Required.
+- **----level**: Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
+- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+- **--output**: Specify output format, only JSON is supported now.
+
+#### Examples
+{: #show-authenticated-origin-pull-certificate-examples}
+
+Get authenticated origin pull certificate `5a7805061c76ada191ed06f989cc3dac` on zone level for domain `31984fea73a15b45779fa0df4ef62f9b` .
+
+```
+ibmcloud cis authenticated-origin-pull-certificate 31984fea73a15b45779fa0df4ef62f9b 5a7805061c76ada191ed06f989cc3dac -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis authenticated-origin-pull-certificate-upload`
+{: #upload-authenticated-origin-pull-certificate}
+
+Upload authenticated origin pull certificate for a domain.
+
+```
+ibmcloud cis authenticated-origin-pull-certificate-upload DNS_DOMAIN_ID [--level zone|hostname] (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE_NAME] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #upload-authenticated-origin-pull-certificate-option}
+
+- **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
+- **----level**: Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
+- **--json**: The JSON file or JSON string used to describe a custom certificate.
+   - The required fields in JSON data are "certificate", "private_key":
+        - `certificate`: SSL certificate or certificate and the intermediate(s) for the domain.
+        - `private_key`: Private key for the domain.
+
+   Sample JSON data:
+
+   ```
+   {
+     "certificate": "-----BEGIN CERTIFICATE-----\n...-----END CERTIFICATE-----\n",
+     "private_key": "-----BEGIN PRIVATE KEY-----\n...-----END PRIVATE KEY-----\n"
+   }
+   ```
+- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+- **--output**: Specify output format, only JSON is supported now.
+
+#### Examples
+{: #upload-authenticated-origin-pull-certificate-examples}
+
+Upload authenticated origin pull certificate on zone level for domain `31984fea73a15b45779fa0df4ef62f9b` .
+
+```
+ibmcloud cis authenticated-origin-pull-certificate-upload 31984fea73a15b45779fa0df4ef62f9b --json '{"certificate": "-----BEGIN CERTIFICATE-----\nMIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV\nBAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX\naWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF\nMQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50\nZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\nCgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1\nCGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB\nKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5\n0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI\ndZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2\nizNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4\n9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI\nGKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV\nBAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF\nMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2\n2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP\nMlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG\nSvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq\n2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw\nYbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=\n-----END CERTIFICATE-----\n", "private_key": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n"}'-i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis authenticated-origin-pull-certificate-delete`
+{: #delete-authenticated-origin-pull-certificate}
+
+Delete authenticated origin pull certificate for a domain.
+
+```
+ibmcloud cis authenticated-origin-pull-certificate-delete DNS_DOMAIN_ID CERT_ID [--level zone|hostname] [-i, --instance INSTANCE_NAME] [--output FORMAT] [-f, --force]
+```
+{: pre}
+
+#### Command options
+{: #delete-authenticated-origin-pull-certificate-option}
+
+- **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
+- **CERT_ID**: The ID of certificate. Required.
+- **----level**: Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
+- **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+- **--output**: Specify output format, only JSON is supported now.
+
+#### Examples
+{: #delete-authenticated-origin-pull-certificate-examples}
+
+Delete authenticated origin pull certificate `5a7805061c76ada191ed06f989cc3dac` on zone level for domain `31984fea73a15b45779fa0df4ef62f9b` .
+
+```
+ibmcloud cis authenticated-origin-pull-certificate-delete 31984fea73a15b45779fa0df4ef62f9b 5a7805061c76ada191ed06f989cc3dac -i "cis-demo"
 ```
 {: pre}
