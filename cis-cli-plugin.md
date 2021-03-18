@@ -1497,6 +1497,7 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
    -  `email_obfuscation`:<br />Encrypt email adresses on your web page from bots while keeping them visible to humans.
    -  `hotlink_protection`:<br />Protect your images from off-site linking.
    -  `http2`:<br />Accelerate your website with HTTP/2.
+   -  `http3`:<br />Accelerate your website with HTTP/3.
    -  `image_load_optimization`:<br />Improve load time for pages that include images on mobile devices with slow network connections. (Enterprise plan only)
    -  `image_size_optimization`:<br />Improve image load time by optimizing images hosted on your domain. (Enterprise plan only)
    -  `ip_geolocation`:<br />Include the country code of the visitor location with all requests to your website.
@@ -1556,6 +1557,7 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
    - `email_obfuscation`:<br />Encrypt email adresses on your web page from bots while keeping them visible to humans.
    - `hotlink_protection`:<br />Protect your images from off-site linking.
    - `http2`:<br />Accelerate your website with HTTP/2.
+   - `http3`:<br />Accelerate your website with HTTP/3.
    - `image_load_optimization`:<br />Improve load time for pages that include images on mobile devices with slow network connections. (enterprise plan only)
    - `image_size_optimization`:<br />Improve image load time by optimizing images hosted on your domain. (enterprise plan only)
    - `ip_geolocation`:<br />Include the country code of the visitor location with all requests to your website.
@@ -1587,6 +1589,7 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
    -  Valid values for `hotlink_protection` are `on`, `off`.
    -  Valid values for `email_obfuscation` are `on`, `off`.
    -  Valid values for `http2` are `on`, `off`.
+   -  Valid values for `http3` are `on`, `off`.
    -  Valid values for `image_load_optimization` are `on`, `off`.
    -  Valid values for `image_size_optimization` are `off`, `lossless`, `lossy`.
      - `off`: Disable Image Size Optimization.
@@ -3556,6 +3559,8 @@ ibmcloud cis firewall-event-analytics DNS_DOMAIN_ID [--dataset DATA_SET] [--filt
          |  Dataset                        |  Trial / Standard  |  Enterprise / Security / GLB  |   
          |  ------------------------------ | ------------------ |  ---------------------------  |   
          |  firewallEventsAdaptiveGroups   |      30 days       |          30 days              | 
+         |  firewallEventsAdaptive         |      30 days       |          30 days              | 
+
 
 - **--filter**: Filter events. The default value is the last 6 hours of data.  
 The following operators are supported for all filter options:
@@ -6200,7 +6205,7 @@ ibmcloud cis waf-override-delete 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d
 ```
 {: pre}
 
-## Authenticated Origin Pull (authenticated-origin-pull)
+## Authenticated Origin Pull
 {: #authenticated-origin-pull}
 
 Manage Authenticated Origin Pull by using the following `authenticated-origin-pull` commands.
@@ -6220,7 +6225,7 @@ ibmcloud cis authenticated-origin-pull-settings DNS_DOMAIN_ID [--level zone|host
 
 - **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
 - **----level**: Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
-- **--hostnames**: The authenticated origin pull settings on a hostname. (hostname level only)
+- **--hostname**: The authenticated origin pull settings on a hostname. (hostname level only)
 - **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported now.
 
@@ -6249,7 +6254,7 @@ ibmcloud cis authenticated-origin-pull-settings-update DNS_DOMAIN_ID [--level zo
 
 - **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
 - **----level**: Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
-- **--hostnames**: The authenticated origin pull settings on a hostname. (hostname level only)
+- **--hostname**: The authenticated origin pull settings on a hostname. (hostname level only)
 - **----cert_id**: The certificate id which the hostname is bundled to. (hostname level only)
 - **----enabled**: Enable authenticated origin pull or not. Valid values: "on", "off".
 - **-i, --instance**: Instance name. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
