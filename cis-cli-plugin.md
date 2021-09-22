@@ -29,19 +29,19 @@ lastupdated: "2021-05-11"
    ```
    ibmcloud login -a  
    ```
-   {:pre}
+   {: pre}
 
 1. Install the CIS CLI plug-in.
    ```
    ibmcloud plugin install cis
    ```
-   {:pre}
+   {: pre}
 
 1. Set the context instance.
    ```
    ibmcloud cis instance-set <instance-name>
    ```
-   {:pre}
+   {: pre}
 
 
 To see a list of plug-ins and which versions are installed, run this command.
@@ -49,14 +49,14 @@ To see a list of plug-ins and which versions are installed, run this command.
 ```
 ibmcloud plugin list
 ```
-{:pre}
+{: pre}
 
 The list returns whether the CLI has any updates available. Run the following command to update the CIS CLI plug-in.
 
 ```
 ibmcloud plugin update cis
 ```
-{:pre}
+{: pre}
 
 To learn about installing and configuring the IBM Cloud CLI, visit [Getting started with the IBM Cloud CLI](/docs/cli?topic=cli-getting-started).
 
@@ -309,7 +309,7 @@ ibmcloud cis access-certificate-update DNS_DOMAIN_ID ACCESS_CERTIFICATE_ID --nam
 - **--name value**:  The name of the Certificate. Required.
 - **--associated-hostnames value**:  The hostnames that are prompted for this certificate. Required.
      The associated hostnames are reset if not specified by `associated-hostnames`.
-     {:note}
+     {: note}
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported now.
 
@@ -334,7 +334,7 @@ ibmcloud cis access-certificate-delete DNS_DOMAIN_ID ACCESS_CERTIFICATE_ID [-i, 
 {: pre}
 
 Must clear the associated hostnames before deleting the certificate.
-{:note}
+{: note}
 
 #### Command options
 {: #command-options-access-certificate-delete}
@@ -542,7 +542,7 @@ Manipulate how the cache performs using the following `cache` commands:
 Clear cached assets file by file or entirely for a given DNS domain to guarantee served assets are updated.
 
 ```
-ibmcloud cis cache-purge DNS_DOMAIN_ID (--all | --file file1 --file file2...) [-f, --force] [-i, --instance INSTANCE]  [--output FORMAT]
+ibmcloud cis cache-purge DNS_DOMAIN_ID (--all | --file file1 --file file2...｜--tag tag1 --tag tag2...|--host host1 --host host...| --prefix prefix1 --prefix prefix2...) [-f, --force] [-i, --instance INSTANCE_NAME]  [--output FORMAT]
 ```
 
 #### Command options
@@ -550,7 +550,10 @@ ibmcloud cis cache-purge DNS_DOMAIN_ID (--all | --file file1 --file file2...) [-
 
 - **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
 - **--all**: Purging all cached files. This option is mutually exclusive with *--file*.
-- **--file**: The full file path to purge. This option is mutually exclusive with *--all*.
+- **--file**: Granularly remove one or more files by specifying URLs. This option is mutually exclusive with *--all*.
+- **--tag**: Granularly remove one or more files by the associated Cache-Tag (enterprise plan only). This option is mutually exclusive with *--all*.
+- **--host**: Granularly remove one or more files by specifying the host (enterprise plan only). This option is mutually exclusive with *--all*.
+- **--prefix**: Granularly remove one or more files by a prefix (enterprise plan only). This option is mutually exclusive with *--all*.
 - **-f, --force**: Purging all cached files without prompting for confirmation.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 - **--output**: Specify output format, only JSON is supported now.
@@ -749,8 +752,8 @@ ibmcloud cis dns-record-create DNS_DOMAIN_ID --type TYPE --name NAME --content C
 - **--ttl**: Time to live for DNS record. Value of 1 is `automatic`. The default value is `1`.
 - **--proxied**: Control whether or not traffic should flow through the security and performance functions on CIS. CIS only proxies traffic for `A`, `AAAA`, and `CNAME` records. Valid values: `true`, `false`.
 - **--json**: The JSON file or JSON string used to describe a DNS Record.
-  Supported DNS Record types are: `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `SPF`, `MX`, `LOC`, `SRV`, `CAA`, `PTR`.
-  - For type `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `SPF`:
+  Supported DNS Record types are: `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `MX`, `LOC`, `SRV`, `CAA`, `PTR`.
+  - For type `A`, `AAAA`, `CNAME`, `NS`, `TXT`:
     - The required fields in JSON data are `name`, `type`, `content`.
     - The optional fields are `ttl`, `proxied`:
       - `proxied` Control whether traffic should flow through the security and performance functions on CIS. CIS only proxies traffic for `A,` `AAAA`, and `CNAME` records.
@@ -790,11 +793,6 @@ Sample JSON data:
    "content": "text information"
 }
 
-{
-   "name": "testSPF",
-   "type":"SPF",
-   "content": "v=spf1 a ip:1.2.3.4"
-}
 ```
 
    - For type `PTR`:
@@ -950,9 +948,9 @@ ibmcloud cis dns-record-update DNS_DOMAIN_ID DNS_RECORD_ID [--type TYPE] [--name
 - **--ttl**: Time to live for DNS record. Value of 1 is `automatic`. The default value is `1`.
 - **--proxied**: Control whether or not traffic should flow through the security and performance functions on CIS. CIS only proxies traffic for `A`, `AAAA`, and `CNAME` records. Valid values: `true`, `false`.
 - **--json** The JSON file or JSON string used to describe a DNS Record.
-   Supported DNS Record types are: `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `SPF`, `MX`, `LOC`, `SRV`, `CAA`,`PTR`.
+   Supported DNS Record types are: `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `MX`, `LOC`, `SRV`, `CAA`,`PTR`.
 
-   - For type `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `SPF`:
+   - For type `A`, `AAAA`, `CNAME`, `NS`, `TXT`:
      - The required fields in JSON data are `name`, `type`, `content`.
      - The optional fields are `ttl`, `proxied`:
        - `proxied` Control whether or not traffic should flow through the security and performance functions on CIS. CIS only proxies traffic for `A`, `AAAA`, and `CNAME` records.
@@ -992,11 +990,6 @@ ibmcloud cis dns-record-update DNS_DOMAIN_ID DNS_RECORD_ID [--type TYPE] [--name
    "content": "text information"
 }
 
-{
-   "name": "testSPF",
-   "type":"SPF",
-   "content": "v=spf1 a ip:1.2.3.4"
-}
 ```
 
    - For type `PTR`:
@@ -1286,7 +1279,7 @@ Add a domain.
 ```
 ibmcloud cis domain-add DNS_DOMAIN_NAME [-i, --instance INSTANCE] [--output FORMAT]
 ```
-{:pre}
+{: pre}
 
 #### Command options
 {: #add-domain-options}
@@ -1941,7 +1934,7 @@ Create a new firewall rule.
 ibmcloud cis firewall-create (-t, --type Type) (--json @JSON_FILE | JSON_STRING) [-d, --domain DNS_DOMAIN_ID] [-i, --instance INSTANCE] [--output FORMAT]
 [Deprecated] ibmcloud cis firewall-create (-t, --type Type) (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-d, --domain DNS_DOMAIN_ID] [-i, --instance INSTANCE] [--output FORMAT]
 ```
-{:codeblock}
+{: codeblock}
 
 #### Command options
 {: #create-firewall-options}
@@ -2060,7 +2053,7 @@ Update a firewall rule.
 ibmcloud cis firewall-update FIREWALL_RULE_ID (-t, --type Type) (--json @JSON_FILE | JSON_STRING) [-d, --domain DNS_DOMAIN_ID] [-i, --instance INSTANCE] [--output FORMAT]
 [Deprecated] ibmcloud cis firewall-update FIREWALL_RULE_ID (-t, --type Type) (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-d, --domain DNS_DOMAIN_ID] [-i, --instance INSTANCE] [--output FORMAT]
 ```
-{:codeblock}
+{: codeblock}
 
 #### Command options
 {: #update-firewall-options}
@@ -3230,7 +3223,7 @@ ibmcloud cis glb-events [-s, --since START_DATE] [-u, --until END_DATE] [--origi
                            [--origin-healthy (true | false)] [--pool-healthy (true | false)]
                            [-i, --instance INSTANCE]  [--output FORMAT]
 ```
-{:codeblock}
+{: codeblock}
 
 #### Command options
 {: #get-glb-events-options}
@@ -4353,7 +4346,7 @@ ibmcloud cis range-app-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-
 [Deprecated] ibmcloud cis range-app-create DNS_DOMAIN_ID -s JSON_STR [-i, --instance INSTANCE] [--output FORMAT]
 [Deprecated] ibmcloud cis range-app-create DNS_DOMAIN_ID -j JSON_FILE [-i, --instance INSTANCE] [--output FORMAT]
 ```
-{:codeblock}
+{: codeblock}
 
 #### Command options
 {: #create-range-app-options}
@@ -4464,7 +4457,7 @@ ibmcloud cis range-app-update DNS_DOMAIN_ID APP_ID (--json @JSON_FILE | JSON_STR
 [Deprecated] ibmcloud cis range-app-update DNS_DOMAIN_ID APP_ID -s JSON_STR [-i, --instance INSTANCE] [--output FORMAT]
 [Deprecated] ibmcloud cis range-app-update DNS_DOMAIN_ID APP_ID -j JSON_FILE [-i, --instance INSTANCE] [--output FORMAT]
 ```
-{:codeblock}
+{: codeblock}
 
 #### Command options
 {: #update-range-app-options}
@@ -4708,7 +4701,7 @@ ibmcloud cis ratelimit-rule-create DNS_DOMAIN_ID --url URL [--description DESCRI
 [Deprecated] ibmcloud cis ratelimit-rule-create DNS_DOMAIN_ID --json-str JSON_STR [-i, --instance INSTANCE] [--output FORMAT]
 [Deprecated] ibmcloud cis ratelimit-rule-create DNS_DOMAIN_ID --json-file JSON_FILE [-i, --instance INSTANCE] [--output FORMAT]
 ```
-{:codeblock}
+{: codeblock}
 
 #### Command options
 {: #create-ratelimit-options}
