@@ -20,3 +20,4 @@ toc:
       id: reference
       topics:
       - cis-cli-plugin.md
+      - release-notes.md
