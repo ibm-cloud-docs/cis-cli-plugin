@@ -1485,6 +1485,7 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
     - `ciphers`: A whitelist of ciphers for TLS termination in the BoringSSL format. This command only lists ciphers specifically whitelisted by  customers. If no ciphers are whitelisted, the list is empty and the default ciphers are used. See [TLS Options](/docs/cis? topic=cis-cis-tls-options#cipher-suites) for the list of default ciphers.
     - `cname_flattening`: Follow a CNAME to where it points and return that IP address instead of the CNAME record. By default, only flatten the  CNAME at the root of your domain.
     - `email_obfuscation`: Encrypt email adresses on your web page from bots while keeping them visible to humans.
+    - `opportunistic_onion`: Allow legitimate users of Tor Browser to access your websites.
     - `hotlink_protection`: Protect your images from off-site linking.
     - `http2`: Accelerate your website with HTTP/2.
     - `http3`: Accelerate your website with HTTP/3.
@@ -1503,6 +1504,7 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
     - `response_buffering`: Enable or disable buffering of responses from the origin server. (Enterprise plan only)
     - `script_load_optimization`: Improve the paint time for pages that include JavaScript.
     - `security_header`: Enforce web security policy for your website.
+    - `security_level`: Choose the appropriate security profile for your website.
     - `server_side_exclude`: Automatically hide specific content from suspicious visitors.
     - `tls_client_auth`: TLS client certificate presented for authentication on origin pull. (Enterprise plan only)
     - `true_client_ip_header`: CIS will send the end user’s IP address in the True-Client-IP header. (Enterprise plan only)
@@ -1546,6 +1548,7 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
     - `cname_flattening`: Follow a CNAME to where it points and return that IP address instead of the CNAME record.
        By default, only flatten the CNAME at the root of your domain.
     - `email_obfuscation`: Encrypt email adresses on your web page from bots while keeping them visible to humans.
+    - `opportunistic_onion`: Allow legitimate users of Tor Browser to access your websites.
     - `hotlink_protection`: Protect your images from off-site linking.
     - `http2`: Accelerate your website with HTTP/2.
     - `http3`: Accelerate your website with HTTP/3.
@@ -1564,6 +1567,7 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
     - `response_buffering`: Enable or disable buffering of responses from the origin server. (Enterprise plan only)
     - `script_load_optimization`: Improve the paint time for pages that include JavaScript. 
     - `security_header`: Enforce web security policy for your website.
+    - `security_level`: Choose the appropriate security profile for your website.
     - `server_side_exclude`: Automatically hide specific content from suspicious visitors.
     - `tls_client_auth`: TLS client certificate presented for authentication on origin pull. (Enterprise plan only)
     - `true_client_ip_header`: CIS will send the end user’s IP address in the True-Client-IP header. (Enterprise plan only)
@@ -1580,6 +1584,7 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
         - `flatten_all`: Flatten all CNAME records under your domain.
     - Valid values for `hotlink_protection` are `on`, `off`.
     - Valid values for `email_obfuscation` are `on`, `off`.
+    - Valid values for `opportunistic_onion` are `on`, `off`.
     - Valid values for `http2` are `on`, `off`.
     - Valid values for `http3` are `on`, `off`.
     - Valid values for `image_load_optimization` are `on`, `off`.
@@ -1615,7 +1620,8 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
         - `max_age`: Specify the duration(in seconds) security_header are cached in browsers.
         - `include_subdomains`: Every domain below the domain will inherit the same security_header. Valid values for `include_subdomains` are `true`, `false`.
         - `preload`: Whether or not to permit browsers to preload security_header config. Valid values for `enabled` are `true`, `false`.
-        - `nosniff`: Whether or not to send `X-Content-Type-Options: nosniff` header. Valid values for `nosniff` are `true`, `false`.      
+        - `nosniff`: Whether or not to send `X-Content-Type-Options: nosniff` header. Valid values for `nosniff` are `true`, `false`.  
+    - Valid values for `server_level` are `off`, `essentially_off`, `low`, `medium`, `high`, `under_attack`.        
     - Valid values for `server_side_exclude` are `on`, `off`.
     - Valid values for `tls_client_auth` are `on`, `off`.
     - Valid values for `true_client_ip_header` are `on`, `off`.
@@ -5410,7 +5416,7 @@ ibmcloud cis tls-settings 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 Update TLS settings for a given DNS domain.
 
 ```sh
-ibmcloud cis tls-settings-update DNS_DOMAIN_ID [--mode MODE] [--universal (true|false)] [--tls-1-2-only (on|off)] [--tls-1-3 (on|off|zrt)] [-i, --instance INSTANCE][--output FORMAT]
+ibmcloud cis tls-settings-update DNS_DOMAIN_ID [--mode MODE] [--universal (true|false)] [--tls-1-2-only (on|off)] [--tls-1-3 (on|off)] [-i, --instance INSTANCE][--output FORMAT]
 ```
 {: pre}
 
@@ -5423,7 +5429,7 @@ ibmcloud cis tls-settings-update DNS_DOMAIN_ID [--mode MODE] [--universal (true|
     See the following documentation link for detailed [TLS mode description](/docs/cis?topic=cis-cis-tls-options).
 - **--universal**: Specify whether universal ssl is enabled for you domain. Valid values are `true` and `false`.
 - **--tls-1-2-only**: Specify whether Crypto TLS 1.2 feature is enable for your domain. Enabling this feature prevents use of previous versions. Valid values are `on` and `off`.
-- **--tls-1-3**: Specify whether Crypto TLS 1.3 feature is enabled for your domain. Valid values are `on`, `off`, `zrt`.
+- **--tls-1-3**: Specify whether Crypto TLS 1.3 feature is enabled for your domain. Valid values are `on`, `off`.
 - **--min-tls-version**: Only accept HTTPS requests that use at least the TLS protocol version specified.  Valid values: `1.0`, `1.1`, `1.2`, `1.3`.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
@@ -6551,7 +6557,7 @@ ibmcloud cis alert-policy pool-toggle-alert-create --name test1 --emails test1@c
 ### `ibmcloud cis alert-policy firewall-events-alert-create`
 {: #firewall-events-alert}
 
-Create an alert policy about spikes in firewall events.
+Create an alert policy about spikes in firewall events. Firewall events alerts use a [z-score](https://en.wikipedia.org/wiki/Standard_score) calculation over the last six hours and five-minute buckets of events. An alert is triggered whenever the z-score is above 3.5 (the threshold). You will not receive duplicate alerts within the same two-hour time frame.
 
 ```sh
 ibmcloud cis alert-policy firewall-events-alert-create --name NAME (--emails EMAILS | --webhooks WEBHOOKS) --enabled (true | false) --domains DOMAINS [--services SERVICES] [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
