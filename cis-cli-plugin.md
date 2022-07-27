@@ -715,7 +715,7 @@ ibmcloud cis custom-pages [-d, --domain DNS_DOMAIN_ID] [-i, --instance INSTANCE]
 #### Examples
 {: #list-custom-page-examples}
 
-List exsiting custom pages for domain `31984fea73a15b45779fa0df4ef62f9b`.
+List existing custom pages for domain `31984fea73a15b45779fa0df4ef62f9b`.
 
 ```sh
 ibmcloud cis custom-pages -d 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
@@ -906,8 +906,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data used to describe a DNS Record.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data used to describe a DNS Record.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -946,7 +946,7 @@ ibmcloud cis dns-record-update DNS_DOMAIN_ID DNS_RECORD_ID [--type TYPE] [--name
 - **--proxied**: Control whether or not traffic should flow through the security and performance functions on CIS. CIS only proxies traffic for `A`, `AAAA`, and `CNAME` records. Valid values: `true`, `false`.
 - **--json** The JSON file or JSON string used to describe a DNS Record.
     Supported DNS Record types are: `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `MX`, `LOC`, `SRV`, `CAA`,`PTR`.
- 
+
     - For type `A`, `AAAA`, `CNAME`, `NS`, `TXT`:
         - The required fields in JSON data are `name`, `type`, `content`.
         - The optional fields are `ttl`, `proxied`:
@@ -1001,7 +1001,7 @@ Sample JSON data:
  "type":"PTR",
  "content": "abc.test.com"
 }
-``` 
+```
 
 - For type `MX`:
     - The required fields in JSON data are `name`, `type`, `content`.
@@ -1103,8 +1103,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data used to describe a DNS Record.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data used to describe a DNS Record.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -1484,13 +1484,13 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
     - `challenge_ttl`: Specify how long a visitor with a bad IP reputation is allowed access to your website after completing a challenge.
     - `ciphers`: A whitelist of ciphers for TLS termination in the BoringSSL format. This command only lists ciphers specifically whitelisted by  customers. If no ciphers are whitelisted, the list is empty and the default ciphers are used. See [TLS Options](/docs/cis? topic=cis-cis-tls-options#cipher-suites) for the list of default ciphers.
     - `cname_flattening`: Follow a CNAME to where it points and return that IP address instead of the CNAME record. By default, only flatten the  CNAME at the root of your domain.
-    - `email_obfuscation`: Encrypt email adresses on your web page from bots while keeping them visible to humans.
+    - `email_obfuscation`: Encrypt email addresses on your web page from bots while keeping them visible to humans.
     - `opportunistic_onion`: Allow legitimate users of Tor Browser to access your websites.
     - `hotlink_protection`: Protect your images from off-site linking.
     - `http2`: Accelerate your website with HTTP/2.
     - `http3`: Accelerate your website with HTTP/3.
-    - `image_load_optimization`: Improve load time for pages that include images on mobile devices with slow network connections. 
-    - `image_size_optimization`: Improve image load time by optimizing images hosted on your domain. 
+    - `image_load_optimization`: Improve load time for pages that include images on mobile devices with slow network connections.
+    - `image_size_optimization`: Improve image load time by optimizing images hosted on your domain.
     - `ip_geolocation`: Include the country code of the visitor location with all requests to your website.
     - `ipv6`: Enable IPv6 support and gateway.
     - `max_upload`: The amount of data visitors can upload to your website in a single request.
@@ -1509,8 +1509,8 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
     - `tls_client_auth`: TLS client certificate presented for authentication on origin pull. (Enterprise plan only)
     - `true_client_ip_header`: CIS will send the end user’s IP address in the True-Client-IP header. (Enterprise plan only)
     - `waf`: A Web Application Firewall (WAF) blocks requests that contain malicious content.
-    - `websockets`: Allow WebSockets connections to your origin server.  
-    - `proxy_read_timeout`: Maximum time between two read operations from origin.           
+    - `websockets`: Allow WebSockets connections to your origin server.
+    - `proxy_read_timeout`: Maximum time between two read operations from origin.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -1547,7 +1547,7 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
     - `ciphers`: A whitelist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
     - `cname_flattening`: Follow a CNAME to where it points and return that IP address instead of the CNAME record.
        By default, only flatten the CNAME at the root of your domain.
-    - `email_obfuscation`: Encrypt email adresses on your web page from bots while keeping them visible to humans.
+    - `email_obfuscation`: Encrypt email addresses on your web page from bots while keeping them visible to humans.
     - `opportunistic_onion`: Allow legitimate users of Tor Browser to access your websites.
     - `hotlink_protection`: Protect your images from off-site linking.
     - `http2`: Accelerate your website with HTTP/2.
@@ -1620,8 +1620,8 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
         - `max_age`: Specify the duration(in seconds) security_header are cached in browsers.
         - `include_subdomains`: Every domain below the domain will inherit the same security_header. Valid values for `include_subdomains` are `true`, `false`.
         - `preload`: Whether or not to permit browsers to preload security_header config. Valid values for `enabled` are `true`, `false`.
-        - `nosniff`: Whether or not to send `X-Content-Type-Options: nosniff` header. Valid values for `nosniff` are `true`, `false`.  
-    - Valid values for `server_level` are `off`, `essentially_off`, `low`, `medium`, `high`, `under_attack`.        
+        - `nosniff`: Whether or not to send `X-Content-Type-Options: nosniff` header. Valid values for `nosniff` are `true`, `false`.
+    - Valid values for `server_level` are `off`, `essentially_off`, `low`, `medium`, `high`, `under_attack`.
     - Valid values for `server_side_exclude` are `on`, `off`.
     - Valid values for `tls_client_auth` are `on`, `off`.
     - Valid values for `true_client_ip_header` are `on`, `off`.
@@ -2033,8 +2033,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data describing a firewall rule.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data describing a firewall rule.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -2141,8 +2141,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data describing a firewall rule.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data describing a firewall rule.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -2371,8 +2371,8 @@ ibmcloud cis firewall-rule-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING
 }
 ```
 
-- **-s, --json-str**:  _Deprecated_. The JSON data describing a firewall-rule.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**:  *Deprecated*. The JSON data describing a firewall-rule.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -2420,7 +2420,7 @@ ibmcloud cis firewall-rule-update DNS_DOMAIN_ID FIREWALL_RULE_ID (--json @JSON_F
         - `priority`: The rule's priority. Valid values: 0 ~ 2147483647. Value `0` means to set to the default value.
         - `paused`: Indicates if the rule is active. Valid values: `on`, `off`.Default value is `off`.
         - `products`: The list of security products to be bypassed. Valid values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf` For example: --products zoneLockdown,rateLimit
-    - Note: Fields `description`, `priority`, `paused` which aren't explicitly set in JSON data will be overwrited by the default value.
+    - Note: Fields `description`, `priority`, `paused` which aren't explicitly set in JSON data will be overwritten by the default value.
 
 Sample JSON data:
 
@@ -2434,8 +2434,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data describing a firewall-rule.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data describing a firewall-rule.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -2452,7 +2452,7 @@ ibmcloud cis firewall-rule-update 31984fea73a15b45779fa0df4ef62f9b 372e67954025e
 {: codeblock}
 
 ### `ibmcloud cis firewall-rule-delete`
-{: #delete-a-Firewwall-rule}
+{: #delete-a-Firewall-rule}
 
 Delete a specific firewall-rule for a given DNS domain.
 
@@ -2498,7 +2498,7 @@ ibmcloud cis firewall-rule-validate DNS_DOMAIN_ID EXPRESSION [-i, --instance INS
 #### Examples
 {: #validate-a-firewall-rule-expression-examples}
 
-Vaildate  firewall-rule expression `ip.src eq 93.184.216.0`.
+Validate firewall-rule expression `ip.src eq 93.184.216.0`.
 
 ```sh
 ibmcloud cis firewall-rule-validate 31984fea73a15b45779fa0df4ef62f9b "ip.src eq 93.184.216.0" -i "cis-demo"
@@ -2568,8 +2568,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data describing a global load balancer.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data describing a global load balancer.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -2642,8 +2642,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data describing a global load balancer.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data describing a global load balancer.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -2825,8 +2825,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**:  _Deprecated_. The JSON data used to describe a GLB pool.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**:  *Deprecated*. The JSON data used to describe a GLB pool.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -2950,8 +2950,8 @@ Sample JSON data:
 - **--disable-origin**: Disable the origin within the Pool. The value can be ORIGIN_NAME or ORIGIN_ADDRESS.
 - **--add-origin**: Add an origin into the Pool. ORIGIN_NAME and ORIGIN_ADDRESS are required. For example: --add-origin name=us-app-dal01,address=1.1.1.1,enabled=true,weight=0.5,host=example.com
 - **--remove-origin**: Remove an origin from the Pool. The value can be ORIGIN_NAME or ORIGIN_ADDRESS.
-- **-s, --json-str**: _Deprecated_. The JSON data used to describe a GLB pool.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data used to describe a GLB pool.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -3068,8 +3068,8 @@ For TCP:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data used to describe a GLB monitor.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data used to describe a GLB monitor.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -3214,8 +3214,8 @@ For TCP:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data used to describe a GLB monitor.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data used to describe a GLB monitor.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -3282,7 +3282,7 @@ ibmcloud cis logpull DNS_DOMAIN_ID --available-fields [--output FORMAT]
 - **DNS_DOMAIN_ID**: The ID of DNS domain. Required.
 - **--available-fields**: List of all available fields.
 - **--ray-id value**: Lookup logs by specific Ray ID.
-- **--fields value**: Define field set in return. This must be specified as a comma separated list without any whitespaces, and all fields must exist. The order in which fields are specified doesn't matter, and the order of fields in the response is not specified. Note that fields are expected to be case sensitive.
+- **--fields value**: Define field set in return. This must be specified as a comma separated list without any spaces, and all fields must exist. The order in which fields are specified doesn't matter, and the order of fields in the response is not specified. Note that fields are expected to be case sensitive.
 - **--start value**: The (inclusive) beginning of the requested time frame. This can be a unix timestamp (in seconds or nanoseconds), or an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than 7 days. Default is 65 minutes earlier.
 - **--end value**: The (exclusive) end of the requested time frame. This can be a unix timestamp (in seconds or nanoseconds), or an absolute timestamp that conforms to RFC 3339. The `end` must be at least 5 minutes earlier than now and must be later than `start`. Difference between `start` and `end` must be not greater than 1h. Default is 5 minutes earlier.
 - **--count value**: Number of logs to retrieve. The default value is `-1`.
@@ -3530,7 +3530,7 @@ ibmcloud cis log-retention 31984fea73a15b45779fa0df4ef62f9b -i cis-demo --output
 ```
 {: pre}
 
-### ibmcloud cis log-retention-upate
+### ibmcloud cis log-retention-update
 {: #log-retention-update}
 
 Update log retention setting for the domain.
@@ -3979,8 +3979,8 @@ ibmcloud cis origin-certificate-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_S
 }
 ```
 
-- **-s, --json-str**:  _Deprecated_. The JSON data describing an origin certificate.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**:  *Deprecated*. The JSON data describing an origin certificate.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -4169,8 +4169,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data describing a page rule.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data describing a page rule.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -4265,8 +4265,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data describing a page rule.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data describing a page rule.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -4395,7 +4395,7 @@ ibmcloud cis range-app-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-
 - **--origin-lb-port**: The Load Balancer port associated with the range application. The default value is `22`.
 - **--protocol**: Protocol type. Valid values: `tcp`, `udp`. UDP protocol support is in early access, request custom UDP from CIS dashboard before creating range UDP app. The default value is `tcp`.
 - **--proxy-protocol**: Enable Proxy Protocol to the origin. Valid values: `on`, `off`, `v1`, `v2`, `simple`. The default value is `off`.
-    _Deprecated_. The value `on` is equivalent to `v1`.
+    *Deprecated*. The value `on` is equivalent to `v1`.
 - **--ip-firewall**: Control whether or not enables the IP Firewall for this application. Valid values: `on`, `off`. The default value is `off`.
 - **--edge-connectivity**: The IP versions supported for inbound connections on range anycast IPs. Valid values: `all`, `ipv4`, `ipv6`. The default value is `all`.
 - **--edge-tls**: The type of TLS termination associated with the application. Valid values: `off`, `flexible`, `full`, `strict`. The default value is `off`.
@@ -4412,7 +4412,7 @@ ibmcloud cis range-app-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-
             - `name`: DNS record name.
         - `origin_port`: The destination port at the origin.
         - `proxy_protocol`: Enable Proxy Protocol to the origin. Valid values: `on`, `off`, `v1`, `v2`, `simple`. The default value is `off`.
-            _Deprecated_. The value `on` is equivalent to `v1`.
+            *Deprecated*. The value `on` is equivalent to `v1`.
         - `ip_firewall`: Control whether or not enables the IP Firewall for this application. Valid values: `on`, `off`.
         - `edge_ips`: The anycast edge IP configuration for the hostname of this application.
             - `type`: The type of edge IP configuration specified. Dynamically allocated edge IPs use range anycast IPs in accordance with the connectivity you specify. Valid values: `dynamic`.
@@ -4465,8 +4465,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data describing a range application.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data describing a range application.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -4507,7 +4507,7 @@ ibmcloud cis range-app-update DNS_DOMAIN_ID APP_ID (--json @JSON_FILE | JSON_STR
 - **--origin-lb-name**: The Load Balancer name associated with the range application.
 - **--origin-lb-port**: The Load Balancer port associated with the range application. The default value is `22`.
 - **--proxy-protocol**: Enable Proxy Protocol to the origin. Valid values: `on`, `off`, `v1`, `v2`, `simple`. The default value is `off`.
-    _Deprecated_. The value `on` is equivalent to `v1`.
+    *Deprecated*. The value `on` is equivalent to `v1`.
 - **--ip-firewall**: Control whether or not enables the IP Firewall for this application. Valid values: `on`, `off`. The default value is `off`.
 - **--edge-connectivity**: The IP versions supported for inbound connections on range anycast IPs. Valid values: `all`, `ipv4`, `ipv6`. The default value is `all`.
 - **--edge-tls**: The type of TLS termination associated with the application. Valid values: `off`, `flexible`, `full`, `strict`. The default value is `off`.
@@ -4524,7 +4524,7 @@ ibmcloud cis range-app-update DNS_DOMAIN_ID APP_ID (--json @JSON_FILE | JSON_STR
             - `name`: DNS record name.
         - `origin_port`: The destination port at the origin.
         - `proxy_protocol`: Enable Proxy Protocol to the origin. Valid values: `on`, `off`, `v1`, `v2`, `simple`. The default value is `off`.
-            _Deprecated_. The value `on` is equivalent to `v1`.
+            *Deprecated*. The value `on` is equivalent to `v1`.
         - `ip_firewall`: Control whether or not enables the IP Firewall for this application. Valid values: `on`, `off`.
         - `edge_ips`: The anycast edge IP configuration for the hostname of this application.
             - `type`: The type of edge IP configuration specified. Dynamically allocated edge IPs use range anycast IPs in accordance with the connectivity you specify. Valid values: `dynamic`.
@@ -4577,8 +4577,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data describing a range application.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data describing a range application.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -4829,8 +4829,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data describing a rate limiting rule.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data describing a rate limiting rule.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -4946,8 +4946,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data describing a rate limiting rule.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data describing a rate limiting rule.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -5562,8 +5562,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data used to upload a custom certificate.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data used to upload a custom certificate.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -5610,8 +5610,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data used to update a custom certificate.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data used to update a custom certificate.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -5663,8 +5663,8 @@ Sample JSON data:
 }
 ```
 
-- **-s, --json-str**: _Deprecated_. The JSON data used to change the custom certificates' priority.
-- **-j, --json-file**: _Deprecated_. A file contains input JSON data.
+- **-s, --json-str**: *Deprecated*. The JSON data used to change the custom certificates' priority.
+- **-j, --json-file**: *Deprecated*. A file contains input JSON data.
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
 
@@ -6445,7 +6445,7 @@ ibmcloud cis alert-policy list [-i, --instance INSTANCE] [--output FORMAT]
 {: pre}
 
 #### Command options
-{: #list-alert-policies}
+{: #opt-list-alert-policies}
 
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
@@ -6489,7 +6489,7 @@ ibmcloud cis alert-policy get a2633e68-1a64-2512-a321-b64a17c7db7a -i "cis-demo"
 
 
 
-### `ibmcloud cis alert-policy ddos-attack-l7-alert-create` 
+### `ibmcloud cis alert-policy ddos-attack-l7-alert-create`
 {: #create-ddos-attack-l7-alert}
 
  Create an alert policy for DDoS attack l7.
@@ -6500,7 +6500,7 @@ ibmcloud cis alert-policy ddos-attack-l7-alert-create --name NAME (--emails EMAI
 {: pre}
 
 #### Command options
-{: #create-ddos-attack-l7-alert}
+{: #opt-create-ddos-attack-l7-alert}
 
 - **--name**: The name of the alert policy.
 - **--description**: The description for the alert policy.
@@ -6531,7 +6531,7 @@ ibmcloud cis alert-policy pool-toggle-alert-create --name NAME (--emails EMAILS 
 {: pre}
 
 #### Command options
-{: #create-pool-toggle-alert}
+{: #opt-create-pool-toggle-alert}
 
 - **--name**: The name of the alert policy.
 - **--description**: The description for the alert policy.
@@ -6565,7 +6565,7 @@ ibmcloud cis alert-policy firewall-events-alert-create --name NAME (--emails EMA
 {: pre}
 
 #### Command options
-{: #firewall-events-alert}
+{: #opt-firewall-events-alert}
 
 - **--name**: The name of the alert policy.
 - **--description**: The description for the alert policy.
@@ -6599,7 +6599,7 @@ ibmcloud cis alert-policy ddos-attack-l7-alert-update POLICY_ID --name NAME (--e
 {: pre}
 
 #### Command options
-{: #update-ddos-attack-l7-alert}
+{: #opt-update-ddos-attack-l7-alert}
 
 - **POLICY_ID**: The ID of alert policy. Required.
 - **--name**: The name of the alert policy.
@@ -6631,7 +6631,7 @@ ibmcloud cis alert-policy pool-toggle-alert-update POLICY_ID --name NAME (--emai
 {: pre}
 
 #### Command options
-{: #update-pool-toggle-alert}
+{: #opt-update-pool-toggle-alert}
 
 - **POLICY_ID**: The ID of alert policy. Required.
 - **--name**: The name of the alert policy.
@@ -6666,7 +6666,7 @@ ibmcloud cis alert-policy firewall-events-alert-update POLICY_ID [--name NAME] [
 {: pre}
 
 #### Command options
-{: #update-firewall-events-alert}
+{: #opt-update-firewall-events-alert}
 
 - **POLICY_ID**: The ID of alert policy. Required.
 - **--name**: The name of the alert policy.
@@ -6730,7 +6730,7 @@ ibmcloud cis alert-webhooks [-i, --instance INSTANCE] [--output FORMAT]
 {: pre}
 
 #### Command options
-{: #list-alert-webhooks}
+{: #opt-list-alert-webhooks}
 
 - **-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 - **--output**: Specify output format, only JSON is supported.
