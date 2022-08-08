@@ -4110,7 +4110,7 @@ ibmcloud cis page-rule-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-
         - `actions`:An array of actions to perform if the targets of this rule match the request. Available actions are:
             disable_security, always_use_https, ssl, browser_cache_ttl,
             security_level, cache_level, edge_cache_ttl, bypass_cache_on_cookie,
-            browser_check, server_side_exclude, serve_stale_content, email_obfuscation,
+            browser_check, server_side_exclude, email_obfuscation,
             automatic_https_rewrites, opportunistic_encryption, ip_geolocation,
             explicit_cache_control, cache_deception_armor, waf, forwarding_url,
             image_load_optimization, image_size_optimization, script_load_optimization,
@@ -4137,10 +4137,6 @@ Sample JSON data:
       }
    ],
    "actions": [
-      {
-            "id": "serve_stale_content",
-            "value": "on"
-      },
       {
             "id": "ssl",
             "value": "flexible"
@@ -4206,7 +4202,7 @@ ibmcloud cis page-rule-update DNS_DOMAIN_ID PAGE_RULE_ID (--json @JSON_FILE | JS
         - `actions`:An array of actions to perform if the targets of this rule match the request. Available actions are:
             disable_security, always_use_https, ssl, browser_cache_ttl,
             security_level, cache_level, edge_cache_ttl, bypass_cache_on_cookie,
-            browser_check, server_side_exclude, serve_stale_content, email_obfuscation,
+            browser_check, server_side_exclude, email_obfuscation,
             automatic_https_rewrites, opportunistic_encryption, ip_geolocation,
             explicit_cache_control, cache_deception_armor, waf, forwarding_url,
             image_load_optimization, image_size_optimization, script_load_optimization,
@@ -4233,10 +4229,6 @@ Sample JSON data:
       }
    ],
    "actions": [
-      {
-            "id": "serve_stale_content",
-            "value": "on"
-      },
       {
             "id": "ssl",
             "value": "flexible"
