@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-08-15"
+lastupdated: "2022-10-27"
 
 ---
 
@@ -476,12 +476,14 @@ ibmcloud cis access-certificates-settings-update DNS_DOMAIN_ID (-f, --feature FE
 `-f, --feature`
 :   Feature of certificates settings. Valid values:
 
-   - `client_certificate_forwarding`: The client certificate payload and its SHA256 signature are forwarded to origin servers via `CF-Client-Cert-DER_BASE64` and `CF-Client-Cert-SHA256` headers, respectively.
+`client_certificate_forwarding`
+:   The client certificate payload and its SHA256 signature are forwarded to origin servers via `CF-Client-Cert-DER_BASE64` and `CF-Client-Cert-SHA256` headers, respectively.
 
 `-v, --value`
 :   The value set to the feature for certificates.
 
-   - `client_certificate_forwarding`: Specify the hostname to forward client certificate or not. For example: `-v host1=on,host2=on,host3=off`
+`client_certificate_forwarding`
+:   Specify the hostname to forward client certificate or not. For example: `-v host1=on,host2=on,host3=off`
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -3648,6 +3650,7 @@ ibmcloud cis glb-monitor-create (--json @JSON_FILE | JSON_STRING) [-i, --instanc
         - `header`: The HTTP request headers to send in the health check.
         - `follow_redirects`: Follow redirects if returned by the origin.
         - `allow_insecure`: Do not validate the certificate when monitor use HTTPS.
+        - `probe_zone`: Assign this monitor to emulate the specified zone while probing.
 
    Sample JSON data:
 
@@ -3673,7 +3676,8 @@ ibmcloud cis glb-monitor-create (--json @JSON_FILE | JSON_STRING) [-i, --instanc
       "follow_redirects": true,
       "allow_insecure": false,
       "expected_codes": "2xx",
-      "expected_body": "alive"
+      "expected_body": "alive",
+      "probe_zone": "example.com"
 }
 ```
 {: codeblock}
@@ -3813,6 +3817,7 @@ ibmcloud cis glb-monitor-update GLB_MON_ID (--json @JSON_FILE | JSON_STRING) [-i
         - `header`: The HTTP request headers to send in the health check.
         - `follow_redirects`: Follow redirects if returned by the origin.
         - `allow_insecure`: Do not validate the certificate when monitor use HTTPS.
+        - `probe_zone`: Assign this monitor to emulate the specified zone while probing.
 
    Sample JSON data:
 
@@ -3838,7 +3843,8 @@ ibmcloud cis glb-monitor-update GLB_MON_ID (--json @JSON_FILE | JSON_STRING) [-i
       "follow_redirects": true,
       "allow_insecure": false,
       "expected_codes": "2xx",
-      "expected_body": "alive"
+      "expected_body": "alive",
+      "probe_zone": "example.com"
 }
 ```
 {: codeblock}
@@ -4009,13 +4015,14 @@ ibmcloud cis logpush-job-create DNS_DOMAIN_ID --destination DESTINATION_URL --na
 `--destination value`
 :   Specify a COS bucket path or a LogDNA path where data will be pushed.
     - Syntax for LogDNA Path: `https://{LOGS_REGION_URL}?hostname={DOMAIN}&apikey={LOGDNA_INGRESS_KEY}`
-    Example: `'https://logs.eu-de.logging.cloud.ibm.com/logs/ingest?hostname=testv2_logpush&apikey=xxxxxx'`
-    Syntax for COS Path: `cos://<BUCKET_OBJECT_PATH>?region=<REGION>&instance-id=<IBM_ClOUD_OBJECT_STORAGE_INSTANCE_ID>`
-    Example: `'cos://cis-test-bucket/logs?region=us&instance-id=f75e6d90-4212-4026-851c-d572071146cd'`
-    To separate logs into daily subfolders, use the special string `{DATE}` in the bucket path.
-    It will be substituted with the date in `YYYYMMDD` format, for example '20190423'.
-    Subfolders will be created as appropriate, for example:
-    `'cos://cis-test-bucket/logs/{DATE}?region=us&instance-id=f75e6d90-4212-4026-851c-d572071146cd'`
+
+      Example: `'https://logs.eu-de.logging.cloud.ibm.com/logs/ingest?hostname=testv2_logpush&apikey=xxxxxx'`
+      Syntax for COS Path: `cos://<BUCKET_OBJECT_PATH>?region=<REGION>&instance-id=<IBM_ClOUD_OBJECT_STORAGE_INSTANCE_ID>`
+      Example: `'cos://cis-test-bucket/logs?region=us&instance-id=f75e6d90-4212-4026-851c-d572071146cd'`
+      To separate logs into daily subfolders, use the special string `{DATE}` in the bucket path.
+      It will be substituted with the date in `YYYYMMDD` format, for example '20190423'.
+      Subfolders will be created as appropriate, for example:
+      `'cos://cis-test-bucket/logs/{DATE}?region=us&instance-id=f75e6d90-4212-4026-851c-d572071146cd'`
 
 `--name value`
 :   Job name. Required.
@@ -4876,7 +4883,7 @@ ibmcloud cis origin-certificate 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2
 Delete an origin certificate.
 
 ```sh
-ibmcloud cis  origin-certificate-delete DNS_DOMAIN_ID CERT_ID [--instance INSTANCE_NAME]
+ibmcloud cis origin-certificate-delete DNS_DOMAIN_ID CERT_ID [--instance INSTANCE_NAME]
 ```
 {: pre}
 
@@ -5753,8 +5760,8 @@ ibmcloud cis ratelimit-rule-create DNS_DOMAIN_ID --url URL [--description DESCRI
                     - `name`: The name of the response header to match.
                     - `op`: The operator when matching, eq means equals, ne means not equals. Valid values are `eq` and `ne`.
                     - `value`: The value of the header, which is exactly matched.
-        - `threshold`: The threshold that triggers the rate limit mitigations, combined with period. For example, threshold per period. Min value: 2, max value: 1000000.                       
-        - `period`: The time, in seconds, to count matching traffic. If the count exceeds threshold within this period the action is performed. Min value:1, max value: 3600.
+        - `threshold`: The threshold that triggers the rate limit mitigations, combined with period. For example, threshold per period. Min value: 2, max value: 1000000.
+        - `period`: The time, in seconds, to count matching traffic. If the count exceeds threshold within this period the action is performed. Min value: 10, max value: 86400.
         - `action`: The action performed when the threshold of matched traffic within the period defined is exceeded.
             - `mode`: The type of action performed. Valid values are: `simulate`, `ban`, `challenge`, `js_challenge`.
             - `timeout`: The time, in seconds, as an integer to perform the mitigation action. Timeout be the same or greater than the period. This field is valid only when mode is `simulate` or `ban`. Min value: 10, max value: 86400.
@@ -7670,7 +7677,7 @@ ibmcloud cis authenticated-origin-pull-settings-update 31984fea73a15b45779fa0df4
 List zone level authenticated origin pull certificates for a domain.
 
 ```sh
-ibmcloud cis authenticated-origin-pull-certificates DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis authenticated-origin-pull-certificates DNS_DOMAIN_ID [--level zone|hostname][-i, --instance INSTANCE] [--output FORMAT]
 ```
 {: pre}
 
@@ -7679,6 +7686,9 @@ ibmcloud cis authenticated-origin-pull-certificates DNS_DOMAIN_ID [-i, --instanc
 
 `DNS_DOMAIN_ID`
 :   The ID of DNS domain. Required.
+
+`----level`
+:   Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -8559,7 +8569,8 @@ cis alert-webhook-update WEBHOOK_ID [--name NAME] [--url URL] [--secret SECRET] 
 `--secret`
 :   The secret that will be passed in the webhook auth header when dispatching a webhook alert.
 
-`-i, --instance**: Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
