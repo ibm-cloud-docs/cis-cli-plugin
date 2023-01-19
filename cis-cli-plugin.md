@@ -8103,7 +8103,7 @@ ibmcloud cis alert-policy glb-healthcheck-alert-create --name NAME (--emails EMA
 {: pre}
 
 #### Command options
-{: #opt-create-pool-toggle-alert}
+{: #opt-create-glb-healthcheck-alert}
 
 `--name`
 :   The name of the alert policy.
