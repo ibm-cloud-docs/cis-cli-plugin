@@ -802,7 +802,7 @@ ibmcloud cis cache-settings-update 31984fea73a15b45779fa0df4ef62f9b --caching-le
 {: pre}
 
 ## Custom page
-{: #custom-page}
+{: #custom-pages}
 
 Manipulate how the Custom Page performs using the following `custom-page` commands:
 
@@ -3938,7 +3938,7 @@ ibmcloud cis glb-events -s "2020-05-20" -u "2020-05-22" --origin-name "dal09" --
 {: #logpull-section}
 
 ### `ibmcloud cis logpull`
-{: #logpull}
+{: #cli-logpull}
 
 Manipulate Logpull services by using the following `logpull` commands.
 
