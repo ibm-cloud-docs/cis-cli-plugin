@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2022
-lastupdated: "2022-10-27"
+  years: 2018, 2023
+lastupdated: "2023-08-03"
 
 ---
 
@@ -1811,11 +1811,13 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
 :   Feature of domain settings to check. This option is mutually exclusive with *g, --group*. Valid values are as follow:
     - `always_use_https`: Redirect all requests with scheme `http` to `https`. This applies to all http requests to the domain.
     - `automatic_https_rewrites`: Help fix mixed content by changing `http` to `https` for all resources or links on your web site that can be served  with HTTPS.
+    - `bot_management`: Detect and mitigate bot traffic on your domain.
     - `brotli`: When the client requesting an asset supports the brotli compression algorithm, CIS will serve a brotli compressed version of the asset.
     - `browser_check`: Evaluate HTTP headers from your visitors browser for threats. If a threat is found a block page will be delivered.
     - `challenge_ttl`: Specify how long a visitor with a bad IP reputation is allowed access to your website after completing a challenge.
     - `ciphers`: A whitelist of ciphers for TLS termination in the BoringSSL format. This command only lists ciphers specifically whitelisted by  customers. If no ciphers are whitelisted, the list is empty and the default ciphers are used. See [TLS Options](/docs/cis? topic=cis-cis-tls-options#cipher-suites) for the list of default ciphers.
     - `cname_flattening`: Follow a CNAME to where it points and return that IP address instead of the CNAME record. By default, only flatten the  CNAME at the root of your domain.
+    - `domain_hold`: Domain holds prevent teams in your organization from adding domains that are already active in another account (Enterprise plan only).
     - `email_obfuscation`: Encrypt email addresses on your web page from bots while keeping them visible to humans.
     - `opportunistic_onion`: Allow legitimate users of Tor Browser to access your websites.
     - `hotlink_protection`: Protect your images from off-site linking.
@@ -1823,6 +1825,7 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
     - `http3`: Accelerate your website with HTTP/3.
     - `image_load_optimization`: Improve load time for pages that include images on mobile devices with slow network connections.
     - `image_size_optimization`: Improve image load time by optimizing images hosted on your domain.
+    - `image_resizing`: Provide on-demand resizing, conversion and optimization for images served through the CIS network.
     - `ip_geolocation`: Include the country code of the visitor location with all requests to your website.
     - `ipv6`: Enable IPv6 support and gateway.
     - `max_upload`: The amount of data visitors can upload to your website in a single request.
@@ -1842,7 +1845,8 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
     - `true_client_ip_header`: CIS will send the end user’s IP address in the True-Client-IP header (Enterprise plan only).
     - `waf`: A Web Application Firewall (WAF) blocks requests that contain malicious content.
     - `websockets`: Allow WebSockets connections to your origin server.
-    - `proxy_read_timeout`: Maximum time between two read operations from origin.
+    - `proxy_read_timeout`: Maximum time between two read operations from origin (Enterprise plan only).
+    - `url_normalization`: Modify the URLs of incoming requests.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -1875,16 +1879,19 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
 
 `DNS_DOMAIN_ID`
 :   The ID of DNS domain. Required.
+
 `-f, --feature value`
-: Feature of domain settings to update. Required. Valid values:
+:   Feature of domain settings to update. Required. Valid values:
     - `always_use_https`: Redirect all requests with scheme `http` to `https`. This applies to all http requests to the domain.
     - `automatic_https_rewrites`: Help fix mixed content by changing `http` to `https` for all resources or links on your web site that can be served with HTTPS.
+    - `bot_management`: Detect and mitigate bot traffic on your domain.
     - `brotli`: When the client requesting an asset supports the brotli compression algorithm, CIS will serve a brotli compressed version of the asset.
     - `browser_check`: Evaluate HTTP headers from your visitors browser for threats. If a threat is found a block page will be delivered.
     - `challenge_ttl`: Specify how long a visitor with a bad IP reputation is allowed access to your website after completing a challenge.
     - `ciphers`: A whitelist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
     - `cname_flattening`: Follow a CNAME to where it points and return that IP address instead of the CNAME record.
        By default, only flatten the CNAME at the root of your domain.
+    - `domain_hold`: Domain holds prevent teams in your organization from adding domains that are already active in another account (Enterprise plan only).
     - `email_obfuscation`: Encrypt email addresses on your web page from bots while keeping them visible to humans.
     - `opportunistic_onion`: Allow legitimate users of Tor Browser to access your websites.
     - `hotlink_protection`: Protect your images from off-site linking.
@@ -1892,6 +1899,7 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
     - `http3`: Accelerate your website with HTTP/3.
     - `image_load_optimization`: Improve load time for pages that include images on mobile devices with slow network connections.
     - `image_size_optimization`: Improve image load time by optimizing images hosted on your domain.
+    - `image_resizing`: Provide on-demand resizing, conversion and optimization for images served through the CIS network.
     - `ip_geolocation`: Include the country code of the visitor location with all requests to your website.
     - `ipv6`: Enable IPv6 support and gateway.
     - `max_upload`: The amount of data visitors can upload to your website in a single request.
@@ -1912,22 +1920,35 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
     - `waf`: A Web Application Firewall (WAF) blocks requests that contain malicious content.
     - `websockets`: Allow WebSockets connections to your origin server.
     - `proxy_read_timeout`: Maximum time between two read operations from origin.
+    - `url_normalization`: Modify the URLs of incoming requests.
 
 `-v, --value`
 :   The value set to the feature for domain. Required.
     - Valid values for `always_use_https` are `on`, `off`.
     - Valid values for `automatic_https_rewrites` are `on`, `off`.
+    - Valid values for `bot_management` are "use_latest_model", "fight_mode", "session_score", "enable_js". For example: `-v fight_mode=true,session_score=true`
+         - `use_latest_model`: Whether to enable latest model version. Valid values for `use_latest_model` are `true`, `false`.
+         - `fight_mode`: Whether to enable the fight mode. Valid values for `fight_mode` are `true`, `false`.
+         - `session_score`: Whether to enable the session score. Valid values for `session_score` are `true`, `false`.
+         - `enable_js`: Whether to enable javascript detections. Valid values for `enable_js` are `true`, `false`.
     - Valid values for `browser_check` are `on`, `off`.
     - Valid values for `challenge_ttl` are `300, 900, 1800, 2700, 3600, 7200, 10800, 14400, 28800, 57600, 86400, 604800, 2592000, 31536000`.
     - Valid values for `cname_flattening` are `flatten_at_root`, `flatten_all`.
         - `flatten_at_root`: Flatten CNAME at root domain. This is the default value.
         - `flatten_all`: Flatten all CNAME records under your domain.
+    - Valid values for `domain_hold` are `hold`, `include_subdomains`, `hold_after`.
+        - `hold`: Whether to enable the domain hold or not. Valid values for `hold` are `true`, `false`.
+        - `include_subdomains`: Whether to enable the domain hold or not. Valid values for `include_subdomains` are `true`, `false`.        
+        - `hold_after`: If `hold_after` is provided, the hold is temporarily disabled, then automatically re-enabled by the system at the time specified.
+        For enable domain and subdomains hold: `-v hold=true,include_subdomains=true`.
+        For disable domain hold: `-v hold=false,hold_after=2023-05-31T15:56:36+00:00`.
     - Valid values for `hotlink_protection` are `on`, `off`.
     - Valid values for `email_obfuscation` are `on`, `off`.
     - Valid values for `opportunistic_onion` are `on`, `off`.
     - Valid values for `http2` are `on`, `off`.
     - Valid values for `http3` are `on`, `off`.
     - Valid values for `image_load_optimization` are `on`, `off`.
+    - Valid values for `image_resizing` are `on`, `off`.
     - Valid values for `image_size_optimization` are `off`, `lossless`, `lossy`.
         - `off`: Disable Image Size Optimization.
         - `lossless`: Reduce the size of image files without impacting visual quality.
@@ -1969,6 +1990,9 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
     - Valid values for `websockets` are `on`, `off`.
     - Valid values for `proxy_read_timeout`, 1-6000, default: 100.
     - Valid values for `ciphers` are `ECDHE-ECDSA-AES128-GCM-SHA256`, `ECDHE-ECDSA-CHACHA20-POLY1305`, `ECDHE-RSA-AES128-GCM-SHA256`, `ECDHE-RSA-CHACHA20-POLY1305`, `ECDHE-ECDSA-AES128-SHA256`, `ECDHE-ECDSA-AES128-SHA`, `ECDHE-RSA-AES128-SHA256`, `ECDHE-RSA-AES128-SHA`, `AES128-GCM-SHA256`, `AES128-SHA256`, `AES128-SHA`, `ECDHE-ECDSA-AES256-GCM-SHA384`, `ECDHE-ECDSA-AES256-SHA384`, `ECDHE-RSA-AES256-GCM-SHA384`, `ECDHE-RSA-AES256-SHA384`, `ECDHE-RSA-AES256-SHA`, `AES256-GCM-SHA384`, `AES256-SHA256`, `AES256-SHA`, `DES-CBC3-SHA`, `default`. For example: `-v AES256-SHA256,AES256-SHA`, using `-v default` to reset configured cipher suites to default value.
+    - Valid values for `url_normalization` are "type", "scope". For example -v type=cis,scope=both
+         - `type`: Selects the type of URL normalization performed by CIS. Valid values for `type` are `cis`, `rfc3986`.
+         - `scope`: Configures the scope of the URL normalization.Valid values for `scope` are `both`, `incoming`.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -2033,7 +2057,7 @@ ibmcloud cis edge-functions-action [--name ACTION_NAME] [-i, --instance INSTANCE
 #### Command options
 {: #show-an-edge-functions-action-options}
 
-`--name
+`--name`
 :   Action name (Enterprise plan only).
 
 `-i, --instance`
@@ -4037,10 +4061,10 @@ ibmcloud cis logpush-job-create DNS_DOMAIN_ID --destination DESTINATION_URL --na
 :   Set the format in which response timestamps are returned. Valid values: `unix`, `unixnano`, `rfc3339`.
 
 `--dataset value`
-:   The category of logs you want to receive. This value cannot be changed after the job is created. Valid values: `http_requests`, `range_events`, `firewall_events`. The default value is `http_requests`. 
+:   The category of logs you want to receive. This value cannot be changed after the job is created. Valid values: `http_requests`, `range_events`, `firewall_events`, `dns_logs`. The default value is `http_requests`.
 
 `--frequency value`
-:   The frequency at which CIS sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. Valid values: `high`, `low`. 
+:   The frequency at which CIS sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. Valid values: `high`, `low`.
 
 `-i , --instance value`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -4095,13 +4119,13 @@ ibmcloud cis logpush-job-update DNS_DOMAIN_ID [--destination DESTINATION_URL] [-
 :   Set the format in which response timestamps are returned. Valid values: `unix`, `unixnano`, `rfc3339`.
 
 `--dataset value`
-:   The category of logs you want to receive. This value cannot be changed after the job is created. Valid values: `http_requests`, `range_events`, `firewall_events`. The default value is `http_requests`. 
+:   The category of logs you want to receive. This value cannot be changed after the job is created. Valid values: `http_requests`, `range_events`, `firewall_events`,`dns_logs`. The default value is `http_requests`.
 
 `--jobid value`
 :   JOB_ID is the ID of logpush job.
 
 `--frequency value`
-:   The frequency at which CIS sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. Valid values: `high`, `low`.                              
+:   The frequency at which CIS sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. Valid values: `high`, `low`.
 
 `-i , --instance value`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -4168,7 +4192,7 @@ ibmcloud cis logpush-job DNS_DOMAIN_ID [--dataset DATASET] [--jobid JOB_ID] [-i,
 :   The ID of DNS domain. Required.
 
 `--dataset value`
-:   The category of logs you want to receive. This value cannot be changed after the job is created. Valid values: `http_requests`, `range_events`, `firewall_events`. The default value is `http_requests`.
+:   The category of logs you want to receive. This value cannot be changed after the job is created. Valid values: `http_requests`, `range_events`, `firewall_events`,`dns_logs`. The default value is `http_requests`.
 
 `--jobid value`
 :   JOB_ID is the ID of logpush job.
@@ -4206,7 +4230,7 @@ ibmcloud cis logpush-job-delete DNS_DOMAIN_ID [--dataset DATASET] [--jobid JOB_I
 :   The ID of DNS domain. Required.
 
 `--dataset value`
-:   The category of logs you want to receive. This value cannot be changed after the job is created. Valid values: `http_requests`, `range_events`, `firewall_events`. The default value is `http_requests`.
+:   The category of logs you want to receive. This value cannot be changed after the job is created. Valid values: `http_requests`, `range_events`, `firewall_events`,`dns_logs`. The default value is `http_requests`.
 
 `--jobid value`
 :   JOB_ID is the ID of logpush job.
@@ -4244,7 +4268,7 @@ ibmcloud cis logpush-available-fields DNS_DOMAIN_ID [--dataset DATASET] [-i, --i
 :   The ID of DNS domain. Required.
 
 `--dataset value`
-:   The category of logs you want to receive. This value cannot be changed after the job is created. Valid values: `http_requests`, `range_events`, `firewall_events`. The default value is `http_requests`.
+:   The category of logs you want to receive. This value cannot be changed after the job is created. Valid values: `http_requests`, `range_events`, `firewall_events`,`dns_logs`. The default value is `http_requests`.
 
 `-i , --instance value`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -4263,7 +4287,7 @@ ibmcloud cis logpush-available-fields 31984fea73a15b45779fa0df4ef62f9b --dataset
 {: #log-retention-cli-ref}
 
 ### `ibmcloud cis log-retention`
-{: #log-retention}
+{: #cli-log-retention}
 
 Get log retention setting for the domain.
 
@@ -4355,10 +4379,10 @@ ibmcloud cis firewall-event-analytics DNS_DOMAIN_ID [--dataset DATA_SET] [--filt
 
    Use the following table to identify which datasets are included in your plan and the range of historical data you can query.
 
-   | Dataset                        | Trial / Standard | Enterprise / Security / GLB |
-   | ------------------------------ | -----------------| --------------------------- |
-   | firewallEventsAdaptiveGroups   |     30 days      |         30 days             |
-   | firewallEventsAdaptive         |     30 days      |         30 days             |
+   | Dataset                        | Trial / Standard / Standard-Next | Enterprise / Security / GLB |
+   | ------------------------------ | ---------------------------------| --------------------------- |
+   | firewallEventsAdaptiveGroups   |     30 days                      |         30 days             |
+   | firewallEventsAdaptive         |     30 days                      |         30 days             |
    {: caption="Datasets included in your plan" caption-side="bottom"}
 
 
@@ -4494,11 +4518,11 @@ ibmcloud cis http-request-analytics DNS_DOMAIN_ID [--dataset DATA_SET] [--filter
 :   Requested dataset. The default value is `httpRequests1dGroups`.
     Use the following table to identify which datasets are included in your plan and the range of historical data you can query.
 
-    | Dataset                     | Trial / Standard | Enterprise / Security / GLB |
-    | --------------------------- | ---------------- | --------------------------- |
-    | httpRequests1dGroups        | 365 days         | 365 days                    |
-    | httpRequests1hGroups        | 30 days          | 90 days                     |
-    | httpRequests1mGroups        | 3 days           | 7 days                      |
+    | Dataset                     | Trial / Standard / Standard-next | Enterprise / Security / GLB |
+    | --------------------------- | -------------------------------- | --------------------------- |
+    | httpRequests1dGroups        | 365 days                         | 365 days                    |
+    | httpRequests1hGroups        | 30 days                          | 90 days                     |
+    | httpRequests1mGroups        | 3 days                           | 7 days                      |
     {: caption="Identify datasets included in your plan" caption-side="bottom"}
 
 `--filter`
@@ -6171,10 +6195,10 @@ ibmcloud cis instance-create INSTANCE_NAME PLAN [--output FORMAT]
 #### Examples
 {: #create-cis-service-instance-examples}
 
-Create a standard plan cis instance `cis-demo`
+Create a standard-next plan CIS instance `cis-demo`
 
 ```sh
-ibmcloud cis instance-create cis-demo standard
+ibmcloud cis instance-create cis-demo standard-next
 ```
 {: pre}
 
@@ -6200,7 +6224,7 @@ ibmcloud cis instance-delete INSTANCE [-f, --force]
 #### Examples
 {: #delete-cis-service-instance-examples}
 
-Delete cis instance `cis-demo`
+Delete CIS instance `cis-demo`
 
 ```sh
 ibmcloud cis instance-delete cis-demo -f
@@ -6602,7 +6626,7 @@ ibmcloud cis tls-settings-update 31984fea73a15b45779fa0df4ef62f9b --mode end-to-
 List all certificates for a given DNS domain, including shared, dedicated and custom certificates.
 
 ```sh
-ibmcloud cis certificates DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis certificates DNS_DOMAIN_ID [--keyless] [-i, --instance INSTANCE] [--output FORMAT]
 ```
 {: pre}
 
@@ -6611,6 +6635,9 @@ ibmcloud cis certificates DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORM
 
 `DNS_DOMAIN_ID`
 :   The ID of DNS domain. Required.
+
+`--keyless`
+:   List all keyless certificates.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -6634,7 +6661,7 @@ ibmcloud cis certificates 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 Get details of a given shared, dedicated, custom certificate.
 
 ```sh
-ibmcloud cis certificate DNS_DOMAIN_ID (--cert-id CERT_ID | --universal) [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis certificate DNS_DOMAIN_ID (--cert-id CERT_ID | --universal) [--keyless] [-i, --instance INSTANCE] [--output FORMAT]
 ```
 {: pre}
 
@@ -6650,6 +6677,9 @@ ibmcloud cis certificate DNS_DOMAIN_ID (--cert-id CERT_ID | --universal) [-i, --
 `--universal`
 :   Show universal certificate details.
 
+`--keyless`
+:   Show keyless certificate details.
+
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
 
@@ -6659,11 +6689,12 @@ ibmcloud cis certificate DNS_DOMAIN_ID (--cert-id CERT_ID | --universal) [-i, --
 #### Examples
 {: #show-cert-examples}
 
-Show details of a given certificate details.
+Show details for a given certificate.
 
 ```sh
 ibmcloud cis certificate 31984fea73a15b45779fa0df4ef62f9b --universal -i "cis-demo"
 ibmcloud cis certificate 31984fea73a15b45779fa0df4ef62f9b --cert-id 5a7805061c76ada191ed06f989cc3dac -i "cis-demo"
+ibmcloud cis certificate 31984fea73a15b45779fa0df4ef62f9b --cert-id 5a7805061c76ada191ed06f989cc3dac --keyless -i "cis-demo"
 ```
 {: codeblock}
 
@@ -6708,8 +6739,8 @@ ibmcloud cis certificate-order 31984fea73a15b45779fa0df4ef62f9b --hostnames www.
 Upload a custom certificate for a DNS domain.
 
 ```sh
-ibmcloud cis certificate-upload DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
-[Deprecated] ibmcloud cis certificate-upload DNS_DOMAIN_ID (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis certificate-upload DNS_DOMAIN_ID [--keyless] (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
+[Deprecated] ibmcloud cis certificate-upload DNS_DOMAIN_ID [--keyless] (-s, --json-str JSON_STR | -j, --json-file JSON_FILE) [-i, --instance INSTANCE] [--output FORMAT]
 ```
 {: codeblock}
 
@@ -6719,13 +6750,19 @@ ibmcloud cis certificate-upload DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) 
 `DNS_DOMAIN_ID`
 :   The ID of DNS domain. Required.
 
+`--keyless`
+:   Upload a keyless certificate.
+
 `--json`
 :   The JSON file or JSON string used to describe a custom certificate. Required.
-    - The required fields in JSON data are `certificate`, `private_key`:
+    - The required fields in JSON data are `certificate`, `private_key`,`host`, `port`:
         - `certificate`: SSL certificate or certificate and the intermediate(s) for the domain.
         - `private_key`: Private key for the domain.
-    - The optional fields is `bundle_method`:
+        - `host`: The keyless SSL host name.
+        - `port`: The keyless SSL port used to communicate between CIS and the client's Keyless SSL server.
+    - The optional fields is `bundle_method`,`name`:
         - `bundle_method`: Bundle method, default value is `compatible`, valid values are: `compatible`, `modern` and `user-defined`.
+        - `name`: The keyless SSL name.
 
 Sample JSON data:
 
@@ -6734,6 +6771,15 @@ Sample JSON data:
    "certificate": "xxx",
    "private_key": "xxx",
    "bundle_method": "compatible"
+}
+
+For keyless ssl
+{
+    "host":"www.example.com",
+    "port":8000,
+    "certificate": "xxx",
+    "bundle_method": "user-defined",
+   "name": "test"
 }
 ```
 {: codeblock}
@@ -6766,8 +6812,8 @@ ibmcloud cis certificate-upload 31984fea73a15b45779fa0df4ef62f9b --json '{"certi
 Update a custom certificate for a DNS domain.
 
 ```sh
-ibmcloud cis certificate-update DNS_DOMAIN_ID CERT_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
-[Deprecated] ibmcloud cis certificate-update DNS_DOMAIN_ID CERT_ID [-s, --json-str JSON_STR | -j, --json-file JSON_FILE] [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis certificate-update DNS_DOMAIN_ID CERT_ID [--keyless] (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
+[Deprecated] ibmcloud cis certificate-update DNS_DOMAIN_ID CERT_ID [--keyless] [-s, --json-str JSON_STR | -j, --json-file JSON_FILE] [-i, --instance INSTANCE] [--output FORMAT]
 ```
 {: codeblock}
 
@@ -6780,13 +6826,19 @@ ibmcloud cis certificate-update DNS_DOMAIN_ID CERT_ID (--json @JSON_FILE | JSON_
 `CERT_ID`
 :   The ID of custom certificate. Required.
 
+`--keyless`
+:   Update a keyless certificate.
+
 `--json`
 :   The JSON file or JSON string used to describe a custom certificate. Required.
-    - The required fields in JSON data are `certificate`, `private_key`:
+    - The required fields in JSON data are `certificate`, `private_key`,`host`, `port`:
         - `certificate`: SSL certificate or certificate and the intermediate(s) for the domain.
         - `private_key`: Private key for the domain.
+        - `host`: The keyless SSL host name.
+        - `port`: The keyless SSL port used to communicate between CIS and the client's Keyless SSL server.
     - The optional fields is `bundle_method`:
         - `bundle_method`: Bundle method, default value is `compatible`, valid values are: `compatible`, `modern` and `user-defined`.
+        - `name`: The keyless SSL name.
 
 Sample JSON data:
 
@@ -6795,6 +6847,15 @@ Sample JSON data:
    "certificate": "xxx",
    "private_key": "xxx",
    "bundle_method": "compatible"
+}
+
+For keyless ssl 
+{
+    "host":"www.example.com",
+    "port":8000,
+    "certificate": "xxx",
+    "bundle_method": "user-defined",
+   "name": "test"
 }
 ```
 {: codeblock}
@@ -6891,7 +6952,7 @@ ibmcloud cis certificate-priority-change 31984fea73a15b45779fa0df4ef62f9b --json
 Delete a dedicated or custom certificate.
 
 ```sh
-ibmcloud cis certificate-delete DNS_DOMAIN_ID CERT_ID [-i, --instance INSTANCE]
+ibmcloud cis certificate-delete DNS_DOMAIN_ID CERT_ID [--keyless][-i, --instance INSTANCE]
 ```
 {: pre}
 
@@ -6903,6 +6964,9 @@ ibmcloud cis certificate-delete DNS_DOMAIN_ID CERT_ID [-i, --instance INSTANCE]
 
 `CERT_ID`
 :   The ID of dedicated or custom certificate. Required.
+
+`--keyless`
+:   Delete a keyless certificate.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -7585,7 +7649,7 @@ ibmcloud cis waf-override-delete 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d
 {: pre}
 
 ## Authenticated Origin Pull
-{: #authenticated-origin-pull}
+{: #cli-authenticated-origin-pull}
 
 Manage Authenticated Origin Pull by using the following `authenticated-origin-pull` commands.
 
@@ -8148,6 +8212,51 @@ ibmcloud cis alert-policy glb-healthcheck-alert-create --name test1 --emails tes
 ```
 {: pre}
 
+
+### `ibmcloud cis alert-policy web-analytics-alert-create`
+{: #create-web-analytics-alert}
+
+ Create an alert policy for web metrics report.
+
+```sh
+ibmcloud cis alert-policy web-analytics-alert-create --name NAME (--emails EMAILS | --webhooks WEBHOOKS) --enabled (true | false) [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #opt-create-web-analytics-alert}
+
+`--name`
+:   The name of the alert policy.
+
+`--description`
+:   The description for the alert policy.
+
+`--emails`
+:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+
+`--webhooks`
+:   The webhook ID for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+
+`--enabled`
+:   Whether the alert policy is enabled.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output`
+:   Specify output format, only JSON is supported.
+
+#### Examples
+{: #create-web-analytics-alert-examples}
+
+Create a web metrics report alert policy for instance `cis-demo`.
+
+```sh
+ibmcloud cis alert-policy web-analytics-alert-create --name test1 --emails test1@cn.ibm.com --webhooks b2633e68-9a64-4519-b361-a64a67c8db8e --enabled true  -i "cis-demo"
+```
+{: pre}
+
 ### `ibmcloud cis alert-policy ddos-attack-l7-alert-update`
 {: #update-ddos-attack-l7-alert}
 
@@ -8407,6 +8516,53 @@ Update a certificate alert policy `a2633e68-1a64-2512-a321-b64a17c7db7a`.
 
 ```sh
 ibmcloud cis alert-policy glb-healthcheck-alert-update  a2633e68-1a64-2512-a321-b64a17c7db7a --name test1 --emails test1@cn.ibm.com --enabled true --pools all --include-future-pools true -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis alert-policy web-analytics-alert-update`
+{: #update-web-analytics-alert}
+
+ Update an alert policy for web metric report.
+
+```sh
+ibmcloud cis alert-policy web-analytics-alert-update POLICY_ID --name NAME (--emails EMAILS | --webhooks WEBHOOKS) --enabled (true | false) [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #opt-update-web-analytics-alert}
+
+`POLICY_ID`
+:   The ID of alert policy. Required.
+
+`--name`
+:   The name of the alert policy.
+
+`--description`
+:   The description for the alert policy.
+
+`--emails`
+:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+
+`--webhooks`
+:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+
+`--enabled`
+:   Whether or not the alert policy is enabled.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output`
+:   Specify output format, only JSON is supported.
+
+#### Examples
+{: #update-web-analytics-alert-examples}
+
+Update a web metric report alert policy `a2633e68-1a64-2512-a321-b64a17c7db7a`.
+
+```sh
+ibmcloud cis alert-policy web-analytics-alert-update a2633e68-1a64-2512-a321-b64a17c7db7a --name test1 --emails test1@cn.ibm.com --webhooks b2633e68-9a64-4519-b361-a64a67c8db8e --enabled true  -i "cis-demo"
 ```
 {: pre}
 
