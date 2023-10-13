@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2023
-lastupdated: "2023-08-03"
+lastupdated: "2023-08-31"
 
 ---
 
@@ -1815,7 +1815,7 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
     - `brotli`: When the client requesting an asset supports the brotli compression algorithm, CIS will serve a brotli compressed version of the asset.
     - `browser_check`: Evaluate HTTP headers from your visitors browser for threats. If a threat is found a block page will be delivered.
     - `challenge_ttl`: Specify how long a visitor with a bad IP reputation is allowed access to your website after completing a challenge.
-    - `ciphers`: A whitelist of ciphers for TLS termination in the BoringSSL format. This command only lists ciphers specifically whitelisted by  customers. If no ciphers are whitelisted, the list is empty and the default ciphers are used. See [TLS Options](/docs/cis? topic=cis-cis-tls-options#cipher-suites) for the list of default ciphers.
+    - `ciphers`: A whitelist of ciphers for TLS termination in the BoringSSL format. This command only lists ciphers specifically whitelisted by  customers. If no ciphers are whitelisted, the list is empty and the default ciphers are used. See [Edge cipher suites](/docs/cis?topic=cis-cis-tls-options#edge-cipher-suites) and [Origin cipher suites](/docs/cis?topic=cis-cis-tls-options#origin-cipher-suites) for the list of default ciphers.
     - `cname_flattening`: Follow a CNAME to where it points and return that IP address instead of the CNAME record. By default, only flatten the  CNAME at the root of your domain.
     - `domain_hold`: Domain holds prevent teams in your organization from adding domains that are already active in another account (Enterprise plan only).
     - `email_obfuscation`: Encrypt email addresses on your web page from bots while keeping them visible to humans.
@@ -1937,8 +1937,8 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
         - `flatten_at_root`: Flatten CNAME at root domain. This is the default value.
         - `flatten_all`: Flatten all CNAME records under your domain.
     - Valid values for `domain_hold` are `hold`, `include_subdomains`, `hold_after`.
-        - `hold`: Whether to enable the domain hold or not. Valid values for `hold` are `true`, `false`.
-        - `include_subdomains`: Whether to enable the domain hold or not. Valid values for `include_subdomains` are `true`, `false`.        
+        - `hold`: Whether to enable the domain hold. Valid values for `hold` are `true`, `false`.
+        - `include_subdomains`: Whether to enable the domain hold. Valid values for `include_subdomains` are `true`, `false`.        
         - `hold_after`: If `hold_after` is provided, the hold is temporarily disabled, then automatically re-enabled by the system at the time specified.
         For enable domain and subdomains hold: `-v hold=true,include_subdomains=true`.
         For disable domain hold: `-v hold=false,hold_after=2023-05-31T15:56:36+00:00`.
@@ -4052,7 +4052,7 @@ ibmcloud cis logpush-job-create DNS_DOMAIN_ID --destination DESTINATION_URL --na
 :   Job name. Required.
 
 `--enable value`
-:   Enable the job or not. The job is disabled by default.
+:   Enable the job. The job is disabled by default.
 
 `--fields value`
 :   Define the list of log fields to be included in log files. Multiple fields can be separated by commas and use command [`ibmcloud cis logpush-available-fields DNS_DOMAIN_ID`] to get the comprehensive list of available log fields, or use `all` to include all available fields in log files. Note that fields are expected to be case sensitive.
@@ -4110,7 +4110,7 @@ ibmcloud cis logpush-job-update DNS_DOMAIN_ID [--destination DESTINATION_URL] [-
     `'cos://cis-test-bucket/logs/{DATE}?region=us&instance-id=f75e6d90-4212-4026-851c-d572071146cd'`
 
 `--enable value`
-:   Enable the job or not. The job is disabled by default.
+:   Enable the job. The job is disabled by default.
 
 `--fields value`
 :   Define the list of log fields to be included in log files. Multiple fields can be separated by commas and use command `ibmcloud cis logpush-available-fields DNS_DOMAIN_ID` to get the comprehensive list of available log fields, or use `all` to include all available fields in log files. Note that fields are expected to be case sensitive.
@@ -7717,7 +7717,7 @@ ibmcloud cis authenticated-origin-pull-settings-update DNS_DOMAIN_ID [--level zo
 :   The certificate id which the hostname is bundled to. (hostname level only)
 
 `----enabled`
-:   Enable authenticated origin pull or not. Valid values: "on", "off".
+:   Enable authenticated origin pull. Valid values: "on", "off".
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -7988,7 +7988,7 @@ ibmcloud cis alert-policy ddos-attack-l7-alert-create --name NAME (--emails EMAI
 :   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
 
 `--enabled`
-:   Whether or not the alert policy is enabled.
+:   Whether the alert policy is enabled.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -8032,7 +8032,7 @@ ibmcloud cis alert-policy pool-toggle-alert-create --name NAME (--emails EMAILS 
 :   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
 
 `--enabled`
-:   Whether or not the alert policy is enabled.
+:   Whether the alert policy is enabled.
 
 `--pools`
 :   The IDs of origin pool, if set to all, the all pool IDs will be used.
@@ -8041,7 +8041,7 @@ ibmcloud cis alert-policy pool-toggle-alert-create --name NAME (--emails EMAILS 
 :   The condition of pool toggle status.
 
 `--include-future-pools`
-:   Whether or not include the future pools.
+:   Whether to include the future pools.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -8085,7 +8085,7 @@ ibmcloud cis alert-policy firewall-events-alert-create --name NAME (--emails EMA
 :   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
 
 `--enabled`
-:   Whether or not the alert policy is enabled.
+:   Whether the alert policy is enabled.
 
 `--domains`
 :   The domain IDs that for the alert policy. For example: `--domains domainID1,domainID2`
@@ -8138,7 +8138,7 @@ ibmcloud cis alert-policy certificate-alert-create --type (universal | dedicated
 :   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
 
 `--enabled`
-:   Whether or not the alert policy is enabled.
+:   Whether the alert policy is enabled.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -8182,13 +8182,13 @@ ibmcloud cis alert-policy glb-healthcheck-alert-create --name NAME (--emails EMA
 :   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
 
 `--enabled`
-:   Whether or not the alert policy is enabled.
+:   Whether the alert policy is enabled.
 
 `--pools`
 :   The IDs of origin pool, if set to all, the all pool IDs will be used.
 
 `--include-future-pools`
-:   Whether or not include the future pools. (default "false")
+:   Whether to include the future pools. (default "false")
 
 `--health-status-trigger`
 :   The trigger condition to fire the notification. Valid values: "healthy", "unhealthy", "either". (default "either")
@@ -8257,13 +8257,63 @@ ibmcloud cis alert-policy web-analytics-alert-create --name test1 --emails test1
 ```
 {: pre}
 
+### `ibmcloud cis alert-policy maintenance-event-alert-create`
+{: #create-maintenance-event-alert}
+
+ Create an alert policy for maintenance event.
+
+```sh
+ibmcloud cis alert-policy maintenance-event-alert-create --name NAME (--emails EMAILS | --webhooks WEBHOOKS) --enabled (true | false) --event-type TYPE [--airport-code AIRPORT_CODE] [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #opt-create-maintenance-event-alert}
+
+`--name`
+:   The name of the alert policy.
+
+`--description`
+:   The description for the alert policy.
+
+`--emails`
+:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+
+`--webhooks`
+:   The webhook ID for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+
+`--enabled`
+:   Whether the alert policy is enabled.
+
+`--event-type`
+:   The type of the maintenance event. Valid values: "scheduled", "changed", "canceled".
+
+`--airport-code`
+:   Comma-separated three-letter IATA Codes.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output`
+:   Specify output format, only JSON is supported.
+
+#### Examples
+{: #create-maintenance-event-alert-examples}
+
+Create a maintenance event alert policy for instance `cis-demo`.
+
+```sh
+ibmcloud cis alert-policy maintenance-event-alert-create --name test1 --emails test1@cn.ibm.com --webhooks b2633e68-9a64-4519-b361-a64a67c8db8e --event-type  scheduled,changed,canceled --airport-code IAD,AUS  --enabled true  -i "cis-demo"
+```
+{: pre}
+
 ### `ibmcloud cis alert-policy ddos-attack-l7-alert-update`
 {: #update-ddos-attack-l7-alert}
 
  Update an alert policy for DDos attack l7.
 
 ```sh
-ibmcloud cis alert-policy ddos-attack-l7-alert-update POLICY_ID --name NAME (--emails EMAILS | --webhooks WEBHOOKS) --enabled (true | false) [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis alert-policy ddos-attack-l7-alert-update POLICY_ID [--name NAME] [--emails EMAILS] [--webhooks WEBHOOKS] [--enabled (true | false)] [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
 ```
 {: pre}
 
@@ -8286,7 +8336,7 @@ ibmcloud cis alert-policy ddos-attack-l7-alert-update POLICY_ID --name NAME (--e
 :   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
 
 `--enabled`
-:   Whether or not the alert policy is enabled.
+:   Whether the alert policy is enabled.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -8333,7 +8383,7 @@ ibmcloud cis alert-policy pool-toggle-alert-update POLICY_ID --name NAME (--emai
 :   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
 
 `--enabled`
-:   Whether or not the alert policy is enabled.
+:   Whether the alert policy is enabled.
 
 `--pools`
 :   The IDs of origin pool, if set to all, the all pool IDs will be used.
@@ -8342,7 +8392,7 @@ ibmcloud cis alert-policy pool-toggle-alert-update POLICY_ID --name NAME (--emai
 :   The condition of pool toggle status.
 
 `--include-future-pools`
-:   Whether or not include the future pools.
+:   Whether to include the future pools.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -8389,7 +8439,7 @@ ibmcloud cis alert-policy firewall-events-alert-update POLICY_ID [--name NAME] [
 :   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
 
 `--enabled`
-:   Whether or not the alert policy is enabled.
+:   Whether the alert policy is enabled.
 
 `--domains`
 :   The domain IDs that for the alert policy. For example: `--domains domainID1,domainID2`
@@ -8419,7 +8469,7 @@ ibmcloud cis alert-policy firewall-events-alert-update a2633e68-1a64-2512-a321-b
  Update an alert policy for certificate events.
 
 ```sh
-ibmcloud cis alert-policy certificate-alert-update POLICY_ID --name NAME (--emails EMAILS | --webhooks WEBHOOKS) --enabled (true | false) [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis alert-policy certificate-alert-update POLICY_ID [--name NAME] [--emails EMAILS] [--webhooks WEBHOOKS] [--enabled (true | false)] [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
 ```
 {: pre}
 
@@ -8442,7 +8492,7 @@ ibmcloud cis alert-policy certificate-alert-update POLICY_ID --name NAME (--emai
 :   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
 
 `--enabled`
-:   Whether or not the alert policy is enabled.
+:   Whether the alert policy is enabled.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -8466,7 +8516,7 @@ ibmcloud cis alert-policy certificate-alert-update a2633e68-1a64-2512-a321-b64a1
  Update an alert policy for changes in health status for global load balancer, pools, and origins.
 
 ```sh
-ibmcloud cis alert-policy glb-healthcheck-alert-update POLICY_ID [--name NAME] [--emails EMAILS | --webhooks WEBHOOKS] [--enabled (true | false)] [--pools POOLS] [--include-future-pools (true | false)] [--health-status-trigger (healthy | unhealthy | either)] [--event-source-trigger (pool | origin | either)] [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis alert-policy glb-healthcheck-alert-update POLICY_ID [--name NAME] [--emails EMAILS] [--webhooks WEBHOOKS] [--enabled (true | false)] [--pools POOLS] [--include-future-pools (true | false)] [--health-status-trigger (healthy | unhealthy | either)] [--event-source-trigger (pool | origin | either)] [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
 ```
 {: pre}
 
@@ -8489,13 +8539,13 @@ ibmcloud cis alert-policy glb-healthcheck-alert-update POLICY_ID [--name NAME] [
 :   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
 
 `--enabled`
-:   Whether or not the alert policy is enabled.
+:   Whether the alert policy is enabled.
 
 `--pools`
 :   The IDs of origin pool, if set to all, the all pool IDs will be used.
 
 `--include-future-pools`
-:   Whether or not include the future pools. (default "false")
+:   Whether to include the future pools. (default "false")
 
 `--health-status-trigger`
 :   The trigger condition to fire the notification. Valid values: "healthy", "unhealthy", "either". (default "either")
@@ -8525,7 +8575,7 @@ ibmcloud cis alert-policy glb-healthcheck-alert-update  a2633e68-1a64-2512-a321-
  Update an alert policy for web metric report.
 
 ```sh
-ibmcloud cis alert-policy web-analytics-alert-update POLICY_ID --name NAME (--emails EMAILS | --webhooks WEBHOOKS) --enabled (true | false) [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis alert-policy web-analytics-alert-update POLICY_ID [--name NAME] [--emails EMAILS] [--webhooks WEBHOOKS] [--enabled (true | false)] [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
 ```
 {: pre}
 
@@ -8548,7 +8598,7 @@ ibmcloud cis alert-policy web-analytics-alert-update POLICY_ID --name NAME (--em
 :   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
 
 `--enabled`
-:   Whether or not the alert policy is enabled.
+:   Whether the alert policy is enabled.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -8563,6 +8613,59 @@ Update a web metric report alert policy `a2633e68-1a64-2512-a321-b64a17c7db7a`.
 
 ```sh
 ibmcloud cis alert-policy web-analytics-alert-update a2633e68-1a64-2512-a321-b64a17c7db7a --name test1 --emails test1@cn.ibm.com --webhooks b2633e68-9a64-4519-b361-a64a67c8db8e --enabled true  -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis alert-policy maintenance-event-alert-update`
+{: #update-maintenance-event-alert}
+
+ Update an alert policy for maintenance event.
+
+```sh
+ibmcloud cis alert-policy maintenance-event-alert-update POLICY_ID [--name NAME] [--emails EMAILS] [--webhooks WEBHOOKS] [--enabled (true | false)] [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #opt-update-maintenance-event-alert}
+
+`POLICY_ID`
+:   The ID of alert policy. Required.
+
+`--name`
+:   The name of the alert policy.
+
+`--description`
+:   The description for the alert policy.
+
+`--emails`
+:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+
+`--webhooks`
+:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+
+`--enabled`
+:   Whether the alert policy is enabled.
+
+`--event-type`
+:   The type of the maintenance event. Valid values: "scheduled", "changed", "canceled".
+
+`--airport-code`
+:   Comma-separated three-letter IATA Codes.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output`
+:   Specify output format, only JSON is supported.
+
+#### Examples
+{: #update-maintenance-event-alert-examples}
+
+Update a maintenance event alert policy `a2633e68-1a64-2512-a321-b64a17c7db7a`.
+
+```sh
+ibmcloud cis alert-policy maintenance-event-alert-update a2633e68-1a64-2512-a321-b64a17c7db7a --name test1 --emails test1@cn.ibm.com --webhooks b2633e68-9a64-4519-b361-a64a67c8db8e --enabled true --event-type  scheduled,changed,canceled --airport-code IAD,AUS -i "cis-demo"
 ```
 {: pre}
 
@@ -8595,6 +8698,38 @@ delete an alert policy `a2633e68-1a64-2512-a321-b64a17c7db7a`.
 
 ```sh
 ibmcloud cis alert-policy delete  a2633e68-1a64-2512-a321-b64a17c7db7a -f -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis alert-policy test`
+{: #test-alert-policy}
+
+Send a test alert for an alert policy.
+
+```sh
+cis alert-policy test POLICY_ID [-i, --instance INSTANCE] [-f, --force]
+```
+{: pre}
+
+#### Command options
+{: #test-alert-policy-options}
+
+`POLICY_ID`
+:   The ID of alert policy. Required.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`-f, --force`
+:   Attempt to send a test alert without prompting for confirmation.
+
+#### Examples
+{: #test-alert-policy-examples}
+
+Send a test notification for an alert policy `a2633e68-1a64-2512-a321-b64a17c7db7a`.
+
+```sh
+ibmcloud cis alert-policy test a2633e68-1a64-2512-a321-b64a17c7db7a -f -i "cis-demo"
 ```
 {: pre}
 
