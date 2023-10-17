@@ -1938,8 +1938,9 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
         - `flatten_all`: Flatten all CNAME records under your domain.
     - Valid values for `domain_hold` are `hold`, `include_subdomains`, `hold_after`.
         - `hold`: Whether to enable the domain hold. Valid values for `hold` are `true`, `false`.
-        - `include_subdomains`: Whether to enable the domain hold. Valid values for `include_subdomains` are `true`, `false`.        
+        - `include_subdomains`: Whether to enable the domain hold. Valid values for `include_subdomains` are `true`, `false`.
         - `hold_after`: If `hold_after` is provided, the hold is temporarily disabled, then automatically re-enabled by the system at the time specified.
+
         For enable domain and subdomains hold: `-v hold=true,include_subdomains=true`.
         For disable domain hold: `-v hold=false,hold_after=2023-05-31T15:56:36+00:00`.
     - Valid values for `hotlink_protection` are `on`, `off`.
