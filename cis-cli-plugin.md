@@ -4757,7 +4757,7 @@ ibmcloud cis access-enable -i cis-demo
 {: #origin-certificates-cli-ref}
 
 ### `ibmcloud cis origin-certificates`
-{: #origin-certificates}
+{: #cli-origin-certificates}
 
 List all origin certificates for a given DNS domain.
 
@@ -5289,7 +5289,7 @@ ibmcloud cis page-rule 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890ca
 Manipulate how the Range App performs using the following `range-app` commands:
 
 ### `ibmcloud cis range-app-create`
-{: #create-range-app}
+{: #cli-create-range-app}
 
 Create a new range application (Enterprise plan only).
 
