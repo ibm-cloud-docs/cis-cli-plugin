@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2023
-lastupdated: "2023-08-31"
+  years: 2018, 2024
+lastupdated: "2024-04-17"
 
 ---
 
@@ -11,7 +11,7 @@ lastupdated: "2023-08-31"
 # {{site.data.keyword.cis_short_notm}} CLI reference
 {: #cis-cli}
 
-{{site.data.keyword.cis_full}} has several families of commands that are available from the command line interface (CLI). Find the full set of commands for {{site.data.keyword.cis_full_notm}} ({{site.data.keyword.cis_short_notm}}) within each set, including `Create`, `Delete`, `Update`, and so on.
+{{site.data.keyword.cis_full}} has several families of commands that are available from the command line interface (CLI). Find the full set of commands for {{site.data.keyword.cis_full_notm}} ({{site.data.keyword.cis_short_notm}}) within each set, such as `Create`, `Delete`, and `Update`.
 {: shortdesc}
 
 ## Before you begin
@@ -54,7 +54,7 @@ ibmcloud plugin update cis
 ```
 {: pre}
 
-To learn about installing and configuring the IBM Cloud CLI, visit [Getting started with the IBM Cloud CLI](/docs/cli?topic=cli-getting-started).
+To learn about installing and configuring the IBM Cloud CLI, see [Getting started with the IBM Cloud CLI](/docs/cli?topic=cli-getting-started).
 
 ## Access application
 {: #access-application-cli-ref}
@@ -62,7 +62,7 @@ To learn about installing and configuring the IBM Cloud CLI, visit [Getting star
 ### `ibmcloud cis access-app-create`
 {: #access-app-create}
 
-Create an access application for a given DNS domain (Enterprise plan only).
+Create an access application for a DNS domain (Enterprise plan only).
 
 ```sh
 ibmcloud cis access-app-create DNS_DOMAIN_ID --name NAME --domain DOMAIN [--session-duration SESSION_DURATION] [-i, --instance INSTANCE] [--output FORMAT]
@@ -73,10 +73,10 @@ ibmcloud cis access-app-create DNS_DOMAIN_ID --name NAME --domain DOMAIN [--sess
 {: #command-options-access-app-create}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -94,7 +94,7 @@ ibmcloud cis access-app-create 31984fea73a15b45779fa0df4ef62f9b --name exampleCr
 ### `ibmcloud cis access-apps`
 {: #access-apps}
 
-List all access applications for a given DNS domain (Enterprise plan only).
+List all access applications for a DNS domain (Enterprise plan only).
 
 ```sh
 ibmcloud cis access-apps DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -105,10 +105,10 @@ ibmcloud cis access-apps DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMA
 {: #command-options-access-apps}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -137,13 +137,13 @@ ibmcloud cis access-app DNS_DOMAIN_ID ACCESS_APPLICATION_ID [-i, --instance INST
 {: #command-options-access-app}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `ACCESS_APPLICATION_ID`
-:   The ID of access application. Required.
+:   The ID of the access application. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -172,10 +172,10 @@ ibmcloud cis access-app-update DNS_DOMAIN_ID ACCESS_APPLICATION_ID --name NAME -
 {: #command-options-access-app-update}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `ACCESS_APPLICATION_ID`
-:   The ID of access application. Required.
+:   The ID of the access application. Required.
 
 `--name value`
 :   The name of the Application. Required.
@@ -187,7 +187,7 @@ ibmcloud cis access-app-update DNS_DOMAIN_ID ACCESS_APPLICATION_ID --name NAME -
 :   Defines the amount of time that the tokens issued for this application are valid. Valid values: `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -216,13 +216,13 @@ ibmcloud cis access-app-delete DNS_DOMAIN_ID ACCESS_APPLICATION_ID [-i, --instan
 {: #command-options-access-app-delete}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `ACCESS_APPLICATION_ID`
-:   The ID of access application. Required.
+:   The ID of the access application. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #command-example-access-app-delete}
@@ -240,7 +240,7 @@ ibmcloud cis access-app-delete 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e
 ### `ibmcloud cis access-certificate-create`
 {: #access-certificate-create}
 
-Create an access certificate for a given DNS domain (Enterprise plan only).
+Create an access certificate for a DNS domain (Enterprise plan only).
 
 ```sh
 ibmcloud cis access-certificate-create DNS_DOMAIN_ID --name NAME --ca-cert-file CERT_FILE [--associated-hostnames ASSOCIATED_HOSTNAMES] [-i, --instance INSTANCE] [--output FORMAT]
@@ -251,7 +251,7 @@ ibmcloud cis access-certificate-create DNS_DOMAIN_ID --name NAME --ca-cert-file 
 {: #options-access-cert-create}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--name value`
 :   The name of the Certificate. Required.
@@ -263,10 +263,10 @@ ibmcloud cis access-certificate-create DNS_DOMAIN_ID --name NAME --ca-cert-file 
 :   The hostnames that are prompted for this certificate.
 
 `ACCESS_APPLICATION_ID`
-:   The ID of access application.
+:   The ID of the access application.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #example-access-cert-create}
@@ -281,7 +281,7 @@ ibmcloud cis access-certificate-create 31984fea73a15b45779fa0df4ef62f9b --name e
 ### `ibmcloud cis access-certificates`
 {: #access-certificates}
 
-List all access certificates for a given DNS domain (Enterprise plan only).
+List all access certificates for a DNS domain (Enterprise plan only).
 
 ```sh
 ibmcloud cis access-certificates DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]`
@@ -292,10 +292,10 @@ ibmcloud cis access-certificates DNS_DOMAIN_ID [-i, --instance INSTANCE] [--outp
 {: #command-options-access-certificates}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -325,13 +325,13 @@ ibmcloud cis access-certificate DNS_DOMAIN_ID ACCESS_CERTIFICATE_ID [-i, --insta
 
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `ACCESS_CERTIFICATE_ID`
-:   The ID of access certificate. Required.
+:   The ID of the access certificate. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -360,10 +360,10 @@ ibmcloud cis access-certificate-update DNS_DOMAIN_ID ACCESS_CERTIFICATE_ID --nam
 {: #options-access-cert-update}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `ACCESS_CERTIFICATE_ID`
-:   The ID of access certificate. Required.
+:   The ID of the access certificate. Required.
 
 `--name value`
 :   The name of the Certificate. Required.
@@ -374,7 +374,7 @@ ibmcloud cis access-certificate-update DNS_DOMAIN_ID ACCESS_CERTIFICATE_ID --nam
    {: note}
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -406,13 +406,13 @@ Must clear the associated hostnames before deleting the certificate.
 {: #command-options-access-certificate-delete}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `ACCESS_CERTIFICATE_ID`
-:   The ID of access certificate. Required.
+:   The ID of the access certificate. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #example-acc-cert-delete}
@@ -427,7 +427,7 @@ ibmcloud cis access-certificate-delete 31984fea73a15b45779fa0df4ef62f9b a5836c2a
 ### `ibmcloud cis access-certificates-settings`
 {: #access-certificates-settings}
 
-Get access certificates settings for a given DNS domain (Enterprise plan only).
+Get access certificates settings for a DNS domain (Enterprise plan only).
 
 ```sh
 ibmcloud cis access-certificates-settings DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -438,10 +438,10 @@ ibmcloud cis access-certificates-settings DNS_DOMAIN_ID [-i, --instance INSTANCE
 {: #command-options-access-certificates-settings}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -459,7 +459,7 @@ ibmcloud cis access-certificates-settings 31984fea73a15b45779fa0df4ef62f9b -i ci
 ### `ibmcloud cis access-certificates-settings-update`
 {: #access-certificates-settings-update}
 
-Update access certificates settings for a given DNS domain (Enterprise plan only).
+Update access certificates settings for a DNS domain (Enterprise plan only).
 
 ```sh
 ibmcloud cis access-certificates-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, --value VALUE) [-i, --instance INSTANCE] [--output FORMAT]
@@ -471,7 +471,7 @@ ibmcloud cis access-certificates-settings-update DNS_DOMAIN_ID (-f, --feature FE
 
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-f, --feature`
 :   Feature of certificates settings. Valid values:
@@ -483,10 +483,10 @@ ibmcloud cis access-certificates-settings-update DNS_DOMAIN_ID (-f, --feature FE
 :   The value set to the feature for certificates.
 
 `client_certificate_forwarding`
-:   Specify the hostname to forward client certificate or not. For example: `-v host1=on,host2=on,host3=off`
+:   Specify the hostname to forward client certificate or not. For example, `-v host1=on,host2=on,host3=off`
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -507,7 +507,7 @@ ibmcloud cis access-certificates-settings-update 31984fea73a15b45779fa0df4ef62f9
 ### `ibmcloud cis access-policy-create`
 {: #access-policy-create}
 
-Create access policy for a given access application (Enterprise plan only).
+Create an access policy for an access application (Enterprise plan only).
 
 ```sh
 ibmcloud cis access-policy-create DNS_DOMAIN_ID ACCESS_APPLICATION_ID --name NAME --decision DECISION --include INCLUDE [-i, --instance INSTANCE] [--output FORMAT]
@@ -518,10 +518,10 @@ ibmcloud cis access-policy-create DNS_DOMAIN_ID ACCESS_APPLICATION_ID --name NAM
 {: #command-options-access-policy-create}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `ACCESS_APPLICATION_ID`
-:   The ID of access application. Required.
+:   The ID of the access application. Required.
 
 `--name value`
 :   The name of the policy. Required.
@@ -533,7 +533,7 @@ ibmcloud cis access-policy-create DNS_DOMAIN_ID ACCESS_APPLICATION_ID --name NAM
 :   The included rule of the policy. Valid values: `certificate`, `common_name`. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -551,7 +551,7 @@ ibmcloud cis access-policy-create 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72
 ### `ibmcloud cis access-policies`
 {: #access-policies}
 
-List all access policies for a given access application (Enterprise plan only).
+List all access policies for an access application (Enterprise plan only).
 
 ```sh
 ibmcloud cis access-policies DNS_DOMAIN_ID ACCESS_APPLICATION_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -562,13 +562,13 @@ ibmcloud cis access-policies DNS_DOMAIN_ID ACCESS_APPLICATION_ID [-i, --instance
 {: #command-options-access-policies}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `ACCESS_APPLICATION_ID`
-:   The ID of access application. Required.
+:   The ID of the access application. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -597,16 +597,16 @@ ibmcloud cis access-policy DNS_DOMAIN_ID ACCESS_APPLICATION_ID ACCESS_POLICY_ID 
 {: #command-options-access-policy}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `ACCESS_APPLICATION_ID`
-:   The ID of access application. Required.
+:   The ID of the access application. Required.
 
 `ACCESS_POLICY_ID`
 :   The ID of access policy. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -635,16 +635,16 @@ ibmcloud cis access-policy-delete DNS_DOMAIN_ID ACCESS_APPLICATION_ID ACCESS_POL
 {: #command-options-access-policy-delete}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `ACCESS_APPLICATION_ID`
-:   The ID of access application. Required.
+:   The ID of the access application. Required.
 
 `ACCESS_POLICY_ID`
 :   The ID of access policy. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #command-example-access-policy-delete}
@@ -664,7 +664,7 @@ Manipulate how the cache performs using the following `cache` commands:
 ### `ibmcloud cis cache-purge`
 {: #purge-cache}
 
-Clear cached assets file by file or entirely for a given DNS domain to guarantee served assets are updated.
+Clear the cached assets file by file or entirely for a DNS domain to guarantee served assets are updated.
 
 ```sh
 ibmcloud cis cache-purge DNS_DOMAIN_ID (--all | --file file1 --file file2...｜--tag tag1 --tag tag2...|--host host1 --host host...| --prefix prefix1 --prefix prefix2...) [-f, --force] [-i, --instance INSTANCE_NAME]  [--output FORMAT]
@@ -675,7 +675,7 @@ ibmcloud cis cache-purge DNS_DOMAIN_ID (--all | --file file1 --file file2...｜-
 {: #purge-cache-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--all`
 :   Purging all cached files. This option is mutually exclusive with *--file*.
@@ -696,7 +696,7 @@ ibmcloud cis cache-purge DNS_DOMAIN_ID (--all | --file file1 --file file2...｜-
 :   Purging all cached files without prompting for confirmation.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -714,7 +714,7 @@ ibmcloud cis cache-purge 31984fea73a15b45779fa0df4ef62f9b --all --force -i "cis-
 ### `ibmcloud cis cache-settings`
 {: #show-cache}
 
-Get caching settings for a given DNS domain.
+Get caching settings for a DNS domain.
 
 ```sh
 ibmcloud cis cache-settings DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -725,10 +725,10 @@ ibmcloud cis cache-settings DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FO
 {: #show-cache-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -757,7 +757,7 @@ ibmcloud cis cache-settings-update DNS_DOMAIN_ID [--caching-level LEVEL][--brows
 {: #update-cache-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--caching-level`
 :   Specify under what URL conditions you want to deliver cached assets to the user. Valid values: `no-query-string`, `query-string-independent`, `query-string-dependent`.
@@ -786,7 +786,7 @@ ibmcloud cis cache-settings-update DNS_DOMAIN_ID [--caching-level LEVEL][--brows
 `--query-string-sort**: In the cache, CIS treats files with the same query strings as the same file, regardless of the order of the query strings.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -829,7 +829,7 @@ ibmcloud cis custom-page-update PAGE_ID PAGE_URL [-d, --domain DNS_DOMAIN_ID] [-
 :   DNS Domain ID.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -864,7 +864,7 @@ ibmcloud cis custom-page PAGE_ID [-d, --domain DNS_DOMAIN_ID] [-i, --instance IN
 : DNS Domain ID.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -896,7 +896,7 @@ ibmcloud cis custom-pages [-d, --domain DNS_DOMAIN_ID] [-i, --instance INSTANCE]
 :   DNS Domain ID.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -919,7 +919,7 @@ Manipulate how the DNS Record performs using the following `dns-record` commands
 ### `ibmcloud cis dns-record-create`
 {: #create-dns-record}
 
-Create a DNS record for a given domain of a service instance.
+Create a DNS record for a domain of a service instance.
 
 ```sh
 ibmcloud cis dns-record-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
@@ -933,7 +933,7 @@ ibmcloud cis dns-record-create DNS_DOMAIN_ID --type TYPE --name NAME --content C
 {: #create-dns-record-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--name`
 :   DNS record name.
@@ -1122,7 +1122,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -1141,7 +1141,7 @@ ibmcloud cis dns-record-create 31984fea73a15b45779fa0df4ef62f9b --type A --name 
 ### `ibmcloud cis dns-record-update`
 {: #update-dns-record}
 
-Update a DNS record for a given domain of a service instance.
+Update a DNS record for a domain of a service instance.
 
 ```sh
 ibmcloud cis dns-record-update DNS_DOMAIN_ID DNS_RECORD_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
@@ -1155,7 +1155,7 @@ ibmcloud cis dns-record-update DNS_DOMAIN_ID DNS_RECORD_ID [--type TYPE] [--name
 {: #update-dns-record-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `DNS_RECORD_ID`
 :   The ID of DNS record. Required.
@@ -1347,7 +1347,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -1366,7 +1366,7 @@ ibmcloud cis dns-record-update 31984fea73a15b45779fa0df4ef62f9b 417e8605a72d3e08
 ### `ibmcloud cis dns-record`
 {: #get-dns-record}
 
-Get a DNS record details for a given domain under a service instance.
+Get a DNS record details for a domain under a service instance.
 
 ```sh
 ibmcloud cis dns-record DNS_DOMAIN_ID DNS_RECORD_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -1377,13 +1377,13 @@ ibmcloud cis dns-record DNS_DOMAIN_ID DNS_RECORD_ID [-i, --instance INSTANCE] [-
 {: #get-dns-record-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `DNS_RECORD_ID`
 :   The ID of DNS record. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -1401,7 +1401,7 @@ ibmcloud cis dns-record 31984fea73a15b45779fa0df4ef62f9b 77335b17ce1853d0d76e08a
 ### `ibmcloud cis dns-record-delete`
 {: #delete-dns-record}
 
-Delete a DNS record for a given domain of a service instance.
+Delete a DNS record for a domain of a service instance.
 
 ```sh
 ibmcloud cis dns-record-delete DNS_DOMAIN_ID DNS_RECORD_ID [-i, --instance INSTANCE]
@@ -1412,13 +1412,13 @@ ibmcloud cis dns-record-delete DNS_DOMAIN_ID DNS_RECORD_ID [-i, --instance INSTA
 {: #delete-dns-record-options}
 
 `DNS_DOMAIN_ID
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `DNS_RECORD_ID`
 :   The ID of DNS record. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` will be used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` will be used.
 
 #### Examples
 {: #delete-dns-record-examples}
@@ -1433,7 +1433,7 @@ ibmcloud cis dns-record-delete 31984fea73a15b45779fa0df4ef62f9b 77335b17ce1853d0
 ### `ibmcloud cis dns-records`
 {: #list-dns-records}
 
-List all DNS records for a given domain of a service instance.
+List all DNS records for a domain of a service instance.
 
 ```sh
 ibmcloud cis dns-records DNS_DOMAIN_ID [--type TYPE] [--name NAME] [--content CONTENT] [--page PAGE] [--per-page PER_PAGE] [--order ORDER] [--direction DIRECTION] [--match MATCH] [-i, --instance INSTANCE] [--output FORMAT]
@@ -1444,7 +1444,7 @@ ibmcloud cis dns-records DNS_DOMAIN_ID [--type TYPE] [--name NAME] [--content CO
 {: #list-dns-records-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--type`
 :   Type of DNS records to display.
@@ -1471,7 +1471,7 @@ ibmcloud cis dns-records DNS_DOMAIN_ID [--type TYPE] [--name NAME] [--content CO
 :   Whether to match all or at least one search parameter. Valid values are `any`, `all`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -1500,13 +1500,13 @@ ibmcloud cis dns-records-import DNS_DOMAIN_ID --file FILE [-i, --instance INSTAN
 {: #dns-record-import-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--file`
 :   BIND config to import. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -1535,13 +1535,13 @@ ibmcloud cis dns-records-export DNS_DOMAIN_ID [--file FILE] [-i, --instance INST
 {: #dns-record-export-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--file`
 :   The BIND config file that saves exported DNS records.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #dns-record-export-examples}
@@ -1584,7 +1584,7 @@ ibmcloud cis domain-add DNS_DOMAIN_NAME [-i, --instance INSTANCE] [--output FORM
 :   The FQDN of DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -1602,7 +1602,7 @@ ibmcloud cis domain-add "test.com" -i "cis-demo"
 ### `ibmcloud cis domain-resume`
 {: #resume-domain}
 
-Resume the given domain.
+Resume the domain.
 
 ```sh
 ibmcloud cis domain-resume DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -1613,10 +1613,10 @@ ibmcloud cis domain-resume DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FOR
 {: #resume-domain-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -1634,7 +1634,7 @@ ibmcloud cis domain-resume 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 ### `ibmcloud cis domain-pause`
 {: #pause-domain}
 
-Pause the given domain.
+Pause the domain.
 
 ```sh
 ibmcloud cis domain-pause DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -1645,10 +1645,10 @@ ibmcloud cis domain-pause DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORM
 {: #pause-domain-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -1666,7 +1666,7 @@ ibmcloud cis domain-pause 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 ### `ibmcloud cis domain`
 {: #display-domain}
 
-Display the given domain details.
+Display the domain details.
 
 ```sh
 ibmcloud cis domain DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -1677,10 +1677,10 @@ ibmcloud cis domain DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
 {: #display-domain-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -1698,7 +1698,7 @@ ibmcloud cis domain 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 ### `ibmcloud cis domain-remove`
 {: #remove-domain}
 
-Remove a given domain.
+Remove a domain.
 
 ```sh
 ibmcloud cis domain-remove DNS_DOMAIN_ID [-i, --instance INSTANCE]
@@ -1709,10 +1709,10 @@ ibmcloud cis domain-remove DNS_DOMAIN_ID [-i, --instance INSTANCE]
 {: #remove-domain-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #remove-domain-examples}
@@ -1727,7 +1727,7 @@ ibmcloud cis domain-remove 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 ### `ibmcloud cis domains`
 {: #list-domain}
 
-List domains for a given service instance.
+List domains for a service instance.
 
 ```sh
 ibmcloud cis domains [--instance INSTANCE_NAME] [--output FORMAT]
@@ -1738,7 +1738,7 @@ ibmcloud cis domains [--instance INSTANCE_NAME] [--output FORMAT]
 {: #list-domain-options}
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -1757,7 +1757,7 @@ ibmcloud cis domains -i "cis-demo"
 ### `ibmcloud cis domain-activation-check`
 {: #check-domain}
 
-Perform activation check on the given domain.
+Perform activation check on the domain.
 
 ```sh
 ibmcloud cis domain-activation-check DNS_DOMAIN_ID [-i, --instance INSTANCE]
@@ -1768,10 +1768,10 @@ ibmcloud cis domain-activation-check DNS_DOMAIN_ID [-i, --instance INSTANCE]
 {: #check-domain-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #check-domain-examples}
@@ -1791,7 +1791,7 @@ Manipulate domain settings using the following `domain-settings` commands:
 ### `ibmcloud cis domain-settings`
 {: #display-domain-settings}
 
-Get details of a feature for given domain.
+Get details of a feature for the domain.
 
 ```sh
 ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FEATURE] [-i, --instance INSTANCE] [--output FORMAT]
@@ -1802,7 +1802,7 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
 {: #display-domain-settings-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-g, --group`
 :   Display features in a same group. Valid values for `group` are `all`, `domain`, `reliability`, `performance`, `security`. This option is mutually exclusive with *-f, --feature*.
@@ -1810,12 +1810,12 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
 `-f, --feature`
 :   Feature of domain settings to check. This option is mutually exclusive with *g, --group*. Valid values are as follow:
     - `always_use_https`: Redirect all requests with scheme `http` to `https`. This applies to all http requests to the domain.
-    - `automatic_https_rewrites`: Help fix mixed content by changing `http` to `https` for all resources or links on your web site that can be served  with HTTPS.
+    - `automatic_https_rewrites`: Help fix mixed content by changing `http` to `https` for all resources or links on your website that can be served  with HTTPS.
     - `bot_management`: Detect and mitigate bot traffic on your domain.
     - `brotli`: When the client requesting an asset supports the brotli compression algorithm, CIS will serve a brotli compressed version of the asset.
     - `browser_check`: Evaluate HTTP headers from your visitors browser for threats. If a threat is found a block page will be delivered.
     - `challenge_ttl`: Specify how long a visitor with a bad IP reputation is allowed access to your website after completing a challenge.
-    - `ciphers`: A whitelist of ciphers for TLS termination in the BoringSSL format. This command only lists ciphers specifically whitelisted by  customers. If no ciphers are whitelisted, the list is empty and the default ciphers are used. See [Edge cipher suites](/docs/cis?topic=cis-cis-tls-options#edge-cipher-suites) and [Origin cipher suites](/docs/cis?topic=cis-cis-tls-options#origin-cipher-suites) for the list of default ciphers.
+    - `ciphers`: A whitelist of ciphers for TLS termination in the BoringSSL format. This command only lists ciphers specifically whitelisted by  customers. If no ciphers are whitelisted, the list is empty and the default ciphers are used. See [Edge cipher suites](/docs/cis?topic=cis-set-up-cipher-suites&interface=cli#edge-cipher-suites) and [Origin cipher suites](/docs/cis?topic=cis-set-up-cipher-suites&interface=cli#origin-cipher-suites) for the list of default ciphers.
     - `cname_flattening`: Follow a CNAME to where it points and return that IP address instead of the CNAME record. By default, only flatten the  CNAME at the root of your domain.
     - `domain_hold`: Domain holds prevent teams in your organization from adding domains that are already active in another account (Enterprise plan only).
     - `email_obfuscation`: Encrypt email addresses on your web page from bots while keeping them visible to humans.
@@ -1833,7 +1833,7 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
     - `minify`: Reduce the file size of source code on your website.
     - `mobile_redirect`: Redirect visitors that are using mobile devices to a mobile-optimized website.
     - `opportunistic_encryption`: Opportunistic Encryption allows browsers to benefit from the improved performance of HTTP/2 by letting them know  that your site is available over an encrypted connection.
-    - `origin_error_page_pass_thru`: When Origin Error Page is set to `On`, CIS will proxy the 502 and 504 error pages directly from the origin.  (Enterprise plan only)
+    - `origin_error_page_pass_thru`: When Origin Error Page is set to `On`, CIS will proxy the 502 and 504 error pages directly from the origin. (Enterprise plan only)
     - `prefetch_preload`: CIS will prefetch any URLs included in the prefetch HTTP header (Enterprise plan only).
     - `pseudo_ipv4`: Adds an IPv4 header to requests when a client is using IPv6, but the server only supports IPv4.
     - `response_buffering`: Enable or disable buffering of responses from the origin server (Enterprise plan only).
@@ -1849,7 +1849,7 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
     - `url_normalization`: Modify the URLs of incoming requests.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -1878,12 +1878,12 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
 {: #update-domain-settings-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-f, --feature value`
 :   Feature of domain settings to update. Required. Valid values:
-    - `always_use_https`: Redirect all requests with scheme `http` to `https`. This applies to all http requests to the domain.
-    - `automatic_https_rewrites`: Help fix mixed content by changing `http` to `https` for all resources or links on your web site that can be served with HTTPS.
+    - `always_use_https`: Redirect all requests with scheme `http` to `https`. This redirect applies to all http requests to the domain.
+    - `automatic_https_rewrites`: Help fix mixed content by changing `http` to `https` for all resources or links on your website that can be served with HTTPS.
     - `bot_management`: Detect and mitigate bot traffic on your domain.
     - `brotli`: When the client requesting an asset supports the brotli compression algorithm, CIS will serve a brotli compressed version of the asset.
     - `browser_check`: Evaluate HTTP headers from your visitors browser for threats. If a threat is found a block page will be delivered.
@@ -1926,7 +1926,7 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
 :   The value set to the feature for domain. Required.
     - Valid values for `always_use_https` are `on`, `off`.
     - Valid values for `automatic_https_rewrites` are `on`, `off`.
-    - Valid values for `bot_management` are "use_latest_model", "fight_mode", "session_score", "enable_js". For example: `-v fight_mode=true,session_score=true`
+    - Valid values for `bot_management` are "use_latest_model", "fight_mode", "session_score", "enable_js". For example, `-v fight_mode=true,session_score=true`
          - `use_latest_model`: Whether to enable latest model version. Valid values for `use_latest_model` are `true`, `false`.
          - `fight_mode`: Whether to enable the fight mode. Valid values for `fight_mode` are `true`, `false`.
          - `session_score`: Whether to enable the session score. Valid values for `session_score` are `true`, `false`.
@@ -1959,7 +1959,7 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
     - Valid values(in MB) for `max_upload` are:
         `100, 125, 150, 175, 200 and 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500` only for Enterprise plan.
     - Valid values for `min_tls_version` are `1.0`, `1.1`, `1.2`, `1,3`.
-    - Valid values for `minify` are `css`, `html`, `js`. For example: -v css=on,html=off,js=on
+    - Valid values for `minify` are `css`, `html`, `js`. For example, -v css=on,html=off,js=on
         - `css`: Automatically minify all CSS for your website. Valid values for `css` are `on`, `off`.
         - `html`: Automatically minify all HTML for your website. Valid values for `html` are `on`, `off`.
         - `js`: Automatically minify all JS for your website. Valid values for `js` are `on`, `off`.
@@ -1977,7 +1977,7 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
         - `overwrite_header`: Overwrite the existing Cf-Connecting-IP and X-Forwarded-For headers with a pseudo IPv4 address.
     - Valid values for `response_buffering` are `on`, `off`.
     - Valid values for `script_load_optimization` are `on`, `off`.
-    - Valid values for `security_header` are `enabled`, `max_age`, `include_subdomains`, `preload`, `nosniff`. For example: -v enabled=true,max_age=100,include_subdomains=true,preload=true,nosniff=true
+    - Valid values for `security_header` are `enabled`, `max_age`, `include_subdomains`, `preload`, `nosniff`. For example, -v enabled=true,max_age=100,include_subdomains=true,preload=true,nosniff=true
         - `enabled`: Whether or not security_header is enabled.Valid values for `enabled` are `true`, `false`.
         - `max_age`: Specify the duration(in seconds) security_header are cached in browsers.
         - `include_subdomains`: Every domain below the domain will inherit the same security_header. Valid values for `include_subdomains` are `true`, `false`.
@@ -1990,13 +1990,13 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
     - Valid values for `waf` are `on`, `off`.
     - Valid values for `websockets` are `on`, `off`.
     - Valid values for `proxy_read_timeout`, 1-6000, default: 100.
-    - Valid values for `ciphers` are `ECDHE-ECDSA-AES128-GCM-SHA256`, `ECDHE-ECDSA-CHACHA20-POLY1305`, `ECDHE-RSA-AES128-GCM-SHA256`, `ECDHE-RSA-CHACHA20-POLY1305`, `ECDHE-ECDSA-AES128-SHA256`, `ECDHE-ECDSA-AES128-SHA`, `ECDHE-RSA-AES128-SHA256`, `ECDHE-RSA-AES128-SHA`, `AES128-GCM-SHA256`, `AES128-SHA256`, `AES128-SHA`, `ECDHE-ECDSA-AES256-GCM-SHA384`, `ECDHE-ECDSA-AES256-SHA384`, `ECDHE-RSA-AES256-GCM-SHA384`, `ECDHE-RSA-AES256-SHA384`, `ECDHE-RSA-AES256-SHA`, `AES256-GCM-SHA384`, `AES256-SHA256`, `AES256-SHA`, `DES-CBC3-SHA`, `default`. For example: `-v AES256-SHA256,AES256-SHA`, using `-v default` to reset configured cipher suites to default value.
+    - Valid values for `ciphers` are `ECDHE-ECDSA-AES128-GCM-SHA256`, `ECDHE-ECDSA-CHACHA20-POLY1305`, `ECDHE-RSA-AES128-GCM-SHA256`, `ECDHE-RSA-CHACHA20-POLY1305`, `ECDHE-ECDSA-AES128-SHA256`, `ECDHE-ECDSA-AES128-SHA`, `ECDHE-RSA-AES128-SHA256`, `ECDHE-RSA-AES128-SHA`, `AES128-GCM-SHA256`, `AES128-SHA256`, `AES128-SHA`, `ECDHE-ECDSA-AES256-GCM-SHA384`, `ECDHE-ECDSA-AES256-SHA384`, `ECDHE-RSA-AES256-GCM-SHA384`, `ECDHE-RSA-AES256-SHA384`, `ECDHE-RSA-AES256-SHA`, `AES256-GCM-SHA384`, `AES256-SHA256`, `AES256-SHA`, `DES-CBC3-SHA`, `default`. For example, `-v AES256-SHA256,AES256-SHA`, using `-v default` to reset configured cipher suites to default value.
     - Valid values for `url_normalization` are "type", "scope". For example -v type=cis,scope=both
          - `type`: Selects the type of URL normalization performed by CIS. Valid values for `type` are `cis`, `rfc3986`.
          - `scope`: Configures the scope of the URL normalization.Valid values for `scope` are `both`, `incoming`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2030,7 +2030,7 @@ ibmcloud cis edge-functions-actions [-i, --instance INSTANCE] [--output FORMAT]
 {: #list-edge-functions-actions-options}
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2062,7 +2062,7 @@ ibmcloud cis edge-functions-action [--name ACTION_NAME] [-i, --instance INSTANCE
 :   Action name (Enterprise plan only).
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #show-an-edge-functions-action-examples}
@@ -2091,13 +2091,13 @@ ibmcloud cis edge-functions-action-create [--name ACTION_NAME] (--javascript-str
 :   Action name (Enterprise plan only).
 
 `--javascript-str`
-:   Javascript string. For example: `addEventListener('fetch', event => { event.respondWith(fetch(event.request))})`
+:   Javascript string. For example, `addEventListener('fetch', event => { event.respondWith(fetch(event.request))})`
 
 `--javascript-file`
 :   Javascript file.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2129,13 +2129,13 @@ ibmcloud cis edge-functions-action-update (--javascript-str JAVASCRIPT_STR | --j
 :   Action name (Enterprise plan only).
 
 `--javascript-str`
-:   Javascript string. For example: `addEventListener('fetch', event => { event.respondWith(fetch(event.request))})`
+:   Javascript string. For example, `addEventListener('fetch', event => { event.respondWith(fetch(event.request))})`
 
 `--javascript-file`
 :   Javascript file.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2167,7 +2167,7 @@ ibmcloud cis edge-functions-action-delete [--name ACTION_NAME] [-i, --instance I
 :   Action name (Enterprise plan only).
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #delete-an-edge-functions-action-examples}
@@ -2182,7 +2182,7 @@ ibmcloud cis edge-functions-action-delete --name "action-demo" -i "cis-demo"
 ### `ibmcloud cis edge-functions-triggers`
 {: #list-edge-functions-triggers}
 
-List all Edge Functions triggers for a given domain of a service instance.
+List all Edge Functions triggers for a domain of a service instance.
 
 ```sh
 ibmcloud cis edge-functions-triggers DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -2193,10 +2193,10 @@ ibmcloud cis edge-functions-triggers DNS_DOMAIN_ID [-i, --instance INSTANCE] [--
 {: #list-edge-functions-triggers-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2214,7 +2214,7 @@ ibmcloud cis edge-functions-triggers 31984fea73a15b45779fa0df4ef62f9b -i "cis-de
 ### `ibmcloud cis edge-functions-trigger`
 {: #show-an-edge-functions-trigger}
 
-Show an Edge Functions trigger for a given domain of a service instance.
+Show an Edge Functions trigger for a domain of a service instance.
 
 ```sh
 ibmcloud cis edge-functions-trigger DNS_DOMAIN_ID TRIGGER_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -2225,13 +2225,13 @@ ibmcloud cis edge-functions-trigger DNS_DOMAIN_ID TRIGGER_ID [-i, --instance INS
 {: #show-edge-functions-trigger-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `TRIGGER_ID`
 :   The ID of the trigger. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2249,7 +2249,7 @@ ibmcloud cis edge-functions-trigger 31984fea73a15b45779fa0df4ef62f9b 9a7806061c8
 ### `ibmcloud cis edge-functions-trigger-create`
 {: #create-an-edge-functions-trigger}
 
-Create an Edge Functions trigger for a given domain of a service instance.
+Create an Edge Functions trigger for a domain of a service instance.
 
 ```sh
 ibmcloud cis edge-functions-trigger-create DNS_DOMAIN_ID PATTERN_URL [--name ACTION_NAME] [--disable] [-i, --instance INSTANCE] [--output FORMAT]
@@ -2260,7 +2260,7 @@ ibmcloud cis edge-functions-trigger-create DNS_DOMAIN_ID PATTERN_URL [--name ACT
 {: #create-edge-functions-trigger-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `PATTERN_URL`
 :   The request URL which triggers the action. Required.
@@ -2272,7 +2272,7 @@ ibmcloud cis edge-functions-trigger-create DNS_DOMAIN_ID PATTERN_URL [--name ACT
 :   Disable an Edge Functions trigger.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2290,7 +2290,7 @@ ibmcloud cis edge-functions-trigger 31984fea73a15b45779fa0df4ef62f9b "example.ne
 ### `ibmcloud cis edge-functions-trigger-update`
 {: #update-an-edge-functions-trigger}
 
-Update an Edge Functions trigger for a given domain of a service instance.
+Update an Edge Functions trigger for a domain of a service instance.
 
 ```sh
 ibmcloud cis edge-functions-trigger-update DNS_DOMAIN_ID TRIGGER_ID PATTERN_URL [--name ACTION_NAME] [--disable] [-i, --instance INSTANCE] [--output FORMAT]
@@ -2301,7 +2301,7 @@ ibmcloud cis edge-functions-trigger-update DNS_DOMAIN_ID TRIGGER_ID PATTERN_URL 
 {: #update-edge-functions-trigger-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `TRIGGER_ID`
 :   The ID of the trigger. Required.
@@ -2316,7 +2316,7 @@ ibmcloud cis edge-functions-trigger-update DNS_DOMAIN_ID TRIGGER_ID PATTERN_URL 
 :   Disable an Edge Functions trigger.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2334,7 +2334,7 @@ ibmcloud cis edge-functions-trigger 31984fea73a15b45779fa0df4ef62f9b 9a7806061c8
 ### `ibmcloud cis edge-functions-trigger-delete`
 {: #delete-an-edge-functions-trigger}
 
-Delete an Edge Functions trigger for a given domain of a service instance.
+Delete an Edge Functions trigger for a domain of a service instance.
 
 ```sh
 ibmcloud cis edge-functions-trigger-delete DNS_DOMAIN_ID TRIGGER_ID [-i, --instance INSTANCE]
@@ -2345,13 +2345,13 @@ ibmcloud cis edge-functions-trigger-delete DNS_DOMAIN_ID TRIGGER_ID [-i, --insta
 {: #delete-edge-functions-trigger-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `TRIGGER_ID`
 :   The ID of the trigger. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #delete-edge-functions-trigger-examples}
@@ -2485,7 +2485,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2609,7 +2609,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2656,7 +2656,7 @@ ibmcloud cis firewalls (-t, --type Type) [-d, --domain DNS_DOMAIN_ID] [--page PA
 :   Maximum number of access rules per page. The minimum value is `5`. The default value is `20`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2700,7 +2700,7 @@ ibmcloud cis firewall FIREWALL_RULE_ID (-t, --type Type) [-d, --domain DNS_DOMAI
 :   DNS Domain ID. For `ua-rules` and `lockdowns` type rule, it is a required parameter.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2745,7 +2745,7 @@ ibmcloud cis firewall-delete FIREWALL_RULE_ID (-t, --type Type) [-d, --domain DN
 :   DNS Domain ID. For `ua-rules` and `lockdowns` type rule, it is a required parameter.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #delete-firewall-examples}
@@ -2768,7 +2768,7 @@ Manipulate how firewall rules perform using the following `firewall-rules` comma
 ### `ibmcloud cis firewall-rules`
 {: #list-firewall-rules}
 
-Retrieve a list of currently existing firewall-rules for a given DNS domain.
+Retrieve a list of currently existing firewall-rules for a DNS domain.
 
 ```sh
 ibmcloud cis firewall-rules DNS_DOMAIN_ID [--page PAGE] [--per-page PER_PAGE] [-i, --instance INSTANCE] [--output FORMAT
@@ -2779,7 +2779,7 @@ ibmcloud cis firewall-rules DNS_DOMAIN_ID [--page PAGE] [--per-page PER_PAGE] [-
 {: #list-firewall-rules-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--page`
 :   Page number of paginated results. The default value is `1`.
@@ -2788,7 +2788,7 @@ ibmcloud cis firewall-rules DNS_DOMAIN_ID [--page PAGE] [--per-page PER_PAGE] [-
 :   Number of firewall rules per page. The minimum value is `5` and the maximum value is `100`. The default value is `25`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2806,7 +2806,7 @@ ibmcloud cis firewall-rules 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 ### `ibmcloud cis firewall-rule`
 {: #show-a-firewall-rule}
 
-Retrieve a specific firewall-rule for a given DNS domain.
+Retrieve a specific firewall-rule for a DNS domain.
 
 ```sh
 ibmcloud cis firewall-rule DNS_DOMAIN_ID FIREWALL_RULE_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -2818,13 +2818,13 @@ ibmcloud cis firewall-rule DNS_DOMAIN_ID FIREWALL_RULE_ID [-i, --instance INSTAN
 
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `FIREWALL_RULE_ID`
 :   The ID of firewall-rule. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2842,7 +2842,7 @@ ibmcloud cis firewall-rule 31984fea73a15b45779fa0df4ef62f9b 372e67954025e0ba6aaa
 ### `ibmcloud cis firewall-rule-create`
 {: #create-a-firewall-rule}
 
-Create a firewall-rule for a given DNS domain.
+Create a firewall-rule for a DNS domain.
 
 ```sh
 ibmcloud cis firewall-rule-create DNS_DOMAIN_ID --expression EXPRESSION --action ACTION [--priority PRIORITY] [--paused on|off] [--products PRODUCTS][--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
@@ -2855,7 +2855,7 @@ ibmcloud cis firewall-rule-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING
 {: #create-a-firewall-rule-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--expression`
 :   A filter expression. For example, `ip.src eq 93.184.216.0`.
@@ -2884,7 +2884,7 @@ ibmcloud cis firewall-rule-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING
         - `description`: To briefly describe the rule.
         - `priority`: The rule's priority. Valid values: 0 ~ 2147483647. Value `0` means to set to the default value.
         - `paused`: Indicates if the rule is active. Valid values: `on`, `off`.Default value is `off`.
-        - `products`: The list of security products to be bypassed. Valid values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf` For example: --products zoneLockdown,rateLimit
+        - `products`: The list of security products to be bypassed. Valid values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf` For example, --products zoneLockdown,rateLimit
 
    Sample JSON data:
 
@@ -2906,7 +2906,7 @@ ibmcloud cis firewall-rule-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -2926,7 +2926,7 @@ ibmcloud cis firewall-rule-create 31984fea73a15b45779fa0df4ef62f9b --json '{"exp
 ### `ibmcloud cis firewall-rule-update`
 {: #update-a-firewall-rule}
 
-Update a specific firewall-rule for a given DNS domain.
+Update a specific firewall-rule for a DNS domain.
 
 ```sh
 ibmcloud cis firewall-rule-update DNS_DOMAIN_ID FIREWALL_RULE_ID [--expression EXPRESSION] [--action ACTION] [--priority PRIORITY] [--paused on|off] [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
@@ -2939,7 +2939,7 @@ ibmcloud cis firewall-rule-update DNS_DOMAIN_ID FIREWALL_RULE_ID (--json @JSON_F
 {: #update-a-firewall-rule-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `FIREWALL_RULE_ID`
 :   The ID of firewall-rule. Required.
@@ -2971,7 +2971,7 @@ ibmcloud cis firewall-rule-update DNS_DOMAIN_ID FIREWALL_RULE_ID (--json @JSON_F
         - `description`: To briefly describe the rule.
         - `priority`: The rule's priority. Valid values: 0 ~ 2147483647. Value `0` means to set to the default value.
         - `paused`: Indicates if the rule is active. Valid values: `on`, `off`.Default value is `off`.
-        - `products`: The list of security products to be bypassed. Valid values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf` For example: --products zoneLockdown,rateLimit
+        - `products`: The list of security products to be bypassed. Valid values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf` For example, --products zoneLockdown,rateLimit
     - Note: Fields `description`, `priority`, `paused` which aren't explicitly set in JSON data will be overwritten by the default value.
 
 Sample JSON data:
@@ -2994,7 +2994,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3014,7 +3014,7 @@ ibmcloud cis firewall-rule-update 31984fea73a15b45779fa0df4ef62f9b 372e67954025e
 ### `ibmcloud cis firewall-rule-delete`
 {: #delete-a-Firewall-rule}
 
-Delete a specific firewall-rule for a given DNS domain.
+Delete a specific firewall-rule for a DNS domain.
 
 ```sh
 ibmcloud cis firewall-rule-delete DNS_DOMAIN_ID FIREWALL_RULE_ID [-i, --instance INSTANCE]
@@ -3025,13 +3025,13 @@ ibmcloud cis firewall-rule-delete DNS_DOMAIN_ID FIREWALL_RULE_ID [-i, --instance
 {: #delete-a-firewall-rule-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `FIREWALL_RULE_ID`
 :   The ID of firewall-rule. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #delete-a-firewall-rule-examples}
@@ -3057,13 +3057,13 @@ ibmcloud cis firewall-rule-validate DNS_DOMAIN_ID EXPRESSION [-i, --instance INS
 {: #validate-a-firewall-rule-expression-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `EXPRESSION`
 :   The filter expression. For example, `ip.src eq 93.184.216.0`. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #validate-a-firewall-rule-expression-examples}
@@ -3083,7 +3083,7 @@ Manipulate global load balancers by using the following `glb` commands.
 ### `ibmcloud cis glb-create`
 {: #create-glb}
 
-Create a global load balancer under a given DNS domain.
+Create a global load balancer under a DNS domain.
 
 ```sh
 ibmcloud cis glb-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
@@ -3095,7 +3095,7 @@ ibmcloud cis glb-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, --i
 {: #create-glb-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--json`
 :   The JSON file or JSON string used to describe a global load balancer. Required.
@@ -3106,7 +3106,7 @@ ibmcloud cis glb-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, --i
     - The optional fields are `description`, `ttl`, `region_pools`, `proxied`, `enabled`, `session_affinity`,  `session_affinity_ttl`, `steering_policy`:
         - `description`: the description of your Load Balancer.
         - `ttl`: time to live (TTL) of the DNS entry for the IP address returned by this load balancer.
-        - `region_pools`: a mapping of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region.
+        - `region_pools`: a mapping of region and country codes to a list of pool IDs (ordered by their failover priority) for the region.
         - `proxied`: Control whether or not traffic should flow through the security and performance functions on CIS.
         - `enabled`: Whether to enable (the default) this load balancer.
         - `session_affinity`: valid values are `cookie`, `none`.
@@ -3149,7 +3149,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3167,7 +3167,7 @@ ibmcloud cis glb-create 31984fea73a15b45779fa0df4ef62f9b --json '{"description":
 ### `ibmcloud cis glb-update`
 {: #update-glb}
 
-Update a global load balancer under a given DNS domain.
+Update a global load balancer under a DNS domain.
 
 ```sh
 ibmcloud cis glb-update DNS_DOMAIN_ID GLB_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
@@ -3179,7 +3179,7 @@ ibmcloud cis glb-update DNS_DOMAIN_ID GLB_ID (--json @JSON_FILE | JSON_STRING) [
 {: #update-glb-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `GLB_ID`
 :   The ID of global load balancer. Required.
@@ -3193,7 +3193,7 @@ ibmcloud cis glb-update DNS_DOMAIN_ID GLB_ID (--json @JSON_FILE | JSON_STRING) [
     - The optional fields are `description`, `ttl`, `region_pools`, `proxied`, `enabled`, `session_affinity`, `session_affinity_ttl`, `steering_policy`:
         - `description`: the description of your Load Balancer.
         - `ttl`: time to live (TTL) of the DNS entry for the IP address returned by this load balancer.
-        - `region_pools`: a mapping of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region.
+        - `region_pools`: a mapping of region and country codes to a list of pool IDs (ordered by their failover priority) for the region.
         - `proxied`: Control whether or not traffic should flow through the security and performance functions on CIS.
         - `enabled`: Whether to enable (the default) this load balancer.
         - `session_affinity`: valid values are `cookie`, `none`.
@@ -3236,7 +3236,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3255,7 +3255,7 @@ ibmcloud cis glb-update 31984fea73a15b45779fa0df4ef62f9b 699d98642c564d2e855e966
 ### `ibmcloud cis glb`
 {: #show-glb}
 
-Show a global load balancer under a given DNS domain.
+Show a global load balancer under a DNS domain.
 
 ```sh
 ibmcloud cis glb DNS_DOMAIN_ID GLB_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -3266,13 +3266,13 @@ ibmcloud cis glb DNS_DOMAIN_ID GLB_ID [-i, --instance INSTANCE] [--output FORMAT
 {: #show-glb-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `GLB_ID`
 :   The ID of global load balancer. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3291,7 +3291,7 @@ ibmcloud cis glb 31984fea73a15b45779fa0df4ef62f9b 699d98642c564d2e855e9661899b72
 ### `ibmcloud cis glb-delete`
 {: #delete-glb}
 
-Delete a global load balancer under a given DNS domain.
+Delete a global load balancer under a DNS domain.
 
 ```sh
 ibmcloud cis glb-delete DNS_DOMAIN_ID GLB_ID [-i, --instance INSTANCE]
@@ -3302,13 +3302,13 @@ ibmcloud cis glb-delete DNS_DOMAIN_ID GLB_ID [-i, --instance INSTANCE]
 {: #delete-glb-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `GLB_ID`
 :   The ID of global load balancer. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #delete-glb-examples}
@@ -3324,7 +3324,7 @@ ibmcloud cis glb-delete 31984fea73a15b45779fa0df4ef62f9b 699d98642c564d2e855e966
 ### `ibmcloud cis glbs`
 {: #list-glb}
 
-List all load balancers for the given domain.
+List all load balancers for the domain.
 
 ```sh
 ibmcloud cis glbs DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -3335,10 +3335,10 @@ ibmcloud cis glbs DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
 {: #list-glb-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3356,7 +3356,7 @@ ibmcloud cis glbs 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 ### `ibmcloud cis glb-pools`
 {: #list-glb-pools}
 
-List all GLB pools for a given service instance.
+List all GLB pools for a service instance.
 
 ```sh
 ibmcloud cis glb-pools [-i, --instance INSTANCE] [--output FORMAT]
@@ -3367,7 +3367,7 @@ ibmcloud cis glb-pools [-i, --instance INSTANCE] [--output FORMAT]
 {: #list-glb-pools-options}
 
 `-i, --instance`
-:  Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:  Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3385,7 +3385,7 @@ ibmcloud cis glb-pools -i "cis-demo"
 ### `ibmcloud cis glb-pool-create`
 {: #create-glb-pool}
 
-Create a GLB pool for a given service instance.
+Create a GLB pool for a service instance.
 
 ```sh
 ibmcloud cis glb-pool-create (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
@@ -3444,7 +3444,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3462,7 +3462,7 @@ ibmcloud cis glb-pool-create --json '{"description":"application server pool in 
 ### `ibmcloud cis glb-pool`
 {: #show-glb-pool}
 
-Show the details of a given GLB pool.
+Show the details of a GLB pool.
 
 ```sh
 ibmcloud cis glb-pool GLB_POOL_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -3476,7 +3476,7 @@ ibmcloud cis glb-pool GLB_POOL_ID [-i, --instance INSTANCE] [--output FORMAT]
 :   The ID of global load balancer pool. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3494,7 +3494,7 @@ ibmcloud cis glb-pool 17b5962d775c646f3f9725cbc7a53df4 -i "cis-demo"
 ### `ibmcloud cis glb-pool-delete`
 {: #delete-glb-pool}
 
-Delete a given GLB pool.
+Delete a GLB pool.
 
 ```sh
 ibmcloud cis glb-pool-delete GLB_POOL_ID [-i, --instance INSTANCE]
@@ -3508,7 +3508,7 @@ ibmcloud cis glb-pool-delete GLB_POOL_ID [-i, --instance INSTANCE]
 :   The ID of global load balancer pool. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #delete-glb-pool-examples}
@@ -3524,7 +3524,7 @@ ibmcloud cis glb-pool-delete 17b5962d775c646f3f9725cbc7a53df4 -i "cis-demo"
 ### `ibmcloud cis glb-pool-update`
 {: #update-glb-pool}
 
-Update a given GLB pool.
+Update a GLB pool.
 
 ```sh
 ibmcloud cis glb-pool-update GLB_POOL_ID [--enable-origin ORIGIN_NAME --enable-origin ORIGIN_NAME ...] [--disable-origin ORIGIN_NAME --disable-origin ORIGIN_NAME ...] [--add-origin ORIGIN_PARAMETER --add-origin ORIGIN_PARAMETER ...] [--remove-origin ORIGIN_NAME --remove-origin ORIGIN_NAME ...]  [-i, --instance INSTANCE] [--output FORMAT]
@@ -3584,7 +3584,7 @@ Sample JSON data:
 :   Disable the origin within the Pool. The value can be ORIGIN_NAME or ORIGIN_ADDRESS.
 
 `--add-origin`
-:   Add an origin into the Pool. ORIGIN_NAME and ORIGIN_ADDRESS are required. For example: --add-origin name=us-app-dal01,address=1.1.1.1,enabled=true,weight=0.5,host=example.com
+:   Add an origin into the Pool. ORIGIN_NAME and ORIGIN_ADDRESS are required. For example, --add-origin name=us-app-dal01,address=1.1.1.1,enabled=true,weight=0.5,host=example.com
 
 `--remove-origin`
 :   Remove an origin from the Pool. The value can be ORIGIN_NAME or ORIGIN_ADDRESS.
@@ -3596,7 +3596,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3615,7 +3615,7 @@ ibmcloud cis glb-pool-update 17b5962d775c646f3f9725cbc7a53df4 --json '{"descript
 ### `ibmcloud cis glb-monitors`
 {: #list-glb-monitors}
 
-List GLB monitors for a given service instance.
+List GLB monitors for a service instance.
 
 ```sh
 ibmcloud cis glb-monitors [-i, --instance INSTANCE] [--output FORMAT]
@@ -3626,7 +3626,7 @@ ibmcloud cis glb-monitors [-i, --instance INSTANCE] [--output FORMAT]
 {: #list-glb-monitors-options}
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3644,7 +3644,7 @@ ibmcloud cis glb-monitors -i "cis-demo"
 ### `ibmcloud cis glb-monitor-create`
 {: #create-glb-monitor}
 
-Create a GLB monitor for a given service instance.
+Create a GLB monitor for a service instance.
 
 ```sh
 ibmcloud cis glb-monitor-create (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
@@ -3728,7 +3728,7 @@ For TCP:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3746,7 +3746,7 @@ ibmcloud cis glb-monitor-create --json '{"type":"https", "description":"Health m
 ### `ibmcloud cis glb-monitor`
 {: #show-glb-monitor}
 
-Show the details of a given GLB monitor.
+Show the details of a GLB monitor.
 
 ```sh
 ibmcloud cis glb-monitor GLB_MON_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -3760,7 +3760,7 @@ ibmcloud cis glb-monitor GLB_MON_ID [-i, --instance INSTANCE] [--output FORMAT]
 :   The ID of global load balancer monitor. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3778,7 +3778,7 @@ ibmcloud cis glb-monitor f1aba936b94213e5b8dca0c0dbf1f9cc -i "cis-demo"
 ### `ibmcloud cis glb-monitor-delete`
 {: #delete-glb-monitor}
 
-Delete the GLB monitor for a given service instance.
+Delete the GLB monitor for a service instance.
 
 ```sh
 ibmcloud cis glb-monitor-delete GLB_MON_ID [-i, --instance INSTANCE]
@@ -3792,7 +3792,7 @@ ibmcloud cis glb-monitor-delete GLB_MON_ID [-i, --instance INSTANCE]
 :   The ID of global load balancer monitor. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #delete-glb-monitor-examples}
@@ -3808,7 +3808,7 @@ ibmcloud cis glb-monitor-delete f1aba936b94213e5b8dca0c0dbf1f9cc -i "cis-demo"
 ### `ibmcloud cis glb-monitor-update`
 {: #update-glb-monitor}
 
-Update the GLB monitor for a given service instance.
+Update the GLB monitor for a service instance.
 
 ```sh
 ibmcloud cis glb-monitor-update GLB_MON_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
@@ -3895,7 +3895,7 @@ For TCP:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3944,7 +3944,7 @@ ibmcloud cis glb-events [-s, --since START_DATE] [-u, --until END_DATE] [--origi
 :   If true, filter events where the pool status is healthy, if false, filter events where the pool status is unhealthy. Default value is `true`,  valid values are `true` and `false`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -3976,7 +3976,7 @@ ibmcloud cis logpull DNS_DOMAIN_ID --available-fields [--output FORMAT]
 {: #command-options-logpull}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--available-fields`
 :   List of all available fields.
@@ -4003,7 +4003,7 @@ ibmcloud cis logpull DNS_DOMAIN_ID --available-fields [--output FORMAT]
 :   Set the format in which response timestamps are returned. Valid values: `unix`, `unixnano`, `rfc3339`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4024,7 +4024,7 @@ ibmcloud cis logpull 31984fea73a15b45779fa0df4ef62f9b --start 2020-05-18T12:14:5
 ### `ibmcloud cis logpush-job-create`
 {: #logpush-job-create}
 
-Create a new log push job for a given domain. Before using this command grant write access to your IBM Cloud Object Storage bucket to the IBM Cloud account cislogp@us.ibm.com.  (Enterprise plan only)
+Create a new log push job for a domain. Before using this command grant write access to your IBM Cloud Object Storage bucket to the IBM Cloud account cislogp@us.ibm.com. (Enterprise plan only)
 
 ```sh
 ibmcloud cis logpush-job-create DNS_DOMAIN_ID --destination DESTINATION_URL --name NAME [--enable true|false] [--fields FIELDS | all] [--timestamps format][--dataset DATASET] [--frequency FREQUENCY] [-i, --instance INSTANCE] [--output FORMAT]
@@ -4035,7 +4035,7 @@ ibmcloud cis logpush-job-create DNS_DOMAIN_ID --destination DESTINATION_URL --na
 {: #command-options-logpush-job-create}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--destination value`
 :   Specify a COS bucket path or a LogDNA path where data will be pushed.
@@ -4068,7 +4068,7 @@ ibmcloud cis logpush-job-create DNS_DOMAIN_ID --destination DESTINATION_URL --na
 :   The frequency at which CIS sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. Valid values: `high`, `low`.
 
 `-i , --instance value`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4086,7 +4086,7 @@ ibmcloud cis logpush-job-create 31984fea73a15b45779fa0df4ef62f9b --destination c
 ### `ibmcloud cis logpush-job-update`
 {: #logpush-job-update}
 
-Update a log push job for a given domain (Enterprise plan only).
+Update a log push job for a domain (Enterprise plan only).
 
 ```sh
 ibmcloud cis logpush-job-update DNS_DOMAIN_ID [--destination DESTINATION_URL] [--enable true|false] [--fields FIELDS | all] [--timestamps format] [--dataset DATASET] [--jobid JOB_ID] [--frequency FREQUENCY] [-i, --instance INSTANCE] [--output FORMAT]
@@ -4097,7 +4097,7 @@ ibmcloud cis logpush-job-update DNS_DOMAIN_ID [--destination DESTINATION_URL] [-
 {: #command-options-logpush-job-update}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--destination value`
 :   Specify a COS bucket path or a LogDNA path where data will be pushed.
@@ -4129,7 +4129,7 @@ ibmcloud cis logpush-job-update DNS_DOMAIN_ID [--destination DESTINATION_URL] [-
 :   The frequency at which CIS sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files. Valid values: `high`, `low`.
 
 `-i , --instance value`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4147,7 +4147,7 @@ ibmcloud cis logpush-job-update 31984fea73a15b45779fa0df4ef62f9b --destination c
 ### `ibmcloud cis logpush-jobs`
 {: #logpush-jobs}
 
-Get all log push jobs for a given domain (Enterprise plan only).
+Get all log push jobs for a domain (Enterprise plan only).
 
 ```sh
 ibmcloud cis logpush-jobs DNS_DOMAIN_ID  [-i, --instance INSTANCE] [--output FORMAT]
@@ -4158,10 +4158,10 @@ ibmcloud cis logpush-jobs DNS_DOMAIN_ID  [-i, --instance INSTANCE] [--output FOR
 {: #command-options-logpush-jobs}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i , --instance value`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `-output value`
 :   Specify output format, only JSON is supported.
@@ -4179,7 +4179,7 @@ ibmcloud cis logpush-jobs 31984fea73a15b45779fa0df4ef62f9b -i cis-demo --output 
 ### `ibmcloud cis logpush-job`
 {: #logpush-job}
 
-Get the details of a log push job for a given domain (Enterprise plan only).
+Get the details of a log push job for a domain (Enterprise plan only).
 
 ```sh
 ibmcloud cis logpush-job DNS_DOMAIN_ID [--dataset DATASET] [--jobid JOB_ID] [-i, --instance INSTANCE] [--output FORMAT]
@@ -4190,7 +4190,7 @@ ibmcloud cis logpush-job DNS_DOMAIN_ID [--dataset DATASET] [--jobid JOB_ID] [-i,
 {: #command-options-logpush-job}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--dataset value`
 :   The category of logs you want to receive. This value cannot be changed after the job is created. Valid values: `http_requests`, `range_events`, `firewall_events`,`dns_logs`. The default value is `http_requests`.
@@ -4199,7 +4199,7 @@ ibmcloud cis logpush-job DNS_DOMAIN_ID [--dataset DATASET] [--jobid JOB_ID] [-i,
 :   JOB_ID is the ID of logpush job.
 
 `-i , --instance value*`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4217,7 +4217,7 @@ ibmcloud cis logpush-job 31984fea73a15b45779fa0df4ef62f9b --dataset http_request
 ### `ibmcloud cis logpush-job-delete`
 {: #logpush-job-delete}
 
-Delete a log push job for a given domain (Enterprise plan only).
+Delete a log push job for a domain (Enterprise plan only).
 
 ```sh
 ibmcloud cis logpush-job-delete DNS_DOMAIN_ID [--dataset DATASET] [--jobid JOB_ID] [-f, --force] [-i, --instance INSTANCE]
@@ -4228,7 +4228,7 @@ ibmcloud cis logpush-job-delete DNS_DOMAIN_ID [--dataset DATASET] [--jobid JOB_I
 {: #command-options-logpush-job-delete}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--dataset value`
 :   The category of logs you want to receive. This value cannot be changed after the job is created. Valid values: `http_requests`, `range_events`, `firewall_events`,`dns_logs`. The default value is `http_requests`.
@@ -4240,7 +4240,7 @@ ibmcloud cis logpush-job-delete DNS_DOMAIN_ID [--dataset DATASET] [--jobid JOB_I
 :   Delete log push job without prompting for confirmation.
 
 `-i , --instance value`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #command-example-logpush-job-delete}
@@ -4266,13 +4266,13 @@ ibmcloud cis logpush-available-fields DNS_DOMAIN_ID [--dataset DATASET] [-i, --i
 {: #command-options-logpush-available-fields}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--dataset value`
 :   The category of logs you want to receive. This value cannot be changed after the job is created. Valid values: `http_requests`, `range_events`, `firewall_events`,`dns_logs`. The default value is `http_requests`.
 
 `-i , --instance value`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #command-example-logpush-available-fields}
@@ -4301,10 +4301,10 @@ ibmcloud cis log-retention DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FOR
 {: #command-options-log-retention}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4333,13 +4333,13 @@ ibmcloud cis log-retention-update DNS_DOMAIN_ID (--flag on|off) [-i, --instance 
 {: #command-options-log-retention-update}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--flag value`
 :   Whether to turn log retention on or off. Required.
 
 `-i , --instance value`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4373,7 +4373,7 @@ ibmcloud cis firewall-event-analytics DNS_DOMAIN_ID [--dataset DATA_SET] [--filt
 {: #firewall-event-analytics-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--dataset`
 :   Requested dataset. The default value is `firewallEventsAdaptiveGroups`.
@@ -4483,7 +4483,7 @@ The following operators are supported for all filter options:
 :   The number of events to return. (minimum: `1`, maximum: `10000`, default: `10000`)
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4513,7 +4513,7 @@ ibmcloud cis http-request-analytics DNS_DOMAIN_ID [--dataset DATA_SET] [--filter
 {: #http-request-analytics-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--dataset`
 :   Requested dataset. The default value is `httpRequests1dGroups`.
@@ -4593,7 +4593,7 @@ ibmcloud cis http-request-analytics DNS_DOMAIN_ID [--dataset DATA_SET] [--filter
 :   The number of events to return. (minimum: `1`, maximum: `10000`, default: `10000`)
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4624,7 +4624,7 @@ ibmcloud cis web-analytics DNS_DOMAIN_ID [--recent DURATION] [-t, --table reques
 {: #web-analytics-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--recent`
 :   The beginning of the requested time frame. Valid values are: `6h` (6 hours ago), `12h`, `1d` (1 day ago), `1w` (1 week ago), `1m` (1 month ago), `2m`, `3m`. The default value is `1w`.
@@ -4633,7 +4633,7 @@ ibmcloud cis web-analytics DNS_DOMAIN_ID [--recent DURATION] [-t, --table reques
 :   Output table. Valid values are `requests`, `bandwidth`, `uniques`, `threats` and `status_code`. If not set, it outputs all the tables.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4662,7 +4662,7 @@ ibmcloud cis dns-analytics DNS_DOMAIN_ID DIMENSION [-s, --since TIME] [-i, --ins
 {: #dns-analytics-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `DIMENSION`
 :   The queried dimension. Valid values: `queries-by-response-code`, `queries-by-type`, `queries-by-name`. Required.
@@ -4671,7 +4671,7 @@ ibmcloud cis dns-analytics DNS_DOMAIN_ID DIMENSION [-s, --since TIME] [-i, --ins
 :   Since time to now. Valid values are: `6h` (6 hours ago), `12h`, `1d` (1 day ago), `1w` (1 week ago)
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4700,7 +4700,7 @@ ibmcloud cis ratelimit-analytics DNS_DOMAIN_ID [--recent DURATION] [--time-delta
 {: #ratelimit-analytics-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--recent`
 :   The beginning of the requested time frame. Valid values are: `6h` (6 hours ago), `12h`, `1d` (1 day ago), `1w` (1 week ago), `1m` (1 month ago), `2m`, `3m`. The default value is `1w`.
@@ -4709,7 +4709,7 @@ ibmcloud cis ratelimit-analytics DNS_DOMAIN_ID [--recent DURATION] [--time-delta
 :   The time interval (seconds) of each analytic's record. Valid values: `60`, `3600`, `86400`, `2592000`. The default value is `3600`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4730,7 +4730,7 @@ ibmcloud cis ratelimit-analytics 31984fea73a15b45779fa0df4ef62f9b --recent 6h --
 ### `ibmcloud cis access-enable`
 {: #access-enable}
 
-Enable Mutual TLS for a given service instance (Enterprise plan only).
+Enable Mutual TLS for a service instance (Enterprise plan only).
 
 ```sh
 ibmcloud cis access-enable [-i, --instance INSTANCE]`
@@ -4741,7 +4741,7 @@ ibmcloud cis access-enable [-i, --instance INSTANCE]`
 {: #command-options-access-enable}
 
 `-i , --instance value`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #command-example-access-enable}
@@ -4757,9 +4757,9 @@ ibmcloud cis access-enable -i cis-demo
 {: #origin-certificates-cli-ref}
 
 ### `ibmcloud cis origin-certificates`
-{: #cli-origin-certificates}
+{: #origin-certificates}
 
-List all origin certificates for a given DNS domain.
+List all origin certificates for a DNS domain.
 
 ```sh
 ibmcloud cis origin-certificates DNS_DOMAIN_ID [--instance INSTANCE_NAME] [--output FORMAT]
@@ -4770,10 +4770,10 @@ ibmcloud cis origin-certificates DNS_DOMAIN_ID [--instance INSTANCE_NAME] [--out
 {: #command-options-origin-certificates}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4805,7 +4805,7 @@ ibmcloud cis origin-certificate-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_S
 {: #command-options-origin-certificate-create}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--request-type REQUEST_TYPE`
 :   Signature type desired on certificate. Valid values: `origin-rsa`, `origin-ecc`.
@@ -4850,7 +4850,7 @@ ibmcloud cis origin-certificate-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_S
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4870,7 +4870,7 @@ ibmcloud cis origin-certificate-create 31984fea73a15b45779fa0df4ef62f9b --json '
 ### `ibmcloud cis origin-certificate`
 {: #origin-certificate}
 
-Get details of a given origin certificate.
+Get details of an origin certificate.
 
 ```sh
 ibmcloud cis origin-certificate DNS_DOMAIN_ID CERT_ID [--instance INSTANCE_NAME] [--output FORMAT]
@@ -4881,13 +4881,13 @@ ibmcloud cis origin-certificate DNS_DOMAIN_ID CERT_ID [--instance INSTANCE_NAME]
 {: #command-options-origin-certificate}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `CERT_ID`
-:   The ID of Origin Certificate. Required.
+:   The ID of the Origin Certificate. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4916,13 +4916,13 @@ ibmcloud cis origin-certificate-delete DNS_DOMAIN_ID CERT_ID [--instance INSTANC
 {: #command-options-origin-certificate-delete}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `CERT_ID`
 :   The ID of Origin Certificate. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #command-example-origin-certificate-delete}
@@ -4953,10 +4953,10 @@ ibmcloud cis overview DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
 {: #get-overview-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` will be used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` will be used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -4991,7 +4991,7 @@ ibmcloud cis page-rule-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-
 {: #command-options-page-rule-create}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--json value`
 :   The JSON file or JSON string used to describe a page rule. Required.
@@ -5063,7 +5063,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -5093,7 +5093,7 @@ ibmcloud cis page-rule-update DNS_DOMAIN_ID PAGE_RULE_ID (--json @JSON_FILE | JS
 {: #command-options-page-rule-update}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `PAGE_RULE_ID`
 :   The ID of page rule. Required.
@@ -5168,7 +5168,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -5197,13 +5197,13 @@ ibmcloud cis page-rule-delete DNS_DOMAIN_ID PAGE_RULE_ID [-i, --instance INSTANC
 {: #command-options-page-rule-delete}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `PAGE_RULE_ID`
 :   The ID of page rule. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #command-examples-page-rule-delete}
@@ -5230,10 +5230,10 @@ ibmcloud cis page-rules DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT
 
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -5262,13 +5262,13 @@ ibmcloud cis page-rule DNS_DOMAIN_ID PAGE_RULE_ID [-i, --instance INSTANCE] [--o
 {: #command-options-page-rule}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `PAGE_RULE_ID`
 :   The ID of page rule. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -5309,7 +5309,7 @@ ibmcloud cis range-app-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-
 {: #create-range-app-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--name`
 :   The name of DNS record for the range application.
@@ -5419,7 +5419,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -5453,7 +5453,7 @@ ibmcloud cis range-app-update DNS_DOMAIN_ID APP_ID (--json @JSON_FILE | JSON_STR
 {: #update-range-app-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `APP_ID`
 :   The ID of range application. Required.
@@ -5566,7 +5566,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -5595,13 +5595,13 @@ ibmcloud cis range-app-delete DNS_DOMAIN_ID APP_ID [--instance INSTANCE]
 {: #delete-range-app-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `APP_ID`
 :   The ID of range application. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #delete-range-app-examples}
@@ -5627,13 +5627,13 @@ ibmcloud cis range-app DNS_DOMAIN_ID APP_ID [--instance INSTANCE] [--output FORM
 {: #show-range-app-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `APP_ID`
 :   The ID of range application. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -5651,7 +5651,7 @@ ibmcloud cis range-app 31984fea73a15b45779fa0df4ef62f9b ea95132c15732412d22c1476
 ### `ibmcloud cis range-apps`
 {: #list-range-app}
 
-Retrieve a list of currently existing range applications for a given DNS domain (Enterprise plan only).
+Retrieve a list of currently existing range applications for a DNS domain (Enterprise plan only).
 
 ```sh
 ibmcloud cis range-apps DNS_DOMAIN_ID [--instance INSTANCE] [--output FORMAT]
@@ -5662,10 +5662,10 @@ ibmcloud cis range-apps DNS_DOMAIN_ID [--instance INSTANCE] [--output FORMAT]
 {: #list-range-app-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -5695,14 +5695,14 @@ ibmcloud cis range-analytics DNS_DOMAIN_ID --bytime [--time_delta DELTA] [--metr
 {: #get-analytics-range-app-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--metrics`
 :   One or more metrics to compute.
     To get all metrics, set metrics to `count,bytesIngress,bytesEgress,durationAvg,durationMedian,duration90th,duration99th`.
 
 `--dimension`
-:   Can be used to break down the data by given attributes. To get all dimensions, set dimensions to `event,appID,coloName,ipVersion`.
+:   Can be used to break down the data by attributes. To get all dimensions, set dimensions to `event,appID,coloName,ipVersion`.
 `--filters`
 :   Used to filter rows by one or more dimensions.
     Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions.
@@ -5730,7 +5730,7 @@ ibmcloud cis range-analytics DNS_DOMAIN_ID --bytime [--time_delta DELTA] [--metr
 :   Used to select time series resolution. Valid values: `year`, `quarter`, `month`, `week`, `day`, `hour`, `dekaminute`, `minute`. Only valid when `--bytime` is given.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -5755,7 +5755,7 @@ Manipulate rate limits by using the following `ratelimit` commands.
 ### `ibmcloud cis ratelimit-rule-create`
 {: #create-ratelimit}
 
-Create a new rate limiting rule for a given DNS domain (Enterprise plan only).
+Create a new rate limiting rule for a DNS domain (Enterprise plan only).
 
 ```sh
 ibmcloud cis ratelimit-rule-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
@@ -5769,7 +5769,7 @@ ibmcloud cis ratelimit-rule-create DNS_DOMAIN_ID --url URL [--description DESCRI
 {: #create-ratelimit-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--json`
 :   The JSON file or JSON string used to describe a rate limiting rule.
@@ -5799,7 +5799,7 @@ ibmcloud cis ratelimit-rule-create DNS_DOMAIN_ID --url URL [--description DESCRI
         - `description`: A note that you can use to describe the reason for a rate limiting rule.
         - `correlate`: Whether to enable NAT based rate limiting.
             - `by`: Valid values: `nat`.
-        - `bypass`: Criteria that allows the rate limit to be bypassed. For example, to express that you shouldn’t apply a rate limit to a given set of URLs.
+        - `bypass`: Criteria that allows the rate limit to be bypassed. For example, to express that you shouldn’t apply a rate limit to a set of URLs.
             - `name`: Valid values is `url`.
             - `value`: The url to bypass.
 
@@ -5866,7 +5866,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -5884,7 +5884,7 @@ ibmcloud cis ratelimit-rule-create 31984fea73a15b45779fa0df4ef62f9b --json '{"id
 ### `ibmcloud cis ratelimit-rule-update`
 {: #update-ratelimit}
 
-Update a rate limiting rule of a given DNS domain.
+Update a rate limiting rule of a DNS domain.
 
 ```sh
 ibmcloud cis ratelimit-rule-update DNS_DOMAIN_ID RATELIMIT_RULE_ID  (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
@@ -5898,7 +5898,7 @@ ibmcloud cis ratelimit-rule-update DNS_DOMAIN_ID RATELIMIT_RULE_ID [--url URL] [
 {: #update-ratelimit-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `RATELIMIT_RULE_ID`
 :   The ID of rate limiting rule. Required.
@@ -5930,7 +5930,7 @@ ibmcloud cis ratelimit-rule-update DNS_DOMAIN_ID RATELIMIT_RULE_ID [--url URL] [
         - `description`: A note that you can use to describe the reason for a rate limiting rule.
         - `correlate`: Whether to enable NAT based rate limiting.
             - `by`: Valid values: `nat`.
-        - `bypass`: Criteria that allows the rate limit to be bypassed. For example, to express that you shouldn’t apply a rate limit to a given set of URLs.
+        - `bypass`: Criteria that allows the rate limit to be bypassed. For example, to express that you shouldn’t apply a rate limit to a set of URLs.
             - `name`: Valid values is `url`.
             - `value`: The url to bypass.
 
@@ -5996,7 +5996,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6014,7 +6014,7 @@ ibmcloud cis ratelimit-rule-update 31984fea73a15b45779fa0df4ef62f9b 372e67954025
 ### `ibmcloud cis ratelimit-rules`
 {: #list-ratelimit-rules}
 
-List rate limiting rules of a given DNS domain.
+List rate limiting rules of a DNS domain.
 
 ```sh
 ibmcloud cis ratelimit-rules DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -6025,10 +6025,10 @@ ibmcloud cis ratelimit-rules DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output F
 {: #list-ratelimit-rules-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6057,13 +6057,13 @@ ibmcloud cis ratelimit-rule DNS_DOMAIN_ID  RATELIMIT_RULE_ID [-i, --instance INS
 {: #show-ratelimit-rule-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `RATELIMIT_RULE_ID`
 :   The ID of rate limit rule. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6093,13 +6093,13 @@ ibmcloud cis ratelimit-rule-delete DNS_DOMAIN_ID RATELIMIT_RULE_ID [--instance I
 {: #delete-ratelimit-rule-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `RATELIMIT_RULE_ID`
 :   The ID of rate limit rule. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #delete-ratelimit-rule-examples}
@@ -6344,7 +6344,7 @@ ibmcloud cis routing DNS_DOMAIN_ID (--smart-routing | --tiered-caching) [-i, --i
 {: #show-routinge-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--smart-routing`
 :   Leverages real-time network intelligence to route traffic across paths from the origin to a CIS data center.
@@ -6353,7 +6353,7 @@ ibmcloud cis routing DNS_DOMAIN_ID (--smart-routing | --tiered-caching) [-i, --i
 :   Uses regional Tier 1 CIS data centers to accelerate content delivery.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6382,7 +6382,7 @@ ibmcloud cis routing-update DNS_DOMAIN_ID (--smart-routing (on|off) | --tiered-c
 {: #update-routinge-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--smart-routing`
 :   Leverages real-time network intelligence to route traffic across paths from the origin to a CIS data center. Valid values: `on`, `off`.
@@ -6391,7 +6391,7 @@ ibmcloud cis routing-update DNS_DOMAIN_ID (--smart-routing (on|off) | --tiered-c
 :   Uses regional Tier 1 CIS data centers to accelerate content delivery. Valid values: `on`, `off`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6420,13 +6420,13 @@ ibmcloud cis routing-analytics DNS_DOMAIN_ID [--colos] [-i, --instance INSTANCE]
 {: #display-routing-analytics-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--colos`
 :   Analytics of smart-routing latency colos.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6462,7 +6462,7 @@ ibmcloud cis security-events DNS_DOMAIN_ID [--ip-class IP_CLASS] [--method METHO
 {: #list-security-event-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--ip-class`
 :   IP class is a map of client IP to visitor classification. Valid values: `unknown`, `clean`, `badHost`, `searchEngine`, `whitelist`, `greylist`, `monitoringService`, `securityScanner`, `noRecord`, `scan`, `backupService`, `mobilePlatform`, `tor`.
@@ -6519,7 +6519,7 @@ ibmcloud cis security-events DNS_DOMAIN_ID [--ip-class IP_CLASS] [--method METHO
 :   The ID of the rule that triggered the event, should be considered in the context of source.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6543,7 +6543,7 @@ Manipulate TLS by using the following `tls` commands.
 ### `ibmcloud cis tls-settings`
 {: #show-tls-setting}
 
-Get TLS settings for a given domain.
+Get TLS settings for a domain.
 
 ```sh
 ibmcloud cis tls-settings DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -6554,10 +6554,10 @@ ibmcloud cis tls-settings DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORM
 {: #show-tls-setting-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6575,7 +6575,7 @@ ibmcloud cis tls-settings 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 ### `ibmcloud cis tls-settings-update`
 {: #update-tls-settings}
 
-Update TLS settings for a given DNS domain.
+Update TLS settings for a DNS domain.
 
 ```sh
 ibmcloud cis tls-settings-update DNS_DOMAIN_ID [--mode MODE] [--universal (true|false)] [--tls-1-2-only (on|off)] [--tls-1-3 (on|off)] [-i, --instance INSTANCE][--output FORMAT]
@@ -6586,7 +6586,7 @@ ibmcloud cis tls-settings-update DNS_DOMAIN_ID [--mode MODE] [--universal (true|
 {: #update-tls-settings-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--mode`
 :   Specify whether visitors can browse your website over a secure connection, and when they do, how CIS will connect to your origin server.
@@ -6606,7 +6606,7 @@ ibmcloud cis tls-settings-update DNS_DOMAIN_ID [--mode MODE] [--universal (true|
 :   Only accept HTTPS requests that use at least the TLS protocol version specified.  Valid values: `1.0`, `1.1`, `1.2`, `1.3`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6624,7 +6624,7 @@ ibmcloud cis tls-settings-update 31984fea73a15b45779fa0df4ef62f9b --mode end-to-
 ### `ibmcloud cis certificates`
 {: #list-cert}
 
-List all certificates for a given DNS domain, including shared, dedicated and custom certificates.
+List all certificates for a DNS domain, including shared, dedicated and custom certificates.
 
 ```sh
 ibmcloud cis certificates DNS_DOMAIN_ID [--keyless] [-i, --instance INSTANCE] [--output FORMAT]
@@ -6635,13 +6635,13 @@ ibmcloud cis certificates DNS_DOMAIN_ID [--keyless] [-i, --instance INSTANCE] [-
 {: #list-cert-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--keyless`
 :   List all keyless certificates.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6659,7 +6659,7 @@ ibmcloud cis certificates 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 ### `ibmcloud cis certificate`
 {: #show-cert}
 
-Get details of a given shared, dedicated, custom certificate.
+Get the details of a shared, dedicated, or custom certificate.
 
 ```sh
 ibmcloud cis certificate DNS_DOMAIN_ID (--cert-id CERT_ID | --universal) [--keyless] [-i, --instance INSTANCE] [--output FORMAT]
@@ -6670,10 +6670,10 @@ ibmcloud cis certificate DNS_DOMAIN_ID (--cert-id CERT_ID | --universal) [--keyl
 {: #show-cert-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--cert-id`
-:   ID of dedicated or custom certificate.
+:   ID of the dedicated or custom certificate.
 
 `--universal`
 :   Show universal certificate details.
@@ -6682,7 +6682,7 @@ ibmcloud cis certificate DNS_DOMAIN_ID (--cert-id CERT_ID | --universal) [--keyl
 :   Show keyless certificate details.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6690,7 +6690,7 @@ ibmcloud cis certificate DNS_DOMAIN_ID (--cert-id CERT_ID | --universal) [--keyl
 #### Examples
 {: #show-cert-examples}
 
-Show details for a given certificate.
+Show details for a certificate.
 
 ```sh
 ibmcloud cis certificate 31984fea73a15b45779fa0df4ef62f9b --universal -i "cis-demo"
@@ -6702,7 +6702,7 @@ ibmcloud cis certificate 31984fea73a15b45779fa0df4ef62f9b --cert-id 5a7805061c76
 ### `ibmcloud cis certificate-order`
 {: #order-dedicated-cert}
 
-Order a certificate pack with an optional list of hostnames for a given DNS domain.
+Order a certificate pack with an optional list of hostnames for a DNS domain.
 
 ```sh
 ibmcloud cis certificate-order DNS_DOMAIN_ID [--hostnames host1 --hostnames host2 ...] [-i, --instance INSTANCE] [--output FORMAT]
@@ -6713,13 +6713,13 @@ ibmcloud cis certificate-order DNS_DOMAIN_ID [--hostnames host1 --hostnames host
 {: #order-dedicated-cert-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--hostnames`
 :   valid host names for the certificate packs. Add up to 50 custom hostnames - May affect price.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6749,7 +6749,7 @@ ibmcloud cis certificate-upload DNS_DOMAIN_ID [--keyless] (--json @JSON_FILE | J
 {: #upload-cert-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--keyless`
 :   Upload a keyless certificate.
@@ -6792,7 +6792,7 @@ For keyless ssl
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6822,7 +6822,7 @@ ibmcloud cis certificate-update DNS_DOMAIN_ID CERT_ID [--keyless] (--json @JSON_
 {: #update-cert-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `CERT_ID`
 :   The ID of custom certificate. Required.
@@ -6868,7 +6868,7 @@ For keyless ssl
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6886,7 +6886,7 @@ ibmcloud cis certificate-update 31984fea73a15b45779fa0df4ef62f9b 5a7805061c76ada
 ### `ibmcloud cis certificate-priority-change`
 {: #change-priority-custom-cert}
 
-Change custom certificates' priority for a given DNS domain.
+Change custom certificates' priority for a DNS domain.
 
 ```sh
 ibmcloud cis certificate-priority-change DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
@@ -6898,7 +6898,7 @@ ibmcloud cis certificate-priority-change DNS_DOMAIN_ID (--json @JSON_FILE | JSON
 {: #change-priority-custom-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--json`
 :   The JSON file or JSON string used to describe the custom certificates' priority. Required.
@@ -6932,7 +6932,7 @@ Sample JSON data:
 :   *Deprecated*. A file contains input JSON data.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -6961,16 +6961,16 @@ ibmcloud cis certificate-delete DNS_DOMAIN_ID CERT_ID [--keyless][-i, --instance
 {: #delete-cert-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `CERT_ID`
-:   The ID of dedicated or custom certificate. Required.
+:   The ID of the dedicated or custom certificate. Required.
 
 `--keyless`
 :   Delete a keyless certificate.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #delete-cert-examples}
@@ -7001,10 +7001,10 @@ ibmcloud cis waf-setting DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMA
 {: #show-waf-setting-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7033,13 +7033,13 @@ ibmcloud cis waf-setting-update DNS_DOMAIN_ID WAF_MODE [-i, --instance INSTANCE]
 {: #update-waf-setting-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `WAF_MODE`
 :   The mode of WAF setting. Valid values are: `waf-enable` , `waf-disable`. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7068,10 +7068,10 @@ ibmcloud cis waf-packages DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORM
 {: #list-waf-packages-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7100,13 +7100,13 @@ ibmcloud cis waf-package DNS_DOMAIN_ID WAF_PACKAGE_ID [-i, --instance INSTANCE] 
 {: #show-waf-package-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `WAF_PACKAGE_ID`
 :   The ID of WAF package. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7135,7 +7135,7 @@ ibmcloud cis waf-package-set DNS_DOMAIN_ID OWASP_PACKAGE_ID [--sensitivity SENSI
 {: #update-waf-owasp-package-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `OWASP_PACKAGE_ID`
 :   The ID of WAF package. Required.
@@ -7147,7 +7147,7 @@ ibmcloud cis waf-package-set DNS_DOMAIN_ID OWASP_PACKAGE_ID [--sensitivity SENSI
 :   The default action that will be taken for rules under the firewall package. Valid values: `simulate`, `block`, `challenge`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7155,7 +7155,7 @@ ibmcloud cis waf-package-set DNS_DOMAIN_ID OWASP_PACKAGE_ID [--sensitivity SENSI
 #### Examples
 {: #update-waf-owasp-package-examples}
 
-Update OWASP setting for package `a25a9a7e9c00afc1fb2e0245519d725b`.
+Update the OWASP setting for package `a25a9a7e9c00afc1fb2e0245519d725b`.
 
 ```sh
 ibmcloud cis waf-package-set 31984fea73a15b45779fa0df4ef62f9b a25a9a7e9c00afc1fb2e0245519d725b --sensitivity medium --action-mode simulate -i "cis-demo"
@@ -7165,7 +7165,7 @@ ibmcloud cis waf-package-set 31984fea73a15b45779fa0df4ef62f9b a25a9a7e9c00afc1fb
 ### `ibmcloud cis waf-groups`
 {: #list-waf-groups}
 
-List WAF groups in a given WAF package.
+List the WAF groups in a WAF package.
 
 ```sh
 ibmcloud cis waf-groups DNS_DOMAIN_ID WAF_PACKAGE_ID [--page PAGE] [--per-page NUM] [-i, --instance INSTANCE] [--output FORMAT]
@@ -7176,19 +7176,19 @@ ibmcloud cis waf-groups DNS_DOMAIN_ID WAF_PACKAGE_ID [--page PAGE] [--per-page N
 {: #list-waf-groups-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `WAF_PACKAGE_ID`
-:   The ID of WAF package. Required.
+:   The ID of the WAF package. Required.
 
 `--page`
-:   Page number of paginated results. The default value is `1`.
+:   The page number of paginated results. The default value is `1`.
 
 `--per-page`
-:   Number of groups per page.The min value is `5` and max value is `1000`. The default value is `50`.
+:   The number of groups per page.The min value is `5` and max value is `1000`. The default value is `50`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7196,7 +7196,7 @@ ibmcloud cis waf-groups DNS_DOMAIN_ID WAF_PACKAGE_ID [--page PAGE] [--per-page N
 #### Examples
 {: #list-waf-groups-examples}
 
-List WAF groups in WAF package `a25a9a7e9c00afc1fb2e0245519d725b`.
+List the WAF groups in WAF package `a25a9a7e9c00afc1fb2e0245519d725b`.
 
 ```sh
 ibmcloud cis waf-groups 31984fea73a15b45779fa0df4ef62f9b a25a9a7e9c00afc1fb2e0245519d725b --page 1 --per-page 100 -i "cis-demo"
@@ -7217,7 +7217,7 @@ ibmcloud cis waf-group DNS_DOMAIN_ID WAF_PACKAGE_ID WAF_GROUP_ID [-i, --instance
 {: #show-waf-group-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `WAF_PACKAGE_ID`
 :   The ID of WAF package. Required.
@@ -7226,7 +7226,7 @@ ibmcloud cis waf-group DNS_DOMAIN_ID WAF_PACKAGE_ID WAF_GROUP_ID [-i, --instance
 :   The ID of WAF group.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7255,7 +7255,7 @@ ibmcloud cis waf-group-mode-set DNS_DOMAIN_ID WAF_PACKAGE_ID WAF_GROUP_ID WAF_GR
 {: #update-waf-group-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `WAF_PACKAGE_ID`
 :   The ID of WAF package. Required.
@@ -7267,7 +7267,7 @@ ibmcloud cis waf-group-mode-set DNS_DOMAIN_ID WAF_PACKAGE_ID WAF_GROUP_ID WAF_GR
 :   The mode of WAF group. Valid values are: `on`, `off`. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7296,7 +7296,7 @@ ibmcloud cis waf-rules DNS_DOMAIN_ID WAF_PACKAGE_ID [--page PAGE] [--per-page NU
 {: #list-waf-rules-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `WAF_PACKAGE_ID`
 :   The ID of WAF package. Required.
@@ -7308,7 +7308,7 @@ ibmcloud cis waf-rules DNS_DOMAIN_ID WAF_PACKAGE_ID [--page PAGE] [--per-page NU
 :   Number of rules per page. The default value is `50`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7337,7 +7337,7 @@ ibmcloud cis waf-rule DNS_DOMAIN_ID WAF_PACKAGE_ID WAF_RULE_ID [-i, --instance I
 {: #show-waf-rule-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `WAF_PACKAGE_ID`
 :   The ID of WAF package. Required.
@@ -7346,7 +7346,7 @@ ibmcloud cis waf-rule DNS_DOMAIN_ID WAF_PACKAGE_ID WAF_RULE_ID [-i, --instance I
 :   The ID of WAF rule. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7375,7 +7375,7 @@ ibmcloud cis waf-rule-mode-set DNS_DOMAIN_ID WAF_PACKAGE_ID WAF_RULE_ID WAF_RULE
 {: #update-waf-rule-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `WAF_PACKAGE_ID`
 :   The ID of WAF package. Required.
@@ -7387,7 +7387,7 @@ ibmcloud cis waf-rule-mode-set DNS_DOMAIN_ID WAF_PACKAGE_ID WAF_RULE_ID WAF_RULE
 :   The mode of WAF rule. Valid values are: `on`, `off`, `default`, `disable`, `simulate`, `block`,  `challenge`. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7416,7 +7416,7 @@ ibmcloud cis waf-override-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING)
 {: #create-waf-override-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--json`
 :   The JSON file or JSON string used to describe a override WAF rule. Required.
@@ -7455,7 +7455,7 @@ Sample JSON data:
 {: codeblock}
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7484,7 +7484,7 @@ ibmcloud cis waf-override-update DNS_DOMAIN_ID OVERRIDE_WAF_ID (--json @JSON_FIL
 {: #update-waf-override-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `OVERRIDE_WAF_ID`
 :   The ID of override WAF rule. Required.
@@ -7526,7 +7526,7 @@ Sample JSON data:
    {: codeblock}
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7555,7 +7555,7 @@ ibmcloud cis waf-overrides DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, 
 {: #list-waf-overrides-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `--page value`
 :   Page number of paginated results. The default value is `1`.
@@ -7564,7 +7564,7 @@ ibmcloud cis waf-overrides DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, 
 :   Number of rules per page. The default value is `50`.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7593,13 +7593,13 @@ ibmcloud cis waf-override DNS_DOMAIN_ID OVERRIDE_WAF_ID [-i, --instance INSTANCE
 {: #get-waf-overrides-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `OVERRIDE_WAF_ID`
 :   The ID of override WAF rule.  Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7628,13 +7628,13 @@ ibmcloud cis waf-override-delete DNS_DOMAIN_ID OVERRIDE_WAF_ID [-i, --instance I
 {: #delete-waf-overrides-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `OVERRIDE_WAF_ID`
 :   The ID of override WAF rule.  Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `-f, --force`
 :   Attempt to delete URL based WAF rule without prompting for confirmation.
@@ -7668,7 +7668,7 @@ ibmcloud cis authenticated-origin-pull-settings DNS_DOMAIN_ID [--level zone|host
 {: #show-authenticated-origin-pull-settings-options}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `----level`
 :   Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
@@ -7677,7 +7677,7 @@ ibmcloud cis authenticated-origin-pull-settings DNS_DOMAIN_ID [--level zone|host
 :   The authenticated origin pull settings on a hostname. (hostname level only)
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7706,7 +7706,7 @@ ibmcloud cis authenticated-origin-pull-settings-update DNS_DOMAIN_ID [--level zo
 {: #update-authenticated-origin-pull-settings-option}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `----level`
 :   Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
@@ -7721,7 +7721,7 @@ ibmcloud cis authenticated-origin-pull-settings-update DNS_DOMAIN_ID [--level zo
 :   Enable authenticated origin pull. Valid values: "on", "off".
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7750,13 +7750,13 @@ ibmcloud cis authenticated-origin-pull-certificates DNS_DOMAIN_ID [--level zone|
 {: #show-authenticated-origin-pull-certificates-option}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `----level`
 :   Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7785,7 +7785,7 @@ ibmcloud cis authenticated-origin-pull-certificate DNS_DOMAIN_ID CERT_ID [--leve
 {: #show-authenticated-origin-pull-certificate-option}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `CERT_ID`
 :   The ID of certificate. Required.
@@ -7794,7 +7794,7 @@ ibmcloud cis authenticated-origin-pull-certificate DNS_DOMAIN_ID CERT_ID [--leve
 :   Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7823,7 +7823,7 @@ ibmcloud cis authenticated-origin-pull-certificate-upload DNS_DOMAIN_ID [--level
 {: #upload-authenticated-origin-pull-certificate-option}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `----level`
 :   Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
@@ -7845,7 +7845,7 @@ ibmcloud cis authenticated-origin-pull-certificate-upload DNS_DOMAIN_ID [--level
 {: codeblock}
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7874,7 +7874,7 @@ ibmcloud cis authenticated-origin-pull-certificate-delete DNS_DOMAIN_ID CERT_ID 
 {: #delete-authenticated-origin-pull-certificate-option}
 
 `DNS_DOMAIN_ID`
-:   The ID of DNS domain. Required.
+:   The ID of the DNS domain. Required.
 
 `CERT_ID`
 :   The ID of certificate. Required.
@@ -7882,7 +7882,7 @@ ibmcloud cis authenticated-origin-pull-certificate-delete DNS_DOMAIN_ID CERT_ID 
 `----level**: Specify the authenticated origin pull certificate or settings per zone or hostname level. Valid values: "zone", "hostname". The default is "zone".
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7916,7 +7916,7 @@ ibmcloud cis alert-policy list [-i, --instance INSTANCE] [--output FORMAT]
 {: #opt-list-alert-policies}
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7934,7 +7934,7 @@ ibmcloud cis alert-policy list -i "cis-demo"
 ### `ibmcloud cis alert-policy get` (Show)
 {: #show-alert-policy}
 
-Show the details of a given policy.
+Show the details of a policy.
 
 ```sh
 ibmcloud cis alert-policy get POLICY_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -7948,7 +7948,7 @@ ibmcloud cis alert-policy get POLICY_ID [-i, --instance INSTANCE] [--output FORM
 :   The ID of alert policy. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -7983,16 +7983,16 @@ ibmcloud cis alert-policy ddos-attack-l7-alert-create --name NAME (--emails EMAI
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8004,6 +8004,94 @@ Create a ddos attack alert policy for instance `cis-demo`.
 
 ```sh
 ibmcloud cis alert-policy ddos-attack-l7-alert-create --name test1 --emails test1@cn.ibm.com --webhooks b2633e68-9a64-4519-b361-a64a67c8db8e --enabled true  -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis alert-policy ddos-attack-l3-l4-alert-create`
+{: #create-ddos-attack-l3/l4-alert}
+
+ Create an alert policy for DDoS attack L3/L4.
+
+```sh
+ibmcloud cis alert-policy ddos-attack-l3-l4-alert-create --name NAME (--emails EMAILS | --webhooks WEBHOOKS) --enabled (true | false) [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #opt-create-ddos-attack-l3-l4-alert}
+
+`--name`
+:   The name of the alert policy.
+
+`--description`
+:   The description for the alert policy.
+
+`--emails`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+
+`--webhooks`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
+
+`--enabled`
+:   Whether the alert policy is enabled.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output`
+:   Specify output format, only JSON is supported.
+
+#### Examples
+{: #create-ddos-attack-l3-l4-alert-examples}
+
+Create a ddos L3/L4 attack alert policy for instance `cis-demo`.
+
+```sh
+ibmcloud cis alert-policy ddos-attack-l3-l4-alert-create --name test1 --emails test1@cn.ibm.com --webhooks b2633e68-9a64-4519-b361-a64a67c8db8e --enabled true  -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis alert-policy failing-logpush-job-alert-create`
+{: #create-failing-logpush-job-alert-create}
+
+ Create an alert policy when logpush job did not complete at least one successful push in the last 24 hours.
+
+```sh
+ibmcloud cis alert-policy failing-logpush-job-alert-create --name NAME (--emails EMAILS | --webhooks WEBHOOKS) --enabled (true | false) [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #opt-failing-logpush-job-alert-create}
+
+`--name`
+:   The name of the alert policy.
+
+`--description`
+:   The description for the alert policy.
+
+`--emails`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+
+`--webhooks`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
+
+`--enabled`
+:   Whether the alert policy is enabled.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output`
+:   Specify output format, only JSON is supported.
+
+#### Examples
+{: #create-failing-logpush-job-alert-examples}
+
+Create a failing logpush job disabled alert policy for instance `cis-demo`.
+
+```sh
+ibmcloud cis alert-policy failing-logpush-job-alert-create --name test1 --emails test1@cn.ibm.com --webhooks b2633e68-9a64-4519-b361-a64a67c8db8e --enabled true  -i "cis-demo"
 ```
 {: pre}
 
@@ -8027,10 +8115,10 @@ ibmcloud cis alert-policy pool-toggle-alert-create --name NAME (--emails EMAILS 
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
@@ -8045,7 +8133,7 @@ ibmcloud cis alert-policy pool-toggle-alert-create --name NAME (--emails EMAILS 
 :   Whether to include the future pools.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8080,22 +8168,22 @@ ibmcloud cis alert-policy firewall-events-alert-create --name NAME (--emails EMA
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
 
 `--domains`
-:   The domain IDs that for the alert policy. For example: `--domains domainID1,domainID2`
+:   The domain IDs that for the alert policy. For example, `--domains domainID1,domainID2`
 
 `--services`
 :   Specify which services the alert should monitor. Valid values: "country-access-rules", "waf", "firewall-rules", "ratelimit", "securitylevel", "ip-access-rules", "browser-integrity-check", "ua-rules", "lockdowns", "iprange-access-rules", "asn-access-rules", "Managed-firewall" (Enterprise plan only).
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8116,7 +8204,7 @@ ibmcloud cis alert-policy firewall-events-alert-create --name test1 --emails tes
 Create an alert policy for certificate events.
 
 ```sh
-ibmcloud cis alert-policy certificate-alert-create --type (universal | dedicated) --name NAME (--emails EMAILS | --webhooks WEBHOOKS) --enabled (true | false) [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis alert-policy certificate-alert-create --type (universal | dedicated | mtls ) --name NAME (--emails EMAILS | --webhooks WEBHOOKS) --enabled (true | false) [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
 ```
 {: pre}
 
@@ -8133,16 +8221,16 @@ ibmcloud cis alert-policy certificate-alert-create --type (universal | dedicated
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8177,10 +8265,10 @@ ibmcloud cis alert-policy glb-healthcheck-alert-create --name NAME (--emails EMA
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
@@ -8198,7 +8286,7 @@ ibmcloud cis alert-policy glb-healthcheck-alert-create --name NAME (--emails EMA
 :   The event source of trigger to fire the notification. Valid values: "pool", "origin", "either". (default "either")
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8234,16 +8322,16 @@ ibmcloud cis alert-policy web-analytics-alert-create --name NAME (--emails EMAIL
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8278,10 +8366,10 @@ ibmcloud cis alert-policy maintenance-event-alert-create --name NAME (--emails E
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
@@ -8293,7 +8381,7 @@ ibmcloud cis alert-policy maintenance-event-alert-create --name NAME (--emails E
 :   Comma-separated three-letter IATA Codes.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8331,16 +8419,16 @@ ibmcloud cis alert-policy ddos-attack-l7-alert-update POLICY_ID [--name NAME] [-
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8348,12 +8436,108 @@ ibmcloud cis alert-policy ddos-attack-l7-alert-update POLICY_ID [--name NAME] [-
 #### Examples
 {: #update-ddos-attack-l7-alert-examples}
 
-Update a ddos attack alert policy `a2633e68-1a64-2512-a321-b64a17c7db7a`.
+Update a DDoS attack alert policy `a2633e68-1a64-2512-a321-b64a17c7db7a`.
 
 ```sh
 ibmcloud cis alert-policy ddos-attack-l7-alert-update a2633e68-1a64-2512-a321-b64a17c7db7a --name test1 --emails test1@cn.ibm.com --webhooks b2633e68-9a64-4519-b361-a64a67c8db8e --enabled true  -i "cis-demo"
 ```
 {: pre}
+
+### `ibmcloud cis alert-policy ddos-attack-l3-l4-alert-update`
+{: #update-ddos-attack-l3-l4-alert}
+
+ Update an alert policy for DDoS attack L3/L4.
+
+```sh
+ibmcloud cis alert-policy ddos-attack-l3-l4-alert-update POLICY_ID [--name NAME] [--emails EMAILS] [--webhooks WEBHOOKS] [--enabled (true | false)] [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #opt-update-ddos-attack-l3-l4-alert}
+
+`POLICY_ID`
+:   The ID of alert policy. Required.
+
+`--name`
+:   The name of the alert policy.
+
+`--description`
+:   The description for the alert policy.
+
+`--emails`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+
+`--webhooks`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
+
+`--enabled`
+:   Whether the alert policy is enabled.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output`
+:   Specify output format, only JSON is supported.
+
+#### Examples
+{: #update-ddos-attack-l3-l4-alert-examples}
+
+Update a DDoS attack alert policy `a2633e68-1a64-2512-a321-b64a17c7db7a`.
+
+```sh
+ibmcloud cis alert-policy ddos-attack-l3-l4-alert-update a2633e68-1a64-2512-a321-b64a17c7db7a --name test1 --emails test1@cn.ibm.com --webhooks b2633e68-9a64-4519-b361-a64a67c8db8e --enabled true  -i "cis-demo"
+```
+{: pre}
+
+
+### `ibmcloud cis alert-policy failing-logpush-job-alert-update`
+{: #update-failing-logpush-job-alert}
+
+Update an alert policy when logpush job did not complete at least one successful push in the last 24 hours.
+
+```sh
+ibmcloud cis alert-policy failing-logpush-job-alert-update POLICY_ID [--name NAME] [--emails EMAILS] [--webhooks WEBHOOKS] [--enabled (true | false)] [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #opt-update-failing-logpush-job-alert}
+
+`POLICY_ID`
+:   The ID of alert policy. Required.
+
+`--name`
+:   The name of the alert policy.
+
+`--description`
+:   The description for the alert policy.
+
+`--emails`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+
+`--webhooks`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
+
+`--enabled`
+:   Whether the alert policy is enabled.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output`
+:   Specify output format, only JSON is supported.
+
+#### Examples
+{: #update-failing-logpush-job-alert-examples}
+
+Update a failing logpush job alert policy `a2633e68-1a64-2512-a321-b64a17c7db7a`.
+
+```sh
+ibmcloud cis alert-policy failing-logpush-job-alert-update a2633e68-1a64-2512-a321-b64a17c7db7a --name test1 --emails test1@cn.ibm.com --webhooks b2633e68-9a64-4519-b361-a64a67c8db8e --enabled true  -i "cis-demo"
+```
+{: pre}
+
 
 ### `ibmcloud cis alert-policy pool-toggle-alert-update`
 {: #update-pool-toggle-alert}
@@ -8378,10 +8562,10 @@ ibmcloud cis alert-policy pool-toggle-alert-update POLICY_ID --name NAME (--emai
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
@@ -8396,7 +8580,7 @@ ibmcloud cis alert-policy pool-toggle-alert-update POLICY_ID --name NAME (--emai
 :   Whether to include the future pools.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8434,22 +8618,22 @@ ibmcloud cis alert-policy firewall-events-alert-update POLICY_ID [--name NAME] [
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
 
 `--domains`
-:   The domain IDs that for the alert policy. For example: `--domains domainID1,domainID2`
+:   The domain IDs that for the alert policy. For example, `--domains domainID1,domainID2`
 
 `--services`
 :   Specify which services the alert should monitor. Valid values: "country-access-rules", "waf", "firewall-rules", "ratelimit", "securitylevel", "ip-access-rules", "browser-integrity-check", "ua-rules", "lockdowns", "iprange-access-rules", "asn-access-rules", "Managed-firewall" (Enterprise plan only). Note: The 'SERVICES' is only used for advanced waf alert. If the alert policy you wanted to update is created without services specified, create a new one with sevices specified instead of updating.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8487,16 +8671,16 @@ ibmcloud cis alert-policy certificate-alert-update POLICY_ID [--name NAME] [--em
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8534,10 +8718,10 @@ ibmcloud cis alert-policy glb-healthcheck-alert-update POLICY_ID [--name NAME] [
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
@@ -8555,7 +8739,7 @@ ibmcloud cis alert-policy glb-healthcheck-alert-update POLICY_ID [--name NAME] [
 :   The event source of trigger to fire the notification. Valid values: "pool", "origin", "either". (default "either")
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8593,16 +8777,16 @@ ibmcloud cis alert-policy web-analytics-alert-update POLICY_ID [--name NAME] [--
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8640,10 +8824,10 @@ ibmcloud cis alert-policy maintenance-event-alert-update POLICY_ID [--name NAME]
 :   The description for the alert policy.
 
 `--emails`
-:   The email addresses for dispatching an alert notification. For example: `--emails test1@cn.ibm.com,test2@cn.ibm.com`
+:   The email addresses for dispatching an alert notification. For example, `--emails test1@cn.ibm.com,test2@cn.ibm.com`
 
 `--webhooks`
-:   The webhook ID that for dispatching an alert notification. For example: `--webhook webhookID1,webhookID2`
+:   The webhook ID that for dispatching an alert notification. For example, `--webhook webhookID1,webhookID2`
 
 `--enabled`
 :   Whether the alert policy is enabled.
@@ -8655,7 +8839,7 @@ ibmcloud cis alert-policy maintenance-event-alert-update POLICY_ID [--name NAME]
 :   Comma-separated three-letter IATA Codes.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8687,7 +8871,7 @@ cis alert-policy delete POLICY_ID [-i, --instance INSTANCE] [-f, --force]
 :   The ID of alert policy. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `-f, --force`
 :   Attempt to delete policy without prompting for confirmation.
@@ -8719,7 +8903,7 @@ cis alert-policy test POLICY_ID [-i, --instance INSTANCE] [-f, --force]
 :   The ID of alert policy. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `-f, --force`
 :   Attempt to send a test alert without prompting for confirmation.
@@ -8751,7 +8935,7 @@ ibmcloud cis alert-webhooks [-i, --instance INSTANCE] [--output FORMAT]
 {: #opt-list-alert-webhooks}
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8769,7 +8953,7 @@ ibmcloud cis alert-webhooks -i "cis-demo"
 ### `ibmcloud cis alert-webhook`
 {: #show-alert-webhook}
 
-Show the details of a given webhook.
+Show the details of a webhook.
 
 ```sh
 ibmcloud cis alert-webhook WEBHOOK_ID [-i, --instance INSTANCE] [--output FORMAT]
@@ -8783,7 +8967,7 @@ ibmcloud cis alert-webhook WEBHOOK_ID [-i, --instance INSTANCE] [--output FORMAT
 :   The ID of alert webhook. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8801,7 +8985,7 @@ ibmcloud cis alert-webhook b2633e68-9a64-4519-b361-a64a67c8db8e -i "cis-demo"
 ### `ibmcloud cis alert-webhook-create`
 {: #create-alert-webhook}
 
-Create an alert webhook for a given instance.
+Create an alert webhook for an instance.
 
 ```sh
 ibmcloud cis alert-webhook-create --name NAME --url URL [--secret SECRET] [-i, --instance INSTANCE] [--output FORMAT]
@@ -8821,7 +9005,7 @@ ibmcloud cis alert-webhook-create --name NAME --url URL [--secret SECRET] [-i, -
 :   The secret that will be passed in the webhook auth header when dispatching a webhook alert.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8862,7 +9046,7 @@ cis alert-webhook-update WEBHOOK_ID [--name NAME] [--url URL] [--secret SECRET] 
 :   The secret that will be passed in the webhook auth header when dispatching a webhook alert.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `--output`
 :   Specify output format, only JSON is supported.
@@ -8894,7 +9078,7 @@ ibmcloud cis alert-webhook-delete WEBHOOK_ID [-i, --instance INSTANCE] [-f, --fo
 :   The ID of alert webhook. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 `-f, --force`
 :   Attempt to delete webhook without prompting for confirmation.
