@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-04-17"
+lastupdated: "2024-06-12"
 
 ---
 
@@ -1834,6 +1834,8 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
     - `mobile_redirect`: Redirect visitors that are using mobile devices to a mobile-optimized website.
     - `opportunistic_encryption`: Opportunistic Encryption allows browsers to benefit from the improved performance of HTTP/2 by letting them know  that your site is available over an encrypted connection.
     - `origin_error_page_pass_thru`: When Origin Error Page is set to `On`, CIS will proxy the 502 and 504 error pages directly from the origin. (Enterprise plan only)
+    - `origin_max_http_version`: Configure the HTTP version to Origin.
+    - `origin_post_quantum_encryption`: Instructs CIS to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin.
     - `prefetch_preload`: CIS will prefetch any URLs included in the prefetch HTTP header (Enterprise plan only).
     - `pseudo_ipv4`: Adds an IPv4 header to requests when a client is using IPv6, but the server only supports IPv4.
     - `response_buffering`: Enable or disable buffering of responses from the origin server (Enterprise plan only).
@@ -1908,6 +1910,8 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
     - `mobile_redirect`: Redirect visitors that are using mobile devices to a mobile-optimized website.
     - `opportunistic_encryption`: Opportunistic Encryption allows browsers to benefit from the improved performance of HTTP/2 by letting them know that your site is available over an encrypted connection.
     - `origin_error_page_pass_thru`: When Origin Error Page is set to `On`, CIS will proxy the 502 and 504 error pages directly from the origin (Enterprise plan only).
+    - `origin_max_http_version`: Configure the HTTP version to Origin.
+    - `origin_post_quantum_encryption`: Instructs CIS to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin.
     - `prefetch_preload`: CIS will prefetch any URLs included in the prefetch HTTP header (Enterprise plan only).
     - `pseudo_ipv4`: Adds an IPv4 header to requests when a client is using IPv6, but the server only supports IPv4.
     - `response_buffering`: Enable or disable buffering of responses from the origin server (Enterprise plan only).
@@ -1968,7 +1972,12 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
         - `mobile_subdomain`: Which subdomain prefix you wish to redirect visitors on mobile devices to (subdomain must already exist).
         - `strip_uri`: Whether to drop the current page path and redirect to the mobile subdomain URL root. Valid values for `strip_uri` are `true`, `false`.
     - Valid values for `opportunistic_encryption` are `on`, `off`.
-    - Valid values for `origin_error_page_pass_thru` are `on`, `off`.
+    - Valid values for `origin_error_page_pass_thru` are `1`, `2`.
+    - Valid values for `origin_max_http_version` are `supported`, `preferred`, `off`.
+        - `supported`: Post-Quantum algorithms are advertised but only used when requested by the origin.
+        - `preferred`: Preferred instructs CIS to opportunistically send a Post-Quantum (PQ) keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ).
+        - `off`: Post-Quantum algorithms are not advertised.
+    - Valid values for `origin_post_quantum_encryption` are `on`, `off`.
     - Valid values for `brotli` are `on`, `off`.
     - Valid values for `prefetch_preload` are `on`, `off`.
     - Valid values for `pseudo_ipv4` are `off`, `add_header`, `overwrite_header`.
@@ -5364,7 +5373,7 @@ ibmcloud cis range-app-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-
             - `type`: The type of edge IP configuration specified. Dynamically allocated edge IPs use range anycast IPs in accordance with the connectivity you specify. Valid values: `dynamic`.
             - `connectivity`: The IP versions supported for inbound connections on range anycast IPs. Valid values: `all`, `ipv4`, `ipv6`.
         - `tls`: The type of TLS termination associated with the application. Valid values: `off`, `flexible`, `full`, `strict`.
-        - `traffic_type`: Determines how data travels from the edge to your origin. When set to `direct`, range will send traffic directly to your origin, and the application's type is derived from the protocol. When set to `http` or `https`, range will apply CIS's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. Valid values: `direct`, `http`, `https`. The default value is `direct`.  
+        - `traffic_type`: Determines how data travels from the edge to your origin. When set to `direct`, range will send traffic directly to your origin, and the application's type is derived from the protocol. When set to `http` or `https`, range will apply CIS's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. Valid values: `direct`, `http`, `https`. The default value is `direct`.
 
 Sample JSON data:
 
@@ -5511,7 +5520,7 @@ ibmcloud cis range-app-update DNS_DOMAIN_ID APP_ID (--json @JSON_FILE | JSON_STR
             - `type`: The type of edge IP configuration specified. Dynamically allocated edge IPs use range anycast IPs in accordance with the connectivity you specify. Valid values: `dynamic`.
             - `connectivity`: The IP versions supported for inbound connections on range anycast IPs. Valid values: `all`, `ipv4`, `ipv6`.
         - `tls`: The type of TLS termination associated with the application. Valid values: `off`, `flexible`, `full`, `strict`.
-        - `traffic_type`: Determines how data travels from the edge to your origin. When set to `direct`, range will send traffic directly to your origin, and the application's type is derived from the protocol. When set to `http` or `https`, range will apply CIS's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. Valid values: `direct`, `http`, `https`. The default value is `direct`.  
+        - `traffic_type`: Determines how data travels from the edge to your origin. When set to `direct`, range will send traffic directly to your origin, and the application's type is derived from the protocol. When set to `http` or `https`, range will apply CIS's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. Valid values: `direct`, `http`, `https`. The default value is `direct`.
 
 Sample JSON data:
 
@@ -5741,7 +5750,7 @@ ibmcloud cis range-analytics DNS_DOMAIN_ID --bytime [--time_delta DELTA] [--metr
 Get analytics data for range applications in domain `31984fea73a15b45779fa0df4ef62f9b`.
 
 ```sh
-ibmcloud cis range-analytics 31984fea73a15b45779fa0df4ef62f9b --metrics "count,bytesIngress" --dimensions "event,appID" --since "2020-05-22T02:20:00Z"  
+ibmcloud cis range-analytics 31984fea73a15b45779fa0df4ef62f9b --metrics "count,bytesIngress" --dimensions "event,appID" --since "2020-05-22T02:20:00Z"
 --until "2020-05-23T02:20:00Z" -i "cis-demo"
 ```
 {: pre}
@@ -6850,7 +6859,7 @@ Sample JSON data:
    "bundle_method": "compatible"
 }
 
-For keyless ssl 
+For keyless ssl
 {
     "host":"www.example.com",
     "port":8000,
@@ -9090,6 +9099,537 @@ delete an alert webhook `b2633e68-9a64-4519-b361-a64a67c8db8e`.
 
 ```sh
 ibmcloud cis alert-webhook-delete  b2633e68-9a64-4519-b361-a64a67c8db8e -f -i "cis-demo"
+```
+{: pre}
+
+
+## WAF Managed Rules
+{: #waf-managed-rules}
+
+Manage the WAF managed rulesets and rules by using the following `managed-waf` commands. Migrate to new WAF by API or GUI first before you using managed WAF commands, and keep in mind that the previous version of WAF commands will stop working after you migrate.
+
+### `ibmcloud cis managed-waf rulesets`
+{: #list-rulesets}
+
+List all managed WAF rulesets.
+
+```sh
+ibmcloud cis managed-waf rulesets DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #list-rulesets-options}
+
+`DNS_DOMAIN_ID`
+:   The ID of DNS domain.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output value`
+:   Specify output format, only `JSON` is supported.
+
+#### Examples
+{: #list-rulesets-examples}
+
+List all managed WAF rulesets for domain `31984fea73a15b45779fa0df4ef62f9b` under instance `cis-demo`.
+
+```sh
+ibmcloud cis managed-waf rulesets 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis managed-waf ruleset`
+{: #show-ruleset}
+
+Get details of a managed WAF ruleset.
+
+```sh
+ibmcloud cis managed-waf ruleset DNS_DOMAIN_ID RULESET_ID [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #show-ruleset-options}
+
+`DNS_DOMAIN_ID`
+:   The ID of DNS domain.
+
+`RULESET_ID`
+:   The ID of the ruleset.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output value`
+:   Specify output format, only `JSON` is supported.
+
+#### Examples
+{: #show-ruleset-examples}
+
+Show a ruleset `c2e184081120413c86c3ab7e14069605` for domain `31984fea73a15b45779fa0df4ef62f9b` under instance `cis-demo`.
+
+```sh
+ibmcloud cis managed-waf ruleset 31984fea73a15b45779fa0df4ef62f9b  c2e184081120413c86c3ab7e14069605 -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis managed-waf deployment`
+{: #show-deployment}
+
+Get details of a deployed managed WAF rule.
+
+```sh
+ibmcloud cis managed-waf deployment DNS_DOMAIN_ID RULE_ID [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #show-deployment-options}
+
+`DNS_DOMAIN_ID`
+:   The ID of DNS domain.
+
+`RULE_ID`
+:   The ID of the rule.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output value`
+:   Specify output format, only `JSON` is supported.
+
+#### Examples
+{: #show-deployment-examples}
+
+Show a deployment rule `a2121e23-9e68-1218-a356-b78e23a8ec8a` for domain `31984fea73a15b45779fa0df4ef62f9b` under instance `cis-demo`.
+
+```sh
+ibmcloud cis managed-waf deployment 31984fea73a15b45779fa0df4ef62f9b  a2121e23-9e68-1218-a356-b78e23a8ec8a -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis managed-waf deployments`
+{: #list-deployments}
+
+List all deployed managed WAF rules.
+
+```sh
+ibmcloud cis managed-waf deployments DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #list-deployments-options}
+
+`DNS_DOMAIN_ID`
+:   The ID of DNS domain.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output value`
+:   Specify output format, only `JSON` is supported.
+
+#### Examples
+{: #list-deployments-examples}
+
+List all deployment rules for domain `31984fea73a15b45779fa0df4ef62f9b` under instance `cis-demo`.
+
+```sh
+ibmcloud cis managed-waf deployments 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis managed-waf deployment-add-exception`
+{: #deployment-add-exception}
+
+Create an exception rule to skip execution of specified managed WAF rules.
+
+```sh
+ibmcloud cis managed-waf deployment-add-exception DNS_DOMAIN_ID --match EXPRESSION [--skip-rules RULES] [--enabled true|false] [--logging true|false] [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis managed-waf deployment-add-exception DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #deployment-add-exception-options}
+
+`DNS_DOMAIN_ID`
+:   The ID of DNS domain.
+
+`--match`
+:   Specifies the conditions that must be matched for the rule to run. For match value, reference documentation `https://cloud.ibm.com/docs/cis?topic=cis-fields-and-expressions`
+
+`--skip-rules`
+:  Skip all remaining rules, WAF managed rulesets, or rules of WAF managed rulesets. For example, `--skip-rules RULESETID-1:RULEID-a,RULEID-b;RULESETID-2:RULEID-x,RULEID-y.`. Set `current` to skip all remaining rules. Default is "current".
+
+`--enabled`
+:  Indicates if the rule is active. Default is "true".
+
+`--logging`
+:  Log requests matching the skip rule. Default is "true".
+
+`--description`
+:  A brief description of the rule.
+
+`--json`
+:  The JSON file or JSON string used to describe a managed WAF.
+
+   - The required fields in JSON data are `expression`, `action`, `action_parameters`.
+
+      `expression`: The rule expression.
+      `action`: The rule action to perform. Valid values: skip.
+      `action_parameters`: The rule action parameters.
+        `ruleset`: Skip all remaining rules or one or more WAF managed rulesets.
+        `rules`: Skip one or more rules of WAF managed rulesets.
+
+   - The optional fields are `description`, `enabled`, `logging`.
+      `description`: Briefly describes the rule.
+      `enabled`: Indicates if the rule is active.
+      `logging`: Log requests matching the skip rule.
+         - `enabled`: When disabled, matched requests will not appear in firewall events.
+
+   Sample JSON data:
+
+         {
+            "action": "skip",
+            "expression": "(http.cookie eq \"example.com/contact?page=1234\")",
+            "description": "rule name",
+            "enabled": true,
+            "logging": {
+                   "enabled": true
+            },
+            "action_parameters": {
+               "rules": {
+                  "efb7b8c949ac4650a09736fc376e9aee": [
+                     "5de7edfa648c4d6891dc3e7f84534ffa",
+                     "e3a567afc347477d9702d9047e97d760"
+                  ],
+                  "c2e184081120413c86c3ab7e14069605": [
+                     "ef21b0a932ae422790f9249d213b85e6"
+                  ]
+               }
+            }
+         }
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output value`
+:   Specify output format, only `JSON` is supported.
+
+#### Examples
+{: #deployment-add-exception-examples}
+
+Create exception rule for domain `31984fea73a15b45779fa0df4ef62f9b` under instance `cis-demo`.
+
+```sh
+ibmcloud cis managed-waf deployment-add-exception 31984fea73a15b45779fa0df4ef62f9b --match "(http.cookie eq \"example.com/contact?page=1234\")" --skip-rules 'efb7b8c949ac4650a09736fc376e9aee:5de7edfa648c4d6891dc3e7f84534ffa' --enabled false --logging true -i "cis-demo"
+```
+
+### `ibmcloud cis managed-waf deployment-update-exception`
+{: #deployment-update-exception}
+
+Update an exception rule in the deployed managed WAF rules.
+
+```sh
+ibmcloud cis managed-waf deployment-update-exception DNS_DOMAIN_ID RULE_ID [--match MATCH] [--skip-rules RULES] [--enabled true|false] [--logging true|false] [--description DESCRIPTION] [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis managed-waf deployment-update-exception DNS_DOMAIN_ID RULE_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #deployment-update-exception-options}
+
+`DNS_DOMAIN_ID`
+:   The ID of DNS domain.
+
+`RULE_ID`
+:   The ID of rule.
+
+`--match`
+:   Specifies the conditions that must be match for the rule to run. For match value, reference documentation `https://cloud.ibm.com/docs/cis?topic=cis-fields-and-expressions`
+
+`--skip-rules`
+:  Skip all remaining rules, WAF managed rulesets, or rules of WAF managed rulesets. For example, `--skip-rules RULESETID-1:RULEID-a,RULEID-b;RULESETID-2:RULEID-x,RULEID-y.`. Set `current` to skip all remaining rules. Default is "current".
+
+`--enabled`
+:  Indicates if the rule is active. Default is "true".
+
+`--logging`
+:  Log requests matching the skip rule. Default is "true".
+
+`--description`
+:  To briefly describe the rule.
+
+`--json`
+:  The JSON file or JSON string used to describe a managed WAF.
+
+   - The required fields in JSON data are `expression`, `action`, `action_parameters`.
+
+      `expression`: The rule expression.
+      `action`: The rule action to perform. Valid values: skip.
+      `action_parameters`: The rule action parameters.
+        `ruleset`: Skip all remaining rules or one or more WAF managed rulesets.
+        `rules`: Skip one or more rules of WAF managed rulesets.
+
+   - The optional fields are `description`, `enabled`, `logging`.
+      `description`: Briefly describes the rule.
+      `enabled`: Indicates if the rule is active.
+      `logging`: Log requests matching the skip rule.
+         - `enabled`: When disabled, matched requests will not appear in firewall events.
+
+Sample JSON data:
+
+         {
+            "action": "skip",
+            "expression": "(http.cookie eq \"example.com/contact?page=1234\")",
+            "description": "rule name",
+            "enabled": true,
+            "logging": {
+                   "enabled": true
+            },
+            "action_parameters": {
+               "rules": {
+                  "efb7b8c949ac4650a09736fc376e9aee": [
+                     "5de7edfa648c4d6891dc3e7f84534ffa",
+                     "e3a567afc347477d9702d9047e97d760"
+                  ],
+                  "c2e184081120413c86c3ab7e14069605": [
+                     "ef21b0a932ae422790f9249d213b85e6"
+                  ]
+               }
+            }
+         }
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output value`
+:   Specify output format, only `JSON` is supported.
+
+#### Examples
+{: #deployment-update-exception-examples}
+
+Update an exception rule `e7ead74deb2b4c30a91c793f502f5e14` for domain `31984fea73a15b45779fa0df4ef62f9b` under instance `cis-demo`.
+
+```sh
+ibmcloud cis managed-waf deployment-add-exception 31984fea73a15b45779fa0df4ef62f9b e7ead74deb2b4c30a91c793f502f5e14 --match "(http.cookie eq \"example.com/contact?page=1234\")" --skip-rules 'efb7b8c949ac4650a09736fc376e9aee:5de7edfa648c4d6891dc3e7f84534ffa' --enabled false --logging true -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis managed-waf deployment-add-ruleset`
+{: #deployment-add-ruleset}
+
+Add a managed ruleset to the deployed managed WAF rules.
+
+```sh
+ibmcloud cis managed-waf deployment-add-ruleset DNS_DOMAIN_ID RULESET_ID [--match EXPRESSION] [--enabled true|false] [--override-action ACTION] [--override-status STATUS] [--paranoia-level LEVEL] [--override-rules RULE] [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis managed-waf deployment-add-ruleset DNS_DOMAIN_ID RULESET_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #deployment-add-ruleset-options}
+
+`DNS_DOMAIN_ID`
+:   The ID of DNS domain.
+
+`RULESET_ID`
+:   The ID of managed ruleset.
+
+`--match`
+:   Specifies the conditions that must be match for the rule to run. For match value, reference documentation `https://cloud.ibm.com/docs/cis?topic=cis-fields-and-expressions`
+
+`--enabled`
+:  Indicates if the rule is active. Default is "true".
+
+`--override-action`
+:  The ruleset action of the overrides. Valid values: "managed_challenge", "block", "js_challenge", "log", "challenge".
+
+`--override-status`
+:  The ruleset status of the overrides. Valid values: true, false.
+
+`--paranoia-level`
+:  OWASP paranoia level, higher paranoia levels activate more aggressive rules. Valid values: "PL1", "PL2", "PL3", "PL4" and it's only available for `CIS OWASP Core Ruleset`.
+
+`--override-rules`
+:  The rules options of the overrides. For example `--override-rules rule=RULE_ID,action=ACTION,enabled=STATUS`. For OWASP Core Ruleset, you can also override the Score Threshold. For example, `--override-rules rule=6179ae15870a4bb7b2d480d4843b323c,score-threshold=25`.
+
+`--json`
+:  The JSON file or JSON string used to describe a managed WAF rule.
+
+   - The required fields in JSON data are `expression`, `action`, `action_parameters`.
+
+      `expression`: The rule expression.
+      `action`: The rule action to perform. Valid values: skip.
+      `action_parameters`: The rule action parameters.
+         `id`: The ruleset ID of the overrides.
+         `overrides`: The rules options of the overrides.
+            `action`: The ruleset action of the overrides. Valid values: "managed_challenge", "block", "js_challenge", "log", "challenge".
+            `enabled`: The ruleset status of the overrides. Valid values: true, false.
+            `rules`: The rules options of the overrides.
+               `id`: The rule ID of the overrides.
+               `action`: The rule action of the overrides. Valid values: "managed_challenge", "block", "js_challenge", "log", "challenge".
+               `enabled`: The rule status of the overrides.
+               `score_threshold`: OWASP Anomaly Score Threshold, set the score threshold which will trigger the Firewall.
+            `categories`: Define OWASP Paranoia Level and only valid for `CIS OWASP core ruleset`
+               `category`: OWASP paranoia level, higher paranoia levels activate more aggressive rules.
+               `enabled`: Whether this OWASP Paranoia Level is enabled.
+
+   - The optional fields are `description`, `enabled`.
+      `description`: Briefly describes the rule.
+      `enabled`: Indicates if the rule is active.
+
+Sample JSON data:
+
+         {
+            "action": "execute",
+            "description": "CIS Managed Ruleset",
+            "enabled": true,
+            "expression": "(http.cookie eq \"example.com/contact?page=1234\")",
+            "action_parameters": {
+               "id": "efb7b8c949ac4650a09736fc376e9aee",
+               "overrides": {
+                  "action": "block",
+                  "enabled": false,
+                  "rules": [
+                     {
+                        "id": "5de7edfa648c4d6891dc3e7f84534ffa",
+                        "action": "managed_challenge"
+                     },
+                     {
+                        "id": "e3a567afc347477d9702d9047e97d760",
+                        "action": "log",
+                        "enabled": true
+                     }
+                  ]
+               }
+         }
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output value`
+:   Specify output format, only `JSON` is supported.
+
+#### Examples
+{: #deployment-add-ruleset-examples}
+
+Deploy a managed ruleset for domain `31984fea73a15b45779fa0df4ef62f9b` under instance `cis-demo`.
+
+```sh
+ibmcloud cis managed-waf deployment-add-ruleset 31984fea73a15b45779fa0df4ef62f9b efb7b8c949ac4650a09736fc376e9aee --match true --enabled true --override-action block --override-status true --override-rules rule=5de7edfa648c4d6891dc3e7f84534ffa,action=managed_challenge --override-rules rule=e3a567afc347477d9702d9047e97d760,action=action,enabled=true -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis managed-waf deployment-update-ruleset`
+{: #deployment-update-ruleset}
+
+Update a managed ruleset in the deployed managed WAF rules.
+
+```sh
+ibmcloud cis managed-waf deployment-update-ruleset DNS_DOMAIN_ID RULE_ID [--match EXPRESSION] [--enabled true|false] [--override-action ACTION] [--override-status STATUS] [--paranoia-level LEVEL] [--override-rules RULE] [--reset-all] [-i, --instance INSTANCE] [--output FORMAT]
+ibmcloud cis managed-waf deployment-update-ruleset DNS_DOMAIN_ID RULE_ID (--json @JSON_FILE | JSON_STRING) [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #deployment-update-ruleset-options}
+
+`DNS_DOMAIN_ID`
+:   The ID of DNS domain.
+
+`RULE_ID`
+:   The ID of deployed managed rule.
+
+`--match`
+:   Specifies the conditions that must be matched for the rule to run. For match value, reference documentation `https://cloud.ibm.com/docs/cis?topic=cis-fields-and-expressions`
+
+`--enabled`
+:  Indicates if the rule is active. Default is "true".
+
+`--override-action`
+:  The ruleset action of the overrides. Valid values: "managed_challenge", "block", "js_challenge", "log", "challenge".
+
+`--override-status`
+:  The ruleset status of the overrides. Valid values: true, false.
+
+`--paranoia-level`
+:  OWASP paranoia level, higher paranoia levels activate more aggressive rules. Valid values: "PL1", "PL2", "PL3", "PL4" and it's only available for `CIS OWASP Core Ruleset`.
+
+`--override-rules`
+:  The rules options of the overrides. For example, `--override-rules rule=RULE_ID,action=ACTION,enabled=STATUS`. For OWASP Core Ruleset, you can also override the Score Threshold. For example, `--override-rules rule=6179ae15870a4bb7b2d480d4843b323c,score-threshold=25`.
+
+`--reset-all`
+:  Reset all the overrides rules to the default settings.
+
+`--json`
+:  The JSON file or JSON string used to describe a managed waf rule.
+
+   - The required fields in JSON data are `expression`, `action`, `action_parameters`.
+
+      `expression`: The rule expression.
+      `action`: The rule action to perform. Valid values: skip.
+      `action_parameters`: The rule action parameters.
+         `id`: The ruleset id of the overrides.
+         `overrides`: The rules options of the overrides.
+            `action`: The ruleset action of the overrides. Valid values: "managed_challenge", "block", "js_challenge", "log", "challenge".
+            `enabled`: The ruleset status of the overrides. Valid values: true, false.
+            `rules`: The rules options of the overrides.
+               `id`: The rule ID of the overrides.
+               `action`: The rule action of the overrides. Valid values: "managed_challenge", "block", "js_challenge", "log", "challenge".
+               `enabled`: The rule status of the overrides.
+               `score_threshold`: OWASP Anomaly Score Threshold, set the score threshold which will trigger the Firewall.
+            `categories`: Define OWASP Paranoia Level and only valid for `CIS OWASP core ruleset`
+               `category`: OWASP paranoia level, higher paranoia levels activate more aggressive rules.
+               `enabled`: Whether this OWASP Paranoia Level enabled.
+
+   - The optional fields are `description`, `enabled`.
+      `description`: Briefly describes the rule.
+      `enabled`: Indicates if the rule is active.
+
+Sample JSON data:
+
+         {
+            "action": "execute",
+            "description": "CIS Managed Ruleset",
+            "enabled": true,
+            "expression": "(http.cookie eq \"example.com/contact?page=1234\")",
+            "action_parameters": {
+               "id": "efb7b8c949ac4650a09736fc376e9aee",
+               "overrides": {
+                  "action": "block",
+                  "enabled": false,
+                  "rules": [
+                     {
+                        "id": "5de7edfa648c4d6891dc3e7f84534ffa",
+                        "action": "managed_challenge"
+                     },
+                     {
+                        "id": "e3a567afc347477d9702d9047e97d760",
+                        "action": "log",
+                        "enabled": true
+                     }
+                  ]
+               }
+         }
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output value`
+:   Specify output format, only `JSON` is supported.
+
+#### Examples
+{: #deployment-update-ruleset-examples}
+
+Update a managed ruleset rule `1a18a1ea7fc043c68761bc69adcbb11c` for domain `31984fea73a15b45779fa0df4ef62f9b` under instance `cis-demo`.
+
+```sh
+ibmcloud cis managed-waf deployment-update-ruleset 31984fea73a15b45779fa0df4ef62f9b 1a18a1ea7fc043c68761bc69adcbb11c --match true --enabled true --override-action block --override-status true --override-rules rule=5de7edfa648c4d6891dc3e7f84534ffa,action=managed_challenge --override-rules rule=e3a567afc347477d9702d9047e97d760,action=action,enabled=true -i "cis-demo"
 ```
 {: pre}
 
