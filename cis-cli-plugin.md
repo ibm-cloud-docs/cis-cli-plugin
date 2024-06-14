@@ -9102,6 +9102,339 @@ ibmcloud cis alert-webhook-delete  b2633e68-9a64-4519-b361-a64a67c8db8e -f -i "c
 ```
 {: pre}
 
+## Advanced Rate Limiting Rules
+{: #advanced-ratelimiting-rules}
+
+Manage the advanced rate limiting rules by using the following `advanced-rate-limiting` commands. 
+
+### `ibmcloud cis advanced-rate-limiting rules`
+{: #list-rules}
+
+List all advanced rate limiting rules.
+
+```sh
+ibmcloud cis advanced-rate-limiting rules DNS_DOMAIN_ID [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #list-rules-options}
+
+`DNS_DOMAIN_ID`
+:   The ID of DNS domain.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output value`
+:   Specify output format, only `JSON` is supported.
+
+#### Examples
+{: #list-rules-examples}
+
+List all advanced rate limiting rules for domain `31984fea73a15b45779fa0df4ef62f9b` under instance `cis-demo`.
+
+```sh
+ibmcloud cis advanced-rate-limiting rules 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis advanced-rate-limiting rule`
+{: #show-rule}
+
+Get details of an advanced rate limiting rule.
+
+```sh
+ibmcloud cis advanced-rate-limiting rule DNS_DOMAIN_ID RULE_ID [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #show-rule-options}
+
+`DNS_DOMAIN_ID`
+:   The ID of DNS domain.
+
+`RULE_ID`
+:   RULE_ID is the id of advanced rate limiting rule.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output value`
+:   Specify output format, only `JSON` is supported.
+
+#### Examples
+{: #show-rule-examples}
+
+Show a rule `c2e184081120413c86c3ab7e14069605` for domain `31984fea73a15b45779fa0df4ef62f9b` under instance `cis-demo`.
+
+```sh
+ibmcloud cis advanced-rate-limiting rule 31984fea73a15b45779fa0df4ef62f9b  c2e184081120413c86c3ab7e14069605 -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis advanced-rate-limiting rule-create`
+{: #create-rule}
+
+Create an advanced rate limiting rule.
+
+```sh
+ibmcloud cis advanced-rate-limiting rule-create DNS_DOMAIN_ID --name NAME --match EXPRESSION --action ACTION --same-characteristics CHARACTERSTICS --requests REQUEST_PER_PERIOD --period PERIOD [--timeout TIMEOUT] [--enabled true|false] [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #create-rule-options}
+
+`DNS_DOMAIN_ID`
+:   The ID of DNS domain.
+
+`--name value`
+:  The rule name.
+
+`--match value`                   
+:  Specifies the conditions that must be match for the rule to run.For match value, reference documentation `https://cloud.ibm.com/docs/cis?topic=cis-fields-and-expressions`
+
+`--action value`
+:  Action to perform when the rate specified in the rule is reached. Valid values: `block`, `challenge`, `js_challenge`, `managed_challenge`, `log`.
+
+`--same-characteristics value`    
+:  Set of parameters defining how CIS tracks the request rate for the rule.Use one or more of the characteristics: `ip`, `ip_nat`, `host`, `path`, `country`, `asnum`. For complex characteristics, use json file or json string instead.
+
+`--requests value`                
+:  The number of requests over the period of time that will trigger the rule. Valid value: `1-1000000`
+
+`--period value`                  
+:  The period of time to consider (in seconds) when evaluating the request rate. Valid values: `10`, `60`, `120`, `300`, `600`, `3600`.
+      
+`--timeout value`                 
+: The rate limiting rule applies the rule action to further requests for the period of time. Valid values: `0`, `10`, `60`, `120`, `300`, `600`, `3600`, `86400`.
+
+`--enabled value`                 
+: Indicates if the rule is active or not. Valid values for "enabled" are `true`, `false`. (default `false`)
+   
+`--json value`                    
+:  The JSON file or JSON string used to describe an advanced rate limiting rule.
+                                      
+   - The required fields in JSON data are `expression`, `ratelimit`, `action`.
+                                          
+      - `expression`: Defines the criteria for the advanced rate limiting rule to match a request.
+      - `ratelimit`: Define the ratelimit parameters.
+        - `characteristics`: Set of parameters defining how CIS tracks the request rate for the rule.
+        - `requests_per_period`: The number of requests over the period of time that will trigger the rule.
+        - `period`: The period of time to consider (in seconds) when evaluating the request rate. Valid values: `10`, `60`, `120`, `300`, `600`, `3600`.
+        - `requests_to_origin`: Apply the rate limiting to cached assets or not.
+        - `mitigation_timeout`: The rate limiting rule applies the rule action to further requests for the period of time. Valid values: `0`, `10`, `60`, `120`, `300`, `600`, `3600`, `86400`.
+        - `counting_expression`: Defines the criteria used for determining the request rate.
+      - `action`: Action to perform when the rate specified in the rule is reached. Valid values: `block`, `challenge`, `js_challenge`, `managed_challenge`, `log`.
+                                      
+   - The optional fields are `description`, `action_parameters`, `enabled`.
+                                          
+      - `description`: The descriptive name of your rule.
+      - `action_parameters`: Define the action parameters.
+         - `response`: Define a custom response for block action.
+         - `status_code`: Defines the HTTP status code returned to the visitor when blocking the request due to rate limiting. Only available when the rule action is Block. Valid values: 400~499. The default value is 429.
+         - `content_type`: Defines the content type of a custom response when blocking a request due to rate limiting. Only available when the rule action is Block.
+         - `content`: Defines the body of the returned HTTP response when the request is blocked due to rate limiting. Only available when the rule action is Block.
+      - `enabled`: Whether enable this rule or not.
+      ```sh                                
+         Sample JSON data:
+                                      
+            {
+                                      
+               "description": "description",
+               "expression": "(http.request.method eq \"POST\")",
+               "ratelimit": {
+                  "characteristics": [
+                     "cf.unique_visitor_id",
+                     "cf.colo.id"
+                  ],
+                  "requests_to_origin": false,
+                  "counting_expression": "(ip.geoip.continent in {\"AN\"})",
+                  "requests_per_period": 10,
+                  "period": 10,
+                  "mitigation_timeout": 120
+               },
+               "action": "block",
+               "action_parameters": {
+                  "response": {
+                     "status_code": 429,
+                     "content_type": "text/xml",
+                     "content": "reject"
+                  }
+               },
+               "enabled": false
+            }
+      ```
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output value`
+:   Specify output format, only `JSON` is supported.
+
+#### Examples
+{: #create-rule-examples}
+
+Create an advanced rate limiting rule for domain `31984fea73a15b45779fa0df4ef62f9b` under instance `cis-demo`.
+
+```sh
+ibmcloud cis advanced-rate-limiting rule-create 31984fea73a15b45779fa0df4ef62f9b --name rule-name --match "(http.request.method eq \"POST\")" --action log --same-characteristics ip,ip_nat --requests 100 --period 10 -i "cis-demo"
+```
+{: pre}
+
+
+### `ibmcloud cis advanced-rate-limiting rule-update`
+{: #update-rule}
+
+Update an advanced rate limiting rule.
+
+```sh
+ibmcloud cis advanced-rate-limiting rule-update DNS_DOMAIN_ID RULE_ID --name NAME --match EXPRESSION --action ACTION --same-characteristics CHARACTERSTICS --requests REQUEST_PER_PERIOD --period PERIOD [--timeout TIMEOUT] [--enabled true|false] [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #update-rule-options}
+
+`DNS_DOMAIN_ID`
+:   The ID of DNS domain.
+
+`RULE_ID`
+:   RULE_ID is the id of advanced rate limiting rule.
+
+`--name value`
+:  The rule name.
+
+`--match value`                   
+:  Specifies the conditions that must be match for the rule to run.For match value, reference documentation `https://cloud.ibm.com/docs/cis?topic=cis-fields-and-expressions`
+
+`--action value`
+:  Action to perform when the rate specified in the rule is reached. Valid values: `block`, `challenge`, `js_challenge`, `managed_challenge`, `log`.
+
+`--same-characteristics value`    
+:  Set of parameters defining how CIS tracks the request rate for the rule.Use one or more of the characteristics: `ip`, `ip_nat`, `host`, `path`, `country`, `asnum`. For complex characteristics, use json file or json string instead.
+
+`--requests value`                
+:  The number of requests over the period of time that will trigger the rule. Valid value: `1-1000000`
+
+`--period value`                  
+:  The period of time to consider (in seconds) when evaluating the request rate. Valid values: `10`, `60`, `120`, `300`, `600`, `3600`.
+      
+`--timeout value`                 
+: The rate limiting rule applies the rule action to further requests for the period of time. Valid values: `0`, `10`, `60`, `120`, `300`, `600`, `3600`, `86400`.
+
+`--enabled value`                 
+: Indicates if the rule is active or not. Valid values for "enabled" are `true`, `false`. (default `false`)
+   
+`--json value`                    
+:  The JSON file or JSON string used to describe an advanced rate limiting rule.
+                                      
+   - The required fields in JSON data are `expression`, `ratelimit`, `action`.
+                                          
+      - `expression`: Defines the criteria for the advanced rate limiting rule to match a request.
+      - `ratelimit`: Define the ratelimit parameters.
+        - `characteristics`: Set of parameters defining how CIS tracks the request rate for the rule.
+        - `requests_per_period`: The number of requests over the period of time that will trigger the rule.
+        - `period`: The period of time to consider (in seconds) when evaluating the request rate. Valid values: `10`, `60`, `120`, `300`, `600`, `3600`.
+        - `requests_to_origin`: Apply the rate limiting to cached assets or not.
+        - `mitigation_timeout`: The rate limiting rule applies the rule action to further requests for the period of time. Valid values: `0`, `10`, `60`, `120`, `300`, `600`, `3600`, `86400`.
+        - `counting_expression`: Defines the criteria used for determining the request rate.
+      - `action`: Action to perform when the rate specified in the rule is reached. Valid values: `block`, `challenge`, `js_challenge`, `managed_challenge`, `log`.
+                                      
+   - The optional fields are `description`, `action_parameters`, `enabled`.
+                                          
+      - `description`: The descriptive name of your rule.
+      - `action_parameters`: Define the action parameters.
+         - `response`: Define a custom response for block action.
+         - `status_code`: Defines the HTTP status code returned to the visitor when blocking the request due to rate limiting. Only available when the rule action is Block. Valid values: 400~499. The default value is 429.
+         - `content_type`: Defines the content type of a custom response when blocking a request due to rate limiting. Only available when the rule action is Block.
+         - `content`: Defines the body of the returned HTTP response when the request is blocked due to rate limiting. Only available when the rule action is Block.
+      - `enabled`: Whether enable this rule or not.
+      ```sh                                
+         Sample JSON data:
+                                      
+            {
+                                      
+               "description": "description",
+               "expression": "(http.request.method eq \"POST\")",
+               "ratelimit": {
+                  "characteristics": [
+                     "cf.unique_visitor_id",
+                     "cf.colo.id"
+                  ],
+                  "requests_to_origin": false,
+                  "counting_expression": "(ip.geoip.continent in {\"AN\"})",
+                  "requests_per_period": 10,
+                  "period": 10,
+                  "mitigation_timeout": 120
+               },
+               "action": "block",
+               "action_parameters": {
+                  "response": {
+                     "status_code": 429,
+                     "content_type": "text/xml",
+                     "content": "reject"
+                  }
+               },
+               "enabled": false
+            }
+      ```
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output value`
+:   Specify output format, only `JSON` is supported.
+
+#### Examples
+{: #update-rule-examples}
+
+Update an advanced rate limiting rule `c2e184081120413c86c3ab7e14069605` for domain `31984fea73a15b45779fa0df4ef62f9b` under instance `cis-demo`.
+
+```sh
+ibmcloud cis advanced-rate-limiting rule-update 31984fea73a15b45779fa0df4ef62f9b c2e184081120413c86c3ab7e14069605 --name rule-name --match "(http.request.method eq \"POST\")" --action log --same-characteristics ip,ip_nat --requests 100 --period 10 -i "cis-demo"
+```
+{: pre}
+
+### `ibmcloud cis advanced-rate-limiting rule-delete`
+{: #show-rule}
+
+Delete an advanced rate limiting rule by id.
+
+```sh
+ibmcloud cis advanced-rate-limiting rule-delete DNS_DOMAIN_ID RULE_ID [-f, --force] [-i, --instance INSTANCE] [--output FORMAT]
+```
+{: pre}
+
+#### Command options
+{: #delete-rule-options}
+
+`DNS_DOMAIN_ID`
+:   The ID of DNS domain.
+
+`RULE_ID`
+:   RULE_ID is the id of advanced rate limiting rule.
+
+`-f, --force`
+:   Attempt to delete advanced ratelimiting rule without prompting for confirmation.
+
+`-i, --instance`
+:   Instance name or ID. If not set, the context instance specified by `ibmcloud cis instance-set INSTANCE` is used.
+
+`--output value`
+:   Specify output format, only `JSON` is supported.
+
+#### Examples
+{: #delete-rule-examples}
+
+Delete a rule `c2e184081120413c86c3ab7e14069605` for domain `31984fea73a15b45779fa0df4ef62f9b` under instance `cis-demo`.
+
+```sh
+ibmcloud cis advanced-rate-limiting rule-delete 31984fea73a15b45779fa0df4ef62f9b  c2e184081120413c86c3ab7e14069605 -i "cis-demo"
+```
+{: pre}
 
 ## WAF Managed Rules
 {: #waf-managed-rules}
