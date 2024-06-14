@@ -1,5 +1,3 @@
-
-
 toc:
   properties:
     subcollection: cis-cli-plugin
@@ -10,7 +8,6 @@ toc:
     product-page: https://www.ibm.com/products/cloud-internet-services
     path: cis-cli-plugin
     label: Cloud Internet Services (CIS) CLI
-
   entries:
   - navgroup:
       id: reference
