@@ -9399,7 +9399,7 @@ ibmcloud cis advanced-rate-limiting rule-update 31984fea73a15b45779fa0df4ef62f9b
 {: pre}
 
 ### `ibmcloud cis advanced-rate-limiting rule-delete`
-{: #show-rule}
+{: #show-rule-delete}
 
 Delete an advanced rate limiting rule by id.
 
