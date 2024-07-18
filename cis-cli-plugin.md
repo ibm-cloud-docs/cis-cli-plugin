@@ -4399,7 +4399,7 @@ ibmcloud cis firewall-event-analytics DNS_DOMAIN_ID [--dataset DATA_SET] [--filt
 `--filter`
 :   Filter events. The default value is the last 6 hours of data.
 
-The following operators are supported for all filter options:
+   The following operators are supported for all filter options:
 
    | Operator | Comparison          |
    | -------- | ------------------- |
@@ -4419,38 +4419,41 @@ The following operators are supported for all filter options:
         - `datetimeMinute`
         - `matchIndex`
         - `sampleInterval`
-        - The following filter options support `like` and `notlike` operators.
-            - `action`
-            - `clientASNDescription`
-            - `clientAsn`
-            - `clientCountryName`
-            - `clientIP`
-            - `clientRefererHost`
-            - `clientRefererPath`
-            - `clientRefererQuery`
-            - `clientRefererScheme`
-            - `clientRequestHTTPHost`
-            - `clientRequestHTTPMethodName`
-            - `clientRequestHTTPProtocol`
-            - `clientRequestPath`
-            - `clientRequestQuery`
-            - `clientRequestScheme`
-            - `edgeColoName`
-            - `edgeResponseStatus`
-            - `kind`
-            - `originResponseStatus`
-            - `originatorRayName`
-            - `rayName`
-            - `ref`
-            - `ruleId`
-            - `source`
-            - `userAgent`
+    - The following filter options support `like` and `notlike` operators.
+        - `action`
+        - `clientASNDescription`
+        - `clientAsn`
+        - `clientCountryName`
+        - `clientIP`
+        - `clientRefererHost`
+        - `clientRefererPath`
+        - `clientRefererQuery`
+        - `clientRefererScheme`
+        - `clientRequestHTTPHost`
+        - `clientRequestHTTPMethodName`
+        - `clientRequestHTTPProtocol`
+        - `clientRequestPath`
+        - `clientRequestQuery`
+        - `clientRequestScheme`
+        - `edgeColoName`
+        - `edgeResponseStatus`
+        - `kind`
+        - `originResponseStatus`
+        - `originatorRayName`
+        - `rayName`
+        - `ref`
+        - `ruleId`
+        - `source`
+        - `userAgent`
 
 `--order`
 :   Output order. (default: "datetime_ASC")
+
     The following list is usable order options for corresponding dataset and all of order options support ASC and DESC action. Combine these filter options and action with `_`.
+
     For example `datetime_ASC` is order by datetime ascending.
-    `firewallEventsAdaptiveGroups` order options.
+
+    - `firewallEventsAdaptiveGroups` order options.
         - `datetime`
         - `datetimeFifteenMinutes`
         - `datetimeHour`
@@ -4560,7 +4563,9 @@ ibmcloud cis http-request-analytics DNS_DOMAIN_ID [--dataset DATA_SET] [--filter
 
 `--order`
 :   Output order. (default: "datetime_ASC")
+
     The following list is usable order options for corresponding dataset and all of order options support ASC and DESC action. Combine these order options and action with `_`.
+
     For example `date_ASC` is order by date ascending.
     - Common order options for every http dataset.
         - `orderByParams`
@@ -5005,22 +5010,44 @@ ibmcloud cis page-rule-create DNS_DOMAIN_ID (--json @JSON_FILE | JSON_STRING) [-
 `--json value`
 :   The JSON file or JSON string used to describe a page rule. Required.
     - The required fields in JSON data are targets, actions:
-        - `targets`:The target URL pattern to evaluate on a request.
-        - `actions`:An array of actions to perform if the targets of this rule match the request. Available actions are:
-            disable_security, always_use_https, ssl, browser_cache_ttl,
-            security_level, cache_level, edge_cache_ttl, bypass_cache_on_cookie,
-            browser_check, server_side_exclude, email_obfuscation,
-            automatic_https_rewrites, opportunistic_encryption, ip_geolocation,
-            explicit_cache_control, cache_deception_armor, waf, forwarding_url,
-            image_load_optimization, image_size_optimization, script_load_optimization,
-            host_header_override, resolve_override.
-            And some actions are limited to Enterprise plan:
-            cache_on_cookie, disable_apps, disable_performance, minify,
-            origin_error_page_pass_thru, response_buffering, true_client_ip_header,
-            sort_query_string_for_cache, respect_strong_etag.
+        - `targets`: The target URL pattern to evaluate on a request.
+        - `actions`: An array of actions to perform if the targets of this rule match the request. Available actions are:
+            - `disable_security`
+            - `always_use_https`
+            - `ssl`
+            - `browser_cache_ttl`
+            - `security_level`
+            - `cache_level`
+            - `edge_cache_ttl`
+            - `bypass_cache_on_cookie`
+            - `browser_check`
+            - `server_side_exclude`
+            - `email_obfuscation`
+            - `automatic_https_rewrites`
+            - `opportunistic_encryption`
+            - `ip_geolocation`
+            - `explicit_cache_control`
+            - `cache_deception_armor`
+            - `waf`
+            - `forwarding_url`
+            - `image_load_optimization`
+            - `image_size_optimization`
+            - `script_load_optimization`
+            - `host_header_override`
+            - `resolve_override`
+            - Some actions are limited to Enterprise plans:
+                - `cache_on_cookie`
+                - `disable_apps`
+                - `disable_performance`
+                - `minify`
+                - `origin_error_page_pass_thru`
+                - `response_buffering`
+                - `true_client_ip_header`
+                - `sort_query_string_for_cache`
+                - `respect_strong_etag`
     - The optional fields are priority, status:
-        - `priority`:A number that indicates the preference for a page rule over another. Default is 1.
-        - `status`:Status of the page rule. The valid values are `active` and `disabled`, default is `disabled`.
+        - `priority`: A number that indicates the preference for a page rule over another. Default is 1.
+        - `status`: Status of the page rule. The valid values are `active` and `disabled` (default).
 
 Sample JSON data:
 
@@ -5110,22 +5137,44 @@ ibmcloud cis page-rule-update DNS_DOMAIN_ID PAGE_RULE_ID (--json @JSON_FILE | JS
 `--json value`
 :   The JSON file or JSON string used to describe a page rule. Required.
     - The required fields in JSON data are targets, actions:
-        - `targets`:The target URL pattern to evaluate on a request.
-        - `actions`:An array of actions to perform if the targets of this rule match the request. Available actions are:
-            disable_security, always_use_https, ssl, browser_cache_ttl,
-            security_level, cache_level, edge_cache_ttl, bypass_cache_on_cookie,
-            browser_check, server_side_exclude, email_obfuscation,
-            automatic_https_rewrites, opportunistic_encryption, ip_geolocation,
-            explicit_cache_control, cache_deception_armor, waf, forwarding_url,
-            image_load_optimization, image_size_optimization, script_load_optimization,
-            host_header_override, resolve_override.
-            And some actions are limited to Enterprise plan:
-            cache_on_cookie, disable_apps, disable_performance, minify,
-            origin_error_page_pass_thru, response_buffering, true_client_ip_header,
-            sort_query_string_for_cache, respect_strong_etag.
-    - The optional fields are priority, status:
-        - `priority`:A number that indicates the preference for a page rule over another. Default is 1.
-        - `status`:Status of the page rule. The valid values are `active` and `disabled`, default is `disabled`.
+        - `targets`: The target URL pattern to evaluate on a request.
+        - `actions`: An array of actions to perform if the targets of this rule match the request. Available actions are:
+            - `disable_security`
+            - `always_use_https`
+            - `ssl`
+            - `browser_cache_ttl`
+            - `security_level`
+            - `cache_level`
+            - `edge_cache_ttl`
+            - `bypass_cache_on_cookie`
+            - `browser_check`
+            - `server_side_exclude`
+            - `email_obfuscation`
+            - `automatic_https_rewrites`
+            - `opportunistic_encryption`
+            - `ip_geolocation`
+            - `explicit_cache_control`
+            - `cache_deception_armor`
+            - `waf`
+            - `forwarding_url`
+            - `image_load_optimization`
+            - `image_size_optimization`
+            - `script_load_optimization`
+            - `host_header_override`
+            - `resolve_override`
+            - Some actions are limited to Enterprise plans:
+                - `cache_on_cookie`
+                - `disable_apps`
+                - `disable_performance`
+                - `minify`
+                - `origin_error_page_pass_thru`
+                - `response_buffering`
+                - `true_client_ip_header`
+                - `sort_query_string_for_cache`
+                - `respect_strong_etag`
+    - The optional fields are `priority`, `status`:
+        - `priority`: A number that indicates the preference for a page rule over another. Default is 1.
+        - `status`: Status of the page rule. The valid values are `active` and `disabled`, default is `disabled`.
 
 Sample JSON data:
 
@@ -9105,7 +9154,7 @@ ibmcloud cis alert-webhook-delete  b2633e68-9a64-4519-b361-a64a67c8db8e -f -i "c
 ## Advanced Rate Limiting Rules
 {: #advanced-ratelimiting-rules}
 
-Manage the advanced rate limiting rules by using the following `advanced-rate-limiting` commands. 
+Manage the advanced rate limiting rules by using the following `advanced-rate-limiting` commands.
 
 ### `ibmcloud cis advanced-rate-limiting rules`
 {: #list-rules}
@@ -9193,32 +9242,32 @@ ibmcloud cis advanced-rate-limiting rule-create DNS_DOMAIN_ID --name NAME --matc
 `--name value`
 :  The rule name.
 
-`--match value`                   
+`--match value`
 :  Specifies the conditions that must be match for the rule to run.For match value, reference documentation `https://cloud.ibm.com/docs/cis?topic=cis-fields-and-expressions`
 
 `--action value`
 :  Action to perform when the rate specified in the rule is reached. Valid values: `block`, `challenge`, `js_challenge`, `managed_challenge`, `log`.
 
-`--same-characteristics value`    
+`--same-characteristics value`
 :  Set of parameters defining how CIS tracks the request rate for the rule.Use one or more of the characteristics: `ip`, `ip_nat`, `host`, `path`, `country`, `asnum`. For complex characteristics, use json file or json string instead.
 
-`--requests value`                
+`--requests value`
 :  The number of requests over the period of time that will trigger the rule. Valid value: `1-1000000`
 
-`--period value`                  
+`--period value`
 :  The period of time to consider (in seconds) when evaluating the request rate. Valid values: `10`, `60`, `120`, `300`, `600`, `3600`.
-      
-`--timeout value`                 
+
+`--timeout value`
 : The rate limiting rule applies the rule action to further requests for the period of time. Valid values: `0`, `10`, `60`, `120`, `300`, `600`, `3600`, `86400`.
 
-`--enabled value`                 
+`--enabled value`
 : Indicates if the rule is active or not. Valid values for "enabled" are `true`, `false`. (default `false`)
-   
-`--json value`                    
+
+`--json value`
 :  The JSON file or JSON string used to describe an advanced rate limiting rule.
-                                      
+
    - The required fields in JSON data are `expression`, `ratelimit`, `action`.
-                                          
+
       - `expression`: Defines the criteria for the advanced rate limiting rule to match a request.
       - `ratelimit`: Define the ratelimit parameters.
         - `characteristics`: Set of parameters defining how CIS tracks the request rate for the rule.
@@ -9228,9 +9277,9 @@ ibmcloud cis advanced-rate-limiting rule-create DNS_DOMAIN_ID --name NAME --matc
         - `mitigation_timeout`: The rate limiting rule applies the rule action to further requests for the period of time. Valid values: `0`, `10`, `60`, `120`, `300`, `600`, `3600`, `86400`.
         - `counting_expression`: Defines the criteria used for determining the request rate.
       - `action`: Action to perform when the rate specified in the rule is reached. Valid values: `block`, `challenge`, `js_challenge`, `managed_challenge`, `log`.
-                                      
+
    - The optional fields are `description`, `action_parameters`, `enabled`.
-                                          
+
       - `description`: The descriptive name of your rule.
       - `action_parameters`: Define the action parameters.
          - `response`: Define a custom response for block action.
@@ -9238,11 +9287,11 @@ ibmcloud cis advanced-rate-limiting rule-create DNS_DOMAIN_ID --name NAME --matc
          - `content_type`: Defines the content type of a custom response when blocking a request due to rate limiting. Only available when the rule action is Block.
          - `content`: Defines the body of the returned HTTP response when the request is blocked due to rate limiting. Only available when the rule action is Block.
       - `enabled`: Whether enable this rule or not.
-      ```sh                                
+      ```sh
          Sample JSON data:
-                                      
+
             {
-                                      
+
                "description": "description",
                "expression": "(http.request.method eq \"POST\")",
                "ratelimit": {
@@ -9307,32 +9356,32 @@ ibmcloud cis advanced-rate-limiting rule-update DNS_DOMAIN_ID RULE_ID --name NAM
 `--name value`
 :  The rule name.
 
-`--match value`                   
+`--match value`
 :  Specifies the conditions that must be match for the rule to run.For match value, reference documentation `https://cloud.ibm.com/docs/cis?topic=cis-fields-and-expressions`
 
 `--action value`
 :  Action to perform when the rate specified in the rule is reached. Valid values: `block`, `challenge`, `js_challenge`, `managed_challenge`, `log`.
 
-`--same-characteristics value`    
+`--same-characteristics value`
 :  Set of parameters defining how CIS tracks the request rate for the rule.Use one or more of the characteristics: `ip`, `ip_nat`, `host`, `path`, `country`, `asnum`. For complex characteristics, use json file or json string instead.
 
-`--requests value`                
+`--requests value`
 :  The number of requests over the period of time that will trigger the rule. Valid value: `1-1000000`
 
-`--period value`                  
+`--period value`
 :  The period of time to consider (in seconds) when evaluating the request rate. Valid values: `10`, `60`, `120`, `300`, `600`, `3600`.
-      
-`--timeout value`                 
+
+`--timeout value`
 : The rate limiting rule applies the rule action to further requests for the period of time. Valid values: `0`, `10`, `60`, `120`, `300`, `600`, `3600`, `86400`.
 
-`--enabled value`                 
+`--enabled value`
 : Indicates if the rule is active or not. Valid values for "enabled" are `true`, `false`. (default `false`)
-   
-`--json value`                    
+
+`--json value`
 :  The JSON file or JSON string used to describe an advanced rate limiting rule.
-                                      
+
    - The required fields in JSON data are `expression`, `ratelimit`, `action`.
-                                          
+
       - `expression`: Defines the criteria for the advanced rate limiting rule to match a request.
       - `ratelimit`: Define the ratelimit parameters.
         - `characteristics`: Set of parameters defining how CIS tracks the request rate for the rule.
@@ -9342,9 +9391,9 @@ ibmcloud cis advanced-rate-limiting rule-update DNS_DOMAIN_ID RULE_ID --name NAM
         - `mitigation_timeout`: The rate limiting rule applies the rule action to further requests for the period of time. Valid values: `0`, `10`, `60`, `120`, `300`, `600`, `3600`, `86400`.
         - `counting_expression`: Defines the criteria used for determining the request rate.
       - `action`: Action to perform when the rate specified in the rule is reached. Valid values: `block`, `challenge`, `js_challenge`, `managed_challenge`, `log`.
-                                      
+
    - The optional fields are `description`, `action_parameters`, `enabled`.
-                                          
+
       - `description`: The descriptive name of your rule.
       - `action_parameters`: Define the action parameters.
          - `response`: Define a custom response for block action.
@@ -9352,11 +9401,11 @@ ibmcloud cis advanced-rate-limiting rule-update DNS_DOMAIN_ID RULE_ID --name NAM
          - `content_type`: Defines the content type of a custom response when blocking a request due to rate limiting. Only available when the rule action is Block.
          - `content`: Defines the body of the returned HTTP response when the request is blocked due to rate limiting. Only available when the rule action is Block.
       - `enabled`: Whether enable this rule or not.
-      ```sh                                
+      ```sh
          Sample JSON data:
-                                      
+
             {
-                                      
+
                "description": "description",
                "expression": "(http.request.method eq \"POST\")",
                "ratelimit": {
