@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-06-12"
+lastupdated: "2024-07-30"
 
 ---
 
@@ -1839,6 +1839,7 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
     - `prefetch_preload`: CIS will prefetch any URLs included in the prefetch HTTP header (Enterprise plan only).
     - `pseudo_ipv4`: Adds an IPv4 header to requests when a client is using IPv6, but the server only supports IPv4.
     - `response_buffering`: Enable or disable buffering of responses from the origin server (Enterprise plan only).
+    - `replace_insecure_js`: Automatically replace insecure JavaScript libraries.
     - `script_load_optimization`: Improve the paint time for pages that include JavaScript.
     - `security_header`: Enforce web security policy for your website.
     - `security_level`: Choose the appropriate security profile for your website.
@@ -1915,6 +1916,7 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
     - `prefetch_preload`: CIS will prefetch any URLs included in the prefetch HTTP header (Enterprise plan only).
     - `pseudo_ipv4`: Adds an IPv4 header to requests when a client is using IPv6, but the server only supports IPv4.
     - `response_buffering`: Enable or disable buffering of responses from the origin server (Enterprise plan only).
+    - `replace_insecure_js`: Automatically replace insecure JavaScript libraries.
     - `script_load_optimization`: Improve the paint time for pages that include JavaScript.
     - `security_header`: Enforce web security policy for your website.
     - `security_level`: Choose the appropriate security profile for your website.
@@ -1985,6 +1987,7 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
         - `add_header`: Add additional Cf-Pseudo-IPv4 header only.
         - `overwrite_header`: Overwrite the existing Cf-Connecting-IP and X-Forwarded-For headers with a pseudo IPv4 address.
     - Valid values for `response_buffering` are `on`, `off`.
+    - Valid values for `replace_insecure_js` are `on`, `off`.
     - Valid values for `script_load_optimization` are `on`, `off`.
     - Valid values for `security_header` are `enabled`, `max_age`, `include_subdomains`, `preload`, `nosniff`. For example, -v enabled=true,max_age=100,include_subdomains=true,preload=true,nosniff=true
         - `enabled`: Whether or not security_header is enabled.Valid values for `enabled` are `true`, `false`.
