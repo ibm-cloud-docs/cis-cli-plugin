@@ -181,7 +181,7 @@ ibmcloud cis access-app-update DNS_DOMAIN_ID ACCESS_APPLICATION_ID --name NAME -
 :   The name of the Application. Required.
 
 `--domain value`
-:   The domain and path that Access will block. Required.
+:   The domain and path that Access blocks. Required.
 
 `--session-duration value`
 :   Defines the amount of time that the tokens issued for this application are valid. Valid values: `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
@@ -382,7 +382,7 @@ ibmcloud cis access-certificate-update DNS_DOMAIN_ID ACCESS_CERTIFICATE_ID --nam
 #### Examples
 {: #example-update-access-cert}
 
-Update access certificate `a5836c2a7ea72d2e225890caea70ae32`.
+Update the access certificate `a5836c2a7ea72d2e225890caea70ae32`.
 
 ```sh
 ibmcloud cis access-certificate-update 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890caea70ae32 --name example  --associated-hostnames example.com -i cis-demo
@@ -399,7 +399,7 @@ ibmcloud cis access-certificate-delete DNS_DOMAIN_ID ACCESS_CERTIFICATE_ID [-i, 
 ```
 {: pre}
 
-Must clear the associated hostnames before deleting the certificate.
+Must clear the associated hostnames before you delete the certificate.
 {: note}
 
 #### Command options
@@ -417,7 +417,7 @@ Must clear the associated hostnames before deleting the certificate.
 #### Examples
 {: #example-acc-cert-delete}
 
-Delete access certificate `a5836c2a7ea72d2e225890caea70ae32`.
+Delete the access certificate `a5836c2a7ea72d2e225890caea70ae32`.
 
 ```sh
 ibmcloud cis access-certificate-delete 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890caea70ae32 -i cis-demo
@@ -477,13 +477,13 @@ ibmcloud cis access-certificates-settings-update DNS_DOMAIN_ID (-f, --feature FE
 :   Feature of certificates settings. Valid values:
 
 `client_certificate_forwarding`
-:   The client certificate payload and its SHA256 signature are forwarded to origin servers via `CF-Client-Cert-DER_BASE64` and `CF-Client-Cert-SHA256` headers, respectively.
+:   The client certificate payload and its SHA256 signature are forwarded to origin servers through `CF-Client-Cert-DER_BASE64` and `CF-Client-Cert-SHA256` headers.
 
 `-v, --value`
 :   The value set to the feature for certificates.
 
 `client_certificate_forwarding`
-:   Specify the hostname to forward client certificate or not. For example, `-v host1=on,host2=on,host3=off`
+:   Specify the hostname to forward the client certificate or not. For example, `-v host1=on,host2=on,host3=off`.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -527,7 +527,7 @@ ibmcloud cis access-policy-create DNS_DOMAIN_ID ACCESS_APPLICATION_ID --name NAM
 :   The name of the policy. Required.
 
 `--decision value`
-:   Defines the action Access will take if the policy matches the user. Valid values: `non_identity`. Required.
+:   Defines the action Access takes if the policy matches the user. Valid values: `non_identity`. Required.
 
 `--include value`
 :   The included rule of the policy. Valid values: `certificate`, `common_name`. Required.
@@ -541,7 +541,7 @@ ibmcloud cis access-policy-create DNS_DOMAIN_ID ACCESS_APPLICATION_ID --name NAM
 #### Examples
 {: #command-example-access-policy-create}
 
-Create access policy for access application `a5836c2a7ea72d2e225890caea70ae32`.
+Create an access policy for access application `a5836c2a7ea72d2e225890caea70ae32`.
 
 ```sh
 ibmcloud cis access-policy-create 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72d2e225890caea70ae32 -name examplePolicy --decision non_identity --include certificate  --include common_name=test -i cis-demo
@@ -659,12 +659,12 @@ ibmcloud cis access-policy-delete 31984fea73a15b45779fa0df4ef62f9b a5836c2a7ea72
 ## Cache
 {: #cache}
 
-Manipulate how the cache performs using the following `cache` commands:
+Manipulate how the cache performs by using the following `cache` commands:
 
 ### `ibmcloud cis cache-purge`
 {: #purge-cache}
 
-Clear the cached assets file by file or entirely for a DNS domain to guarantee served assets are updated.
+Clear the cached assets file by file or entirely for a DNS domain to guarantee that the served assets are updated.
 
 ```sh
 ibmcloud cis cache-purge DNS_DOMAIN_ID (--all | --file file1 --file file2...｜--tag tag1 --tag tag2...|--host host1 --host host...| --prefix prefix1 --prefix prefix2...) [-f, --force] [-i, --instance INSTANCE_NAME]  [--output FORMAT]
@@ -762,7 +762,7 @@ ibmcloud cis cache-settings-update DNS_DOMAIN_ID [--caching-level LEVEL][--brows
 `--caching-level`
 :   Specify under what URL conditions you want to deliver cached assets to the user. Valid values: `no-query-string`, `query-string-independent`, `query-string-dependent`.
 
-    - `no-query-string`: Only delivers resources from cache when there is no query string.
+    - `no-query-string`: Delivers resources from cache only when no query string is present.
     - `query-string-independent`: Delivers the same resource to everyone independent of the query string.
     - `query-string-dependent`: Delivers a different resource each time the query string changes.
 
@@ -770,18 +770,18 @@ ibmcloud cis cache-settings-update DNS_DOMAIN_ID [--caching-level LEVEL][--brows
 :   Specify how long you want the user's browser to store cached assets.
    - Valid values are: `respect-existing-header`, `30s`, `1M`, `5M`, `20M`, `30M`, `1h`, `2h`, `4h`, `8h`, `16h`, `1d` `3d`, `8d`, `16d`, `1m`, `6m`, `1y`.
    - `30s`, `1M`, `5M`, and `20M` are only available for Enterprise or Security plan instance.
-   - `30s` means `30 seconds`
-   - `30M` means `30 minutes`
-   - `1h` means `1 hour`
-   - `1d` means `1 day`
-   - `1m` means `1 month`
-   - `1y` means `1 year`
+   - `30s` means `30 seconds`.
+   - `30M` means `30 minutes`.
+   - `1h` means `1 hour`.
+   - `1d` means `1 day`.
+   - `1m` means `1 month`.
+   - `1y` means `1 year`.
 
 `--development-mod`
 :   Bypass all edge caches and send traffic toward your origin servers.
 
 `--serve-stale-content`
-:   Continue serving cached content to users when origin servers are offline, even if the content has expired.
+:   Continue serving cached content to users when origin servers are offline, even if the content is expired.
 
 `--query-string-sort**: In the cache, CIS treats files with the same query strings as the same file, regardless of the order of the query strings.
 
@@ -804,7 +804,7 @@ ibmcloud cis cache-settings-update 31984fea73a15b45779fa0df4ef62f9b --caching-le
 ## Custom page
 {: #custom-pages}
 
-Manipulate how the Custom Page performs using the following `custom-page` commands:
+Manipulate how the Custom Page performs by using the following `custom-page` commands:
 
 ### `ibmcloud cis custom-page-update`
 {: #update-custom-page}
@@ -914,7 +914,7 @@ ibmcloud cis custom-pages -d 31984fea73a15b45779fa0df4ef62f9b -i "cis-demo"
 ## DNS record
 {: #dns-record}
 
-Manipulate how the DNS Record performs using the following `dns-record` commands:
+Manipulate how the DNS Record performs by using the following `dns-record` commands:
 
 ### `ibmcloud cis dns-record-create`
 {: #create-dns-record}
@@ -945,18 +945,18 @@ ibmcloud cis dns-record-create DNS_DOMAIN_ID --type TYPE --name NAME --content C
 :   DNS record content.
 
 `--ttl`
-:   Time to live for DNS record. Value of 1 is `automatic`. The default value is `1`.
+:   Time to live for DNS record. A value of 1 is `automatic`. The default value is `1`.
 
 `--proxied`
-:   Control whether or not traffic should flow through the security and performance functions on CIS. CIS only proxies traffic for `A`, `AAAA`, and `CNAME` records. Valid values: `true`, `false`.
+:   Control whether or not traffic flows through the security and performance functions on CIS. CIS proxies only traffic for `A`, `AAAA`, and `CNAME` records. Valid values: `true`, `false`.
 
 `--json`
-:   The JSON file or JSON string used to describe a DNS Record. Supported DNS Record types are: `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `MX`, `LOC`, `SRV`, `CAA`, `PTR`.
+:   The JSON file or JSON string that is used to describe a DNS Record. Supported DNS Record types are: `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `MX`, `LOC`, `SRV`, `CAA`, `PTR`.
 
     - For type `A`, `AAAA`, `CNAME`, `NS`, `TXT`:
         - The required fields in JSON data are `name`, `type`, `content`.
         - The optional fields are `ttl`, `proxied`:
-            - `proxied` Control whether traffic should flow through the security and performance functions on CIS. CIS only proxies traffic for `A,` `AAAA`, and `CNAME` records.
+            - `proxied` Control whether traffic flows through the security and performance functions on CIS. CIS proxies only traffic for `A,` `AAAA`, and `CNAME` records.
 
 Sample JSON data:
 
@@ -1098,7 +1098,7 @@ Sample JSON data:
 {: codeblock}
 
 - For type `CAA`:
-    - The required fields in JSON data are name, `type`, `data`:
+    - The required fields in JSON data are `name`, `type`, and `data`.
     - The optional field is `ttl`.
 
 Sample JSON data:
@@ -1130,7 +1130,7 @@ Sample JSON data:
 #### Examples
 {: #create-dns-record-examples}
 
-Create a dns record in domain `31984fea73a15b45779fa0df4ef62f9b`.
+Create a DNS record in the domain `31984fea73a15b45779fa0df4ef62f9b`.
 
 ```sh
 ibmcloud cis dns-record-create 31984fea73a15b45779fa0df4ef62f9b --json '{"name": "testCNAME", "type": "CNAME", "content": "example.com"}' -i "cis-demo"
@@ -1158,7 +1158,7 @@ ibmcloud cis dns-record-update DNS_DOMAIN_ID DNS_RECORD_ID [--type TYPE] [--name
 :   The ID of the DNS domain. Required.
 
 `DNS_RECORD_ID`
-:   The ID of DNS record. Required.
+:   The ID of the DNS record. Required.
 
 `--name`
 :   DNS record name.
@@ -1170,18 +1170,18 @@ ibmcloud cis dns-record-update DNS_DOMAIN_ID DNS_RECORD_ID [--type TYPE] [--name
 :   DNS record content.
 
 `--ttl`
-:   Time to live for DNS record. Value of 1 is `automatic`. The default value is `1`.
+:   Time to live for DNS record. A value of 1 is `automatic`. The default value is `1`.
 
 `--proxied`
-:   Control whether or not traffic should flow through the security and performance functions on CIS. CIS only proxies traffic for `A`, `AAAA`, and `CNAME` records. Valid values: `true`, `false`.
+:   Control whether or not traffic flows through the security and performance functions on CIS. CIS proxies traffic only for `A`, `AAAA`, and `CNAME` records. Valid values: `true`, `false`.
 
 `--json`
-:   The JSON file or JSON string used to describe a DNS Record. Supported DNS Record types are: `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `MX`, `LOC`, `SRV`, `CAA`,`PTR`.
+:   The JSON file or JSON string that is used to describe a DNS Record. Supported DNS Record types are: `A`, `AAAA`, `CNAME`, `NS`, `TXT`, `MX`, `LOC`, `SRV`, `CAA`,`PTR`.
 
     - For type `A`, `AAAA`, `CNAME`, `NS`, `TXT`:
         - The required fields in JSON data are `name`, `type`, `content`.
         - The optional fields are `ttl`, `proxied`:
-            - `proxied` Control whether or not traffic should flow through the security and performance functions on CIS. CIS only proxies traffic for `A`, `AAAA`, and `CNAME` records.
+            - `proxied` Control whether or not traffic flows through the security and performance functions on CIS. CIS proxies only traffic for `A`, `AAAA`, and `CNAME` records.
 
 Sample JSON data:
 
@@ -1267,7 +1267,7 @@ Sample JSON data:
             - `size`: Size of location in meters.
             - `precision_horz`: Horizontal precision of location.
             - `precision_vert`: Vertical precision of location.
-    - The optional fields is `ttl`.
+    - The optional field is `ttl`.
 
    Sample JSON data:
 
@@ -1355,7 +1355,7 @@ Sample JSON data:
 #### Examples
 {: #update-dns-record-examples}
 
-Update a dns record in domain `31984fea73a15b45779fa0df4ef62f9b`.
+Update a DNS record in the domain `31984fea73a15b45779fa0df4ef62f9b`.
 
 ```sh
 ibmcloud cis dns-record-update 31984fea73a15b45779fa0df4ef62f9b 77335b17ce1853d0d76e08a8379a0376 --json '{"name": "testCNAME", "type": "CNAME", "content": "example.com"}' -i "cis-demo"
@@ -1380,7 +1380,7 @@ ibmcloud cis dns-record DNS_DOMAIN_ID DNS_RECORD_ID [-i, --instance INSTANCE] [-
 :   The ID of the DNS domain. Required.
 
 `DNS_RECORD_ID`
-:   The ID of DNS record. Required.
+:   The ID of the DNS record. Required.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
@@ -1415,15 +1415,15 @@ ibmcloud cis dns-record-delete DNS_DOMAIN_ID DNS_RECORD_ID [-i, --instance INSTA
 :   The ID of the DNS domain. Required.
 
 `DNS_RECORD_ID`
-:   The ID of DNS record. Required.
+:   The ID of the DNS record. Required.
 
 `-i, --instance`
-:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` will be used.
+:   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
 
 #### Examples
 {: #delete-dns-record-examples}
 
-Delete a dns record in domain `31984fea73a15b45779fa0df4ef62f9b`.
+Delete a dns record in the domain `31984fea73a15b45779fa0df4ef62f9b`.
 
 ```sh
 ibmcloud cis dns-record-delete 31984fea73a15b45779fa0df4ef62f9b 77335b17ce1853d0d76e08a8379a0376 -i "cis-demo"
@@ -1462,10 +1462,10 @@ ibmcloud cis dns-records DNS_DOMAIN_ID [--type TYPE] [--name NAME] [--content CO
 :   Maximum number of DNS records per page.
 
 `--order`
-:   Field by which to order list of DNS records. Valid values are `type`, `name`, `content`, `ttl`, `proxied`
+:   Field by which to order the list of DNS records. Valid values are `type`, `name`, `content`, `ttl`, `proxied`.
 
 `--direction`
-:   Direction in which to order results [ascending or descending order]. Valid values are `asc`, `desc`
+:   Direction in which to order the results (ascending or descending order). Valid values are `asc`, `desc`.
 
 `--match`
 :   Whether to match all or at least one search parameter. Valid values are `any`, `all`.
@@ -1514,7 +1514,7 @@ ibmcloud cis dns-records-import DNS_DOMAIN_ID --file FILE [-i, --instance INSTAN
 #### Examples
 {: #dns-record-import-examples}
 
-Import BIND config in domain `31984fea73a15b45779fa0df4ef62f9b`.
+Import BIND config in the domain `31984fea73a15b45779fa0df4ef62f9b`.
 
 ```sh
 ibmcloud cis dns-records-import 31984fea73a15b45779fa0df4ef62f9b --file bind_config_file.txt -i "cis-demo"
@@ -1592,7 +1592,7 @@ ibmcloud cis domain-add DNS_DOMAIN_NAME [-i, --instance INSTANCE] [--output FORM
 #### Examples
 {: #add-domain-examples}
 
-Add a new domain `test.com` in instance `cis-demo`.
+Add a domain `test.com` in instance `cis-demo`.
 
 ```sh
 ibmcloud cis domain-add "test.com" -i "cis-demo"
@@ -1757,7 +1757,7 @@ ibmcloud cis domains -i "cis-demo"
 ### `ibmcloud cis domain-activation-check`
 {: #check-domain}
 
-Perform activation check on the domain.
+Check the activation on the domain.
 
 ```sh
 ibmcloud cis domain-activation-check DNS_DOMAIN_ID [-i, --instance INSTANCE]
@@ -1786,7 +1786,7 @@ ibmcloud cis domain-activation-check 31984fea73a15b45779fa0df4ef62f9b -i "cis-de
 ## Domain settings
 {: #domain-settings}
 
-Manipulate domain settings using the following `domain-settings` commands:
+Manipulate domain settings by using the following `domain-settings` commands:
 
 ### `ibmcloud cis domain-settings`
 {: #display-domain-settings}
@@ -1808,12 +1808,12 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
 :   Display features in a same group. Valid values for `group` are `all`, `domain`, `reliability`, `performance`, `security`. This option is mutually exclusive with *-f, --feature*.
 
 `-f, --feature`
-:   Feature of domain settings to check. This option is mutually exclusive with *g, --group*. Valid values are as follow:
-    - `always_use_https`: Redirect all requests with scheme `http` to `https`. This applies to all http requests to the domain.
-    - `automatic_https_rewrites`: Help fix mixed content by changing `http` to `https` for all resources or links on your website that can be served  with HTTPS.
+:   Feature of domain settings to check. This option is mutually exclusive with *g, --group*. Valid values are as follows:
+    - `always_use_https`: Redirect all requests with scheme `http` to `https`. This setting applies to all HTTP requests to the domain.
+    - `automatic_https_rewrites`: Help fix mixed content by changing `http` to `https` for all resources or links on your website that can be served with HTTPS.
     - `bot_management`: Detect and mitigate bot traffic on your domain.
-    - `brotli`: When the client requesting an asset supports the brotli compression algorithm, CIS will serve a brotli compressed version of the asset.
-    - `browser_check`: Evaluate HTTP headers from your visitors browser for threats. If a threat is found a block page will be delivered.
+    - `brotli`: When the client that is requesting an asset supports the brotli compression algorithm, CIS serves a brotli compressed version of the asset.
+    - `browser_check`: Evaluate HTTP headers from your visitors browser for threats. If a threat is found, then a block page is delivered.
     - `challenge_ttl`: Specify how long a visitor with a bad IP reputation is allowed access to your website after completing a challenge.
     - `ciphers`: A whitelist of ciphers for TLS termination in the BoringSSL format. This command only lists ciphers specifically whitelisted by  customers. If no ciphers are whitelisted, the list is empty and the default ciphers are used. See [Edge cipher suites](/docs/cis?topic=cis-set-up-cipher-suites&interface=cli#edge-cipher-suites) and [Origin cipher suites](/docs/cis?topic=cis-set-up-cipher-suites&interface=cli#origin-cipher-suites) for the list of default ciphers.
     - `cname_flattening`: Follow a CNAME to where it points and return that IP address instead of the CNAME record. By default, only flatten the  CNAME at the root of your domain.
@@ -1839,13 +1839,12 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
     - `prefetch_preload`: CIS will prefetch any URLs included in the prefetch HTTP header (Enterprise plan only).
     - `pseudo_ipv4`: Adds an IPv4 header to requests when a client is using IPv6, but the server only supports IPv4.
     - `response_buffering`: Enable or disable buffering of responses from the origin server (Enterprise plan only).
-    - `replace_insecure_js`: Automatically replace insecure JavaScript libraries.
     - `script_load_optimization`: Improve the paint time for pages that include JavaScript.
     - `security_header`: Enforce web security policy for your website.
     - `security_level`: Choose the appropriate security profile for your website.
     - `server_side_exclude`: Automatically hide specific content from suspicious visitors.
     - `tls_client_auth`: TLS client certificate presented for authentication on origin pull (Enterprise plan only).
-    - `true_client_ip_header`: CIS will send the end user’s IP address in the True-Client-IP header (Enterprise plan only).
+    - `true_client_ip_header`: CIS sends the end user’s IP address in the True-Client-IP header (Enterprise plan only).
     - `waf`: A Web Application Firewall (WAF) blocks requests that contain malicious content.
     - `websockets`: Allow WebSockets connections to your origin server.
     - `proxy_read_timeout`: Maximum time between two read operations from origin (Enterprise plan only).
@@ -1888,8 +1887,8 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
     - `always_use_https`: Redirect all requests with scheme `http` to `https`. This redirect applies to all http requests to the domain.
     - `automatic_https_rewrites`: Help fix mixed content by changing `http` to `https` for all resources or links on your website that can be served with HTTPS.
     - `bot_management`: Detect and mitigate bot traffic on your domain.
-    - `brotli`: When the client requesting an asset supports the brotli compression algorithm, CIS will serve a brotli compressed version of the asset.
-    - `browser_check`: Evaluate HTTP headers from your visitors browser for threats. If a threat is found a block page will be delivered.
+    - `brotli`: When the client that is requesting an asset supports the brotli compression algorithm, CIS serves a brotli compressed version of the asset.
+    - `browser_check`: Evaluate HTTP headers from your visitors' browser for threats. If a threat is found, then a block page is delivered.
     - `challenge_ttl`: Specify how long a visitor with a bad IP reputation is allowed access to your website after completing a challenge.
     - `ciphers`: A whitelist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
     - `cname_flattening`: Follow a CNAME to where it points and return that IP address instead of the CNAME record.
@@ -1916,7 +1915,6 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
     - `prefetch_preload`: CIS will prefetch any URLs included in the prefetch HTTP header (Enterprise plan only).
     - `pseudo_ipv4`: Adds an IPv4 header to requests when a client is using IPv6, but the server only supports IPv4.
     - `response_buffering`: Enable or disable buffering of responses from the origin server (Enterprise plan only).
-    - `replace_insecure_js`: Automatically replace insecure JavaScript libraries.
     - `script_load_optimization`: Improve the paint time for pages that include JavaScript.
     - `security_header`: Enforce web security policy for your website.
     - `security_level`: Choose the appropriate security profile for your website.
@@ -1987,7 +1985,6 @@ ibmcloud cis domain-settings-update DNS_DOMAIN_ID (-f, --feature FEATURE) (-v, -
         - `add_header`: Add additional Cf-Pseudo-IPv4 header only.
         - `overwrite_header`: Overwrite the existing Cf-Connecting-IP and X-Forwarded-For headers with a pseudo IPv4 address.
     - Valid values for `response_buffering` are `on`, `off`.
-    - Valid values for `replace_insecure_js` are `on`, `off`.
     - Valid values for `script_load_optimization` are `on`, `off`.
     - Valid values for `security_header` are `enabled`, `max_age`, `include_subdomains`, `preload`, `nosniff`. For example, -v enabled=true,max_age=100,include_subdomains=true,preload=true,nosniff=true
         - `enabled`: Whether or not security_header is enabled.Valid values for `enabled` are `true`, `false`.
