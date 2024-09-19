@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-07-30"
+lastupdated: "2024-09-19"
 
 ---
 
@@ -1574,8 +1574,8 @@ ibmcloud cis domain-add DNS_DOMAIN_NAME [-i, --instance INSTANCE] [--output FORM
 `type value`
 :   Specify the domain type setup. Valid values: `full`, `partial` (default `full`).
 
-    - `full`: A full zone implies that DNS is hosted.
-    - `partial`: A partial zone implies that CNAME setup domain.
+    - `full`: A full zone implies that the DNS is hosted.
+    - `partial`: A partial zone implies a CNAME setup domain.
 
 `jump-start`
 :   Automatically attempt to fetch existing DNS records.
@@ -1813,10 +1813,10 @@ ibmcloud cis domain-settings DNS_DOMAIN_ID [-g, --group GROUP | -f, --feature FE
     - `automatic_https_rewrites`: Help fix mixed content by changing `http` to `https` for all resources or links on your website that can be served with HTTPS.
     - `bot_management`: Detect and mitigate bot traffic on your domain.
     - `brotli`: When the client that is requesting an asset supports the brotli compression algorithm, CIS serves a brotli compressed version of the asset.
-    - `browser_check`: Evaluate HTTP headers from your visitors browser for threats. If a threat is found, then a block page is delivered.
-    - `challenge_ttl`: Specify how long a visitor with a bad IP reputation is allowed access to your website after completing a challenge.
-    - `ciphers`: A whitelist of ciphers for TLS termination in the BoringSSL format. This command only lists ciphers specifically whitelisted by  customers. If no ciphers are whitelisted, the list is empty and the default ciphers are used. See [Edge cipher suites](/docs/cis?topic=cis-set-up-cipher-suites&interface=cli#edge-cipher-suites) and [Origin cipher suites](/docs/cis?topic=cis-set-up-cipher-suites&interface=cli#origin-cipher-suites) for the list of default ciphers.
-    - `cname_flattening`: Follow a CNAME to where it points and return that IP address instead of the CNAME record. By default, only flatten the  CNAME at the root of your domain.
+    - `browser_check`: Evaluate HTTP headers from your visitors' browser for threats. If a threat is found, then a block page is delivered.
+    - `challenge_ttl`: Specify how long a visitor with a bad IP reputation is allowed access to your website after they complete a challenge.
+    - `ciphers`: An allowlist of ciphers for TLS termination in the BoringSSL format. This command lists ciphers that are allowlisted by customers. If no ciphers are allowlisted, the list is empty and the default ciphers are used. See [Edge cipher suites](/docs/cis?topic=cis-set-up-cipher-suites&interface=cli#edge-cipher-suites) and [Origin cipher suites](/docs/cis?topic=cis-set-up-cipher-suites&interface=cli#origin-cipher-suites) for the list of default ciphers.
+    - `cname_flattening`: Follow a CNAME to where it points and return that IP address instead of the CNAME record. By default, flatten only the CNAME at the root of your domain.
     - `domain_hold`: Domain holds prevent teams in your organization from adding domains that are already active in another account (Enterprise plan only).
     - `email_obfuscation`: Encrypt email addresses on your web page from bots while keeping them visible to humans.
     - `opportunistic_onion`: Allow legitimate users of Tor Browser to access your websites.
@@ -6529,7 +6529,7 @@ ibmcloud cis security-events DNS_DOMAIN_ID [--ip-class IP_CLASS] [--method METHO
 :   The HTTP method of the request. Valid values: `GET`, `POST`, `DELETE`, `PUT`, `HEAD`, `PURGE`, `OPTIONS`, `PROPFIND`, `MKCOL`, `PATCH`, `ACL`, `BCOPY`, `BDELETE`, `BMOVE`, `BPROPFIND`, `BPROPPATCH`, `CHECKIN`, `CHECKOUT`, `CONNECT`, `COPY`, `LABEL`, `LOCK`, `MERGE`, `MKACTIVITY`, `MKWORKSPACE`, `MOVE`, `NOTIFY`, `ORDERPATCH`, `POLL`, `PROPPATCH`, `REPORT`, `SEARCH`, `SUBSCRIBE`, `TRACE`, `UNCHECKOUT`, `UNLOCK`, `UNSUBSCRIBE`, `UPDATE`, `VERSION-CONTROL`, `BASELINE-CONTROL`, `X-MS-ENUMATTS`, `RPC_OUT_DATA`, `RPC_IN_DATA`, `JSON`, `COOK`, `TRACK`.
 
 `--scheme`
-:   The scheme of the uri. Valid values: `unknown`, `http`, `https`.
+:   The scheme of the URI. Valid values: `unknown`, `http`, `https`.
 
 `--ip`
 :   The IPv4 or IPv6 address from which the request originated.
@@ -6547,7 +6547,7 @@ ibmcloud cis security-events DNS_DOMAIN_ID [--ip-class IP_CLASS] [--method METHO
 :   The client user agent that initiated the request.
 
 `--colo`
-:   The 3-letter airport code of the Cloudflare data-center that handled the request. For example, `SJC`
+:   The 3-letter airport code of the Cloudflare data-center that handled the request. For example, `SJC`.
 
 `--ray-id`
 :   Ray ID of the request.
@@ -6565,16 +6565,16 @@ ibmcloud cis security-events DNS_DOMAIN_ID [--ip-class IP_CLASS] [--method METHO
 :   Start date and time of requesting data period in the ISO8601 format. Can't go back more than a year. For example, `2016-11-11T12:00:00Z`.
 
 `--until`
-:   End date and time of requesting data period in the ISO8601 format. For example,  `2016-11-11T12:00:00Z`.
+:   End date and time of requesting data period in the ISO8601 format. For example, `2016-11-11T12:00:00Z`.
 
 `--source`
 :   Source of the event. Valid values: `unknown`, `asn`, `country`, `ip`, `ipRange`, `securityLevel`, `zoneLockdown`, `waf`, `uaBlock`, `rateLimit`, `firewallRules`, `bic`, `hot`, `l7ddos`.
 
 `--limit`
-:   The number of events to return. The cursor attribute may be used to iterate over the next batch of events, if there are more events in the queried time range. Note that the scanned_range parameter in the `result_info` structure gives an indication of when events were considered in the current resultset if a limit was applied. Valid values are from 10 to 1000. Default value: 50.
+:   The number of events to return. The cursor attribute may be used to iterate over the next batch of events, if there are more events in the queried time range. Note that the `scanned_range` parameter in the `result_info` structure gives an indication of when events were considered in the current resultset if a limit was applied. Valid values are from 10 to 1000. Default value: 50.
 
 `--rule-id`
-:   The ID of the rule that triggered the event, should be considered in the context of source.
+:   The ID of the rule that triggered the event, which should be considered in the context of source.
 
 `-i, --instance`
 :   Instance name or ID. If not set, the context instance that is specified by `ibmcloud cis instance-set INSTANCE` is used.
