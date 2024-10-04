@@ -7,6 +7,7 @@ toc:
     console-page: /catalog/services/internet-services
     product-page: https://www.ibm.com/products/cloud-internet-services
     path: cis-cli-plugin
+    navigation: hidden
     label: Cloud Internet Services (CIS) CLI
   entries:
   - navgroup:
